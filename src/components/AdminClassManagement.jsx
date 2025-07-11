@@ -41,6 +41,7 @@ const AdminClassManagement = () => {
         try {
             const res = await axios.get(`${API}/class/getSubject`);
             const subjectNames = res.data.subjects.map(sub => sub.Subjects);
+            console.log(subjectNames);
             setsubjectHandler(subjectNames);
         } catch (error) {
             console.log("Error is =>", error);
