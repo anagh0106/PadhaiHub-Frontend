@@ -62,7 +62,7 @@ export default function AuthComponent() {
     const hostname = window.location.hostname;
     const API = hostname === "localhost"
         ? "http://localhost:3000/user"
-        : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com";
+        : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com/user";
 
     const handleLogin = async (data) => {
         try {
