@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { FaUserGraduate, FaEnvelope, FaPhone, FaHome, FaIdCard, FaLayerGroup, FaUsers } from 'react-icons/fa';
+import { FaUserGraduate, FaCamera, FaEnvelope, FaPhone, FaHome, FaIdCard, FaLayerGroup, FaUsers } from 'react-icons/fa';
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
