@@ -1,0 +1,104 @@
+Container to center the content
+.student-info-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Card style for student info with transparent, frosted-glass look */
+.student-info-card {
+    background: rgba(245, 242, 242, 0.15);
+    /* Semi-transparent white */
+
+
+    border-radius: 20px;
+    padding: 30px 40px;
+    max-width: 900px;
+    width: 100%;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    /* Soft shadow */
+    color: #fff;
+}
+
+/* Title style with gradient effect */
+.student-info-title {
+    text-align: center;
+    font-size: 36px;
+    color: #fff;
+
+
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+/* Table Style with semi-transparent background */
+.student-info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: rgba(14, 13, 13, 0.2);
+    /* Semi-transparent white background */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.student-info-table th,
+.student-info-table td {
+    padding: 15px;
+    text-align: left;
+    font-size: 18px;
+}
+
+.student-info-table th {
+    background-color: rgba(242, 231, 231, 0.3);
+    /* Semi-transparent background */
+    color: #f6ebeb;
+}
+
+.student-info-table tr:nth-child(even) {
+    background-color: rgba(11, 11, 11, 0.1);
+    /* Slight transparency for alternating rows */
+}
+
+.student-info-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    /* Hover effect */
+}
+
+.student-info-table td {
+    color: #fffbfb;
+}
+
+/* Icon Style in table headers and rows */
+.table-icon {
+    margin-right: 8px;
+    color: #f8f4f4;
+    font-size: 20px;
+}
+
+.student-info-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.back-btn {
+    background-color: transparent;
+    color: #4f46e5;
+    border: 2px solid #4f46e5;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #4f46e5;
+    color: white;
+}

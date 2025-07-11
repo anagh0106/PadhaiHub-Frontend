@@ -1,0 +1,893 @@
+// // import { useEffect, useState } from "react";
+// // import { Menu, X } from "lucide-react";
+// // import { toast, ToastContainer } from "react-toastify";
+// // import AuthForm from "./AuthForm.jsx";
+// // import { Link } from "react-router-dom";
+
+// // function Nav({ onLogout }) {
+// //     const [isOpen, setIsOpen] = useState(false);
+// //     const [showAuthForm, setShowAuthForm] = useState(false);
+// //     const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
+// //     const [userEmail, setUserEmail] = useState(localStorage.getItem("userEmail") || "");
+
+// //     useEffect(() => {
+// //         const handleStorageChange = () => {
+// //             setIsLoggedIn(!!localStorage.getItem("token"));
+// //             setUserEmail(localStorage.getItem("userEmail") || "");
+// //         };
+
+// //         window.addEventListener("storage", handleStorageChange);
+// //         return () => window.removeEventListener("storage", handleStorageChange);
+// //     }, []);
+
+// //     const logoutFunction = () => {
+// //         console.log("Logging out..."); // Debugging step
+
+// //         // Display success message before state updates
+// //         toast.success("Logged out successfully!", { position: "top-right" });
+
+// //         // Clear local storage data
+// //         localStorage.removeItem("token");
+// //         localStorage.removeItem("userEmail");
+// //         localStorage.removeItem("userName");
+
+// //         setIsLoggedIn(false);
+// //         onLogout();
+
+// //         // Ensure toast is visible before reload
+// //         setTimeout(() => {
+// //             window.location.reload(); // Reload the page after 1.5 seconds
+// //         }, 1500);
+// //     };
+
+// //     return (
+// //         <>
+// //          <ToastContainer position="top-right" autoClose={3000} />
+// //             <header className="sticky top-0 w-full bg-black/50 backdrop-blur-md text-white border-b border-gray-700 shadow-md z-50">
+// //                 <nav className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+// //                     <div className="text-xl font-bold">Alpesh Patel Classes</div>
+
+// //                     {/* Desktop Navigation */}
+// //                     <div className="hidden md:flex space-x-6">
+// //                         <Link to="/" className="hover:text-gray-400">Home</Link>
+// //                         <Link to="/about" className="hover:text-gray-400">About</Link>
+// //                         <Link to="/batches" className="hover:text-gray-400">Batches</Link>
+// //                         <Link to="/contact" className="hover:text-gray-400">Contact</Link>
+// //                     </div>
+
+// //                     {/* Authentication */}
+// //                     {isLoggedIn ? (
+// //                         <div className="flex items-center gap-3">
+// //                             <span className="block text-gray-300 font-semibold">{userEmail}</span>
+// //                             <button
+// //                                 className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
+// //                                 onClick={logoutFunction}
+// //                             >
+// //                                 Logout
+// //                             </button>
+// //                         </div>
+// //                     ) : (
+// //                         <button
+// //                             className="bg-white text-black px-6 py-2 rounded-lg hover:bg-gray-300 transition"
+// //                             onClick={() => setShowAuthForm(true)}
+// //                         >
+// //                             Get Started
+// //                         </button>
+// //                     )}
+
+// //                     {/* Mobile Menu Button */}
+// //                     <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+// //                         {isOpen ? <X size={24} /> : <Menu size={24} />}
+// //                     </button>
+// //                 </nav>
+
+// //                 {/* Mobile Navigation */}
+// //                 {isOpen && (
+// //                     <div className="md:hidden bg-black text-white py-4 px-6 space-y-4">
+// //                         <Link to="/" onClick={() => setIsOpen(false)} className="block hover:text-gray-400">Home</Link>
+// //                         <Link to="/about" onClick={() => setIsOpen(false)} className="block hover:text-gray-400">About</Link>
+// //                         <Link to="/batches" onClick={() => setIsOpen(false)} className="block hover:text-gray-400">Batches</Link>
+// //                         <Link to="/contact" onClick={() => setIsOpen(false)} className="block hover:text-gray-400">Contact</Link>
+// //                         {isLoggedIn ? (
+// //                             <button
+// //                                 className="w-full bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
+// //                                 onClick={logoutFunction}
+// //                             >
+// //                                 Logout
+// //                             </button>
+// //                         ) : (
+// //                             <button
+// //                                 className="w-full bg-white text-black px-4 py-2 rounded-lg hover:bg-gray-300 transition"
+// //                                 onClick={() => {
+// //                                     setIsOpen(false);
+// //                                     setShowAuthForm(true);
+// //                                 }}
+// //                             >
+// //                                 Get Started
+// //                             </button>
+// //                         )}
+// //                     </div>
+// //                 )}
+// //             </header>
+
+// //             {/* Authentication Form */}
+// //             {showAuthForm && (
+// //                 <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-md z-50 p-4">
+// //                     <AuthForm onClose={() => setShowAuthForm(false)} />
+// //                 </div>
+// //             )}
+// //         </>
+// //     );
+// // }
+
+// // export default Nav;
+
+// import { useEffect, useState } from "react";
+// import { Menu, X } from "lucide-react";
+// import { toast, ToastContainer } from "react-toastify";
+// import AuthForm from "./AuthForm.jsx";
+// import { Link } from "react-router-dom";
+
+// function Nav({ onLogout }) {
+//     const [isOpen, setIsOpen] = useState(false);
+//     const [showAuthForm, setShowAuthForm] = useState(false);
+//     const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
+//     const [userEmail, setUserEmail] = useState(localStorage.getItem("userEmail") || "");
+
+//     useEffect(() => {
+//         const handleStorageChange = () => {
+//             setIsLoggedIn(!!localStorage.getItem("token"));
+//             setUserEmail(localStorage.getItem("userEmail") || "");
+//         };
+
+//         window.addEventListener("storage", handleStorageChange);
+//         return () => window.removeEventListener("storage", handleStorageChange);
+//     }, []);
+
+//     const logoutFunction = () => {
+//         toast.success("Logged out successfully!", { position: "top-right" });
+
+//         localStorage.removeItem("token");
+//         localStorage.removeItem("userEmail");
+//         localStorage.removeItem("userName");
+
+//         setIsLoggedIn(false);
+//         onLogout();
+
+//         setTimeout(() => {
+//             navigate("/"); // or "/login"
+//         }, 1500);
+//     };
+
+//     return (
+//         <>
+//             <ToastContainer position="top-right" autoClose={3000} />
+//             <header className="sticky top-0 w-full bg-black/60 backdrop-blur-lg text-white border-b border-gray-700 shadow-md z-50">
+//                 <nav className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+//                     <div className="text-xl font-bold">Alpesh Patel Classes</div>
+
+//                     {/* Desktop Navigation */}
+//                     <div className="hidden lg:flex space-x-6 text-lg">
+//                         <Link to="/home" className="hover:text-gray-400 transition">Home</Link>
+//                         <Link to="/about" className="hover:text-gray-400 transition">About</Link>
+//                         <Link to="/batches" className="hover:text-gray-400 transition">Batches</Link>
+//                         <Link to="/contact" className="hover:text-gray-400 transition">Contact</Link>
+//                     </div>
+
+//                     {/* Authentication */}
+//                     {isLoggedIn ? (
+//                         <div className="hidden lg:flex items-center gap-3">
+//                             <span className="text-gray-300 font-semibold">{userEmail}</span>
+//                             <button
+//                                 className="bg-red-500 text-white px-5 py-2 rounded-lg hover:bg-red-600 transition"
+//                                 onClick={logoutFunction}
+//                             >
+//                                 Logout
+//                             </button>
+//                         </div>
+//                     ) : (
+//                         <button
+//                             className="hidden lg:block bg-white text-black px-6 py-2 rounded-lg hover:bg-gray-300 transition"
+//                             onClick={() => setShowAuthForm(true)}
+//                         >
+//                             Get Started
+//                         </button>
+//                     )}
+
+//                     {/* Mobile Menu Button */}
+//                     <button className="lg:hidden focus:outline-none" onClick={() => setIsOpen(!isOpen)}>
+//                         {isOpen ? <X size={28} /> : <Menu size={28} />}
+//                     </button>
+//                 </nav>
+
+//                 {/* Mobile Navigation */}
+//                 <div
+//                     className={`fixed inset-0 bg-black/90 z-50 flex flex-col items-center justify-center transition-transform ${isOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+//                         }`}
+//                 >
+//                     <button className="absolute top-6 right-6 text-white" onClick={() => setIsOpen(false)}>
+//                         <X size={32} />
+//                     </button>
+//                     <div className="flex flex-col items-center space-y-6 text-lg">
+//                         <Link to="/" onClick={() => setIsOpen(false)} className="block hover:text-gray-400">Home</Link>
+//                         <Link to="/about" onClick={() => setIsOpen(false)} className="block hover:text-gray-400">About</Link>
+//                         <Link to="/batches" onClick={() => setIsOpen(false)} className="block hover:text-gray-400">Batches</Link>
+//                         <Link to="/contact" onClick={() => setIsOpen(false)} className="block hover:text-gray-400">Contact</Link>
+//                         {isLoggedIn ? (
+//                             <button
+//                                 className="w-full max-w-[250px] bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 transition"
+//                                 onClick={logoutFunction}
+//                             >
+//                                 Logout
+//                             </button>
+//                         ) : (
+//                             <button
+//                                 className="w-full max-w-[250px] bg-white text-black px-6 py-3 rounded-lg hover:bg-gray-300 transition"
+//                                 onClick={() => {
+//                                     setIsOpen(false);
+//                                     setShowAuthForm(true);
+//                                 }}
+//                             >
+//                                 Get Started
+//                             </button>
+//                         )}
+//                     </div>
+//                 </div>
+
+
+//             </header>
+
+//             {/* Authentication Form */}
+//             {showAuthForm && (
+//                 <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-md z-50 p-4">
+//                     <AuthForm onClose={() => setShowAuthForm(false)} />
+//                 </div>
+//             )}
+//         </>
+//     );
+// }
+
+// export default Nav;
+
+
+
+// 17/6/25 code
+// // // // import { useContext, useEffect, useState } from "react";
+// // // // import { Menu, User, X, Sun, Moon, Settings } from "lucide-react";
+// // // // import { motion, AnimatePresence } from "framer-motion";
+// // // // import { toast, ToastContainer } from "react-toastify";
+// // // // import AuthForm from "./AuthForm.jsx";
+// // // // import { Link, useNavigate } from "react-router-dom";
+// // // // import ThemeContext from "./context/ThemeContext.jsx";
+
+// // // // function Navbar({ onLogout }) {
+// // // //     const [isOpen, setIsOpen] = useState(false);
+// // // //     const [showAuthForm, setShowAuthForm] = useState(false);
+// // // //     const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
+// // // //     const [userEmail, setUserEmail] = useState(localStorage.getItem("userEmail") || "");
+// // // //     const [userName, setUserName] = useState(localStorage.getItem("userName") || "");
+// // // //     const [userRole, setUserRole] = useState(localStorage.getItem("Role") || "");
+// // // //     const [shouldLogout, setShouldLogout] = useState(false);
+// // // //     const navigate = useNavigate();
+
+// // // //     const { theme, setTheme } = useContext(ThemeContext);
+
+// // // //     const toggleTheme = () => {
+// // // //         setTheme(theme === 'light' ? 'dark' : 'light');
+// // // //     };
+
+// // // //     useEffect(() => {
+// // // //         const handleStorageChange = () => {
+// // // //             setIsLoggedIn(!!localStorage.getItem("token"));
+// // // //             setUserEmail(localStorage.getItem("userEmail") || "");
+// // // //             setUserName(localStorage.getItem("userName") || "");
+// // // //             setUserRole(localStorage.getItem("Role") || "");
+// // // //         };
+
+// // // //         window.addEventListener("storage", handleStorageChange);
+// // // //         return () => window.removeEventListener("storage", handleStorageChange);
+// // // //     }, []);
+
+// // // //     useEffect(() => {
+// // // //         if (shouldLogout) {
+// // // //             toast.success("Logged out successfully!", { position: "top-right" });
+
+// // // //             localStorage.removeItem("token");
+// // // //             localStorage.removeItem("userEmail");
+// // // //             localStorage.removeItem("userName");
+// // // //             localStorage.removeItem("Role");
+
+// // // //             setIsLoggedIn(false);
+// // // //             onLogout();
+
+// // // //             setTimeout(() => {
+// // // //                 navigate("/");
+// // // //             }, 1500);
+// // // //         }
+// // // //     }, [shouldLogout]);
+
+// // // //     const colors = {
+// // // //         background: theme === 'light' ? 'bg-white' : 'bg-black',
+// // // //         text: theme === 'light' ? 'text-black' : 'text-white',
+// // // //         mobileMenu: 'bg-black/90'
+// // // //     };
+
+// // // //     return (
+// // // //         <>
+// // // //             <ToastContainer position="top-right" autoClose={3000} />
+
+// // // //             <header className={`sticky top-0 w-full ${colors.background} backdrop-blur-md ${colors.text} border-b border-gray-700 shadow-md z-50`}>
+// // // //                 <nav className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+// // // //                     <div className="text-xl font-bold flex items-center gap-2">
+// // // //                         Siya Education
+// // // //                         {userRole?.trim().toLowerCase() === 'admin' && (
+// // // //                             <span className="text-xs bg-gray-700 px-2 py-1 rounded">
+// // // //                                 {userRole.toUpperCase()}
+// // // //                             </span>
+// // // //                         )}
+// // // //                     </div>
+
+// // // //                     <div className="hidden lg:flex space-x-6 text-lg">
+// // // //                         <Link to="/" className="hover:text-gray-400 transition">Home</Link>
+// // // //                         {userRole !== "admin" && <Link to="/about" className="hover:text-gray-400 transition">About</Link>}
+// // // //                         {!isLoggedIn && userRole !== "admin" && (
+// // // //                             <Link to="/inquiry" className="hover:text-gray-400 transition">Inquire Now</Link>
+// // // //                         )}
+// // // //                         {isLoggedIn && (
+// // // //                             <Link
+// // // //                                 to={userRole === ("admin" || "Admin") ? "/admin/dashboard" : "/studentdashboard"}
+// // // //                                 className="hover:text-gray-400 transition"
+// // // //                             >
+// // // //                                 {userRole === ("admin" || "Admin") ? "Admin Dashboard" : "Student Dashboard"}
+// // // //                             </Link>
+// // // //                         )}
+// // // //                         {isLoggedIn && <Link to="/courses" className="hover:text-gray-400 transition">Courses</Link>}
+// // // //                     </div>
+
+// // // //                     <div className="hidden lg:flex items-center gap-4">
+// // // //                         {isLoggedIn ? (
+// // // //                             <>
+// // // //                                 <User className={`w-5 h-5 ${theme === 'light' ? 'text-black' : 'text-gray-300'}`} />
+// // // //                                 <span className={`${theme === 'light' ? 'text-black' : 'text-gray-300'} font-semibold`}>{userName}</span>
+// // // //                                 <button
+// // // //                                     className="bg-red-500 text-white px-5 py-2 rounded-lg hover:bg-red-600 transition"
+// // // //                                     onClick={() => setShouldLogout(true)}
+// // // //                                 >
+// // // //                                     Logout
+// // // //                                 </button>
+// // // //                                 {/* Settings dropdown */}
+// // // //                                 <div className="relative group">
+// // // //                                     <Settings
+// // // //                                         size={22}
+// // // //                                         className="cursor-pointer text-gray-400 hover:scale-110 transition-transform"
+// // // //                                     />
+// // // //                                     <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-600 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50">
+// // // //                                         <button
+// // // //                                             onClick={() => toast.info("Account Settings clicked")}
+// // // //                                             className="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+// // // //                                         >
+// // // //                                             Account Settings
+// // // //                                         </button>
+// // // //                                         {/* You can later add Delete Account option here */}
+// // // //                                     </div>
+// // // //                                 </div>
+
+// // // //                             </>
+// // // //                         ) : (
+// // // //                             <button
+// // // //                                 className="bg-white text-black px-6 py-2 rounded-lg hover:bg-gray-300 transition"
+// // // //                                 onClick={() => setShowAuthForm(true)}
+// // // //                             >
+// // // //                                 Get Started
+// // // //                             </button>
+// // // //                         )}
+
+// // // //                         {/* Theme Toggle at right-most */}
+// // // //                         <div className="pl-4">
+// // // //                             <AnimatePresence mode="wait">
+// // // //                                 {theme === 'light' ? (
+// // // //                                     <motion.div
+// // // //                                         key="sun"
+// // // //                                         initial={{ rotate: -90, opacity: 0 }}
+// // // //                                         animate={{ rotate: 0, opacity: 1 }}
+// // // //                                         exit={{ rotate: 90, opacity: 0 }}
+// // // //                                         transition={{ duration: 0.4 }}
+// // // //                                     >
+// // // //                                         <Sun
+// // // //                                             size={24}
+// // // //                                             onClick={toggleTheme}
+// // // //                                             className="cursor-pointer text-yellow-500 hover:scale-110 transition-transform"
+// // // //                                         />
+// // // //                                     </motion.div>
+// // // //                                 ) : (
+// // // //                                     <motion.div
+// // // //                                         key="moon"
+// // // //                                         initial={{ rotate: 90, opacity: 0 }}
+// // // //                                         animate={{ rotate: 0, opacity: 1 }}
+// // // //                                         exit={{ rotate: -90, opacity: 0 }}
+// // // //                                         transition={{ duration: 0.4 }}
+// // // //                                     >
+// // // //                                         <Moon
+// // // //                                             size={24}
+// // // //                                             onClick={toggleTheme}
+// // // //                                             className="cursor-pointer text-white hover:scale-110 transition-transform"
+// // // //                                         />
+// // // //                                     </motion.div>
+// // // //                                 )}
+// // // //                             </AnimatePresence>
+// // // //                         </div>
+// // // //                     </div>
+
+// // // //                     <button className="lg:hidden focus:outline-none" aria-label="Toggle Menu" onClick={() => setIsOpen(!isOpen)}>
+// // // //                         {isOpen ? <X size={28} /> : <Menu size={28} />}
+// // // //                     </button>
+// // // //                 </nav>
+
+// // // //                 <div
+// // // //                     className={`fixed inset-0 ${colors.mobileMenu} z-50 flex flex-col items-center justify-center transition-transform duration-300 ease-in-out ${isOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"}`}
+// // // //                     role="dialog"
+// // // //                     aria-modal="true"
+// // // //                 >
+// // // //                     <button className="absolute top-6 right-6 text-white" aria-label="Close Menu" onClick={() => setIsOpen(false)}>
+// // // //                         <X size={32} />
+// // // //                     </button>
+// // // //                     <div className="flex flex-col items-center space-y-6 text-lg">
+// // // //                         <Link to="/" onClick={() => setIsOpen(false)} className="block hover:text-gray-400">Home</Link>
+// // // //                         <Link to="/about" onClick={() => setIsOpen(false)} className="block hover:text-gray-400">About</Link>
+// // // //                         <Link to="/batches" onClick={() => setIsOpen(false)} className="block hover:text-gray-400">Batches</Link>
+// // // //                         <Link to="/contact" onClick={() => setIsOpen(false)} className="block hover:text-gray-400">Contact</Link>
+// // // //                         {isLoggedIn && (
+// // // //                             <Link
+// // // //                                 to={userRole === "admin" ? "/admin/dashboard" : "/studentdashboard"}
+// // // //                                 onClick={() => setIsOpen(false)}
+// // // //                                 className="hover:text-gray-400 transition"
+// // // //                             >
+// // // //                                 {userRole === "admin" ? "Admin Dashboard" : "Student Dashboard"}
+// // // //                             </Link>
+// // // //                         )}
+
+// // // //                         {isLoggedIn ? (
+// // // //                             <button
+// // // //                                 className="w-full max-w-[250px] bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 transition"
+// // // //                                 onClick={() => setShouldLogout(true)}
+// // // //                             >
+// // // //                                 Logout
+// // // //                             </button>
+// // // //                         ) : (
+// // // //                             <button
+// // // //                                 className="w-full max-w-[250px] bg-white text-black px-6 py-3 rounded-lg hover:bg-gray-300 transition"
+// // // //                                 onClick={() => {
+// // // //                                     setIsOpen(false);
+// // // //                                     setShowAuthForm(true);
+// // // //                                 }}
+// // // //                             >
+// // // //                                 Get Started
+// // // //                             </button>
+// // // //                         )}
+// // // //                     </div>
+// // // //                 </div>
+// // // //             </header>
+
+// // // //             {showAuthForm && (
+// // // //                 <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-md z-50 p-4">
+// // // //                     <AuthForm onClose={() => setShowAuthForm(false)} />
+// // // //                 </div>
+// // // //             )}
+// // // //         </>
+// // // //     );
+// // // // }
+
+// // // // export default Navbar;
+
+
+
+// // // import { useContext, useEffect, useState } from "react";
+// // // import { Menu, User, X, Sun, Moon, Settings } from "lucide-react";
+// // // import { motion, AnimatePresence } from "framer-motion";
+// // // import { toast, ToastContainer } from "react-toastify";
+// // // import AuthForm from "./AuthForm.jsx";
+// // // import { Link, useNavigate } from "react-router-dom";
+// // // import ThemeContext from "./context/ThemeContext.jsx";
+
+// // // function Navbar({ onLogout }) {
+// // //     const [isOpen, setIsOpen] = useState(false);
+// // //     const [showAuthForm, setShowAuthForm] = useState(false);
+// // //     const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
+// // //     const [userEmail, setUserEmail] = useState(localStorage.getItem("userEmail") || "");
+// // //     const [userName, setUserName] = useState(localStorage.getItem("userName") || "");
+// // //     const [userRole, setUserRole] = useState(localStorage.getItem("Role") || "");
+// // //     const [shouldLogout, setShouldLogout] = useState(false);
+// // //     const [showSettings, setShowSettings] = useState(false);
+// // //     const navigate = useNavigate();
+
+// // //     const { theme, setTheme } = useContext(ThemeContext);
+
+// // //     const toggleTheme = () => {
+// // //         setTheme(theme === 'light' ? 'dark' : 'light');
+// // //     };
+
+// // //     useEffect(() => {
+// // //         const handleStorageChange = () => {
+// // //             setIsLoggedIn(!!localStorage.getItem("token"));
+// // //             setUserEmail(localStorage.getItem("userEmail") || "");
+// // //             setUserName(localStorage.getItem("userName") || "");
+// // //             setUserRole(localStorage.getItem("Role") || "");
+// // //         };
+
+// // //         window.addEventListener("storage", handleStorageChange);
+// // //         return () => window.removeEventListener("storage", handleStorageChange);
+// // //     }, []);
+
+// // //     useEffect(() => {
+// // //         if (shouldLogout) {
+// // //             toast.success("Logged out successfully!", { position: "top-right" });
+
+// // //             localStorage.removeItem("token");
+// // //             localStorage.removeItem("userEmail");
+// // //             localStorage.removeItem("userName");
+// // //             localStorage.removeItem("Role");
+
+// // //             setIsLoggedIn(false);
+// // //             onLogout();
+
+// // //             setTimeout(() => {
+// // //                 navigate("/");
+// // //             }, 1500);
+// // //         }
+// // //     }, [shouldLogout]);
+
+// // //     const colors = {
+// // //         background: theme === 'light' ? 'bg-white' : 'bg-black',
+// // //         text: theme === 'light' ? 'text-black' : 'text-white',
+// // //         mobileMenu: 'bg-black/90'
+// // //     };
+
+// // //     return (
+// // //         <>
+// // //             <ToastContainer position="top-right" autoClose={3000} />
+
+// // //             <header className={`sticky top-0 w-full ${colors.background} backdrop-blur-md ${colors.text} border-b border-gray-700 shadow-md z-50`}>
+// // //                 <nav className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+// // //                     <div className="text-xl font-bold flex items-center gap-2">
+// // //                         Siya Education
+// // //                         {userRole?.trim().toLowerCase() === 'admin' && (
+// // //                             <span className="text-xs bg-gray-700 px-2 py-1 rounded">
+// // //                                 {userRole.toUpperCase()}
+// // //                             </span>
+// // //                         )}
+// // //                     </div>
+
+// // //                     <div className="hidden lg:flex space-x-6 text-lg">
+// // //                         <Link to="/" className="hover:text-gray-400 transition">Home</Link>
+// // //                         {userRole !== "admin" && <Link to="/about" className="hover:text-gray-400 transition">About</Link>}
+// // //                         {!isLoggedIn && userRole !== "admin" && (
+// // //                             <Link to="/inquiry" className="hover:text-gray-400 transition">Inquire Now</Link>
+// // //                         )}
+// // //                         {isLoggedIn && (
+// // //                             <Link
+// // //                                 to={userRole === "admin" ? "/admin/dashboard" : "/studentdashboard"}
+// // //                                 className="hover:text-gray-400 transition"
+// // //                             >
+// // //                                 {userRole === "admin" ? "Admin Dashboard" : "Student Dashboard"}
+// // //                             </Link>
+// // //                         )}
+// // //                         {isLoggedIn && <Link to="/courses" className="hover:text-gray-400 transition">Courses</Link>}
+// // //                     </div>
+
+// // //                     <div className="hidden lg:flex items-center gap-4">
+// // //                         {isLoggedIn ? (
+// // //                             <>
+// // //                                 <User className={`w-5 h-5 ${theme === 'light' ? 'text-black' : 'text-gray-300'}`} />
+// // //                                 <span className={`${theme === 'light' ? 'text-black' : 'text-gray-300'} font-semibold`}>{userName}</span>
+// // //                                 <button
+// // //                                     className="bg-red-500 text-white px-5 py-2 rounded-lg hover:bg-red-600 transition"
+// // //                                     onClick={() => setShouldLogout(true)}
+// // //                                 >
+// // //                                     Logout
+// // //                                 </button>
+// // //                                 <div className="relative group">
+// // //                                     <Settings
+// // //                                         size={22}
+// // //                                         className="cursor-pointer text-gray-400 hover:scale-110 transition-transform"
+// // //                                         onClick={() => setShowSettings(!showSettings)}
+// // //                                     />
+// // //                                     {showSettings && (
+// // //                                         <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-gray-800 border border-gray-600 rounded-md shadow-lg z-50">
+// // //                                             <Link to="/settings/profile" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Profile Information</Link>
+// // //                                             <Link to="/settings/password" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Change Password</Link>
+// // //                                             <Link to="/settings/email-preferences" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Email Preferences</Link>
+// // //                                             <Link to="/settings/activity" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Login Activity</Link>
+// // //                                             <Link to="/settings/payments" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">Payments</Link>
+// // //                                             <Link to="/settings/delete-account" className="block px-4 py-2 text-sm text-red-600 hover:bg-red-100 dark:hover:bg-red-800">Delete Account</Link>
+// // //                                         </div>
+// // //                                     )}
+// // //                                 </div>
+// // //                             </>
+// // //                         ) : (
+// // //                             <button
+// // //                                 className="bg-white text-black px-6 py-2 rounded-lg hover:bg-gray-300 transition"
+// // //                                 onClick={() => setShowAuthForm(true)}
+// // //                             >
+// // //                                 Get Started
+// // //                             </button>
+// // //                         )}
+
+// // //                         <div className="pl-4">
+// // //                             <AnimatePresence mode="wait">
+// // //                                 {theme === 'light' ? (
+// // //                                     <motion.div
+// // //                                         key="sun"
+// // //                                         initial={{ rotate: -90, opacity: 0 }}
+// // //                                         animate={{ rotate: 0, opacity: 1 }}
+// // //                                         exit={{ rotate: 90, opacity: 0 }}
+// // //                                         transition={{ duration: 0.4 }}
+// // //                                     >
+// // //                                         <Sun
+// // //                                             size={24}
+// // //                                             onClick={toggleTheme}
+// // //                                             className="cursor-pointer text-yellow-500 hover:scale-110 transition-transform"
+// // //                                         />
+// // //                                     </motion.div>
+// // //                                 ) : (
+// // //                                     <motion.div
+// // //                                         key="moon"
+// // //                                         initial={{ rotate: 90, opacity: 0 }}
+// // //                                         animate={{ rotate: 0, opacity: 1 }}
+// // //                                         exit={{ rotate: -90, opacity: 0 }}
+// // //                                         transition={{ duration: 0.4 }}
+// // //                                     >
+// // //                                         <Moon
+// // //                                             size={24}
+// // //                                             onClick={toggleTheme}
+// // //                                             className="cursor-pointer text-white hover:scale-110 transition-transform"
+// // //                                         />
+// // //                                     </motion.div>
+// // //                                 )}
+// // //                             </AnimatePresence>
+// // //                         </div>
+// // //                     </div>
+
+// // //                     <button className="lg:hidden focus:outline-none" aria-label="Toggle Menu" onClick={() => setIsOpen(!isOpen)}>
+// // //                         {isOpen ? <X size={28} /> : <Menu size={28} />}
+// // //                     </button>
+// // //                 </nav>
+
+// // //                 <div
+// // //                     className={`fixed inset-0 ${colors.mobileMenu} z-50 flex flex-col items-center justify-center transition-transform duration-300 ease-in-out ${isOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"}`}
+// // //                     role="dialog"
+// // //                     aria-modal="true"
+// // //                 >
+// // //                     <button className="absolute top-6 right-6 text-white" aria-label="Close Menu" onClick={() => setIsOpen(false)}>
+// // //                         <X size={32} />
+// // //                     </button>
+// // //                     <div className="flex flex-col items-center space-y-6 text-lg">
+// // //                         <Link to="/" onClick={() => setIsOpen(false)} className="block hover:text-gray-400">Home</Link>
+// // //                         <Link to="/about" onClick={() => setIsOpen(false)} className="block hover:text-gray-400">About</Link>
+// // //                         <Link to="/batches" onClick={() => setIsOpen(false)} className="block hover:text-gray-400">Batches</Link>
+// // //                         <Link to="/contact" onClick={() => setIsOpen(false)} className="block hover:text-gray-400">Contact</Link>
+// // //                         {isLoggedIn && (
+// // //                             <Link
+// // //                                 to={userRole === "admin" ? "/admin/dashboard" : "/studentdashboard"}
+// // //                                 onClick={() => setIsOpen(false)}
+// // //                                 className="hover:text-gray-400 transition"
+// // //                             >
+// // //                                 {userRole === "admin" ? "Admin Dashboard" : "Student Dashboard"}
+// // //                             </Link>
+// // //                         )}
+
+// // //                         {isLoggedIn ? (
+// // //                             <button
+// // //                                 className="w-full max-w-[250px] bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 transition"
+// // //                                 onClick={() => setShouldLogout(true)}
+// // //                             >
+// // //                                 Logout
+// // //                             </button>
+// // //                         ) : (
+// // //                             <button
+// // //                                 className="w-full max-w-[250px] bg-white text-black px-6 py-3 rounded-lg hover:bg-gray-300 transition"
+// // //                                 onClick={() => {
+// // //                                     setIsOpen(false);
+// // //                                     setShowAuthForm(true);
+// // //                                 }}
+// // //                             >
+// // //                                 Get Started
+// // //                             </button>
+// // //                         )}
+// // //                     </div>
+// // //                 </div>
+// // //             </header>
+
+// // //             {showAuthForm && (
+// // //                 <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-md z-50 p-4">
+// // //                     <AuthForm onClose={() => setShowAuthForm(false)} />
+// // //                 </div>
+// // //             )}
+// // //         </>
+// // //     );
+// // // }
+
+// // // export default Navbar;
+
+// // import { useContext, useEffect, useState } from "react";
+// // import { Menu, User, X, Sun, Moon, Settings } from "lucide-react";
+// // import { motion, AnimatePresence } from "framer-motion";
+// // import { toast, ToastContainer } from "react-toastify";
+// // import AuthForm from "./AuthForm.jsx";
+// // import { Link, useNavigate } from "react-router-dom";
+// // import ThemeContext from "./context/ThemeContext.jsx";
+
+// // function Navbar({ onLogout }) {
+// //     const [isOpen, setIsOpen] = useState(false);
+// //     const [showAuthForm, setShowAuthForm] = useState(false);
+// //     const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
+// //     const [userEmail, setUserEmail] = useState(localStorage.getItem("userEmail") || "");
+// //     const [userName, setUserName] = useState(localStorage.getItem("userName") || "");
+// //     const [userRole, setUserRole] = useState(localStorage.getItem("Role") || "");
+// //     const [shouldLogout, setShouldLogout] = useState(false);
+// //     const navigate = useNavigate();
+
+// //     const { theme, setTheme } = useContext(ThemeContext);
+
+// //     const toggleTheme = () => {
+// //         setTheme(theme === 'light' ? 'dark' : 'light');
+// //     };
+
+// //     useEffect(() => {
+// //         const handleStorageChange = () => {
+// //             setIsLoggedIn(!!localStorage.getItem("token"));
+// //             setUserEmail(localStorage.getItem("userEmail") || "");
+// //             setUserName(localStorage.getItem("userName") || "");
+// //             setUserRole(localStorage.getItem("Role") || "");
+// //         };
+
+// //         window.addEventListener("storage", handleStorageChange);
+// //         return () => window.removeEventListener("storage", handleStorageChange);
+// //     }, []);
+
+// //     useEffect(() => {
+// //         if (shouldLogout) {
+// //             toast.success("Logged out successfully!", { position: "top-right" });
+// //             localStorage.clear();
+// //             setIsLoggedIn(false);
+// //             onLogout();
+// //             setTimeout(() => {
+// //                 navigate("/");
+// //             }, 1500);
+// //         }
+// //     }, [shouldLogout]);
+
+// //     const colors = {
+// //         background: theme === 'light' ? 'bg-white' : 'bg-gray-900',
+// //         text: theme === 'light' ? 'text-black' : 'text-white',
+// //         hover: theme === 'light' ? 'hover:text-gray-600' : 'hover:text-gray-300',
+// //         menuBg: theme === 'light' ? 'bg-gray-100' : 'bg-gray-800',
+// //         border: theme === 'light' ? 'border-gray-300' : 'border-gray-700',
+// //         dropdownBg: theme === 'light' ? 'bg-white' : 'bg-gray-800',
+// //         dropdownText: theme === 'light' ? 'text-gray-700' : 'text-gray-200',
+// //         dropdownHover: theme === 'light' ? 'hover:bg-gray-100' : 'hover:bg-gray-700'
+// //     };
+
+// //     return (
+// //         <>
+// //             <ToastContainer position="top-right" autoClose={3000} />
+// //             <header className={`sticky top-0 w-full ${colors.background} ${colors.text} backdrop-blur-md ${colors.border} border-b shadow-md z-50`}>
+// //                 <nav className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+// //                     <div className="text-xl font-bold flex items-center gap-2">
+// //                         Siya Education
+// //                         {userRole?.trim().toLowerCase() === 'admin' && (
+// //                             <span className="text-xs bg-gray-700 px-2 py-1 rounded">
+// //                                 {userRole.toUpperCase()}
+// //                             </span>
+// //                         )}
+// //                     </div>
+
+// //                     <div className="hidden lg:flex space-x-6 text-lg">
+// //                         <Link to="/" className={`${colors.hover} transition`}>Home</Link>
+// //                         {userRole !== "admin" && <Link to="/about" className={`${colors.hover} transition`}>About</Link>}
+// //                         {!isLoggedIn && userRole !== "admin" && (
+// //                             <Link to="/inquiry" className={`${colors.hover} transition`}>Inquire Now</Link>
+// //                         )}
+// //                         {isLoggedIn && (
+// //                             <Link
+// //                                 to={userRole === "admin" ? "/admin/dashboard" : "/studentdashboard"}
+// //                                 className={`${colors.hover} transition`}
+// //                             >
+// //                                 {userRole === "admin" ? "Admin Dashboard" : "Student Dashboard"}
+// //                             </Link>
+// //                         )}
+// //                         {isLoggedIn && <Link to="/courses" className={`${colors.hover} transition`}>Courses</Link>}
+// //                     </div>
+
+// //                     <div className="hidden lg:flex items-center gap-4">
+// //                         {isLoggedIn ? (
+// //                             <>
+// //                                 <User className={`w-5 h-5 ${colors.text}`} />
+// //                                 <span className={`font-semibold ${colors.text}`}>{userName}</span>
+// //                                 <div className="relative group">
+// //                                     <Settings size={22} className="cursor-pointer text-gray-400 hover:scale-110 transition-transform" />
+// //                                     <div className={`absolute right-0 mt-2 w-48 ${colors.dropdownBg} border ${colors.border} rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50`}>
+// //                                         <button
+// //                                             onClick={() => toast.info("Account Settings clicked")}
+// //                                             className={`block w-full text-left px-4 py-2 text-sm ${colors.dropdownText} ${colors.dropdownHover}`}
+// //                                         >
+// //                                             Account Settings
+// //                                         </button>
+// //                                         <button
+// //                                             onClick={() => setShouldLogout(true)}
+// //                                             className={`block w-full text-left px-4 py-2 text-sm text-red-600 ${colors.dropdownHover}`}
+// //                                         >
+// //                                             Logout
+// //                                         </button>
+// //                                     </div>
+// //                                 </div>
+// //                             </>
+// //                         ) : (
+// //                             <button
+// //                                 className="bg-white text-black px-6 py-2 rounded-lg hover:bg-gray-300 transition"
+// //                                 onClick={() => setShowAuthForm(true)}
+// //                             >
+// //                                 Get Started
+// //                             </button>
+// //                         )}
+
+// //                         <div className="pl-4">
+// //                             <AnimatePresence mode="wait">
+// //                                 {theme === 'light' ? (
+// //                                     <motion.div key="sun" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.4 }}>
+// //                                         <Sun size={24} onClick={toggleTheme} className="cursor-pointer text-yellow-500 hover:scale-110 transition-transform" />
+// //                                     </motion.div>
+// //                                 ) : (
+// //                                     <motion.div key="moon" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.4 }}>
+// //                                         <Moon size={24} onClick={toggleTheme} className="cursor-pointer text-white hover:scale-110 transition-transform" />
+// //                                     </motion.div>
+// //                                 )}
+// //                             </AnimatePresence>
+// //                         </div>
+// //                     </div>
+
+// //                     <button className="lg:hidden focus:outline-none" aria-label="Toggle Menu" onClick={() => setIsOpen(!isOpen)}>
+// //                         {isOpen ? <X size={28} /> : <Menu size={28} />}
+// //                     </button>
+// //                 </nav>
+
+// //                 <div className={`fixed inset-0 ${theme === 'light' ? 'bg-white/90' : 'bg-black/90'} z-50 flex flex-col items-center justify-center transition-transform duration-300 ease-in-out ${isOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"}`} role="dialog" aria-modal="true">
+// //                     <button className="absolute top-6 right-6 text-white" aria-label="Close Menu" onClick={() => setIsOpen(false)}>
+// //                         <X size={32} />
+// //                     </button>
+// //                     <div className="flex flex-col items-center space-y-6 text-lg">
+// //                         <Link to="/" onClick={() => setIsOpen(false)} className="block hover:text-gray-400">Home</Link>
+// //                         <Link to="/about" onClick={() => setIsOpen(false)} className="block hover:text-gray-400">About</Link>
+// //                         <Link to="/batches" onClick={() => setIsOpen(false)} className="block hover:text-gray-400">Batches</Link>
+// //                         <Link to="/contact" onClick={() => setIsOpen(false)} className="block hover:text-gray-400">Contact</Link>
+// //                         {isLoggedIn && (
+// //                             <Link to={userRole === "admin" ? "/admin/dashboard" : "/studentdashboard"} onClick={() => setIsOpen(false)} className="hover:text-gray-400 transition">
+// //                                 {userRole === "admin" ? "Admin Dashboard" : "Student Dashboard"}
+// //                             </Link>
+// //                         )}
+
+// //                         {isLoggedIn ? (
+// //                             <button className="w-full max-w-[250px] bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 transition" onClick={() => setShouldLogout(true)}>
+// //                                 Logout
+// //                             </button>
+// //                         ) : (
+// //                             <button className="w-full max-w-[250px] bg-white text-black px-6 py-3 rounded-lg hover:bg-gray-300 transition" onClick={() => {
+// //                                 setIsOpen(false);
+// //                                 setShowAuthForm(true);
+// //                             }}>
+// //                                 Get Started
+// //                             </button>
+// //                         )}
+// //                     </div>
+// //                 </div>
+// //             </header>
+
+// //             {showAuthForm && (
+// //                 <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-md z-50 p-4">
+// //                     <AuthForm onClose={() => setShowAuthForm(false)} />
+// //                 </div>
+// //             )}
+// //         </>
+// //     );
+// // }
+
+// // export default Navbar;

@@ -1,0 +1,367 @@
+/* General Page Styles */
+.settings-page {
+    font-family: 'Poppins', sans-serif;
+    /* Semi-transparent background */
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Settings Container */
+.settings-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    /* Light transparent background for blur */
+    backdrop-filter: blur(10px);
+    /* Actual blur effect */
+    -webkit-backdrop-filter: blur(10px);
+    /* Safari support */
+    box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    max-height: 100vh;
+    transition: all 0.3s ease;
+}
+
+
+/* Hide the scrollbar while still keeping it functional */
+.settings-container::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.settings-container {
+    -ms-overflow-style: none;
+    /* For Internet Explorer */
+
+}
+
+/* Profile Section */
+.profile-section {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 5px solid #fff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease-in-out;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1);
+}
+
+.edit-btn {
+    font-size: 16px;
+    color: #fff;
+    background-color: rgba(0, 123, 255, 0.7);
+    /* Transparent button background */
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.edit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Info Section */
+.info-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.info-section h2 {
+    font-size: 2rem;
+    margin: 10px 0;
+    font-weight: 600;
+}
+
+.info-section p {
+    font-size: 1rem;
+    color: #aaa;
+    margin: 5px 0;
+}
+
+.icon-btn {
+    font-size: 1rem;
+    color: #fff;
+    background-color: rgba(40, 167, 69, 0.7);
+    /* Transparent button */
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+.icon-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Details Section */
+.details-section {
+    width: 100%;
+    padding: 25px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 30px;
+    font-size: 1rem;
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.details-section p {
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+.details-section strong {
+    color: #fff;
+}
+
+/* Settings Section */
+.settings-section {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.setting-btn {
+    color: #fff;
+    padding: 15px 30px;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 12px;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background-color: rgba(51, 51, 51, 0.7);
+    /* Transparent background */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.setting-btn:hover {
+    background-color: rgba(68, 68, 68, 0.7);
+    transform: translateY(-3px);
+}
+
+.setting-btn .icon {
+    font-size: 22px;
+}
+
+.setting-btn:hover .icon {
+    transform: rotate(360deg);
+}
+
+/* Save and Reset Buttons */
+.save-btn,
+.reset-btn {
+    color: #000;
+    padding: 15px 25px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Transparent background */
+    font-size: 1rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.save-btn:hover,
+.reset-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    /* Transparent dark overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    background: rgba(51, 51, 51, 0.9);
+    /* Transparent modal background */
+    padding: 30px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    animation: modalFadeIn 0.5s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-field {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    /* Transparent field background */
+    border-radius: 15px;
+}
+
+.modal-field input,
+.modal-field select {
+    background: rgba(28, 28, 28, 0.8);
+    /* Transparent input background */
+    border: 1px solid rgba(68, 68, 68, 0.6);
+    border-radius: 15px;
+    padding: 12px;
+    width: 100%;
+    color: #fff;
+    font-size: 1rem;
+    margin-left: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.modal-field input:focus,
+.modal-field select:focus {
+    outline: none;
+    border-color: #fff;
+}
+
+.modal-actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.modal-actions button {
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: rgba(68, 68, 68, 0.8);
+    /* Transparent button */
+    color: #fff;
+    width: 100%;
+}
+
+.modal-actions button:hover {
+    background-color: rgba(51, 51, 51, 0.9);
+    transform: translateY(-3px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .settings-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .profile-pic {
+        width: 130px;
+        height: 130px;
+    }
+
+    .info-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .setting-btn {
+        font-size: 1.1rem;
+        padding: 12px 18px;
+    }
+
+    .save-btn,
+    .reset-btn {
+        font-size: 1rem;
+        padding: 12px 20px;
+    }
+
+    .modal {
+        width: 90%;
+        max-width: 400px;
+    }
+}
+
+.return-btn {
+    background-color: #f0f0f0;
+    /* Light background for contrast */
+    color: #333;
+    /* Dark text color */
+    padding: 10px 20px;
+    /* Spacing around the button */
+    margin-top: 20px;
+    /* Space from the "Reset Settings" button */
+    border: none;
+    border-radius: 5px;
+    /* Slightly rounded corners */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    float: right;
+    /* Float the button to the right */
+}
+
+.return-btn:hover {
+    background-color: #e0e0e0;
+    /* Darken the background on hover */
+    transform: translateY(-2px);
+    /* Slight lift on hover */
+}
+
+.return-btn:focus {
+    outline: none;
+    /* Remove focus outline */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+    /* Add blue shadow on focus */
+}
