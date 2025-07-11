@@ -58,20 +58,60 @@ const StudentForm = () => {
 
     const token = localStorage.getItem("token");
 
+    // const submitHandler = async (data) => {
+    //     try {
+    //         const res = await axios.post(`${API}/submit-student-info`, data, {
+    //             headers: {
+    //                 Authorization: `Bearer ${token}`,
+    //             },
+    //             withCredentials: true
+    //         });
+    //         if (res.data.alreadySubmitted) {
+    //             setSubmitted(true);
+    //             return;
+    //         }
+    //         setSubmitted(true);
+    //         reset();
+    //         setTimeout(() => setSubmitted(false), 3000);
+    //     } catch (err) {
+    //         console.error(err);
+    //         alert(err.response?.data?.message || "Something went wrong");
+    //     }
+    // };
+
     const submitHandler = async (data) => {
         try {
-            const res = await axios.post(`${API}/submit-student-info`, data, {
+            const formData = new FormData();
+
+            // 📷 Add profile image
+            formData.append("profile", data.profile[0]); // ⬅️ assuming input name="profile"
+
+            // 📄 Append other fields
+            formData.append("fullName", data.fullName);
+            formData.append("phone", data.phone);
+            formData.append("address", data.address);
+            formData.append("grade", data.grade);
+            formData.append("group", data.group);
+            formData.append("studentId", localStorage.getItem("studentId"));
+            formData.append("email", localStorage.getItem("userEmail"));
+
+            const res = await axios.post(`${API}/submit-student-info`, formData, {
                 headers: {
+                    "Content-Type": "multipart/form-data",
                     Authorization: `Bearer ${token}`,
-                }
+                },
+                withCredentials: true,
             });
+
             if (res.data.alreadySubmitted) {
                 setSubmitted(true);
                 return;
             }
+
             setSubmitted(true);
             reset();
             setTimeout(() => setSubmitted(false), 3000);
+
         } catch (err) {
             console.error(err);
             alert(err.response?.data?.message || "Something went wrong");
@@ -197,10 +237,9 @@ const StudentForm = () => {
                             <input
                                 type="file"
                                 accept="image/*"
-                                {...register('image', { required: 'Image is required' })}
+                                {...register('profile')}
                                 className="w-full px-4 py-2 bg-[#191e24] text-white rounded-lg outline-none file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-cyan-500 file:text-white hover:file:bg-cyan-600"
                             />
-                            {errors.image && <p className="text-red-500 text-sm mt-1">{errors.image.message}</p>}
                         </motion.div>
                         <motion.button
                             whileTap={{ scale: 0.97 }}
