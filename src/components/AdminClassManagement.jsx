@@ -40,7 +40,7 @@ const AdminClassManagement = () => {
     const getSubjectsNameAPI = async () => {
         try {
             const res = await axios.get(`${API}/class/getSubject`);
-            const subjectNames = res.data.subjects.map(sub => sub);
+            const subjectNames = res.data.subjects.map(sub => sub.Subjects);
             setsubjectHandler(subjectNames);
         } catch (error) {
             console.log("Error is =>", error);
