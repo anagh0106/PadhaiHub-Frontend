@@ -190,7 +190,18 @@ const StudentForm = () => {
                             </select>
                             {errors.group && <p className="text-red-500 text-sm mt-1">{errors.group.message}</p>}
                         </motion.div>
-
+                        <motion.div variants={fadeInUp} initial="hidden" animate="visible" custom={8}>
+                            <label className="text-sm block mb-1 flex items-center gap-2 text-red-400">
+                                <FaCamera className="text-lg" /> Upload Image
+                            </label>
+                            <input
+                                type="file"
+                                accept="image/*"
+                                {...register('image', { required: 'Image is required' })}
+                                className="w-full px-4 py-2 bg-[#191e24] text-white rounded-lg outline-none file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-cyan-500 file:text-white hover:file:bg-cyan-600"
+                            />
+                            {errors.image && <p className="text-red-500 text-sm mt-1">{errors.image.message}</p>}
+                        </motion.div>
                         <motion.button
                             whileTap={{ scale: 0.97 }}
                             type="submit"
