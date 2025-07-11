@@ -34,14 +34,12 @@ export default function AuthComponent() {
         const { name, value } = e.target
         setFormData((prev) => ({ ...prev, [name]: value }))
     }
-
     const togglePasswordVisibility = (field) => {
         setFormData((prev) => ({
             ...prev,
             [field]: !prev[field],
         }))
     }
-
     const handleOtpChange = (index, value) => {
         if (value.length > 1) {
             value = value.charAt(0)
@@ -57,62 +55,10 @@ export default function AuthComponent() {
             if (nextInput) nextInput.focus()
         }
     }
-
-
     const hostname = window.location.hostname;
     const API = hostname === "localhost"
         ? "http://localhost:3000/user"
         : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com/user";
-
-    const handleLogin = async (data) => {
-        try {
-            setError("");
-            settext("Signing in...");
-
-            const deviceType = /Android|iPhone/i.test(navigator.userAgent) ? "mobile" : "laptop";
-            const deviceId = deviceType === "mobile"
-                ? localStorage.getItem("deviceId")
-                : "";
-
-            const response = await axios.post(`${API}/login`, { ...data, deviceType, deviceId });
-
-            const { token, user } = response.data;
-
-            if (token) {
-                // ⬇️ Decode token to securely get role
-                const decoded = jwtDecode(token);
-                const role = decoded.role;
-
-                // 🧠 Store only safe items
-                localStorage.setItem("token", token);
-                localStorage.setItem("userEmail", user.email);
-                localStorage.setItem("userName", user.username);
-                localStorage.setItem("studentId", user.studentId ?? "");
-
-                // ✅ Show success message based on role
-                role === 'admin'
-                    ? setSuccess("Welcome Mr.Admin")
-                    : setSuccess("Login successful!");
-
-                setisloggedin(false);
-                settext("Logged In");
-
-                // 🔐 Securely navigate based on role
-                if (role === 'user') {
-                    navigate("/");
-                } else {
-                    navigate("/admin/dashboard");
-                }
-            }
-
-        } catch (error) {
-            console.error("Login Error =>", error);
-            const errorMessage = error.response?.data?.message || "Invalid credentials. Please try again.";
-            setError(errorMessage);
-            settext("Sorry!!");
-        }
-    };
-
 
     const handleSignup = async (data) => {
         setError("");
@@ -123,35 +69,16 @@ export default function AuthComponent() {
             return;
         }
 
-        // Determine device type
-        const deviceType = /Android|iPhone/i.test(navigator.userAgent) ? "mobile" : "laptop";
-
-        // Generate a unique device ID for mobile (or retrieve existing one)
-        const deviceId = deviceType === "mobile"
-            ? localStorage.getItem("deviceId") || Math.random().toString(36).substr(2, 9)
-            : "";
-
-        // Store deviceId in localStorage to persist it for mobile users
-        if (deviceType === "mobile") {
-            localStorage.setItem("deviceId", deviceId);
-        }
-
-        // Add device info to data object
-        const signupData = {
-            ...data,
-            deviceType,
-            deviceId
-        };
-
+        // ❌ Removed deviceType and deviceId generation
         try {
-            const response = await axios.post(`${API}/signup`, signupData);
+            const response = await axios.post(`${API}/signup`, data);
 
             console.log("Full Response:", response);
             console.log("Response Data:", response.data);
 
             if (response.status >= 200 && response.status < 300 && (response.data?.success || response.data?.message)) {
                 setSuccess(response.data.message || "Account created successfully!");
-                reset(); // Clears form
+                reset();
 
                 setTimeout(() => {
                     setSuccess("");
@@ -174,7 +101,46 @@ export default function AuthComponent() {
             setError(errorMessage);
         }
     };
+    const handleLogin = async (data) => {
+        try {
+            setError("");
+            settext("Signing in...");
 
+            // ❌ Removed deviceType/deviceId check
+            const response = await axios.post(`${API}/login`, data);
+
+            const { token, user } = response.data;
+
+            if (token) {
+                const decoded = jwtDecode(token);
+                const role = decoded.role;
+
+                localStorage.setItem("token", token);
+                localStorage.setItem("userEmail", user.email);
+                localStorage.setItem("userName", user.username);
+                localStorage.setItem("studentId", user.studentId ?? "");
+
+                role === 'admin'
+                    ? setSuccess("Welcome Mr.Admin")
+                    : setSuccess("Login successful!");
+
+                setisloggedin(false);
+                settext("Logged In");
+
+                if (role === 'user') {
+                    navigate("/");
+                } else {
+                    navigate("/admin/dashboard");
+                }
+            }
+
+        } catch (error) {
+            console.error("Login Error =>", error);
+            const errorMessage = error.response?.data?.message || "Invalid credentials. Please try again.";
+            setError(errorMessage);
+            settext("Sorry!!");
+        }
+    };
     const handleForgotPasswordEmail = async (data) => {
         // Validate email
         if (!formData.email) {
@@ -201,7 +167,6 @@ export default function AuthComponent() {
             setForgotPasswordStep(2)
         }, 1500)
     }
-
     const handleOtpSubmit = async (data) => {
         // Validate OTP
         const otpValue = otp.join("")
@@ -273,7 +238,6 @@ export default function AuthComponent() {
             }))
         }, 2000)
     }
-
     const resetView = () => {
         if (view === "forgot-password" && forgotPasswordStep > 1) {
             setForgotPasswordStep(forgotPasswordStep - 1)
@@ -305,7 +269,7 @@ export default function AuthComponent() {
                         (view === "login" && (
                             <button
                                 type="button"
-                                onClick={() => window.location.reload()} // Reload page immediately
+                                onClick={() => window.location.reload()}
                                 className="absolute top-4 right-4 p-2 rounded-full bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white transition-all duration-300 shadow-md shadow-black/50"
                                 aria-label="Close"
                             >
@@ -444,8 +408,6 @@ export default function AuthComponent() {
                             </div>
                         </form>
                     )}
-
-
                     {/* Signup Form */}
                     {view === "signup" && (
                         <form onSubmit={handleSubmit(handleSignup)} className="space-y-5">
@@ -540,7 +502,6 @@ export default function AuthComponent() {
                             </div>
                         </form>
                     )}
-
                     {/* Forgot Password Flow */}
                     {view === "forgot-password" && (
                         <>
@@ -661,3 +622,118 @@ export default function AuthComponent() {
     )
 }
 
+
+
+
+/**
+ * 
+ * 
+ *    const handleLogin = async (data) => {
+        try {
+            setError("");
+            settext("Signing in...");
+
+            const deviceType = /Android|iPhone/i.test(navigator.userAgent) ? "mobile" : "laptop";
+            const deviceId = deviceType === "mobile"
+                ? localStorage.getItem("deviceId")
+                : "";
+
+            const response = await axios.post(`${API}/login`, { ...data, deviceType, deviceId });
+
+            const { token, user } = response.data;
+
+            if (token) {
+                // ⬇️ Decode token to securely get role
+                const decoded = jwtDecode(token);
+                const role = decoded.role;
+
+                // 🧠 Store only safe items
+                localStorage.setItem("token", token);
+                localStorage.setItem("userEmail", user.email);
+                localStorage.setItem("userName", user.username);
+                localStorage.setItem("studentId", user.studentId ?? "");
+
+                // ✅ Show success message based on role
+                role === 'admin'
+                    ? setSuccess("Welcome Mr.Admin")
+                    : setSuccess("Login successful!");
+
+                setisloggedin(false);
+                settext("Logged In");
+
+                // 🔐 Securely navigate based on role
+                if (role === 'user') {
+                    navigate("/");
+                } else {
+                    navigate("/admin/dashboard");
+                }
+            }
+
+        } catch (error) {
+            console.error("Login Error =>", error);
+            const errorMessage = error.response?.data?.message || "Invalid credentials. Please try again.";
+            setError(errorMessage);
+            settext("Sorry!!");
+        }
+    };
+    const handleSignup = async (data) => {
+        setError("");
+        setSuccess("");
+
+        if (!data.username || !data.email || !data.password) {
+            setError("Please fill in all fields");
+            return;
+        }
+
+        // Determine device type
+        const deviceType = /Android|iPhone/i.test(navigator.userAgent) ? "mobile" : "laptop";
+
+        // Generate a unique device ID for mobile (or retrieve existing one)
+        const deviceId = deviceType === "mobile"
+            ? localStorage.getItem("deviceId") || Math.random().toString(36).substr(2, 9)
+            : "";
+
+        // Store deviceId in localStorage to persist it for mobile users
+        if (deviceType === "mobile") {
+            localStorage.setItem("deviceId", deviceId);
+        }
+
+        // Add device info to data object
+        const signupData = {
+            ...data,
+            deviceType,
+            deviceId
+        };
+
+        try {
+            const response = await axios.post(`${API}/signup`, signupData);
+
+            console.log("Full Response:", response);
+            console.log("Response Data:", response.data);
+
+            if (response.status >= 200 && response.status < 300 && (response.data?.success || response.data?.message)) {
+                setSuccess(response.data.message || "Account created successfully!");
+                reset(); // Clears form
+
+                setTimeout(() => {
+                    setSuccess("");
+                    setView("login");
+                }, 2000);
+            } else {
+                setError(response.data.message || "Signup failed. Please try again.");
+            }
+        } catch (error) {
+            console.error("Signup Error =>", error);
+            let errorMessage = "Signup failed. Please try again.";
+            if (error.response) {
+                errorMessage = error.response.data?.message || errorMessage;
+            } else if (error.request) {
+                errorMessage = "No response from the server. Please check your connection.";
+            } else {
+                errorMessage = error.message;
+            }
+
+            setError(errorMessage);
+        }
+    };
+ */
