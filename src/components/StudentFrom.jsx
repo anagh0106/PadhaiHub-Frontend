@@ -82,10 +82,8 @@ const StudentForm = () => {
     const submitHandler = async (data) => {
         try {
             const formData = new FormData();
-
             // 📷 Add profile image
-            formData.append("profile", data.profile[0]); // ⬅️ assuming input name="profile"
-
+            formData.append("profile", data.profile[0]);
             // 📄 Append other fields
             formData.append("fullName", data.fullName);
             formData.append("phone", data.phone);
@@ -231,16 +229,18 @@ const StudentForm = () => {
                             {errors.group && <p className="text-red-500 text-sm mt-1">{errors.group.message}</p>}
                         </motion.div>
                         <motion.div variants={fadeInUp} initial="hidden" animate="visible" custom={8}>
-                            <label className="text-sm block mb-1 flex items-center gap-2 text-red-400">
-                                <FaCamera className="text-lg" /> Upload Image
+                            <label className="text-sm block mb-1 flex items-center gap-2 text-cyan-300">
+                                <FaCamera /> Upload Profile Image
                             </label>
                             <input
                                 type="file"
                                 accept="image/*"
-                                {...register('profile')}
-                                className="w-full px-4 py-2 bg-[#191e24] text-white rounded-lg outline-none file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-cyan-500 file:text-white hover:file:bg-cyan-600"
+                                {...register("profile", { required: true })}
+                                className="w-full px-4 py-2 bg-[#191e24] text-white rounded-lg"
                             />
+                            {errors.profile && <p className="text-red-500 text-sm mt-1">Profile image is required.</p>}
                         </motion.div>
+
                         <motion.button
                             whileTap={{ scale: 0.97 }}
                             type="submit"
