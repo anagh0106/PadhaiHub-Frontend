@@ -1,6 +1,3 @@
-
-
-
 import { useState, useEffect, useContext } from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from './ui/card';
@@ -10,29 +7,19 @@ import StudentForm from './StudentFrom';
 import axios from 'axios';
 import WelcomeCard from './StudentDashboard/WelcomeCard';
 import ClassSchedule from './StudentDashboard/ClassSchedule';
-import Assignments from './StudentDashboard/Assignments';
-import AttendanceChart from './StudentDashboard/AttendanceChart';
-import PerformanceChart from './StudentDashboard/OverallPerformanceChart';
 import Todolist from './StudentDashboard/Todolist';
 import ThemeContext from './context/ThemeContext';
 import PerformanceAnalytics from './StudentDashboard/PerformanceAnalytics';
-import FetchMockTest from './StudentDashboard/FetchMockTest';
-import MockTest from './StudentDashboard/MockTest';
 import StudentTestManagement from './StudentDashboard/StudentTestManagement';
 import MockTestScore from './StudentDashboard/MockTestScore';
 
 const StudentDashboard = () => {
     const { theme } = useContext(ThemeContext);
     const [isFormsubmitted, setisFormsubmitted] = useState(false);
-
-
     const host = window.location.hostname;
     const API = host === "localhost"
         ? "http://localhost:3000/user"
         : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com/user";
-
-
-
     useEffect(() => {
         const checkInfo = async () => {
             try {

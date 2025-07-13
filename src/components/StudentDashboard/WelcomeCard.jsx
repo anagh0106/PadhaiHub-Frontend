@@ -98,6 +98,13 @@ const WelcomeCard = () => {
         textSecondary: theme === "light" ? "text-gray-600" : "text-gray-400",
     };
 
+    useEffect(() => {
+        userInfo.map((u) => {
+            localStorage.setItem("grade", u.grade)
+            localStorage.setItem("group", u.group)
+            localStorage.setItem("fullName", u.fullName)
+        })
+    }, [userInfo])
     return (
         <div className="w-full max-w-4xl mx-auto mt-10 space-y-6">
             <motion.div
