@@ -15,8 +15,7 @@ const WelcomeCard = () => {
         ? "http://localhost:3000/user"
         : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com/user";
 
-    const [userInfo, setUserInfo] = useState();
-
+    const [userInfo, setUserInfo] = useState([]);
 
     useEffect(() => {
         const timer = setInterval(() => setCurrentTime(new Date()), 1000);
@@ -62,6 +61,9 @@ const WelcomeCard = () => {
 
         fetchStudentInfo();
     }, []);
+
+    console.log(userInfo.map(u => u));
+
 
 
     const ViewProfileInfo = async () => {
