@@ -117,7 +117,7 @@ const WelcomeCard = () => {
 
     return (
         <div className="w-full max-w-4xl mx-auto mt-10 space-y-6">
-            <motion.div
+            {/* <motion.div
                 className={`rounded-3xl p-8 shadow-[0_0_30px_#00bcd480] border ${colors.cardBg} ${colors.border}`}
                 initial={{ opacity: 0, y: -40 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -163,6 +163,54 @@ const WelcomeCard = () => {
                     >
                         {showForm ? "Close Profile" : "Edit Profile"}
                     </button>
+                </div>
+            </motion.div> */}
+            <motion.div
+                className={`rounded-xl px-6 py-8 shadow-[0_0_25px_rgba(0,188,212,0.5)] border-2 border-cyan-500 max-w-md mx-auto ${colors.cardBg}`}
+                initial={{ opacity: 0, y: -40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+                <div className="flex flex-col items-center text-center">
+                    <div className="relative w-28 h-28 mb-4 group">
+                        <img
+                            src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png"
+                            alt="Profile"
+                            onClick={handleImageClick}
+                            className="w-full h-full object-cover rounded-full border-4 border-cyan-500 shadow-md cursor-pointer group-hover:scale-105 transition duration-300"
+                        />
+                        <input
+                            type="file"
+                            accept="image/*"
+                            ref={fileInputRef}
+                            className="hidden"
+                            onChange={handleImageChange}
+                        />
+                    </div>
+                    <h2 className="text-2xl font-bold text-cyan-400">{userInfo.fullName || "Student"}</h2>
+                    <p className={`text-sm font-semibold mt-1 px-3 py-1 rounded-md bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-300`}>
+                        ID: {userInfo.studentId}
+                    </p>
+                    <p className={`text-sm mt-2 ${colors.textSecondary}`}>{userInfo.grade && `Grade: ${userInfo.grade}`} {userInfo.group && `| Group: ${userInfo.group}`}</p>
+                    <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
+                        <p>Date: {formattedDate}</p>
+                        <p>Time: {formattedTime}</p>
+                    </div>
+
+                    <div className="mt-6 flex flex-col sm:flex-row justify-center gap-3">
+                        <button
+                            onClick={() => ViewProfileInfo()}
+                            className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 px-5 py-2 rounded-md text-white font-semibold shadow-md"
+                        >
+                            View Profile
+                        </button>
+                        <button
+                            onClick={() => setShowForm(prev => !prev)}
+                            className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-blue-500 hover:to-cyan-500 px-5 py-2 rounded-md text-white font-semibold shadow-md"
+                        >
+                            {showForm ? "Close Profile" : "Edit Profile"}
+                        </button>
+                    </div>
                 </div>
             </motion.div>
 
