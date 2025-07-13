@@ -108,12 +108,13 @@ const WelcomeCard = () => {
     };
 
     useEffect(() => {
-        userInfo.map((u) => {
-            localStorage.setItem("grade", u.grade)
-            localStorage.setItem("group", u.group)
-            localStorage.setItem("fullName", u.fullName)
-        })
-    }, [userInfo])
+        if (userInfo && typeof userInfo === "object") {
+            localStorage.setItem("grade", userInfo.grade || "");
+            localStorage.setItem("group", userInfo.group || "");
+            localStorage.setItem("fullName", userInfo.fullName || "");
+        }
+    }, [userInfo]);
+
     return (
         <div className="w-full max-w-4xl mx-auto mt-10 space-y-6">
             <motion.div
