@@ -58,11 +58,19 @@ const StudentForm = () => {
 
     const submitHandler = async (data) => {
         try {
-
-            const res = await axios.post(`${API}/submit-student-info`, data, {
+            const payload = {
+                studentId: data.studentId,
+                email: data.email,
+                fullName: data.fullName,
+                phone: data.phone,
+                address: data.address,
+                grade: data.grade,
+                group: data.group
+            };
+            const res = await axios.post(`${API}/submit-student-info`, payload, {
                 headers: {
-                    "Content-Type": "multipart/form-data",
                     Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
                 },
                 withCredentials: true,
             });
