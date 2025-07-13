@@ -62,7 +62,7 @@ const WelcomeCard = () => {
         fetchStudentInfo();
     }, []);
 
-    console.log(userInfo.map(u => u));
+    // console.log(userInfo.map(u => u));
 
 
 

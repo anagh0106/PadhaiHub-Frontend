@@ -58,24 +58,16 @@ const StudentForm = () => {
 
     const submitHandler = async (data) => {
         try {
-            const formData = new FormData();
-            // 📷 Add profile image
-            // 📄 Append other fields
-            formData.append("fullName", data.fullName);
-            formData.append("phone", data.phone);
-            formData.append("address", data.address);
-            formData.append("grade", data.grade);
-            formData.append("group", data.group);
-            formData.append("studentId", localStorage.getItem("studentId"));
-            formData.append("email", localStorage.getItem("userEmail"));
 
-            const res = await axios.post(`${API}/submit-student-info`, formData, {
+            const res = await axios.post(`${API}/submit-student-info`, data, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     Authorization: `Bearer ${token}`,
                 },
                 withCredentials: true,
             });
+
+            console.log(res.data);
 
             if (res.data.alreadySubmitted) {
                 setSubmitted(true);
