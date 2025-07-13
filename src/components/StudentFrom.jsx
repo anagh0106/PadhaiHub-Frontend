@@ -54,30 +54,7 @@ const StudentForm = () => {
         setValue("email", email || "");
         setValue("studentId", studentId || "");
     }, [setValue]);
-
-
     const token = localStorage.getItem("token");
-
-    // const submitHandler = async (data) => {
-    //     try {
-    //         const res = await axios.post(`${API}/submit-student-info`, data, {
-    //             headers: {
-    //                 Authorization: `Bearer ${token}`,
-    //             },
-    //             withCredentials: true
-    //         });
-    //         if (res.data.alreadySubmitted) {
-    //             setSubmitted(true);
-    //             return;
-    //         }
-    //         setSubmitted(true);
-    //         reset();
-    //         setTimeout(() => setSubmitted(false), 3000);
-    //     } catch (err) {
-    //         console.error(err);
-    //         alert(err.response?.data?.message || "Something went wrong");
-    //     }
-    // };
 
     const submitHandler = async (data) => {
         try {
@@ -228,7 +205,8 @@ const StudentForm = () => {
                             </select>
                             {errors.group && <p className="text-red-500 text-sm mt-1">{errors.group.message}</p>}
                         </motion.div>
-                        <motion.div variants={fadeInUp} initial="hidden" animate="visible" custom={8}>
+                        {/* image profile */}
+                        {/* <motion.div variants={fadeInUp} initial="hidden" animate="visible" custom={8}>
                             <label className="text-sm block mb-1 flex items-center gap-2 text-cyan-300">
                                 <FaCamera /> Upload Profile Image
                             </label>
@@ -239,7 +217,7 @@ const StudentForm = () => {
                                 className="w-full px-4 py-2 bg-[#191e24] text-white rounded-lg"
                             />
                             {errors.profile && <p className="text-red-500 text-sm mt-1">Profile image is required.</p>}
-                        </motion.div>
+                        </motion.div> */}
 
                         <motion.button
                             whileTap={{ scale: 0.97 }}

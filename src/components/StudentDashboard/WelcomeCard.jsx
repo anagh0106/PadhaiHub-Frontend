@@ -15,18 +15,8 @@ const WelcomeCard = () => {
         ? "http://localhost:3000/user"
         : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com/user";
 
-    const [userInfo, setUserInfo] = useState({
-        fullName: localStorage.getItem("fullName") || "",
-        studentId: localStorage.getItem("studentId") || "",
-        email: localStorage.getItem("userEmail") || "",
-        phone: localStorage.getItem("phone") || "",
-        address: localStorage.getItem("address") || "",
-        grade: localStorage.getItem("grade") || "",
-        group: localStorage.getItem("group") || "",
-        profileImage: localStorage.getItem("profileImage") || null,
-    });
+    const [userInfo, setUserInfo] = useState();
 
-    const token = localStorage.getItem("token");
 
     useEffect(() => {
         const timer = setInterval(() => setCurrentTime(new Date()), 1000);
@@ -35,25 +25,6 @@ const WelcomeCard = () => {
 
     const formattedTime = currentTime.toLocaleTimeString();
     const formattedDate = currentTime.toLocaleDateString();
-
-
-    const getStudentInformation = async () => {
-        try {
-            const email = localStorage.getItem("userEmail")
-
-            const res = await axios.get(`${API}/getStudentInfo`, {
-                params: { email },
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
-                }
-            })
-            console.log(res.data);
-
-        } catch (error) {
-            console.log("Error is =>", error);
-
-        }
-    }
 
     const handleProfileUpdate = async (updatedData) => {
         try {
@@ -71,24 +42,30 @@ const WelcomeCard = () => {
 
     const handleImageClick = () => fileInputRef.current.click();
 
+    useEffect(() => {
+        const fetchStudentInfo = async () => {
+            try {
+                const email = localStorage.getItem("userEmail");
+
+                const res = await axios.get(`${API}/getStudentInfo`, {
+                    params: { email },
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
+                });
+                console.log(res.data);
+                setUserInfo(res.data);
+            } catch (error) {
+                console.log("Error is =>", error);
+            }
+        };
+
+        fetchStudentInfo();
+    }, []);
+
 
     const ViewProfileInfo = async () => {
         setShowProfile(true);
-        try {
-            const res = await axios.get(`${API}/getStudentInfo`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-
-            localStorage.setItem("fullName", res.data.fullName);
-            localStorage.setItem("phone", res.data.phone);
-            localStorage.setItem("address", res.data.address);
-            localStorage.setItem("grade", res.data.grade);
-            localStorage.setItem("group", res.data.group);
-        } catch (error) {
-            console.log("Error is =>", error);
-        }
     };
 
     const handleImageChange = async (e) => {
@@ -118,9 +95,7 @@ const WelcomeCard = () => {
         modalBorder: theme === "light" ? "border border-gray-300" : "border border-[#333]",
         textSecondary: theme === "light" ? "text-gray-600" : "text-gray-400",
     };
-    useEffect(() => {
-        getStudentInformation()
-    }, [])
+
     return (
         <div className="w-full max-w-4xl mx-auto mt-10 space-y-6">
             <motion.div
