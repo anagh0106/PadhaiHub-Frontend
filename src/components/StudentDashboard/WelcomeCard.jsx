@@ -107,12 +107,12 @@ const WelcomeCard = () => {
                 <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                     <div className="flex items-center gap-6">
                         <div className="relative w-28 h-28 group">
-                            <img
+                            {/* <img
                                 src={userInfo.profileImage || "/default-profile.png"}
                                 alt="Profile"
                                 onClick={handleImageClick}
                                 className="w-full h-full object-cover rounded-full border-4 border-cyan-500 shadow-lg cursor-pointer group-hover:scale-105 transition duration-300"
-                            />
+                            /> */}
                             <input
                                 type="file"
                                 accept="image/*"
