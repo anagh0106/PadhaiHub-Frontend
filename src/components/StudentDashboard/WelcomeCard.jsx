@@ -127,11 +127,7 @@ const WelcomeCard = () => {
                     <div className="flex items-center gap-6">
                         <div className="relative w-28 h-28 group">
                             <img
-                                src={
-                                    userInfo.profileImage ||
-                                    localStorage.getItem("profileImage") ||
-                                    "/default-profile.png"
-                                }
+                                src="src\studentIcon.png"
                                 alt="Profile"
                                 onClick={handleImageClick}
                                 className="w-full h-full object-cover rounded-full border-4 border-cyan-500 shadow-lg cursor-pointer group-hover:scale-105 transition duration-300"
