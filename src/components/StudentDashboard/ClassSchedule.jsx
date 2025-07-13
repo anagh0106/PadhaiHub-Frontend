@@ -21,6 +21,8 @@ const ClassSchedule = () => {
 
             const grade = localStorage.getItem("grade");
             const group = localStorage.getItem("group");
+            console.log(grade, group);
+
             const allClasses = res.data.upComingClasses
             console.log(allClasses.map(s => s.subject));
 
@@ -36,7 +38,8 @@ const ClassSchedule = () => {
             }
             // Further filter by grade
             const finalSubjects = filteredByGroup.filter(
-                sub => sub.standard?.toString() === grade
+                // sub => sub.standard?.toString() === grade
+                sub => sub.standard == grade
             );
             setClass(finalSubjects);
         } catch (error) {
