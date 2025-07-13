@@ -57,6 +57,8 @@ const ClassSchedule = () => {
         dateText: theme === "light" ? "text-green-600 bg-green-100" : "text-green-300 bg-green-900/30",
     };
 
+    console.log(Class.map(c=>c.subject));
+    
     return (
 
         <motion.div
