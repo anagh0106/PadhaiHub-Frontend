@@ -48,8 +48,19 @@ const ClassSchedule = () => {
     };
 
     useEffect(() => {
-        getClassSchedule();
+        const interval = setInterval(() => {
+            const grade = localStorage.getItem("grade");
+            const group = localStorage.getItem("group");
+
+            if (grade && group) {
+                getClassSchedule();
+                clearInterval(interval);
+            }
+        }, 300);
+
+        return () => clearInterval(interval);
     }, []);
+
 
     const colors = {
         sectionBg: theme === "light" ? "bg-white text-gray-800" : "bg-black text-white",
