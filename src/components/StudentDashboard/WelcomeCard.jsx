@@ -11,6 +11,9 @@ const WelcomeCard = () => {
     const [showProfile, setShowProfile] = useState(false);
     const fileInputRef = useRef(null);
     const { theme } = useContext(ThemeContext);
+    const API = window.location.hostname === "localhost"
+        ? "http://localhost:3000/user"
+        : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com/user";
 
     const [userInfo, setUserInfo] = useState({
         fullName: localStorage.getItem("fullName") || "",
@@ -33,6 +36,25 @@ const WelcomeCard = () => {
     const formattedTime = currentTime.toLocaleTimeString();
     const formattedDate = currentTime.toLocaleDateString();
 
+
+    const getStudentInformation = async () => {
+        try {
+            const email = localStorage.getItem("userEmail")
+
+            const res = await axios.get(`${API}/getStudentInfo`, {
+                params: { email },
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+            console.log(res.data);
+
+        } catch (error) {
+            console.log("Error is =>", error);
+
+        }
+    }
+
     const handleProfileUpdate = async (updatedData) => {
         try {
             setUserInfo((prev) => ({ ...prev, ...updatedData }));
@@ -49,9 +71,6 @@ const WelcomeCard = () => {
 
     const handleImageClick = () => fileInputRef.current.click();
 
-    const API = window.location.hostname === "localhost"
-        ? "http://localhost:3000/user"
-        : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com/user";
 
     const ViewProfileInfo = async () => {
         setShowProfile(true);
@@ -99,7 +118,9 @@ const WelcomeCard = () => {
         modalBorder: theme === "light" ? "border border-gray-300" : "border border-[#333]",
         textSecondary: theme === "light" ? "text-gray-600" : "text-gray-400",
     };
-
+    useEffect(() => {
+        getStudentInformation()
+    }, [])
     return (
         <div className="w-full max-w-4xl mx-auto mt-10 space-y-6">
             <motion.div
