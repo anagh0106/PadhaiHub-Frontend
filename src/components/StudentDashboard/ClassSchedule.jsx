@@ -22,8 +22,8 @@ const ClassSchedule = () => {
             const grade = localStorage.getItem("grade");
             const group = localStorage.getItem("group");
             const allClasses = res.data.upComingClasses
-            console.log(allClasses);
-            
+            console.log(allClasses.map(s => s.subject));
+
 
             // Filter based on group
             let filteredByGroup = [];
@@ -57,8 +57,6 @@ const ClassSchedule = () => {
         dateText: theme === "light" ? "text-green-600 bg-green-100" : "text-green-300 bg-green-900/30",
     };
 
-    console.log(Class.map(c=>c.subject));
-    
     return (
 
         <motion.div
