@@ -22,6 +22,8 @@ const ClassSchedule = () => {
             const grade = localStorage.getItem("grade");
             const group = localStorage.getItem("group");
             const allClasses = res.data.upComingClasses
+            console.log(allClasses);
+            
 
             // Filter based on group
             let filteredByGroup = [];
