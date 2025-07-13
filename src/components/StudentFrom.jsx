@@ -60,7 +60,7 @@ const StudentForm = () => {
         try {
             const formData = new FormData();
             // 📷 Add profile image
-            formData.append("profile", data.profile[0]);
+            // formData.append("profile", data.profile[0]);
             // 📄 Append other fields
             formData.append("fullName", data.fullName);
             formData.append("phone", data.phone);
