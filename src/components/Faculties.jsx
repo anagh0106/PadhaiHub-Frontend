@@ -61,6 +61,7 @@ const Faculties = () => {
         }
         console.log("Faculty Submitted: ", data);
         setShowAddForm(false);
+        getAllFaculties()
         reset();
     };
 
