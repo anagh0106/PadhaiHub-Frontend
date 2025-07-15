@@ -102,7 +102,13 @@ const Faculties = () => {
                     📚 Faculty Data is Following...
                 </motion.span>
             </motion.h1>
-            <input type="text" onChange={(e) => setSearchData(e.target.value)} placeholder="Enter Subject To Search" />
+            <input
+                type="text"
+                placeholder="Enter subject to search"
+                className="w-full md:w-96 px-4 py-2 rounded-xl border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm lowercase"
+                onChange={(e) => setSearchData(e.target.value.toLowerCase())}
+            />
+
             {/* Faculty Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {FacultyFilteredBySubject.map((faculty, index) => (
