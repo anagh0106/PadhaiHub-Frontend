@@ -27,6 +27,7 @@ const StudentTestManagement = () => {
     try {
       const grade = localStorage.getItem("grade")
       const group = localStorage.getItem("group")
+      console.log("Grade and Group is", grade, group);
 
       const res = await axios.get(`${API}/mocktest/student/getTest`
         , {
