@@ -17,10 +17,6 @@ const StudentTestManagement = () => {
 
   const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
-
-  const grade = localStorage.getItem("grade")
-  const group = localStorage.getItem("group")
-  console.log("Grade and Group is", grade, group);
   const API =
     window.location.hostname === "localhost"
       ? "http://localhost:3000"
@@ -30,7 +26,11 @@ const StudentTestManagement = () => {
     try {
       const grade = localStorage.getItem("grade")
       const group = localStorage.getItem("group")
-      console.log("Grade and Group is", grade, group);
+      if (!grade || !group) {
+        console.warn("Missing grade or group in localStorage");
+        return;
+      }
+
 
       const res = await axios.get(`${API}/mocktest/student/getTest`
         , {
