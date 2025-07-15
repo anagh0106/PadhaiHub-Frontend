@@ -30,8 +30,6 @@ const StudentTestManagement = () => {
         console.warn("Missing grade or group in localStorage");
         return;
       }
-
-
       const res = await axios.get(`${API}/mocktest/student/getTest`
         , {
           params: { grade, group }, headers: {
@@ -81,18 +79,6 @@ const StudentTestManagement = () => {
   useEffect(() => {
     fetchTests();
     fetchSubmittedTests();
-  }, []);
-  useEffect(() => {
-    const grade = localStorage.getItem("grade");
-    const group = localStorage.getItem("group");
-
-    if (!storedGrade || !storedGroup) {
-      console.warn("Missing grade or group in localStorage");
-      return;
-    }
-
-    setGrade(grade);
-    setGroup(group);
   }, []);
 
 
