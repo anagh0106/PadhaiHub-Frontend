@@ -38,6 +38,8 @@ const StudentTestManagement = () => {
       );
 
       const test = res.data.mocktest
+      console.log(test);
+      
       const testArray = Array.isArray(test)
         ? test : Object.values(test)
 
