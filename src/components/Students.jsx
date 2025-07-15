@@ -38,8 +38,6 @@ const Students = () => {
                 if (response.status === 200) {
                     setStudents(response.data.students);
                     setstudentLabel(response.data.labels);
-                    // console.log(response.data.labels);
-                    // console.log(response.data.students);
                 }
             } catch (error) {
                 console.error("Error fetching students:", error);

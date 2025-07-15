@@ -11,6 +11,7 @@ const Faculties = () => {
     const [selectedFaculty, setSelectedFaculty] = useState(null);
     const [FacultyLabel, setFacultyLabel] = useState([])
     const [showAddForm, setShowAddForm] = useState(false);
+    const [searchData, setSearchData] = useState("")
     const navigate = useNavigate()
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { theme } = useContext(ThemeContext);
@@ -63,6 +64,7 @@ const Faculties = () => {
         reset();
     };
 
+    const FacultyFilteredBySubject = facultyData.filter((faculty) => `${faculty.subject}`.toLowerCase().includes(searchData))
 
     useEffect(() => {
         getAllFaculties();
@@ -100,10 +102,10 @@ const Faculties = () => {
                     📚 Faculty Data is Following...
                 </motion.span>
             </motion.h1>
-
+            <input type="text" onChange={(e) => setSearchData(e.target.value)} placeholder="Enter Subject To Search" />
             {/* Faculty Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {facultyData.map((faculty, index) => (
+                {FacultyFilteredBySubject.map((faculty, index) => (
                     <motion.div
                         key={index}
                         className={`rounded-xl p-6 shadow-xl border ${colors.card} ${colors.border} cursor-pointer hover:scale-105 transition-transform`}

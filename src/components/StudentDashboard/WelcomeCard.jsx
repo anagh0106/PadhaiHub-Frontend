@@ -9,7 +9,6 @@ const WelcomeCard = () => {
     const [currentTime, setCurrentTime] = useState(new Date());
     const [showForm, setShowForm] = useState(false);
     const [showProfile, setShowProfile] = useState(false);
-    const fileInputRef = useRef(null);
     const { theme } = useContext(ThemeContext);
     const API = window.location.hostname === "localhost"
         ? "http://localhost:3000/user"
@@ -48,7 +47,6 @@ const WelcomeCard = () => {
         }
     };
 
-    const handleImageClick = () => fileInputRef.current.click();
 
     useEffect(() => {
         const fetchStudentInfo = async () => {
@@ -71,32 +69,8 @@ const WelcomeCard = () => {
         fetchStudentInfo();
     }, []);
 
-    // console.log(userInfo.map(u => u));
-
-
-
     const ViewProfileInfo = async () => {
         setShowProfile(true);
-    };
-
-    const handleImageChange = async (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            const base64Image = reader.result;
-            setUserInfo((prev) => ({ ...prev, profileImage: base64Image }));
-            localStorage.setItem("profileImage", base64Image);
-            console.log("✅ Image saved to localStorage");
-        };
-
-        reader.onerror = (error) => {
-            console.error("❌ Error reading file:", error);
-            alert("Image upload failed. Please try again.");
-        };
-
-        reader.readAsDataURL(file);
     };
 
     const colors = {
@@ -176,15 +150,8 @@ const WelcomeCard = () => {
                         <img
                             src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png"
                             alt="Profile"
-                            onClick={handleImageClick}
+                            // onClick={handleImageClick}
                             className="w-full h-full object-cover rounded-full border-4 border-cyan-500 shadow-md cursor-pointer group-hover:scale-105 transition duration-300"
-                        />
-                        <input
-                            type="file"
-                            accept="image/*"
-                            ref={fileInputRef}
-                            className="hidden"
-                            onChange={handleImageChange}
                         />
                     </div>
                     <h2 className="text-2xl font-bold text-cyan-400">{userInfo.fullName || "Student"}</h2>
