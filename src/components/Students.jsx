@@ -118,10 +118,10 @@ const Students = () => {
                             <tr key={index} className="cursor-pointer">
                                 <td className="px-6 py-4 text-sm">{student.studentId}</td>     {/* Unique ID */}
                                 <td className="px-6 py-4 text-sm">{student.fullName}</td>      {/* Full Name */}
-                                <td className="px-6 py-4 text-sm">{student.email}</td>         {/* Email */}
                                 <td className="px-6 py-4 text-sm">{student.grade}</td>         {/* Grade */}
                                 <td className="px-6 py-4 text-sm">{student.group}</td>         {/* Group */}
                                 <td className="px-6 py-4 text-sm">{student.phone}</td>         {/* Contact */}
+                                <td className="px-6 py-4 text-sm">{student.email}</td>         {/* Email */}
                                 <td className="px-6 py-4 text-sm">{student.address}</td>       {/* Address */}
                             </tr>
 
