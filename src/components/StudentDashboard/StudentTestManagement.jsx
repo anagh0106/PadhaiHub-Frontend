@@ -22,10 +22,10 @@ const StudentTestManagement = () => {
       ? "http://localhost:3000"
       : "http://192.168.31.252:3000";
 
+  const grade = localStorage.getItem("grade")
+  const group = localStorage.getItem("group")
   const fetchTests = async () => {
     try {
-      const grade = localStorage.getItem("grade")
-      const group = localStorage.getItem("group")
       if (!grade || !group) {
         console.warn("Missing grade or group in localStorage");
         return;
