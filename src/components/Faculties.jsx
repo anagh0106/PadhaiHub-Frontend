@@ -76,10 +76,14 @@ const Faculties = () => {
         <div className={`min-h-screen px-4 py-10 transition-all duration-300 ${colors.background} ${colors.text}`}>
             {/* Header */}
             <div className="flex justify-between items-center mb-6">
-                <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-all"
+                <button
+                    className="flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full hover:scale-105 hover:shadow-lg transition-all duration-300"
                     onClick={() => navigate("/admin/dashboard")}
-                >Back</button>
-                <h1 className="text-3xl font-bold">All Faculties</h1>
+                >
+                    ⬅ Back to Dashboard
+                </button>
+
+                {/* <h1 className="text-3xl font-bold">All Faculties</h1> */}
                 <button
                     onClick={() => setShowAddForm(true)}
                     className="px-4 py-2 rounded bg-black text-white border border-white/20 hover:bg-white hover:text-black transition"
@@ -100,15 +104,19 @@ const Faculties = () => {
                     animate={{ opacity: 1 }}
                     transition={{ repeat: Infinity, repeatType: "reverse", duration: 1.5 }}
                 >
-                    📚 Faculty Data is Following...
+                    🎓 Meet Our Expert Faculty Members
                 </motion.span>
             </motion.h1>
-            <input
-                type="text"
-                placeholder="Enter subject to search"
-                className="w-full md:w-96 px-4 py-2 rounded-xl border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm lowercase"
-                onChange={(e) => setSearchData(e.target.value.toLowerCase())}
-            />
+
+            <div className="flex justify-center mb-10">
+                <input
+                    type="text"
+                    placeholder="🔍 Search by subject..."
+                    className="w-full md:w-1/2 px-4 py-2 rounded-xl border border-gray-300 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm lowercase"
+                    onChange={(e) => setSearchData(e.target.value.toLowerCase())}
+                />
+            </div>
+
 
             {/* Faculty Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
