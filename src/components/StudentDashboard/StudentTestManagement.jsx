@@ -82,6 +82,19 @@ const StudentTestManagement = () => {
     fetchTests();
     fetchSubmittedTests();
   }, []);
+  useEffect(() => {
+    const grade = localStorage.getItem("grade");
+    const group = localStorage.getItem("group");
+
+    if (!storedGrade || !storedGroup) {
+      console.warn("Missing grade or group in localStorage");
+      return;
+    }
+
+    setGrade(grade);
+    setGroup(group);
+  }, []);
+
 
   const colors = {
     background: theme === "light" ? "bg-white text-black" : "bg-black text-white",
