@@ -32,7 +32,8 @@ const StudentTestManagement = () => {
       }
       const res = await axios.get(`${API}/mocktest/student/getTest`
         , {
-          params: { grade, group }, headers: {
+          params: { grade, group },
+          headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`
           }
         }
