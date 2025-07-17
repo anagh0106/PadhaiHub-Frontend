@@ -57,7 +57,7 @@ const FacultyDashboard = () => {
                 <>
                     {/* Greeting */}
                     <h1 className="text-3xl font-bold mb-2">
-                        {getGreeting()}, {facultyInfo?.name?.split(" ")[0] || "Faculty"} 👋
+                        {getGreeting()}, {facultyInfo.name || "Faculty"} 👋
                     </h1>
                     <p className="text-gray-600 mb-6">Welcome to your faculty dashboard</p>
 
