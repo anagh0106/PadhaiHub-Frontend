@@ -9,6 +9,7 @@ const FacultyLogin = () => {
         formState: { errors },
     } = useForm();
 
+    const host = window.location.hostname
     const API = host === "localhost"
         ? "http://localhost:3000/fac"
         : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com/fac";
