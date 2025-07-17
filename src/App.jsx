@@ -25,6 +25,7 @@ import StartMockTest from './components/ViewMockTestQuestions';
 import ViewMockTestQuestions from './components/ViewMockTestQuestions';
 import StartMockTestStudent from './components/StudentDashboard/StartMockTestStudent';
 import MockTestScore from './components/StudentDashboard/MockTestScore';
+import FacultyLogin from './components/faculties/FacultyLogin';
 
 const App = () => {
 
@@ -68,7 +69,7 @@ const App = () => {
             <Route path='/admin/questionTest' element={<TestQuestions />} />
             <Route path='/admin/viewmockTestQuestions' element={<ViewMockTestQuestions />} />
             <Route path='/startTest' element={<StartMockTestStudent />} />
-
+            <Route path='/faculty/login' element={<FacultyLogin />} />
           </Routes>
         </div>
       </ThemeContext.Provider>
