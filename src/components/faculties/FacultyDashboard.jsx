@@ -61,10 +61,10 @@ const FacultyDashboard = () => {
                                     <p><span className="font-semibold">Qualification:</span> {facultyInfo.qualification}</p>
                                 </div>
 
-                                {/* Right: Profile Image */}
-                                <div className="w-32 h-32 rounded-full overflow-hidden border shadow-md">
+                                {/* Right: Square Profile Image */}
+                                <div className="w-52 h-52 overflow-hidden border-2 border-gray-300 shadow-lg">
                                     <img
-                                        src={facultyInfo.image || "https://via.placeholder.com/150"}
+                                        src={facultyInfo.image || "https://via.placeholder.com/200"}
                                         alt="Faculty"
                                         className="w-full h-full object-cover"
                                     />
