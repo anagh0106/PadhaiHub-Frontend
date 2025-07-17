@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 const FacultyDashboard = () => {
     const [facultyInfo, setFacultyInfo] = useState(null);
     const [loading, setLoading] = useState(true);
+    const GreetHrs = new Date().getHours()
 
     const contact = localStorage.getItem("FacEmail");
     const host = window.location.hostname;
@@ -29,6 +30,20 @@ const FacultyDashboard = () => {
             setLoading(false);
         }
     };
+    const getGreeting = () => {
+        const currentHour = new Date().getHours();
+
+        if (currentHour >= 5 && currentHour < 12) {
+            return "Good Morning";
+        } else if (currentHour >= 12 && currentHour < 17) {
+            return "Good Afternoon";
+        } else if (currentHour >= 17 && currentHour < 21) {
+            return "Good Evening";
+        } else {
+            return "Good Night";
+        }
+    };
+
 
     useEffect(() => {
         getFacultyInformation();
@@ -42,7 +57,7 @@ const FacultyDashboard = () => {
                 <>
                     {/* Greeting */}
                     <h1 className="text-3xl font-bold mb-2">
-                        Good Morning, {facultyInfo?.name?.split(" ")[0] || "Faculty"} 👋
+                        {getGreeting()}, {facultyInfo?.name?.split(" ")[0] || "Faculty"} 👋
                     </h1>
                     <p className="text-gray-600 mb-6">Welcome to your faculty dashboard</p>
 
