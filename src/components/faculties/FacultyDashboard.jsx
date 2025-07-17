@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 
 const FacultyDashboard = () => {
@@ -7,11 +8,23 @@ const FacultyDashboard = () => {
         department: "Computer Science",
         facultyId: "FAC12345",
     };
-
+    const contact = localStorage.getItem("FacEmail")
+    const host = window.location.hostname
+    const API = host === "localhost"
+        ? "http://localhost:3000/fac"
+        : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com/fac";
     const assignedClasses = [
         { className: "Class 101", subject: "Data Structures", room: "Room 101" },
         { className: "Class 203", subject: "Operating Systems", room: "Room 203" },
     ];
+
+    const getFacultyInformation = async () => {
+        try {
+            const res = await axios.get(`${API}/`)
+        } catch (error) {
+            console.log("Error is => ", error);
+        }
+    }
 
     return (
         <div className="p-6 bg-gray-100 min-h-screen">
