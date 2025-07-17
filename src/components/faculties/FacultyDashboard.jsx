@@ -22,7 +22,9 @@ const FacultyDashboard = () => {
 
     const getFacultyInformation = async () => {
         try {
-            const res = await axios.get(`${API}/getFacultyInfoByEmail`)
+            const res = await axios.get(`${API}/getFacultyInfoByEmail`, {
+                params: { contact }
+            })
             console.log(res.data);
 
             setgetFacultyInfo(res.data)
