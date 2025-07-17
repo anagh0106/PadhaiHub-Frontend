@@ -23,6 +23,8 @@ const FacultyDashboard = () => {
     const getFacultyInformation = async () => {
         try {
             const res = await axios.get(`${API}/getFacultyInfoByEmail`)
+            console.log(res.data);
+
             setgetFacultyInfo(res.data)
         } catch (error) {
             console.log("Error is => ", error);
