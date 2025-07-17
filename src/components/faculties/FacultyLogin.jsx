@@ -20,7 +20,7 @@ const FacultyLogin = () => {
             const res = await axios.post(`${API}/loginFaculty`, data);
             console.log(res.data);
             localStorage.setItem("FacToken", res.data.token)
-            navigate("/fac/dashboard")
+            navigate("/faculty/dashboard")
 
         } catch (error) {
             console.log("Error is => ", error)
