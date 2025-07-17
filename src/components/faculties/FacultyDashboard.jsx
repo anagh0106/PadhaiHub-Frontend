@@ -1,13 +1,15 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 
 const FacultyDashboard = () => {
+    const [getFacultyInfo, setgetFacultyInfo] = useState([])
     const faculty = {
         name: "Prof. Anagh Patel",
         email: "anagh.patel@college.edu",
         department: "Computer Science",
         facultyId: "FAC12345",
     };
+
     const contact = localStorage.getItem("FacEmail")
     const host = window.location.hostname
     const API = host === "localhost"
@@ -20,11 +22,15 @@ const FacultyDashboard = () => {
 
     const getFacultyInformation = async () => {
         try {
-            const res = await axios.get(`${API}/`)
+            const res = await axios.get(`${API}/getFacultyInfoByEmail`)
+            setgetFacultyInfo(res.data)
         } catch (error) {
             console.log("Error is => ", error);
         }
     }
+    useEffect(() => {
+        getFacultyInformation()
+    }, [])
 
     return (
         <div className="p-6 bg-gray-100 min-h-screen">

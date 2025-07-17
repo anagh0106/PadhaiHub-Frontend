@@ -9,7 +9,6 @@ const FacultyLogin = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
-
     const host = window.location.hostname
     const API = host === "localhost"
         ? "http://localhost:3000/fac"
@@ -20,7 +19,7 @@ const FacultyLogin = () => {
             const res = await axios.post(`${API}/loginFaculty`, data);
             console.log(res.data);
             localStorage.setItem("FacToken", res.data.token)
-            localStorage.setItem("FacEmail", data.email)
+            localStorage.setItem("FacEmail", res.data.email)
             navigate("/faculty/dashboard")
 
         } catch (error) {
