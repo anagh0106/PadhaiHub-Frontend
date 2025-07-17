@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const FacultyLogin = () => {
     const {
@@ -13,12 +14,13 @@ const FacultyLogin = () => {
     const API = host === "localhost"
         ? "http://localhost:3000/fac"
         : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com/fac";
-
+    const navigate = useNavigate()
     const onSubmit = async (data) => {
         try {
             const res = await axios.post(`${API}/loginFaculty`, data);
             console.log(res.data);
             localStorage.setItem("FacToken", res.data.token)
+            navigate("/fac/dashboard")
 
         } catch (error) {
             console.log("Error is => ", error)
