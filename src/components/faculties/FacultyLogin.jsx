@@ -15,7 +15,7 @@ const FacultyLogin = () => {
 
     const onSubmit = async (data) => {
         try {
-            const res = await axios.post("/loginFaculty", data);
+            const res = await axios.post(`${API}/loginFaculty`, data);
             console.log(res.data);
 
         } catch (error) {
