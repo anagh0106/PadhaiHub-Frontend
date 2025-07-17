@@ -13,8 +13,8 @@ const FacultyDashboard = () => {
     const contact = localStorage.getItem("FacEmail")
     const host = window.location.hostname
     const API = host === "localhost"
-        ? "http://localhost:3000/fac"
-        : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com/fac";
+        ? "http://localhost:3000/faculty"
+        : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com/faculty";
     const assignedClasses = [
         { className: "Class 101", subject: "Data Structures", room: "Room 101" },
         { className: "Class 203", subject: "Operating Systems", room: "Room 203" },
