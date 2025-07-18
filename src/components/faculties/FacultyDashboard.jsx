@@ -108,38 +108,35 @@ const FacultyDashboard = () => {
                         {Array.isArray(assignedClasses) && assignedClasses.length === 0 ? (
                             <div className="text-center text-gray-500 italic">No classes assigned yet.</div>
                         ) : (
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                                 {assignedClasses.map((cls, index) => (
                                     <div
                                         key={index}
                                         className="bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-5 flex flex-col justify-between"
                                     >
                                         <div className="space-y-2">
-                                            <h3 className="text-xl font-semibold text-gray-800 flex items-center gap-2">
+                                            <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
                                                 📖 {cls.subject}
                                             </h3>
-                                            <div className="text-sm text-gray-600">
+                                            <p className="text-sm text-gray-600">
                                                 🏫 <span className="font-medium">Room:</span> {cls.room}
-                                            </div>
-                                            <div className="text-sm text-gray-600">
+                                            </p>
+                                            <p className="text-sm text-gray-600">
                                                 ⏰ <span className="font-medium">Time:</span> {cls.time}
-                                            </div>
-                                            <div className="text-sm text-gray-600">
+                                            </p>
+                                            <p className="text-sm text-gray-600">
                                                 🎓 <span className="font-medium">Standard:</span> {cls.standard}
-                                            </div>
+                                            </p>
                                         </div>
 
-                                        <div className="mt-4">
-                                            <button className="w-full bg-gradient-to-r from-blue-600 to-blue-500 text-white py-2 rounded-md font-medium hover:from-blue-700 hover:to-blue-600 transition">
-                                                View Details
-                                            </button>
-                                        </div>
+                                        <button className="mt-4 bg-blue-600 text-white py-2 rounded-md font-medium hover:bg-blue-700 transition">
+                                            View Details
+                                        </button>
                                     </div>
                                 ))}
                             </div>
                         )}
                     </div>
-
 
                 </>
             )}
