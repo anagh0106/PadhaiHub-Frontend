@@ -21,10 +21,8 @@ import Faculties from './components/Faculties';
 import AdminClassManagement from './components/AdminClassManagement';
 import TestManagement from './components/TestManagement';
 import TestQuestions from './components/TestQuestions';
-import StartMockTest from './components/ViewMockTestQuestions';
 import ViewMockTestQuestions from './components/ViewMockTestQuestions';
 import StartMockTestStudent from './components/StudentDashboard/StartMockTestStudent';
-import MockTestScore from './components/StudentDashboard/MockTestScore';
 import FacultyLogin from './components/faculties/FacultyLogin';
 import FacultyDashboard from './components/faculties/FacultyDashboard';
 

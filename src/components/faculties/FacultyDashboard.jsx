@@ -4,23 +4,18 @@ import React, { useEffect, useState } from "react";
 const FacultyDashboard = () => {
     const [facultyInfo, setFacultyInfo] = useState(null);
     const [loading, setLoading] = useState(true);
-    const GreetHrs = new Date().getHours()
+    const [assignedClasses, setassignedClasses] = useState([])
 
     const contact = localStorage.getItem("FacEmail");
     const host = window.location.hostname;
     const API =
         host === "localhost"
-            ? "http://localhost:3000/faculty"
-            : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com/faculty";
-
-    const assignedClasses = [
-        { className: "Class 101", subject: "Data Structures", room: "Room 101" },
-        { className: "Class 203", subject: "Operating Systems", room: "Room 203" },
-    ];
+            ? "http://localhost:3000"
+            : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com";
 
     const getFacultyInformation = async () => {
         try {
-            const res = await axios.get(`${API}/getFacultyInfoByEmail`, {
+            const res = await axios.get(`${API}/faculty/getFacultyInfoByEmail`, {
                 params: { contact },
             });
             setFacultyInfo(res.data.faculty);
@@ -43,10 +38,24 @@ const FacultyDashboard = () => {
             return "Good Night";
         }
     };
+    const getClassForFaculty = async () => {
+        try {
 
+            const res = await axios.get(`${API}/class/getClassByFaculty`, {
+                params: { contact }
+            })
+            console.log(res.data.facultyClasses);
+            setassignedClasses(res.data.facultyClasses)
+
+        } catch (error) {
+            console.log("Error is => ", error);
+
+        }
+    }
 
     useEffect(() => {
         getFacultyInformation();
+        getClassForFaculty();
     }, []);
 
     return (
