@@ -44,8 +44,8 @@ const FacultyDashboard = () => {
             const res = await axios.get(`${API}/class/getClassByFaculty`, {
                 params: { contact }
             })
-            console.log(res.data.facultyClasses);
-            setassignedClasses(res.data.facultyClasses)
+            console.log(res.data);
+            setassignedClasses(res.data)
 
         } catch (error) {
             console.log("Error is => ", error);
@@ -57,8 +57,6 @@ const FacultyDashboard = () => {
         getFacultyInformation();
         getClassForFaculty();
     }, []);
-
-
 
     return (
         <div className="p-6 bg-gray-100 min-h-screen font-sans">
