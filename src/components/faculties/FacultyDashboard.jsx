@@ -58,7 +58,6 @@ const FacultyDashboard = () => {
         getClassForFaculty();
     }, []);
 
-    console.log(assignedClasses.map((s) => s));
 
 
     return (
