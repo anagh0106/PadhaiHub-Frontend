@@ -58,7 +58,8 @@ const FacultyDashboard = () => {
         getClassForFaculty();
     }, []);
 
-    
+    console.log(assignedClasses.map((s) => s));
+
 
     return (
         <div className="p-6 bg-gray-100 min-h-screen font-sans">
