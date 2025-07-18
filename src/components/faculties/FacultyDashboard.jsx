@@ -100,67 +100,46 @@ const FacultyDashboard = () => {
                     )}
 
                     {/* Assigned Classes */}
-                    {/* <div className="bg-white p-6 rounded-xl shadow-md">
-                        <h2 className="text-2xl font-semibold mb-4 text-green-600">📚 Assigned Classes</h2>
-                        {!assignedClasses ? (
-                            <p className="text-gray-500">No classes assigned yet.</p>
-                        ) : (
-                            <ul className="space-y-4">
-                                {assignedClasses.map((cls, index) => (
-                                    <li
-                                        key={index}
-                                        className="border rounded-lg p-4 flex justify-between items-center hover:bg-gray-50 transition-all"
-                                    >
-                                        <div>
-                                            <p className="font-semibold text-lg">{cls.subject}</p>
-                                            <p className="text-sm text-gray-600">Room: {cls.room}</p>
-                                            <p className="text-sm text-gray-600">Time: {cls.time}</p>
-                                            <p className="text-sm text-gray-600">Standard: {cls.standard}</p>
-                                        </div>
-                                        <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
-                                            View
-                                        </button>
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                    </div> */}
-                    <div className="bg-white p-6 rounded-2xl shadow-lg">
-                        <h2 className="text-2xl font-bold mb-6 text-green-700 flex items-center gap-2">
+                    <div className="bg-white p-6 rounded-2xl shadow-md">
+                        <h2 className="text-2xl font-bold text-green-700 mb-6 flex items-center gap-2">
                             📚 Assigned Classes
                         </h2>
 
                         {Array.isArray(assignedClasses) && assignedClasses.length === 0 ? (
-                            <p className="text-gray-500 text-center py-4">No classes assigned yet.</p>
+                            <div className="text-center text-gray-500 italic">No classes assigned yet.</div>
                         ) : (
-                            <ul className="space-y-4">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {assignedClasses.map((cls, index) => (
-                                    <li
+                                    <div
                                         key={index}
-                                        className="border border-gray-200 rounded-xl p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center bg-gray-50 hover:shadow-md hover:bg-white transition duration-300"
+                                        className="bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-5 flex flex-col justify-between"
                                     >
-                                        <div className="space-y-1">
-                                            <p className="text-xl font-semibold text-gray-800">{cls.subject}</p>
-                                            <p className="text-sm text-gray-600">
-                                                <span className="font-medium">Room:</span> {cls.room}
-                                            </p>
-                                            <p className="text-sm text-gray-600">
-                                                <span className="font-medium">Time:</span> {cls.time}
-                                            </p>
-                                            <p className="text-sm text-gray-600">
-                                                <span className="font-medium">Standard:</span> {cls.standard}
-                                            </p>
+                                        <div className="space-y-2">
+                                            <h3 className="text-xl font-semibold text-gray-800 flex items-center gap-2">
+                                                📖 {cls.subject}
+                                            </h3>
+                                            <div className="text-sm text-gray-600">
+                                                🏫 <span className="font-medium">Room:</span> {cls.room}
+                                            </div>
+                                            <div className="text-sm text-gray-600">
+                                                ⏰ <span className="font-medium">Time:</span> {cls.time}
+                                            </div>
+                                            <div className="text-sm text-gray-600">
+                                                🎓 <span className="font-medium">Standard:</span> {cls.standard}
+                                            </div>
                                         </div>
-                                        <div className="mt-4 sm:mt-0 sm:ml-4">
-                                            <button className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition duration-200">
-                                                View
+
+                                        <div className="mt-4">
+                                            <button className="w-full bg-gradient-to-r from-blue-600 to-blue-500 text-white py-2 rounded-md font-medium hover:from-blue-700 hover:to-blue-600 transition">
+                                                View Details
                                             </button>
                                         </div>
-                                    </li>
+                                    </div>
                                 ))}
-                            </ul>
+                            </div>
                         )}
                     </div>
+
 
                 </>
             )}
