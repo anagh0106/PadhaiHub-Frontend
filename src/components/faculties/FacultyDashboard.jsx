@@ -58,6 +58,8 @@ const FacultyDashboard = () => {
         getClassForFaculty();
     }, []);
 
+    
+
     return (
         <div className="p-6 bg-gray-100 min-h-screen font-sans">
             {loading ? (
@@ -100,7 +102,7 @@ const FacultyDashboard = () => {
                     )}
 
                     {/* Assigned Classes */}
-                    <div className="bg-white p-6 rounded-xl shadow-md">
+                    {/* <div className="bg-white p-6 rounded-xl shadow-md">
                         <h2 className="text-2xl font-semibold mb-4 text-green-600">📚 Assigned Classes</h2>
                         {assignedClasses ? (
                             <p className="text-gray-500">No classes assigned yet.</p>
@@ -122,7 +124,7 @@ const FacultyDashboard = () => {
                                 ))}
                             </ul>
                         )}
-                    </div>
+                    </div> */}
                 </>
             )}
         </div>
