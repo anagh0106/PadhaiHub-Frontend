@@ -44,8 +44,8 @@ const FacultyDashboard = () => {
             const res = await axios.get(`${API}/class/getClassByFaculty`, {
                 params: { contact }
             })
-            console.log(res.data);
-            setassignedClasses(res.data)
+            console.log(res.data.classes);
+            setassignedClasses(res.data.classes)
 
         } catch (error) {
             console.log("Error is => ", error);
@@ -102,7 +102,7 @@ const FacultyDashboard = () => {
                     {/* Assigned Classes */}
                     {/* <div className="bg-white p-6 rounded-xl shadow-md">
                         <h2 className="text-2xl font-semibold mb-4 text-green-600">📚 Assigned Classes</h2>
-                        {assignedClasses ? (
+                        {!assignedClasses ? (
                             <p className="text-gray-500">No classes assigned yet.</p>
                         ) : (
                             <ul className="space-y-4">
@@ -112,8 +112,10 @@ const FacultyDashboard = () => {
                                         className="border rounded-lg p-4 flex justify-between items-center hover:bg-gray-50 transition-all"
                                     >
                                         <div>
-                                            <p className="font-semibold text-lg">{cls.className} - {cls.subject}</p>
+                                            <p className="font-semibold text-lg">{cls.subject}</p>
                                             <p className="text-sm text-gray-600">Room: {cls.room}</p>
+                                            <p className="text-sm text-gray-600">Time: {cls.time}</p>
+                                            <p className="text-sm text-gray-600">Standard: {cls.standard}</p>
                                         </div>
                                         <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
                                             View
@@ -123,6 +125,43 @@ const FacultyDashboard = () => {
                             </ul>
                         )}
                     </div> */}
+                    <div className="bg-white p-6 rounded-2xl shadow-lg">
+                        <h2 className="text-2xl font-bold mb-6 text-green-700 flex items-center gap-2">
+                            📚 Assigned Classes
+                        </h2>
+
+                        {Array.isArray(assignedClasses) && assignedClasses.length === 0 ? (
+                            <p className="text-gray-500 text-center py-4">No classes assigned yet.</p>
+                        ) : (
+                            <ul className="space-y-4">
+                                {assignedClasses.map((cls, index) => (
+                                    <li
+                                        key={index}
+                                        className="border border-gray-200 rounded-xl p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center bg-gray-50 hover:shadow-md hover:bg-white transition duration-300"
+                                    >
+                                        <div className="space-y-1">
+                                            <p className="text-xl font-semibold text-gray-800">{cls.subject}</p>
+                                            <p className="text-sm text-gray-600">
+                                                <span className="font-medium">Room:</span> {cls.room}
+                                            </p>
+                                            <p className="text-sm text-gray-600">
+                                                <span className="font-medium">Time:</span> {cls.time}
+                                            </p>
+                                            <p className="text-sm text-gray-600">
+                                                <span className="font-medium">Standard:</span> {cls.standard}
+                                            </p>
+                                        </div>
+                                        <div className="mt-4 sm:mt-0 sm:ml-4">
+                                            <button className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition duration-200">
+                                                View
+                                            </button>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
+
                 </>
             )}
         </div>
