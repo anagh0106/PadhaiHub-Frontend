@@ -76,7 +76,7 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import ThemeContext from "./context/ThemeContext";
+import ThemeContext from "../context/ThemeContext";
 
 const FacultyLogin = () => {
     const {
