@@ -118,6 +118,7 @@ function Navbar({ onLogout }) {
                         {!isLoggedIn && !studentId && (
                             <Link to="/inquiry" className={`${colors.hover} transition`}>Inquire Now</Link>
                         )}
+                        {localStorage.getItem("Facrole") === "Faculty" ? "" : <Link to="/inquiry" className={`${colors.hover} transition`}>Inquire Now</Link>}
                         {isLoggedIn && (
                             <Link
                                 to={userEmail === mymail ? "/admin/dashboard" : "/studentdashboard"}
