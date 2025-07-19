@@ -47,7 +47,8 @@ const AdminClassManagement = () => {
             console.log("Error is =>", error);
         }
     };
-
+    console.log(facultyName.map(f=>f));
+    
     const FilteredFacultyPerSubject = facultyName
         .filter(fac => fac.subject === selectedSubject)
 
