@@ -20,8 +20,7 @@ function Navbar({ onLogout }) {
     const navigate = useNavigate();
     const { theme, setTheme } = useContext(ThemeContext);
     const mymail = "anagh0106@gmail.com";
-    const FacuRole = localStorage.getItem("Facrole")
-    console.log(FacuRole);
+
 
 
     useEffect(() => {
@@ -214,12 +213,12 @@ function Navbar({ onLogout }) {
 
                         >
                             <div className={`flex flex-col space-y-4 px-6 py-6 text-lg  ${colors.text}`}>
-                                {FacuRole === "Faculty" ?
+                                {localStorage.getItem("Facrole") === "Faculty" ?
                                     "" : <Link to="/" onClick={() => setIsOpen(false)} className={`${colors.hover} transition`}>
                                         Home
                                     </Link>
                                 }
-                                {FacuRole === "Faculty" ?
+                                {localStorage.getItem("Facrole") ?
                                     "" : <Link to="/about" onClick={() => setIsOpen(false)} className={`${colors.hover} transition`}>
                                         About
                                     </Link>
