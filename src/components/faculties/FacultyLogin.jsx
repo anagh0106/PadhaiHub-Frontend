@@ -20,6 +20,7 @@ const FacultyLogin = () => {
             console.log(res.data);
             localStorage.setItem("FacToken", res.data.token)
             localStorage.setItem("FacEmail", res.data.email)
+            localStorage.setItem("Facrole", res.data.role)
             navigate("/faculty/dashboard")
 
         } catch (error) {

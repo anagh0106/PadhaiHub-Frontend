@@ -20,6 +20,9 @@ function Navbar({ onLogout }) {
     const navigate = useNavigate();
     const { theme, setTheme } = useContext(ThemeContext);
     const mymail = "anagh0106@gmail.com";
+    const FacuRole = localStorage.getItem("Facrole")
+    console.log(FacuRole);
+
 
     useEffect(() => {
         const handleClickOutside = (e) => {
