@@ -214,7 +214,7 @@ function Navbar({ onLogout }) {
 
                         >
                             <div className={`flex flex-col space-y-4 px-6 py-6 text-lg  ${colors.text}`}>
-                                {FacuRole != "Faculty" ?
+                                {/* {FacuRole != "Faculty" ?
                                     <Link to="/" onClick={() => setIsOpen(false)} className={`${colors.hover} transition`}>
                                         Home
                                     </Link> : ""
@@ -223,7 +223,17 @@ function Navbar({ onLogout }) {
                                     <Link to="/about" onClick={() => setIsOpen(false)} className={`${colors.hover} transition`}>
                                         About
                                     </Link> : ""
-                                }
+                                } */}
+                                {FacuRole !== "Faculty" && (
+                                    <>
+                                        <Link to="/" onClick={() => setIsOpen(false)} className={`${colors.hover} transition`}>
+                                            Home
+                                        </Link>
+                                        <Link to="/about" onClick={() => setIsOpen(false)} className={`${colors.hover} transition`}>
+                                            About
+                                        </Link>
+                                    </>
+                                )}
 
                                 {!isLoggedIn && !studentId && (
                                     <Link to="/inquiry" onClick={() => setIsOpen(false)} className={`${colors.hover} transition`}>
