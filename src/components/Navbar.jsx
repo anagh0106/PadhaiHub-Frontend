@@ -110,8 +110,11 @@ function Navbar({ onLogout }) {
                     </div>
 
                     <div className="hidden lg:flex space-x-6 text-lg">
-                        <Link to="/" className={`${colors.hover} transition`}>Home</Link>
-                        {<Link to="/about" className={`${colors.hover} transition`}>About</Link>}
+                        {localStorage.getItem("Facrole") === "Faculty"
+                            ? "" :
+                            <Link to="/" className={`${colors.hover} transition`}>Home</Link>}
+
+                        {localStorage.getItem("Facrole") === "Faculty" ? "" : <Link to="/about" className={`${colors.hover} transition`}>About</Link>}
                         {!isLoggedIn && !studentId && (
                             <Link to="/inquiry" className={`${colors.hover} transition`}>Inquire Now</Link>
                         )}
