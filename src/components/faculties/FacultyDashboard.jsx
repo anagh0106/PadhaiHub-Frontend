@@ -50,7 +50,6 @@ const FacultyDashboard = () => {
             setstartClass(res.data.btn)
             console.log(res.data.btn);
 
-
         } catch (error) {
             console.log("Error is => ", error);
 
@@ -135,7 +134,7 @@ const FacultyDashboard = () => {
                                                 </p>
                                             </div>
 
-                                            {cls.showStartButton ? (
+                                            {startClass.filter(c => c.showStartButton) ? (
                                                 <button className="mt-4 bg-blue-600 text-white py-2 rounded-md font-medium hover:bg-blue-700 transition">
                                                     Start Class
                                                 </button>
