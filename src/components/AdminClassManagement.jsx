@@ -47,7 +47,6 @@ const AdminClassManagement = () => {
             console.log("Error is =>", error);
         }
     };
-    console.log(facultyName.map(f => f));
 
     const getFacultyNames = async () => {
         try {
@@ -58,8 +57,7 @@ const AdminClassManagement = () => {
         }
     };
     const FilteredFacultyPerSubject = facultyName
-        .filter(fac => fac.subject === selectedSubject)
-    console.log(facultyName.filter((fac) => fac.subject == selectedSubject));
+        .filter((fac) => fac.subject === selectedSubject)
 
     const getClasses = async () => {
         try {
