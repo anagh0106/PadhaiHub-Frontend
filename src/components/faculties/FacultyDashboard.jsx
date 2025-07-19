@@ -5,6 +5,7 @@ const FacultyDashboard = () => {
     const [facultyInfo, setFacultyInfo] = useState(null);
     const [loading, setLoading] = useState(true);
     const [assignedClasses, setassignedClasses] = useState([])
+    const [startClass, setstartClass] = useState([])
 
     const contact = localStorage.getItem("FacEmail");
     const host = window.location.hostname;
@@ -46,6 +47,7 @@ const FacultyDashboard = () => {
             })
             console.log(res.data.classes);
             setassignedClasses(res.data.classes)
+            setstartClass(res.data.btn)
 
         } catch (error) {
             console.log("Error is => ", error);
@@ -129,9 +131,13 @@ const FacultyDashboard = () => {
                                             </p>
                                         </div>
 
-                                        <button className="mt-4 bg-blue-600 text-white py-2 rounded-md font-medium hover:bg-blue-700 transition">
-                                            View Details
-                                        </button>
+                                        {startClass
+                                            ? <button className="mt-4 bg-blue-600 text-white py-2 rounded-md font-medium hover:bg-blue-700 transition">
+                                                Start Class
+                                            </button>
+                                            : <button className="mt-4 bg-blue-600 text-white py-2 rounded-md font-medium hover:bg-blue-700 transition">
+                                                Class Start Soon
+                                            </button>}
                                     </div>
                                 ))}
                             </div>
