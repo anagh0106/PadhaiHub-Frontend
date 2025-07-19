@@ -131,14 +131,16 @@ const FacultyDashboard = () => {
                                             </p>
                                         </div>
 
-                                        {startClass.some(s => s.showStartButton == true)
-                                            ? <button className="mt-4 bg-blue-600 text-white py-2 rounded-md font-medium hover:bg-blue-700 transition">
+                                        {Array.isArray(startClass) && startClass.some(s => s.showStartButton) ? (
+                                            <button className="mt-4 bg-blue-600 text-white py-2 rounded-md font-medium hover:bg-blue-700 transition">
                                                 Start Class
                                             </button>
-                                            : <button className="mt-4 bg-blue-600 text-white py-2 rounded-md font-medium hover:bg-blue-700 transition">
+                                        ) : (
+                                            <button className="mt-4 bg-gray-400 text-white py-2 rounded-md font-medium cursor-not-allowed">
                                                 Class Start Soon
                                             </button>
-                                        }
+                                        )}
+
                                     </div>
                                 ))}
                             </div>
