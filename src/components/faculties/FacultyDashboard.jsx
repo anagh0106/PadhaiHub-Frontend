@@ -131,7 +131,7 @@ const FacultyDashboard = () => {
                                             </p>
                                         </div>
 
-                                        {startClass
+                                        {startClass.filter(s => s.showStartButton == true)
                                             ? <button className="mt-4 bg-blue-600 text-white py-2 rounded-md font-medium hover:bg-blue-700 transition">
                                                 Start Class
                                             </button>
