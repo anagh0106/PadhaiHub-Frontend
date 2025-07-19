@@ -224,16 +224,17 @@ function Navbar({ onLogout }) {
                                         About
                                     </Link> : ""
                                 } */}
-                                {FacuRole !== "Faculty" && (
-                                    <>
+                                {FacuRole === "Faculty" ?
+                                    <Link to="/facultyDashboard">
+                                        Faculty Dashboard
+                                    </Link> : <>
                                         <Link to="/" onClick={() => setIsOpen(false)} className={`${colors.hover} transition`}>
                                             Home
                                         </Link>
                                         <Link to="/about" onClick={() => setIsOpen(false)} className={`${colors.hover} transition`}>
                                             About
                                         </Link>
-                                    </>
-                                )}
+                                    </>}
 
                                 {!isLoggedIn && !studentId && (
                                     <Link to="/inquiry" onClick={() => setIsOpen(false)} className={`${colors.hover} transition`}>
@@ -322,7 +323,7 @@ function Navbar({ onLogout }) {
                             </div>
                         </motion.div>
                     )}
-                </AnimatePresence>
+                </AnimatePresence >
 
             </header >
 
