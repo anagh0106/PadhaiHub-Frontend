@@ -21,8 +21,6 @@ function Navbar({ onLogout }) {
     const { theme, setTheme } = useContext(ThemeContext);
     const mymail = "anagh0106@gmail.com";
 
-
-
     useEffect(() => {
         const handleClickOutside = (e) => {
             if (!e.target.closest(".settings-dropdown")) {
@@ -55,8 +53,12 @@ function Navbar({ onLogout }) {
             localStorage.clear();
             setIsLoggedIn(false);
             onLogout();
+
             setTimeout(() => {
-                navigate("/");
+                {
+                    localStorage.getItem("Facrole") ?
+                        navigate("/") : navigate("/faculty/login")
+                }
             }, 1500);
         }
     }, [shouldLogout]);
