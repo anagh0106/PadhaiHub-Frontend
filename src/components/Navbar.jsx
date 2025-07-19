@@ -186,12 +186,22 @@ function Navbar({ onLogout }) {
                             >
                                 Get Started
                             </button> :
+                                // <button
+                                //     onClick={() => setShouldLogout(true)}
+                                //     className={`block w-full text-left px-4 py-2 text-sm text-red-600 ${colors.dropdownHover}`}
+                                // >
+                                //     Logout
+                                // </button>
                                 <button
                                     onClick={() => setShouldLogout(true)}
-                                    className={`block w-full text-left px-4 py-2 text-sm text-red-600 ${colors.dropdownHover}`}
+                                    className={`block w-full text-left px-4 py-2 rounded-md font-medium transition-all duration-200 ${theme === 'light'
+                                        ? 'text-red-600 hover:bg-red-100'
+                                        : 'text-red-400 hover:bg-red-900/30'
+                                        }`}
                                 >
                                     Logout
                                 </button>
+
                         )}
 
                         <div className="pl-4">
