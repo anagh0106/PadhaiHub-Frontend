@@ -133,8 +133,10 @@ const FacultyDashboard = () => {
                                                     🎓 <span className="font-medium">Standard:</span> {cls.standard}
                                                 </p>
                                             </div>
-
-                                            {startClass.map(c => c.showStartButton === true) ? (
+                                            <button className="mt-4 bg-blue-600 text-white py-2 rounded-md font-medium hover:bg-blue-700 transition">
+                                                Start Class
+                                            </button>
+                                            {/* {startClass.map(c => c.showStartButton === true) ? (
                                                 <button className="mt-4 bg-blue-600 text-white py-2 rounded-md font-medium hover:bg-blue-700 transition">
                                                     Start Class
                                                 </button>
@@ -145,7 +147,7 @@ const FacultyDashboard = () => {
                                                 >
                                                     Class Start Soon
                                                 </button>
-                                            )}
+                                            )} */}
                                         </div>
                                     ))}
                             </div>
