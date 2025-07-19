@@ -47,10 +47,12 @@ const AdminClassManagement = () => {
             console.log("Error is =>", error);
         }
     };
-    console.log(facultyName.map(f=>f));
-    
+    console.log(facultyName.map(f => f));
+
     const FilteredFacultyPerSubject = facultyName
         .filter(fac => fac.subject === selectedSubject)
+    console.log(FilteredFacultyPerSubject.map(f => f));
+
 
     const getFacultyNames = async () => {
         try {
