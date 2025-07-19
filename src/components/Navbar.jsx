@@ -115,10 +115,9 @@ function Navbar({ onLogout }) {
                             <Link to="/" className={`${colors.hover} transition`}>Home</Link>}
 
                         {localStorage.getItem("Facrole") === "Faculty" ? "" : <Link to="/about" className={`${colors.hover} transition`}>About</Link>}
-                        {!isLoggedIn && !studentId && (
+                        {!isLoggedIn && !studentId && localStorage.getItem("Facrole") !== "Faculty"(
                             <Link to="/inquiry" className={`${colors.hover} transition`}>Inquire Now</Link>
                         )}
-                        {localStorage.getItem("Facrole") === "Faculty" ? "" : <Link to="/inquiry" className={`${colors.hover} transition`}>Inquire Now</Link>}
                         {isLoggedIn && (
                             <Link
                                 to={userEmail === mymail ? "/admin/dashboard" : "/studentdashboard"}
