@@ -178,7 +178,7 @@ function Navbar({ onLogout }) {
 
                             </>
                         ) : (
-                            <button
+                            localStorage.getItem("Facrole") !== "Faculty" && <button
                                 className="bg-white text-black px-6 py-2 rounded-lg hover:bg-gray-300 transition"
                                 onClick={() => setShowAuthForm(true)}
                             >
