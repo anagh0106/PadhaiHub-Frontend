@@ -49,8 +49,6 @@ const AdminClassManagement = () => {
     };
     console.log(facultyName.map(f => f));
 
-
-
     const getFacultyNames = async () => {
         try {
             const res = await axios.get(`${API}/faculty/getFaculties`);
@@ -59,7 +57,6 @@ const AdminClassManagement = () => {
             console.log("Error is =>", error);
         }
     };
-    
     const FilteredFacultyPerSubject = facultyName
         .filter(fac => fac.subject === selectedSubject)
     console.log(FilteredFacultyPerSubject.map(f => f));
@@ -107,6 +104,8 @@ const AdminClassManagement = () => {
         border: theme === 'light' ? 'border-gray-200' : 'border-white/10',
         subtext: theme === 'light' ? 'text-gray-600' : 'text-gray-400'
     };
+    console.log("Selected Subject ", selectedSubject);
+
     const onSubmit = async (data) => {
         try {
             //  Frontend Past Date Check
