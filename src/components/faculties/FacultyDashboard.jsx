@@ -47,8 +47,8 @@ const FacultyDashboard = () => {
             })
             console.log(res.data.classes);
             setassignedClasses(res.data.classes)
-            setstartClass(res.data.btn)
-            console.log(res.data.btn);
+            setstartClass(res.data)
+            console.log(res.data);
 
         } catch (error) {
             console.log("Error is => ", error);
