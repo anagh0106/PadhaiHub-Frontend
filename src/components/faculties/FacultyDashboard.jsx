@@ -49,7 +49,7 @@ const FacultyDashboard = () => {
             setassignedClasses(res.data.classes)
             setstartClass(res.data.btn)
             console.log(res.data.btn);
-            
+
 
         } catch (error) {
             console.log("Error is => ", error);
@@ -113,42 +113,45 @@ const FacultyDashboard = () => {
                             <div className="text-center text-gray-500 italic">No classes assigned yet.</div>
                         ) : (
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                                {assignedClasses.map((cls, index) => (
-                                    <div
-                                        key={index}
-                                        className="bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-5 flex flex-col justify-between"
-                                    >
-                                        <div className="space-y-2">
-                                            <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
-                                                📖 {cls.subject} {cls.date}
-                                            </h3>
-                                            <p className="text-sm text-gray-600">
-                                                🏫 <span className="font-medium">Room:</span> {cls.room}
-                                            </p>
-                                            <p className="text-sm text-gray-600">
-                                                ⏰ <span className="font-medium">Time:</span> {cls.time}
-                                            </p>
-                                            <p className="text-sm text-gray-600">
-                                                🎓 <span className="font-medium">Standard:</span> {cls.standard}
-                                            </p>
+                                {assignedClasses
+                                    .sort((a, b) => new Date(a.date) - new Date(b.date))
+                                    .map((cls, index) => (
+                                        <div
+                                            key={index}
+                                            className="bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-5 flex flex-col justify-between"
+                                        >
+                                            <div className="space-y-2">
+                                                <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
+                                                    📖 {cls.subject} | 📅 {cls.date}
+                                                </h3>
+                                                <p className="text-sm text-gray-600">
+                                                    🏫 <span className="font-medium">Room:</span> {cls.room}
+                                                </p>
+                                                <p className="text-sm text-gray-600">
+                                                    ⏰ <span className="font-medium">Time:</span> {cls.time}
+                                                </p>
+                                                <p className="text-sm text-gray-600">
+                                                    🎓 <span className="font-medium">Standard:</span> {cls.standard}
+                                                </p>
+                                            </div>
+
+                                            {cls.showStartButton ? (
+                                                <button className="mt-4 bg-blue-600 text-white py-2 rounded-md font-medium hover:bg-blue-700 transition">
+                                                    Start Class
+                                                </button>
+                                            ) : (
+                                                <button
+                                                    disabled
+                                                    className="mt-4 bg-gray-400 text-white py-2 rounded-md font-medium cursor-not-allowed"
+                                                >
+                                                    Class Start Soon
+                                                </button>
+                                            )}
                                         </div>
-
-                                        {Array.isArray(startClass) && startClass.some(s => s.showStartButton === true) ? (
-                                            <button className="mt-4 bg-blue-600 text-white py-2 rounded-md font-medium hover:bg-blue-700 transition">
-                                                Start Class
-                                            </button>
-                                        ) : (
-                                            <button className="mt-4 bg-gray-400 text-white py-2 rounded-md font-medium cursor-not-allowed">
-                                                Class Start Soon
-                                            </button>
-                                        )}
-
-                                    </div>
-                                ))}
+                                    ))}
                             </div>
                         )}
                     </div>
-
                 </>
             )}
         </div>
