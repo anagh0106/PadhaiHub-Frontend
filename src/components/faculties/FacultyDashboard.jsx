@@ -47,7 +47,9 @@ const FacultyDashboard = () => {
             })
             console.log(res.data.classes);
             setassignedClasses(res.data.classes)
-            setstartClass(res.data.btn.showStartButton)
+            setstartClass(res.data.btn)
+            console.log(res.data.btn);
+            
 
         } catch (error) {
             console.log("Error is => ", error);
@@ -131,7 +133,7 @@ const FacultyDashboard = () => {
                                             </p>
                                         </div>
 
-                                        {Array.isArray(startClass) && startClass.some(s => s.showStartButton) ? (
+                                        {Array.isArray(startClass) && startClass.some(s => s.showStartButton === true) ? (
                                             <button className="mt-4 bg-blue-600 text-white py-2 rounded-md font-medium hover:bg-blue-700 transition">
                                                 Start Class
                                             </button>
