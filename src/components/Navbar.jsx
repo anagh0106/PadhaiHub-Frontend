@@ -178,12 +178,18 @@ function Navbar({ onLogout }) {
 
                             </>
                         ) : (
-                            localStorage.getItem("Facrole") !== "Faculty" && <button
+                            localStorage.getItem("Facrole") !== "Faculty" && !localStorage.getItem("FacToken") ? <button
                                 className="bg-white text-black px-6 py-2 rounded-lg hover:bg-gray-300 transition"
                                 onClick={() => setShowAuthForm(true)}
                             >
                                 Get Started
-                            </button>
+                            </button> :
+                                <button
+                                    onClick={() => setShouldLogout(true)}
+                                    className={`block w-full text-left px-4 py-2 text-sm text-red-600 ${colors.dropdownHover}`}
+                                >
+                                    Logout
+                                </button>
                         )}
 
                         <div className="pl-4">
