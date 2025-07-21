@@ -111,24 +111,26 @@ const Home = () => {
     return (
         <div className={`${colors.background} ${colors.text} min-h-screen transition-colors duration-500`}>
 
-            <section className="bg-[#0f172a] text-white px-6 py-16 sm:px-10 md:px-20 rounded-xl w-full">
+            <section className="bg-[#0f172a] text-white px-6 py-24 sm:px-10 md:px-20 rounded-xl w-full">
                 {/* Badge */}
-                <div className="inline-flex items-center gap-2 bg-[#6d28d9] text-white px-4 py-1.5 rounded-full text-sm font-medium mb-5">
+                <div className="inline-flex items-center gap-2 bg-[#6d28d9] text-white px-4 py-1.5 rounded-full text-sm font-medium mb-6">
                     <FaGraduationCap className="text-white" />
                     {MainText}
                 </div>
 
                 {/* Headings */}
-                <h1 className="text-4xl sm:text-5xl font-bold leading-tight text-white">
+                <h1 className="text-5xl sm:text-6xl font-bold leading-tight text-white">
                     {Heading} <br />
                     <span className="text-[#8b5cf6]">{Heading2}</span>
                 </h1>
 
                 {/* Description */}
-                <p className="text-gray-300 mt-6 text-lg max-w-2xl">{Description}</p>
+                <p className="text-gray-300 mt-6 text-xl max-w-3xl">
+                    {Description}
+                </p>
 
                 {/* Buttons */}
-                <div className="mt-8 flex gap-4 flex-wrap">
+                <div className="mt-10 flex gap-4 flex-wrap">
                     <button className="bg-[#8b5cf6] text-white px-6 py-3 rounded-lg font-medium shadow hover:bg-[#7c3aed] transition">
                         View Courses
                     </button>
@@ -137,6 +139,7 @@ const Home = () => {
                     </button>
                 </div>
             </section>
+
 
             {showAuthForm && (
                 <div className={`fixed inset-0 flex items-center justify-center ${colors.overlay} ${colors.glass} z-50 p-4`}>
