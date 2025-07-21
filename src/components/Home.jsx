@@ -88,7 +88,7 @@ const Home = () => {
         <div className={`${colors.background} ${colors.text} min-h-screen transition-colors duration-500`}>
 
             <section className={`py-24 text-center ${colors.card} ${colors.border} ${colors.shadow} ${colors.glass} border rounded-xl mx-4 mt-4 transition-all animate-fade-in`}>
-                <h1 className="text-4xl font-extrabold">Welcome to Siya Education</h1>
+                <h1 className="text-4xl font-extrabold">Welcome to PadhaiHub</h1>
                 <p className={`mt-4 text-xl ${colors.subtext}`}>Where learning becomes a joyful experience</p>
                 {!token && (
                     <button

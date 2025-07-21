@@ -52,6 +52,7 @@ const AdminClassManagement = () => {
         try {
             const res = await axios.get(`${API}/faculty/getFaculties`);
             setfacultyName(res.data.faculties);
+            console.log(res.data.faculties)
         } catch (error) {
             console.log("Error is =>", error);
         }
