@@ -111,7 +111,7 @@ const Home = () => {
     return (
         <div className={`${colors.background} ${colors.text} min-h-screen transition-colors duration-500`}>
 
-            <section className="bg-[#0f172a] text-white px-6 py-16 sm:px-10 md:px-20 rounded-xl max-w-4xl mx-auto">
+            <section className="bg-[#0f172a] text-white px-6 py-16 sm:px-10 md:px-20 rounded-xl w-full">
                 {/* Badge */}
                 <div className="inline-flex items-center gap-2 bg-[#6d28d9] text-white px-4 py-1.5 rounded-full text-sm font-medium mb-5">
                     <FaGraduationCap className="text-white" />
@@ -137,6 +137,7 @@ const Home = () => {
                     </button>
                 </div>
             </section>
+
             {showAuthForm && (
                 <div className={`fixed inset-0 flex items-center justify-center ${colors.overlay} ${colors.glass} z-50 p-4`}>
                     <Authform onClose={() => setShowAuthForm(false)} />
