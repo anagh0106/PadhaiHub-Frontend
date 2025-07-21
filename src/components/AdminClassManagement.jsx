@@ -41,7 +41,6 @@ const AdminClassManagement = () => {
         try {
             const res = await axios.get(`${API}/class/getSubject`);
             const subjectNames = res.data.Subjects;
-            // console.log(subjectNames);
             setsubjectHandler(subjectNames);
         } catch (error) {
             console.log("Error is =>", error);
@@ -59,7 +58,8 @@ const AdminClassManagement = () => {
     };
     const FilteredFacultyPerSubject = facultyName
         .filter((fac) => fac.subject === selectedSubject)
-
+    console.log(FilteredFacultyPerSubject);
+    
     const getClasses = async () => {
         try {
             const res = await axios.get(`${API}/class/getClass`)
