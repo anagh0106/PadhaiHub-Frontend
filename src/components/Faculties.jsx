@@ -325,7 +325,7 @@ const Faculties = () => {
                                         >
                                             <option value="">Select Subject</option>
                                             {FormSubjects.map((sub, index) => (
-                                                <option value={index}>{sub}</option>
+                                                <option value={sub} key={index}>{sub}</option>
                                             ))}
                                         </select>
                                         {errors.subject && <p className="text-red-400 text-sm mt-1">This field is required</p>}
@@ -377,7 +377,7 @@ const Faculties = () => {
                                         >
                                             <option value="">Select Qualification</option>
                                             {FacultyDegree.map((degree, index) => (
-                                                <option value={index}>{degree}</option>
+                                                <option value={degree} key={index}>{degree}</option>
                                             ))}
                                         </select>
                                         {errors.qualification && <p className="text-red-400 text-sm mt-1">This field is required</p>}
@@ -397,7 +397,7 @@ const Faculties = () => {
                                         >
                                             <option value="">Select Experience</option>
                                             {FacultyExperience.map((exp, index) => (
-                                                <option value={index}>{exp}</option>
+                                                <option value={exp} key={index}>{exp}</option>
                                             ))}
                                         </select>
                                         {errors.experience && <p className="text-red-400 text-sm mt-1">This field is required</p>}
