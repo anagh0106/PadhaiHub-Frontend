@@ -12,6 +12,8 @@ const Faculties = () => {
     const [FacultyLabel, setFacultyLabel] = useState([])
     const [showAddForm, setShowAddForm] = useState(false);
     const [FormSubjects, setFormSubjects] = useState([])
+    const [FacultyDegree, setFacultyDegree] = useState([])
+    const [FacultyExperience, setFacultyExperience] = useState([])
     const [searchData, setSearchData] = useState("")
     const navigate = useNavigate()
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -65,10 +67,14 @@ const Faculties = () => {
         getAllFaculties()
         reset();
     };
-    const getSubjectOptions = async () => {
+    const getFacultiesFormData = async () => {
         try {
             const res = await axios.get(`${API}/faculty/getFacultySubjects`)
             setFormSubjects(res.data)
+            const res1 = await axios.get(`${API}/faculty/getFacultyDegree`)
+            setFacultyDegree(res1.data)
+            const res2 = await axios.get(`${API}/faculty/getFacultyExperience`)
+            setFacultyExperience(res2.data)
         } catch (error) {
             console.log("Error is =>", error);
 
@@ -78,7 +84,7 @@ const Faculties = () => {
 
     useEffect(() => {
         getAllFaculties();
-        getSubjectOptions();
+        getFacultiesFormData();
     }, []);
 
 
@@ -370,20 +376,9 @@ const Faculties = () => {
                                                 }`}
                                         >
                                             <option value="">Select Qualification</option>
-                                            <option value="B.Sc. (Physics)">B.Sc. (Physics)</option>
-                                            <option value="B.Sc. (Chemistry)">B.Sc. (Chemistry)</option>
-                                            <option value="B.Sc. (Mathematics)">B.Sc. (Mathematics)</option>
-                                            <option value="B.Sc. (Biology)">B.Sc. (Biology)</option>
-                                            <option value="M.Sc. (Physics)">M.Sc. (Physics)</option>
-                                            <option value="M.Sc. (Chemistry)">M.Sc. (Chemistry)</option>
-                                            <option value="M.Sc. (Mathematics)">M.Sc. (Mathematics)</option>
-                                            <option value="M.Sc. (Biology)">M.Sc. (Biology)</option>
-                                            <option value="B.Ed.">B.Ed.</option>
-                                            <option value="M.Ed.">M.Ed.</option>
-                                            <option value="Ph.D. (Physics)">Ph.D. (Physics)</option>
-                                            <option value="Ph.D. (Chemistry)">Ph.D. (Chemistry)</option>
-                                            <option value="Ph.D. (Mathematics)">Ph.D. (Mathematics)</option>
-                                            <option value="Ph.D. (Biology)">Ph.D. (Biology)</option>
+                                            {FacultyDegree.map((degree, index) => (
+                                                <option value={index}>{degree}</option>
+                                            ))}
                                         </select>
                                         {errors.qualification && <p className="text-red-400 text-sm mt-1">This field is required</p>}
                                     </div>
@@ -401,10 +396,9 @@ const Faculties = () => {
                                                 }`}
                                         >
                                             <option value="">Select Experience</option>
-                                            <option value="0-3 years">0-3 years</option>
-                                            <option value="3-6 years">3-6 years</option>
-                                            <option value="6+ years">6+ years</option>
-                                            <option value="9+ years">9+ years</option>
+                                            {FacultyExperience.map((exp, index) => (
+                                                <option value={index}>{exp}</option>
+                                            ))}
                                         </select>
                                         {errors.experience && <p className="text-red-400 text-sm mt-1">This field is required</p>}
                                     </div>
