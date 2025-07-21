@@ -110,10 +110,9 @@ const Home = () => {
 
     return (
         <div className={`${colors.background} ${colors.text} min-h-screen transition-colors duration-500`}>
-
             <section className="bg-[#0f172a] text-white px-6 py-24 sm:px-10 md:px-20 rounded-xl w-full">
                 {/* Badge */}
-                <div className="inline-flex items-center gap-2 bg-[#6d28d9] text-white px-4 py-1.5 rounded-full text-sm font-medium mb-6">
+                <div className="inline-flex items-center gap-2 bg-[#6d28d9] text-white px-4 py-1.5 rounded-full text-base sm:text-lg font-medium mb-6">
                     <FaGraduationCap className="text-white" />
                     {MainText}
                 </div>
