@@ -11,6 +11,7 @@ const Faculties = () => {
     const [selectedFaculty, setSelectedFaculty] = useState(null);
     const [FacultyLabel, setFacultyLabel] = useState([])
     const [showAddForm, setShowAddForm] = useState(false);
+    const [FormSubjects, setFormSubjects] = useState([])
     const [searchData, setSearchData] = useState("")
     const navigate = useNavigate()
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -64,11 +65,20 @@ const Faculties = () => {
         getAllFaculties()
         reset();
     };
+    const getSubjectOptions = async () => {
+        try {
+            const res = await axios.get(`${API}/faculty/getFacultySubjects`)
+            setFormSubjects(res.data)
+        } catch (error) {
+            console.log("Error is =>", error);
 
+        }
+    }
     const FacultyFilteredBySubject = facultyData.filter((faculty) => `${faculty.subject}`.toLowerCase().includes(searchData))
 
     useEffect(() => {
         getAllFaculties();
+        getSubjectOptions();
     }, []);
 
 
@@ -308,10 +318,9 @@ const Faculties = () => {
                                                 }`}
                                         >
                                             <option value="">Select Subject</option>
-                                            <option value="Mathematics">Mathematics</option>
-                                            <option value="Physics">Physics</option>
-                                            <option value="Chemistry">Chemistry</option>
-                                            <option value="Biology">Biology</option>
+                                            {FormSubjects.map((sub, index) => (
+                                                <option value={index}>{sub}</option>
+                                            ))}
                                         </select>
                                         {errors.subject && <p className="text-red-400 text-sm mt-1">This field is required</p>}
                                     </div>
