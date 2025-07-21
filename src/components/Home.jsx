@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import ThemeContext from './context/ThemeContext.jsx';
 import { motion, useMotionValue, animate } from "framer-motion";
+import { FaGraduationCap } from "react-icons/fa";
 
 const Home = () => {
     const [review, setReview] = useState([]);
@@ -14,6 +15,7 @@ const Home = () => {
     const [MainText, setMainText] = useState("")
     const [Description, setDescription] = useState("")
     const [Heading, setHeading] = useState("")
+    const [Heading2, setHeading2] = useState("")
     const [cards, setcards] = useState([]);
     const { theme } = useContext(ThemeContext);
 
@@ -47,7 +49,8 @@ const Home = () => {
             const res = await axios.get(`${homeAPI}/getText`);
             console.log(res.data);
             // yahan setState karna
-            setHeading(res.data.headingLine1 + " " + res.data.headingLine2);
+            setHeading(res.data.headingLine1);
+            setHeading2(res.data.headingLine2)
             setMainText(res.data.mainText);
             setDescription(res.data.description);
         } catch (error) {
@@ -108,22 +111,31 @@ const Home = () => {
     return (
         <div className={`${colors.background} ${colors.text} min-h-screen transition-colors duration-500`}>
 
-            {/* <section className={`py-24 text-center ${colors.card} ${colors.border} ${colors.shadow} ${colors.glass} border rounded-xl mx-4 mt-4 transition-all animate-fade-in`}>
-                <h1 className="text-4xl font-extrabold">Welcome to PadhaiHub</h1>
-                <p className={`mt-4 text-xl ${colors.subtext}`}>Where learning becomes a joyful experience</p>
-                {!token && (
-                    <button
-                        className="mt-6 bg-gradient-to-r from-red-500 to-red-700 text-white py-3 px-8 rounded-lg hover:scale-105 hover:brightness-110 transition-all shadow-lg"
-                        onClick={handleGetStarted}
-                    >
-                        Get Started
+            <section className="bg-[#0f172a] text-white px-6 py-16 sm:px-10 md:px-20 rounded-xl max-w-4xl mx-auto">
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 bg-[#6d28d9] text-white px-4 py-1.5 rounded-full text-sm font-medium mb-5">
+                    <FaGraduationCap className="text-white" />
+                    {MainText}
+                </div>
+
+                {/* Headings */}
+                <h1 className="text-4xl sm:text-5xl font-bold leading-tight text-white">
+                    {Heading} <br />
+                    <span className="text-[#8b5cf6]">{Heading2}</span>
+                </h1>
+
+                {/* Description */}
+                <p className="text-gray-300 mt-6 text-lg max-w-2xl">{Description}</p>
+
+                {/* Buttons */}
+                <div className="mt-8 flex gap-4 flex-wrap">
+                    <button className="bg-[#8b5cf6] text-white px-6 py-3 rounded-lg font-medium shadow hover:bg-[#7c3aed] transition">
+                        View Courses
                     </button>
-                )}
-            </section> */}
-            <section>
-                <p>{Heading}</p>
-                <p>{MainText}</p>
-                <p>{Description}</p>
+                    <button className="border border-[#8b5cf6] text-[#8b5cf6] px-6 py-3 rounded-lg font-medium hover:bg-[#8b5cf6] hover:text-white transition">
+                        Book Free Demo
+                    </button>
+                </div>
             </section>
             {showAuthForm && (
                 <div className={`fixed inset-0 flex items-center justify-center ${colors.overlay} ${colors.glass} z-50 p-4`}>
