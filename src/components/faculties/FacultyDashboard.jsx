@@ -67,10 +67,10 @@ const FacultyDashboard = () => {
         getClassForFaculty();
 
         const intervalId = setInterval(() => {
-            getClassForFaculty(); // auto-refresh every 30 seconds
-        }, 3000); // 30 sec
+            getClassForFaculty();
+        }, 3000);
 
-        return () => clearInterval(intervalId); // cleanup on unmount
+        return () => clearInterval(intervalId);
     }, [contact]);
 
     const colors = {

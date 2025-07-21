@@ -11,6 +11,9 @@ const Home = () => {
     const [showAuthForm, setShowAuthForm] = useState(false);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [isFormSubmitted, setisFormSubmitted] = useState(false);
+    const [MainText, setMainText] = useState("")
+    const [Description, setDescription] = useState("")
+    const [Heading, setHeading] = useState("")
     const [cards, setcards] = useState([]);
     const { theme } = useContext(ThemeContext);
 
@@ -35,6 +38,23 @@ const Home = () => {
         : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com/cards";
 
     const token = localStorage.getItem("token");
+    const homeAPI = window.location.hostname === "localhost"
+        ? "http://localhost:3000/home"
+        : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com/home";
+
+    const fetchHomePageText = async () => {
+        try {
+            const res = await axios.get(`${API}/home/text`);
+            console.log(res.data);
+            // yahan setState karna
+            setHeading(res.data.headingLine1 + " " + res.data.headingLine2);
+            setMainText(res.data.mainText);
+            setDescription(res.data.description);
+        } catch (error) {
+            console.error("Failed to load homepage text", error);
+        }
+    };
+
 
     const FetchCardData = async () => {
         try {
@@ -62,6 +82,7 @@ const Home = () => {
     useEffect(() => {
         fetchReviews();
         FetchCardData();
+        fetchHomePageText();
     }, []);
 
     const ReviewSubmitHandler = async (reviewData) => {
@@ -87,7 +108,7 @@ const Home = () => {
     return (
         <div className={`${colors.background} ${colors.text} min-h-screen transition-colors duration-500`}>
 
-            <section className={`py-24 text-center ${colors.card} ${colors.border} ${colors.shadow} ${colors.glass} border rounded-xl mx-4 mt-4 transition-all animate-fade-in`}>
+            {/* <section className={`py-24 text-center ${colors.card} ${colors.border} ${colors.shadow} ${colors.glass} border rounded-xl mx-4 mt-4 transition-all animate-fade-in`}>
                 <h1 className="text-4xl font-extrabold">Welcome to PadhaiHub</h1>
                 <p className={`mt-4 text-xl ${colors.subtext}`}>Where learning becomes a joyful experience</p>
                 {!token && (
@@ -98,8 +119,12 @@ const Home = () => {
                         Get Started
                     </button>
                 )}
+            </section> */}
+            <section>
+                <p>{Heading}</p>
+                <p>{MainText}</p>
+                <p>{Description}</p>
             </section>
-
             {showAuthForm && (
                 <div className={`fixed inset-0 flex items-center justify-center ${colors.overlay} ${colors.glass} z-50 p-4`}>
                     <Authform onClose={() => setShowAuthForm(false)} />
