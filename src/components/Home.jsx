@@ -44,7 +44,7 @@ const Home = () => {
 
     const fetchHomePageText = async () => {
         try {
-            const res = await axios.get(`${API}/home/text`);
+            const res = await axios.get(`${API}/getText`);
             console.log(res.data);
             // yahan setState karna
             setHeading(res.data.headingLine1 + " " + res.data.headingLine2);
