@@ -57,10 +57,21 @@ const FacultyDashboard = () => {
         }
     };
 
+    // useEffect(() => {
+    //     getFacultyInformation();
+    //     getClassForFaculty();
+    // }, []);
+
     useEffect(() => {
         getFacultyInformation();
         getClassForFaculty();
-    }, []);
+
+        const intervalId = setInterval(() => {
+            getClassForFaculty(); // auto-refresh every 30 seconds
+        }, 3000); // 30 sec
+
+        return () => clearInterval(intervalId); // cleanup on unmount
+    }, [contact]);
 
     const colors = {
         background: theme === 'light' ? 'bg-gray-100 text-black' : 'bg-[#121212] text-white',
