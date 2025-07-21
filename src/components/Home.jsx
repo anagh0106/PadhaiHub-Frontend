@@ -146,12 +146,77 @@ const Home = () => {
                 </div>
             )}
 
-            <section className={`py-16 ${colors.card} ${colors.border} rounded-xl mx-4 my-4 shadow-lg text-center animate-fade-in`}>
-                <h2 className="text-3xl font-bold">Why Choose Us?</h2>
-                <p className={`mt-4 text-lg ${colors.subtext} max-w-2xl mx-auto`}>
-                    We offer personalized tuition classes for students of all grades with experienced educators.
-                    Our goal is to foster understanding and a passion for learning.
+            <section className="bg-[#0f172a] text-white py-20 px-6 sm:px-10 md:px-20">
+                {/* Badge */}
+                <div className="text-center mb-6">
+                    <span className="inline-block bg-[#8b5cf6] text-white px-6 py-2 rounded-full font-semibold text-sm sm:text-base shadow">
+                        ⭐ Why Choose Us
+                    </span>
+                </div>
+
+                {/* Heading */}
+                <h2 className="text-3xl sm:text-5xl font-bold text-center mb-4">
+                    What Makes Us Different
+                </h2>
+                <p className="text-center text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto mb-12">
+                    Experience the PadhaiHub advantage with our unique teaching methodology and student-centric approach
                 </p>
+
+                {/* Features */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-16">
+                    {/* Feature Box */}
+                    <div className="bg-black bg-opacity-40 rounded-xl p-6 flex items-start gap-4">
+                        <span className="text-3xl">👩‍🏫</span>
+                        <div>
+                            <h4 className="text-lg font-bold mb-1">Expert Teachers</h4>
+                            <p className="text-gray-300 text-sm">Highly qualified educators with 10+ years experience</p>
+                        </div>
+                    </div>
+
+                    <div className="bg-black bg-opacity-40 rounded-xl p-6 flex items-start gap-4">
+                        <span className="text-3xl">📚</span>
+                        <div>
+                            <h4 className="text-lg font-bold mb-1">Comprehensive Curriculum</h4>
+                            <p className="text-gray-300 text-sm">Complete syllabus coverage for Classes 10, 11 & 12</p>
+                        </div>
+                    </div>
+
+                    <div className="bg-black bg-opacity-40 rounded-xl p-6 flex items-start gap-4">
+                        <span className="text-3xl">🎯</span>
+                        <div>
+                            <h4 className="text-lg font-bold mb-1">Personalized Attention</h4>
+                            <p className="text-gray-300 text-sm">Small batch sizes ensuring individual focus</p>
+                        </div>
+                    </div>
+
+                    <div className="bg-black bg-opacity-40 rounded-xl p-6 flex items-start gap-4">
+                        <span className="text-3xl">📊</span>
+                        <div>
+                            <h4 className="text-lg font-bold mb-1">Regular Assessments</h4>
+                            <p className="text-gray-300 text-sm">Weekly tests and performance tracking</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Stats Section */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 text-center gap-6">
+                    <div>
+                        <h3 className="text-3xl font-bold text-[#8b5cf6]">5000+</h3>
+                        <p className="text-gray-300 text-sm">Students Taught</p>
+                    </div>
+                    <div>
+                        <h3 className="text-3xl font-bold text-[#8b5cf6]">98%</h3>
+                        <p className="text-gray-300 text-sm">Success Rate</p>
+                    </div>
+                    <div>
+                        <h3 className="text-3xl font-bold text-[#8b5cf6]">15+</h3>
+                        <p className="text-gray-300 text-sm">Years Experience</p>
+                    </div>
+                    <div>
+                        <h3 className="text-3xl font-bold text-[#8b5cf6]">50+</h3>
+                        <p className="text-gray-300 text-sm">Expert Teachers</p>
+                    </div>
+                </div>
             </section>
 
             <section className="py-16 animate-fade-in">
