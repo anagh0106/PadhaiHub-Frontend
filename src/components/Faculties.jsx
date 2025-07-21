@@ -238,7 +238,8 @@ const Faculties = () => {
                                 </h2>
 
                                 {/* Form */}
-                                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                                {/* Old Add Faculty Form */}
+                                {/* <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                                     {[
                                         { label: FacultyLabel.name, name: "name", icon: <IoPerson /> },
                                         { label: FacultyLabel.subject, name: "subject", icon: <IoBook /> },
@@ -275,7 +276,158 @@ const Faculties = () => {
                                     >
                                         🚀 Add Faculty
                                     </button>
+                                </form> */}
+                                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+
+                                    {/* Name */}
+                                    <div>
+                                        <label className="block mb-1 font-medium flex items-center gap-2">
+                                            <IoPerson /> {FacultyLabel.name}
+                                        </label>
+                                        <input
+                                            {...register("name", { required: true })}
+                                            autoComplete="off"
+                                            className={`w-full px-4 py-2 rounded-md outline-none ${theme === "light"
+                                                ? "bg-white text-black border border-gray-300"
+                                                : "bg-black/60 text-white border border-white/20"
+                                                }`}
+                                        />
+                                        {errors.name && <p className="text-red-400 text-sm mt-1">This field is required</p>}
+                                    </div>
+
+                                    {/* Subject (Dropdown) */}
+                                    <div>
+                                        <label className="block mb-1 font-medium flex items-center gap-2">
+                                            <IoBook /> {FacultyLabel.subject}
+                                        </label>
+                                        <select
+                                            {...register("subject", { required: true })}
+                                            className={`w-full px-4 py-2 rounded-md outline-none ${theme === "light"
+                                                ? "bg-white text-black border border-gray-300"
+                                                : "bg-black/60 text-white border border-white/20"
+                                                }`}
+                                        >
+                                            <option value="">Select Subject</option>
+                                            <option value="Mathematics">Mathematics</option>
+                                            <option value="Physics">Physics</option>
+                                            <option value="Chemistry">Chemistry</option>
+                                            <option value="Biology">Biology</option>
+                                        </select>
+                                        {errors.subject && <p className="text-red-400 text-sm mt-1">This field is required</p>}
+                                    </div>
+
+                                    {/* Image URL */}
+                                    <div>
+                                        <label className="block mb-1 font-medium flex items-center gap-2">
+                                            <IoImage /> {FacultyLabel.image}
+                                        </label>
+                                        <input
+                                            {...register("image", { required: true })}
+                                            autoComplete="off"
+                                            className={`w-full px-4 py-2 rounded-md outline-none ${theme === "light"
+                                                ? "bg-white text-black border border-gray-300"
+                                                : "bg-black/60 text-white border border-white/20"
+                                                }`}
+                                        />
+                                        {errors.image && <p className="text-red-400 text-sm mt-1">This field is required</p>}
+                                    </div>
+
+                                    {/* Bio */}
+                                    <div>
+                                        <label className="block mb-1 font-medium flex items-center gap-2">
+                                            <IoChatbox /> {FacultyLabel.bio}
+                                        </label>
+                                        <textarea
+                                            {...register("bio", { required: true })}
+                                            rows={3}
+                                            className={`w-full px-4 py-2 rounded-md outline-none resize-none ${theme === "light"
+                                                ? "bg-white text-black border border-gray-300"
+                                                : "bg-black/60 text-white border border-white/20"
+                                                }`}
+                                        />
+                                        {errors.bio && <p className="text-red-400 text-sm mt-1">This field is required</p>}
+                                    </div>
+
+                                    {/* Qualification (Degree Dropdown) */}
+                                    <div>
+                                        <label className="block mb-1 font-medium flex items-center gap-2">
+                                            <IoSchool /> {FacultyLabel.qualification}
+                                        </label>
+                                        <select
+                                            {...register("qualification", { required: true })}
+                                            className={`w-full px-4 py-2 rounded-md outline-none ${theme === "light"
+                                                ? "bg-white text-black border border-gray-300"
+                                                : "bg-black/60 text-white border border-white/20"
+                                                }`}
+                                        >
+                                            <option value="">Select Qualification</option>
+                                            <option value="B.Sc. (Physics)">B.Sc. (Physics)</option>
+                                            <option value="B.Sc. (Chemistry)">B.Sc. (Chemistry)</option>
+                                            <option value="B.Sc. (Mathematics)">B.Sc. (Mathematics)</option>
+                                            <option value="B.Sc. (Biology)">B.Sc. (Biology)</option>
+                                            <option value="M.Sc. (Physics)">M.Sc. (Physics)</option>
+                                            <option value="M.Sc. (Chemistry)">M.Sc. (Chemistry)</option>
+                                            <option value="M.Sc. (Mathematics)">M.Sc. (Mathematics)</option>
+                                            <option value="M.Sc. (Biology)">M.Sc. (Biology)</option>
+                                            <option value="B.Ed.">B.Ed.</option>
+                                            <option value="M.Ed.">M.Ed.</option>
+                                            <option value="Ph.D. (Physics)">Ph.D. (Physics)</option>
+                                            <option value="Ph.D. (Chemistry)">Ph.D. (Chemistry)</option>
+                                            <option value="Ph.D. (Mathematics)">Ph.D. (Mathematics)</option>
+                                            <option value="Ph.D. (Biology)">Ph.D. (Biology)</option>
+                                        </select>
+                                        {errors.qualification && <p className="text-red-400 text-sm mt-1">This field is required</p>}
+                                    </div>
+
+                                    {/* Experience (Dropdown) */}
+                                    <div>
+                                        <label className="block mb-1 font-medium flex items-center gap-2">
+                                            <IoBriefcase /> {FacultyLabel.experience}
+                                        </label>
+                                        <select
+                                            {...register("experience", { required: true })}
+                                            className={`w-full px-4 py-2 rounded-md outline-none ${theme === "light"
+                                                ? "bg-white text-black border border-gray-300"
+                                                : "bg-black/60 text-white border border-white/20"
+                                                }`}
+                                        >
+                                            <option value="">Select Experience</option>
+                                            <option value="0-3 years">0-3 years</option>
+                                            <option value="3-6 years">3-6 years</option>
+                                            <option value="6+ years">6+ years</option>
+                                            <option value="9+ years">9+ years</option>
+                                        </select>
+                                        {errors.experience && <p className="text-red-400 text-sm mt-1">This field is required</p>}
+                                    </div>
+
+                                    {/* Contact */}
+                                    <div>
+                                        <label className="block mb-1 font-medium flex items-center gap-2">
+                                            <IoCall /> {FacultyLabel.contact}
+                                        </label>
+                                        <input
+                                            {...register("contact", { required: true })}
+                                            autoComplete="off"
+                                            className={`w-full px-4 py-2 rounded-md outline-none ${theme === "light"
+                                                ? "bg-white text-black border border-gray-300"
+                                                : "bg-black/60 text-white border border-white/20"
+                                                }`}
+                                        />
+                                        {errors.contact && <p className="text-red-400 text-sm mt-1">This field is required</p>}
+                                    </div>
+
+                                    {/* Submit Button */}
+                                    <button
+                                        type="submit"
+                                        className={`w-full py-3 mt-6 rounded-md font-semibold transition-all ${theme === "light"
+                                            ? "bg-black text-white hover:bg-gray-800"
+                                            : "bg-white text-black hover:bg-gray-300"
+                                            }`}
+                                    >
+                                        🚀 Add Faculty
+                                    </button>
                                 </form>
+
                             </div>
                         </motion.div>
                     </>
