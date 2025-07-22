@@ -5,15 +5,11 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import ThemeContext from './context/ThemeContext.jsx';
 import { motion, useMotionValue, animate } from "framer-motion";
-import { FaGraduationCap } from "react-icons/fa";
 import FAQSection from './FAQSection.jsx';
 import CourseCards from './CourseCards.jsx';
 import { CheckCircle, Heading1 } from "lucide-react";
-import AtomAnimation from './3d/AtomAnimation.jsx';
 import { BookOpen, Users, Clock, Award, Target, Brain } from "lucide-react";
-import { Canvas } from "@react-three/fiber";
 import AnimatedBackground from './AnimateBackground.jsx';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card.jsx';
 
 const Home = () => {
     const [review, setReview] = useState([]);
@@ -268,40 +264,7 @@ const Home = () => {
                 </div>
             </section>
             {/*  */}
-            <section className="py-20">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                            Why Choose PadhaiHub?
-                        </h2>
-                        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                            We provide comprehensive learning solutions designed to help
-                            students achieve their academic goals
-                        </p>
-                    </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {features.map((feature, index) => (
-                            <Card
-                                key={index}
-                                className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow"
-                            >
-                                <CardHeader>
-                                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <feature.icon className="h-8 w-8 text-blue-600" />
-                                    </div>
-                                    <CardTitle className="text-xl">{feature.title}</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <CardDescription className="text-base">
-                                        {feature.description}
-                                    </CardDescription>
-                                </CardContent>
-                            </Card>
-                        ))}
-                    </div>
-                </div>
-            </section>
             {/* <Canvas camera={{ position: [0, 0, 5] }}>
                 <AtomAnimation />
             </Canvas> */}
