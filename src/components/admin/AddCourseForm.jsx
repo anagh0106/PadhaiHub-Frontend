@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
@@ -11,7 +11,7 @@ const AddCourseForm = () => {
         reset,
         formState: { errors, isSubmitSuccessful },
     } = useForm();
-    const [courseCard, setcourseCard] = useState([])
+    
     const API = window.location.hostname === "localhost"
         ? "http://localhost:3000"
         : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com";
@@ -42,9 +42,11 @@ const AddCourseForm = () => {
         }
     };
 
+  
     const inputStyle =
         "flex items-center gap-3 border border-gray-300 bg-white px-4 py-3 rounded-xl shadow-sm focus-within:ring-2 focus-within:ring-blue-500 transition";
 
+   
     return (
         <motion.div
             className="max-w-3xl mx-auto mt-16 p-10 bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl shadow-2xl"

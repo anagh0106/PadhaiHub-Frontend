@@ -1,4 +1,5 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const courses = [
   {
@@ -37,6 +38,23 @@ const courses = [
 ];
 
 export default function CourseCards() {
+
+  const API = window.location.hostname === "localhost"
+    ? "http://localhost:3000"
+    : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com";
+  const [courseCard, setcourseCard] = useState([])
+  const getCourseCardData = async () => {
+    try {
+      const res = await axios.get(`${API}/courseCard/getCourse`)
+      setcourseCard(res.data)
+    } catch (error) {
+      console.log("Error is => ", error);
+
+    }
+  }
+  useEffect(() => {
+    getCourseCardData()
+  }, [])
   return (
     <section className="bg-[#0f172a] text-white px-6 py-16 sm:px-10 md:px-20 rounded-xl max-w-7xl mx-auto">
       <div className="flex flex-col items-center mb-12">
@@ -52,7 +70,7 @@ export default function CourseCards() {
       </div>
 
       <div className="grid md:grid-cols-3 gap-6">
-        {courses.map((course, index) => (
+        {courseCard.map((course, index) => (
           <div
             key={index}
             className="bg-[#1e293b] border border-gray-700 p-6 rounded-2xl shadow hover:shadow-lg transition duration-300 flex flex-col justify-between"
