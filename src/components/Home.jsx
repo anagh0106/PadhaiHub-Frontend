@@ -10,6 +10,7 @@ import FAQSection from './FAQSection.jsx';
 import CourseCards from './CourseCards.jsx';
 import { CheckCircle, Heading1 } from "lucide-react";
 import AtomAnimation from './3d/AtomAnimation.jsx';
+import { BookOpen, Users, Clock, Award, Target, Brain } from "lucide-react";
 import { Canvas } from "@react-three/fiber";
 import AnimatedBackground from './AnimateBackground.jsx';
 
@@ -27,6 +28,38 @@ const Home = () => {
     const [cards, setcards] = useState([]);
     const { theme } = useContext(ThemeContext);
 
+    const features = [
+        {
+            icon: <BookOpen className="text-blue-500 w-8 h-8" />,
+            title: "Expert Faculty",
+            description: "Learn from experienced teachers with proven track records"
+        },
+        {
+            icon: <Users className="text-blue-500 w-8 h-8" />,
+            title: "Small Batches",
+            description: "Personalized attention with limited students per class"
+        },
+        {
+            icon: <Clock className="text-blue-500 w-8 h-8" />,
+            title: "Flexible Timings",
+            description: "Morning and evening batches to suit your schedule"
+        },
+        {
+            icon: <Award className="text-blue-500 w-8 h-8" />,
+            title: "Proven Results",
+            description: "95% of our students achieve their target scores"
+        },
+        {
+            icon: <Target className="text-blue-500 w-8 h-8" />,
+            title: "Goal-Oriented",
+            description: "Focused preparation for boards, competitive exams"
+        },
+        {
+            icon: <Brain className="text-blue-500 w-8 h-8" />,
+            title: "Modern Teaching",
+            description: "Interactive lessons with digital tools and resources"
+        }
+    ];
     const colors = {
         background: theme === 'light' ? 'bg-white' : 'bg-black',
         card: theme === 'light' ? 'bg-gray-100' : 'bg-[rgba(15,15,15,0.5)]',
@@ -210,6 +243,27 @@ const Home = () => {
                         </div>
                     </motion.div>
 
+                </div>
+            </section>
+            <section className="bg-[#0f172a] text-white py-20 px-6 md:px-16">
+                <div className="text-center mb-14">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose PadhaiHub?</h2>
+                    <p className="text-gray-400 max-w-xl mx-auto">
+                        We provide comprehensive learning solutions designed to help students achieve their academic goals
+                    </p>
+                </div>
+
+                <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+                    {features.map((item, index) => (
+                        <div
+                            key={index}
+                            className="bg-[#1e293b] rounded-xl p-6 shadow-xl hover:scale-105 transition-transform duration-300"
+                        >
+                            <div className="flex items-center justify-center mb-4">{item.icon}</div>
+                            <h3 className="text-lg font-semibold text-center mb-2">{item.title}</h3>
+                            <p className="text-sm text-gray-400 text-center">{item.description}</p>
+                        </div>
+                    ))}
                 </div>
             </section>
             {/* <Canvas camera={{ position: [0, 0, 5] }}>
