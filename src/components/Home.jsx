@@ -227,7 +227,7 @@ const Home = () => {
                 {/* Stats Section */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 text-center gap-6">
                     <div>
-                        <h3 className="text-3xl font-bold text-[#8b5cf6]">5000+</h3>
+                        <h3 className="text-3xl font-bold text-[#8b5cf6]">{studentCount}</h3>
                         <p className="text-gray-300 text-sm">Students Taught</p>
                     </div>
                     <div>
@@ -239,7 +239,7 @@ const Home = () => {
                         <p className="text-gray-300 text-sm">Years Experience</p>
                     </div>
                     <div>
-                        <h3 className="text-3xl font-bold text-[#8b5cf6]">50+</h3>
+                        <h3 className="text-3xl font-bold text-[#8b5cf6]">{facultyCount}</h3>
                         <p className="text-gray-300 text-sm">Expert Teachers</p>
                     </div>
                 </div>
