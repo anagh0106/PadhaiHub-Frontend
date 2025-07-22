@@ -11,6 +11,10 @@ const AddCourseForm = () => {
         reset,
         formState: { errors, isSubmitSuccessful },
     } = useForm();
+    const [courseCard, setcourseCard] = useState([])
+    const API = window.location.hostname === "localhost"
+        ? "http://localhost:3000"
+        : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com";
 
     const onSubmit = async (data) => {
         const courseData = {
@@ -21,8 +25,9 @@ const AddCourseForm = () => {
         };
 
         try {
-            await axios.post("/api/courses", courseData);
-            reset();
+            const res = await axios.post(`${API}/courseCard/addCourse`, courseData);
+            console.log(res.data);
+            // reset();
         } catch (err) {
             console.error("Error submitting course:", err);
         }
