@@ -23,12 +23,19 @@ export default function CourseCards() {
   }, []);
 
   return (
-    <section className="bg-black text-white px-6 py-16 sm:px-10 md:px-20 rounded-xl max-w-7xl mx-auto font-poppins">
-      <div className="grid md:grid-cols-3 gap-8">
+    <section className="w-full bg-gradient-to-br from-[#0f0f0f] to-[#1f1f1f] text-white px-6 py-20 sm:px-10 md:px-20 font-poppins">
+      <div className="text-center mb-16">
+        <h2 className="text-4xl font-extrabold mb-3">Explore Our Science Programs</h2>
+        <p className="text-gray-400 max-w-3xl mx-auto">
+          Structured and specially crafted for 11th & 12th Science – both PCM & PCB groups. Learn, Practice & Excel.
+        </p>
+      </div>
+
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {courseCard.map((course, index) => (
           <div
             key={index}
-            className="bg-[#111] border border-[#222] rounded-2xl p-6 shadow-xl flex flex-col justify-between transition hover:scale-105 duration-300"
+            className="bg-[#111827] border border-[#2a2f45] rounded-2xl p-6 shadow-xl transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-purple-500"
           >
             <div>
               <h3 className="text-2xl font-bold mb-4">{course.title}</h3>
@@ -37,7 +44,7 @@ export default function CourseCards() {
                 {course.subjects.map((subject, i) => (
                   <span
                     key={i}
-                    className="bg-[#2c2f3f] text-white text-sm px-3 py-1 rounded-full"
+                    className="bg-[#2f354d] text-white text-sm px-3 py-1 rounded-full"
                   >
                     {subject}
                   </span>
@@ -47,9 +54,14 @@ export default function CourseCards() {
               <h4 className="text-lg font-semibold mb-3">What's Included:</h4>
               <ul className="space-y-2 mb-6">
                 {course.features.map((item, i) => (
-                  <li key={i} className="flex items-center gap-2 text-sm">
-                    <span className="text-green-400 text-lg">✅</span>
-                    <span className={`${item.includes("Preparation") ? "text-gray-400 line-through" : ""}`}>
+                  <li key={i} className="flex items-start gap-2 text-sm">
+                    <span className="text-green-400 text-base">✔</span>
+                    <span
+                      className={`${item.includes("Preparation")
+                        ? "text-gray-500 line-through"
+                        : "text-gray-200"
+                        }`}
+                    >
                       {item}
                     </span>
                   </li>
@@ -57,11 +69,11 @@ export default function CourseCards() {
               </ul>
             </div>
 
-            <div className="border-t border-gray-700 pt-4">
+            <div className="border-t border-gray-700 pt-4 mt-auto">
               <p className="text-2xl font-bold mb-4">
                 ₹{course.price}/<span className="text-base font-medium">month</span>
               </p>
-              <button className="w-full bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600 text-white py-2 rounded-xl font-semibold transition">
+              <button className="w-full bg-gradient-to-r from-purple-600 to-indigo-500 hover:from-purple-700 hover:to-indigo-600 text-white py-2 rounded-xl font-semibold transition-all duration-200">
                 Enroll Now
               </button>
             </div>
