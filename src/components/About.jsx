@@ -80,23 +80,25 @@ const About = () => {
     return (
         <div className={`min-h-screen py-16 px-4 transition-all duration-500 ${colors.background}`}>
             {/* About Header */}
-            <section className="bg-gradient-to-b from-[#edf2f7] to-[#e0e7ff] py-24 px-4 text-center">
-                <div className="mb-6 inline-block bg-white/60 px-4 py-1 rounded-full text-sm font-medium text-gray-700 shadow">
-                    About PadhaiHub
+            <section className="w-full bg-gradient-to-b from-[#edf2f7] to-[#e0e7ff] py-20 text-center m-0 p-0">
+                <div className="max-w-screen-xl mx-auto px-2 sm:px-4">
+                    <div className="mb-6 inline-block bg-white/60 px-4 py-1 rounded-full text-sm font-medium text-gray-700 shadow">
+                        About PadhaiHub
+                    </div>
+
+                    <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
+                        Empowering Students Since{" "}
+                        <span className="text-blue-600">2014</span>
+                    </h2>
+
+                    <p className="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto">
+                        Founded with a vision to transform education, PadhaiHub has been a beacon
+                        of academic excellence, helping thousands of students achieve their dreams
+                        through quality education and personalized guidance.
+                    </p>
                 </div>
-
-                <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
-                    Empowering Students Since{" "}
-                    <span className="text-blue-600">2014</span>
-                </h2>
-
-                <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
-                    Founded with a vision to transform education, PadhaiHub has been a beacon
-                    of academic excellence, helping thousands of students achieve their dreams
-                    through quality education and personalized guidance.
-                </p>
             </section>
-
+            
             <motion.h3 className={`text-5xl font-extrabold mb-8 text-center tracking-wide ${colors.heading}`}
                 initial={{ opacity: 0, y: -40 }}
                 animate={{ opacity: 1, y: 0 }}
