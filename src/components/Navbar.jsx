@@ -104,8 +104,8 @@ function Navbar({ onLogout }) {
                 <nav className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
 
                     <Link to="/" className="flex items-center space-x-2">
-                        <GraduationCap className={`h-8 w-8 text:${colors.text}`} />
-                        <span className="text-xl font-bold text-white ">
+                        <GraduationCap className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+                        <span className={`text-xl font-bold ${colors.text}`}>
                             PadhaiHub
                         </span>
                     </Link>
