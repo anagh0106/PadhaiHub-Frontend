@@ -102,16 +102,9 @@ function Navbar({ onLogout }) {
             <ToastContainer position="top-right" autoClose={3000} />
             <header className={`sticky top-0 w-full ${colors.background} ${colors.text} backdrop-blur-md ${colors.border} border-b shadow-md z-50`}>
                 <nav className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
-                    {/* <div className="text-xl font-bold flex items-center gap-2">
-                        PadhaiHub
-                        {studentId?.trim().toLowerCase() === 'admin' && (
-                            <span className="text-xs bg-gray-700 px-2 py-1 rounded">
-                                {studentId.toUpperCase()}
-                            </span>
-                        )}
-                    </div> */}
+
                     <Link to="/" className="flex items-center space-x-2">
-                        <GraduationCap className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+                        <GraduationCap className={`h-8 w-8 text:${colors.text}`} />
                         <span className="text-xl font-bold text-white ">
                             PadhaiHub
                         </span>
