@@ -1,57 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
+import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { FaBook, FaTags, FaList, FaRupeeSign, FaLayerGroup } from "react-icons/fa";
 
 const AddCourseForm = () => {
-    const [formData, setFormData] = useState({
-        title: "",
-        subjects: "",
-        features: "",
-        price: "",
-        category: "",
-    });
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors, isSubmitSuccessful },
+    } = useForm();
 
-    const [errors, setErrors] = useState([]);
-    const [success, setSuccess] = useState("");
+    const onSubmit = async (data) => {
+        const courseData = {
+            ...data,
+            subjects: data.subjects.split(",").map(s => s.trim()),
+            features: data.features.split(",").map(f => f.trim()),
+            price: Number(data.price),
+        };
 
-    const handleChange = (e) => {
-        setFormData((prev) => ({
-            ...prev,
-            [e.target.name]: e.target.value,
-        }));
+        try {
+            await axios.post("/api/courses", courseData);
+            reset();
+        } catch (err) {
+            console.error("Error submitting course:", err);
+        }
     };
-
-    //   const handleSubmit = async (e) => {
-    //     e.preventDefault();
-
-    //     const courseData = {
-    //       ...formData,
-    //       subjects: formData.subjects.split(",").map((s) => s.trim()),
-    //       features: formData.features.split(",").map((f) => f.trim()),
-    //       price: Number(formData.price),
-    //     };
-
-    //     try {
-    //       const res = await axios.post("/api/courses", courseData);
-    //       setSuccess("Course added successfully!");
-    //       setErrors([]);
-    //       setFormData({
-    //         title: "",
-    //         subjects: "",
-    //         features: "",
-    //         price: "",
-    //         category: "",
-    //       });
-    //     } catch (err) {
-    //       setSuccess("");
-    //       setErrors(err.response?.data?.errors || ["Something went wrong."]);
-    //     }
-    //   };
-
-    const handleSubmit = async (data) => {
-        console.log("Data submitted", data);
-    }
 
     const inputStyle =
         "flex items-center gap-3 border border-gray-300 bg-white px-4 py-3 rounded-xl shadow-sm focus-within:ring-2 focus-within:ring-blue-500 transition";
@@ -67,89 +42,78 @@ const AddCourseForm = () => {
                 🎓 Create New Course
             </h2>
 
-            {errors.length > 0 && (
-                <motion.div
-                    className="mb-6 bg-red-100 text-red-700 px-6 py-3 rounded-xl shadow"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                >
-                    {errors.map((err, i) => (
-                        <p key={i}>• {err}</p>
-                    ))}
-                </motion.div>
-            )}
-
-            {success && (
+            {isSubmitSuccessful && (
                 <motion.div
                     className="mb-6 bg-green-100 text-green-700 px-6 py-3 rounded-xl shadow font-medium"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                 >
-                    ✅ {success}
+                    ✅ Course added successfully!
                 </motion.div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                {/* Title */}
                 <div className={inputStyle}>
                     <FaBook className="text-blue-500" />
                     <input
-                        type="text"
-                        name="title"
-                        value={formData.title}
-                        onChange={handleChange}
+                        {...register("title", { required: "Course title is required" })}
                         placeholder="Course Title"
                         className="w-full bg-transparent outline-none"
                     />
                 </div>
+                {errors.title && <p className="text-red-600 ml-2 -mt-3 text-sm">• {errors.title.message}</p>}
 
+                {/* Subjects */}
                 <div className={inputStyle}>
                     <FaTags className="text-blue-500" />
                     <input
-                        type="text"
-                        name="subjects"
-                        value={formData.subjects}
-                        onChange={handleChange}
+                        {...register("subjects", { required: "Subjects are required" })}
                         placeholder="Subjects (comma-separated)"
                         className="w-full bg-transparent outline-none"
                     />
                 </div>
+                {errors.subjects && <p className="text-red-600 ml-2 -mt-3 text-sm">• {errors.subjects.message}</p>}
 
+                {/* Features */}
                 <div className={inputStyle}>
                     <FaList className="text-blue-500" />
                     <input
-                        type="text"
-                        name="features"
-                        value={formData.features}
-                        onChange={handleChange}
+                        {...register("features", { required: "Features are required" })}
                         placeholder="Features (comma-separated)"
                         className="w-full bg-transparent outline-none"
                     />
                 </div>
+                {errors.features && <p className="text-red-600 ml-2 -mt-3 text-sm">• {errors.features.message}</p>}
 
+                {/* Price */}
                 <div className={inputStyle}>
                     <FaRupeeSign className="text-blue-500" />
                     <input
                         type="number"
-                        name="price"
-                        value={formData.price}
-                        onChange={handleChange}
+                        {...register("price", {
+                            required: "Price is required",
+                            valueAsNumber: true,
+                            min: { value: 1, message: "Price must be at least 1" },
+                        })}
                         placeholder="Price (INR)"
                         className="w-full bg-transparent outline-none"
                     />
                 </div>
+                {errors.price && <p className="text-red-600 ml-2 -mt-3 text-sm">• {errors.price.message}</p>}
 
+                {/* Category */}
                 <div className={inputStyle}>
                     <FaLayerGroup className="text-blue-500" />
                     <input
-                        type="text"
-                        name="category"
-                        value={formData.category}
-                        onChange={handleChange}
+                        {...register("category", { required: "Category is required" })}
                         placeholder="Category (e.g. NEET, JEE)"
                         className="w-full bg-transparent outline-none"
                     />
                 </div>
+                {errors.category && <p className="text-red-600 ml-2 -mt-3 text-sm">• {errors.category.message}</p>}
 
+                {/* Submit Button */}
                 <motion.button
                     type="submit"
                     whileTap={{ scale: 0.95 }}
