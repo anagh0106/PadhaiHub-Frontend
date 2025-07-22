@@ -203,7 +203,7 @@ const About = () => {
         // </div>
         <div className={`w-full min-h-screen transition-all duration-500 ${colors.background}`}>
             {/* About Header */}
-            <section className="w-full bg-gradient-to-b from-[#edf2f7] to-[#e0e7ff] text-center pt-28 pb-32">
+            <section className={`w-full ${colors.background} text-center pt-28 pb-32`}>
                 <div className="max-w-screen-xl mx-auto">
                     <div className="inline-block bg-white/60 px-4 py-1 mt-8 rounded-full text-sm font-medium text-gray-700 shadow">
                         About PadhaiHub
