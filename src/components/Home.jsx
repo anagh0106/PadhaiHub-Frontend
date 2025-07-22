@@ -11,6 +11,7 @@ import CourseCards from './CourseCards.jsx';
 import { CheckCircle, Heading1 } from "lucide-react";
 import AtomAnimation from './3d/AtomAnimation.jsx';
 import { Canvas } from "@react-three/fiber";
+import AnimatedBackground from './AnimateBackground.jsx';
 
 const Home = () => {
     const [review, setReview] = useState([]);
@@ -123,7 +124,7 @@ const Home = () => {
 
     return (
         <div className={`${colors.background} ${colors.text} min-h-screen transition-colors duration-500`}>
-
+            <AnimatedBackground />
             {showAuthForm && (
                 <div className={`fixed inset-0 flex items-center justify-center ${colors.overlay} ${colors.glass} z-50 p-4`}>
                     <Authform onClose={() => setShowAuthForm(false)} />
