@@ -6,6 +6,7 @@ import axios from 'axios';
 import ThemeContext from './context/ThemeContext.jsx';
 import { motion, useMotionValue, animate } from "framer-motion";
 import { FaGraduationCap } from "react-icons/fa";
+import FAQSection from './FAQSection.jsx';
 
 const Home = () => {
     const [review, setReview] = useState([]);
@@ -293,43 +294,7 @@ const Home = () => {
                 </section>
             )}
 
-            {/* Smooth Testimonials Section */}
-            {/* <section className={`py-16 ${colors.card} ${colors.border} rounded-xl mx-4 my-4 text-center animate-fade-in`}>
-                <h2 className="text-3xl font-bold mb-8">What Our Students Say</h2>
-                <div className="relative w-full overflow-hidden">
-                    <AutoScroll reviews={review} theme={theme} colors={colors} />
-                </div>
-            </section> */}
-            <section
-                className={`py-16 px-6 md:px-16 ${colors.card} ${colors.border} rounded-2xl mx-4 my-8 shadow-xl relative overflow-hidden`}
-            >
-                <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className="text-3xl md:text-4xl font-bold text-center mb-12"
-                >
-                    What Our Students Say
-                </motion.h2>
-
-                <div className="relative w-full max-w-5xl mx-auto">
-                    <AutoScroll reviews={review} theme={theme} colors={colors} />
-                </div>
-
-                {/* Floating animation */}
-                <motion.div
-                    className="absolute top-0 right-0 w-24 h-24 bg-pink-500 rounded-full blur-3xl opacity-30"
-                    animate={{ y: [0, 15, 0] }}
-                    transition={{ duration: 4, repeat: Infinity }}
-                />
-                <motion.div
-                    className="absolute bottom-0 left-0 w-32 h-32 bg-purple-600 rounded-full blur-3xl opacity-30"
-                    animate={{ y: [0, -20, 0] }}
-                    transition={{ duration: 5, repeat: Infinity }}
-                />
-            </section>
-
+            <FAQSection />
 
             <footer className={`${colors.card} ${colors.border} text-center py-6 animate-fade-in`}>
                 <p className="text-lg">Ready to start your journey with us?</p>
