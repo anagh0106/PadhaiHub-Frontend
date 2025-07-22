@@ -212,9 +212,9 @@ const Home = () => {
 
                 </div>
             </section>
-            <Canvas camera={{ position: [0, 0, 5] }}>
+            {/* <Canvas camera={{ position: [0, 0, 5] }}>
                 <AtomAnimation />
-            </Canvas>
+            </Canvas> */}
             {token && (
                 <section className={`py-16 ${colors.card} ${colors.border} rounded-xl mx-4 my-4 text-center px-4 animate-fade-in`}>
                     <h2 className="text-3xl font-bold">Share Your Experience</h2>
