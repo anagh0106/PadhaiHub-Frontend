@@ -10,6 +10,7 @@ import FAQSection from './FAQSection.jsx';
 import CourseCards from './CourseCards.jsx';
 import { CheckCircle, Heading1 } from "lucide-react";
 import AtomAnimation from './3d/AtomAnimation.jsx';
+import { Canvas } from "@react-three/fiber";
 
 const Home = () => {
     const [review, setReview] = useState([]);
@@ -40,10 +41,6 @@ const Home = () => {
     const API = isLocal
         ? "http://localhost:3000/review"
         : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com/review";
-
-    const Card_API = window.location.hostname === "localhost"
-        ? "http://localhost:3000/cards"
-        : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com/cards";
 
     const token = localStorage.getItem("token");
     const homeAPI = window.location.hostname === "localhost"
@@ -85,21 +82,9 @@ const Home = () => {
 
         }
     }
-
-    const FetchCardData = async () => {
-        try {
-            const res = await axios.get(`${Card_API}/getAllCards`
-            );
-            setcards(res.data.cards);
-        } catch (err) {
-            console.error("Error fetching cards", err);
-        }
-    };
-
     const handleGetStarted = () => {
         setShowAuthForm(true);
     };
-
     const fetchReviews = async () => {
         try {
             const res = await axios.get(`${API}/getReviews`);
@@ -227,7 +212,9 @@ const Home = () => {
 
                 </div>
             </section>
-            <AtomAnimation/>
+            <Canvas camera={{ position: [0, 0, 5] }}>
+                <AtomAnimation />
+            </Canvas>
             {token && (
                 <section className={`py-16 ${colors.card} ${colors.border} rounded-xl mx-4 my-4 text-center px-4 animate-fade-in`}>
                     <h2 className="text-3xl font-bold">Share Your Experience</h2>
