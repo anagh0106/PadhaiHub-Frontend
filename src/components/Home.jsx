@@ -14,6 +14,8 @@ const Home = () => {
     const [isFormSubmitted, setisFormSubmitted] = useState(false);
     const [MainText, setMainText] = useState("")
     const [Description, setDescription] = useState("")
+    const [facultyCount, setfacultyCount] = useState()
+    const [studentCount, setstudentCount] = useState()
     const [Heading, setHeading] = useState("")
     const [Heading2, setHeading2] = useState("")
     const [cards, setcards] = useState([]);
@@ -57,7 +59,28 @@ const Home = () => {
             console.error("Failed to load homepage text", error);
         }
     };
+    const getFacultyCount = async () => {
+        try {
+            const res = await axios.get(`${homeAPI}/getFacultyCount`)
+            console.log(res.data);
+            setfacultyCount(res.data)
 
+        } catch (error) {
+            console.log("Error is => ", error);
+
+        }
+    }
+    const getStudentCount = async () => {
+        try {
+            const res = await axios.get(`${homeAPI}/getStudentCount`)
+            console.log(res.data);
+            setstudentCount(res.data)
+
+        } catch (error) {
+            console.log("Error is => ", error);
+
+        }
+    }
 
     const FetchCardData = async () => {
         try {
@@ -86,6 +109,8 @@ const Home = () => {
         fetchReviews();
         FetchCardData();
         fetchHomePageText();
+        getFacultyCount();
+        getStudentCount();
     }, []);
 
     const ReviewSubmitHandler = async (reviewData) => {
@@ -110,7 +135,8 @@ const Home = () => {
 
     return (
         <div className={`${colors.background} ${colors.text} min-h-screen transition-colors duration-500`}>
-            <section className="bg-[#0f172a] text-white px-6 py-24 sm:px-10 md:px-20 rounded-xl w-full">
+            {/* Heading 1 */}
+            <section className="bg-[#0f172a] text-white px-6 py-24 sm:px-10 md:px-20  w-full">
                 {/* Badge */}
                 <div className="inline-flex items-center gap-2 bg-[#6d28d9] text-white px-4 py-1.5 rounded-full text-base sm:text-lg font-medium mb-6">
                     <FaGraduationCap className="text-white" />
@@ -145,7 +171,7 @@ const Home = () => {
                     <Authform onClose={() => setShowAuthForm(false)} />
                 </div>
             )}
-
+            {/* Heading 2 */}
             <section className="bg-[#0f172a] text-white py-20 px-6 sm:px-10 md:px-20">
                 {/* Badge */}
                 <div className="text-center mb-6">
