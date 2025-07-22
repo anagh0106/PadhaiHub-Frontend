@@ -96,7 +96,6 @@ const Home = () => {
 
     useEffect(() => {
         fetchReviews();
-        FetchCardData();
         fetchHomePageText();
         getFacultyCount();
         getStudentCount();
