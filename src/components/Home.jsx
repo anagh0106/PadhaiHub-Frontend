@@ -7,6 +7,7 @@ import ThemeContext from './context/ThemeContext.jsx';
 import { motion, useMotionValue, animate } from "framer-motion";
 import { FaGraduationCap } from "react-icons/fa";
 import FAQSection from './FAQSection.jsx';
+import CourseCards from './CourseCards.jsx';
 
 const Home = () => {
     const [review, setReview] = useState([]);
@@ -295,6 +296,7 @@ const Home = () => {
             )}
 
             <FAQSection />
+            <CourseCards />
 
             <footer className={`${colors.card} ${colors.border} text-center py-6 animate-fade-in`}>
                 <p className="text-lg">Ready to start your journey with us?</p>
