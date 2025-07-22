@@ -146,156 +146,6 @@ const Home = () => {
             )}
 
             {/* New Header */}
-            <section className="bg-[#0f172a] text-white px-6 py-20 md:px-20">
-                <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-10">
-                    {/* Left Side */}
-                    <div className="flex-1">
-                        <span className="inline-block bg-[#1e293b] text-xs text-white font-semibold px-3 py-1 rounded-full mb-4">
-                            #1 Tuition Center in the City
-                        </span>
-                        <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-4">
-                            Excel in Your{" "}
-                            <span className="text-blue-500">Academic Journey</span>
-                        </h1>
-                        <p className="text-gray-300 text-lg mb-6 max-w-xl">
-                            Join PadhaiHub and unlock your potential with expert guidance,
-                            personalized learning, and proven teaching methods that guarantee success.
-                        </p>
-                        <div className="flex flex-wrap gap-4">
-                            <button className="bg-white text-black px-6 py-3 rounded-md font-medium shadow hover:bg-gray-200 transition">
-                                Start Learning Today →
-                            </button>
-                            <button className="bg-black border border-white text-white px-6 py-3 rounded-md font-medium hover:bg-white hover:text-black transition">
-                                View Courses
-                            </button>
-                        </div>
-
-                        {/* Stats */}
-                        <div className="mt-10 flex gap-10 flex-wrap">
-                            <div className="text-center">
-                                <h3 className="text-2xl font-bold text-blue-500">1000+</h3>
-                                <p className="text-sm text-gray-400">Students Taught</p>
-                            </div>
-                            <div className="text-center">
-                                <h3 className="text-2xl font-bold text-blue-500">95%</h3>
-                                <p className="text-sm text-gray-400">Success Rate</p>
-                            </div>
-                            <div className="text-center">
-                                <h3 className="text-2xl font-bold text-blue-500">10+</h3>
-                                <p className="text-sm text-gray-400">Years Experience</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Right Card */}
-                    <div className="flex-1">
-                        <div className="bg-[#1e293b] rounded-2xl p-8 shadow-xl max-w-md mx-auto">
-                            <div className="flex items-center gap-3 mb-4">
-                                <span className="text-2xl">🎓</span>
-                                <div>
-                                    <h3 className="text-lg font-semibold">Quality Education</h3>
-                                    <p className="text-sm text-gray-400">Trusted by thousands</p>
-                                </div>
-                            </div>
-
-                            <ul className="space-y-4 mt-6">
-                                {[
-                                    "Experienced Faculty",
-                                    "Small Batch Sizes",
-                                    "Regular Assessments",
-                                    "Doubt Clearing Sessions"
-                                ].map((feature, idx) => (
-                                    <li key={idx} className="flex items-center gap-3 text-sm">
-                                        <CheckCircle className="text-green-400 w-5 h-5" />
-                                        {feature}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className="bg-[#0f172a] text-white px-6 py-20 md:px-20 overflow-hidden">
-                <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-10">
-
-                    {/* Left Side */}
-                    <div className="flex-1 lg:-ml-10">
-                        <span className="inline-block bg-[#1e293b] text-xs text-white font-semibold px-3 py-1 rounded-full mb-4">
-                            #1 Tuition Center in the City
-                        </span>
-                        <h1 className="text-5xl sm:text-6xl font-bold leading-tight mb-4">
-                            Excel in Your{" "}
-                            <span className="text-blue-500">Academic Journey</span>
-                        </h1>
-                        <p className="text-gray-300 text-lg sm:text-xl mb-6 max-w-xl">
-                            Join PadhaiHub and unlock your potential with expert guidance,
-                            personalized learning, and proven teaching methods that guarantee success.
-                        </p>
-                        <div className="flex flex-wrap gap-4">
-                            <button className="bg-white text-black px-6 py-3 rounded-md font-semibold shadow hover:bg-gray-200 transition">
-                                Start Learning Today →
-                            </button>
-                            <button className="bg-black border border-white text-white px-6 py-3 rounded-md font-semibold hover:bg-white hover:text-black transition">
-                                View Courses
-                            </button>
-                        </div>
-
-                        {/* Stats */}
-                        <div className="mt-10 flex gap-10 flex-wrap">
-                            <div className="text-center">
-                                <h3 className="text-3xl font-bold text-blue-500">1000+</h3>
-                                <p className="text-base text-gray-400">Students Taught</p>
-                            </div>
-                            <div className="text-center">
-                                <h3 className="text-3xl font-bold text-blue-500">95%</h3>
-                                <p className="text-base text-gray-400">Success Rate</p>
-                            </div>
-                            <div className="text-center">
-                                <h3 className="text-3xl font-bold text-blue-500">10+</h3>
-                                <p className="text-base text-gray-400">Years Experience</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Right Card with Animation */}
-                    <motion.div
-                        className="flex-1"
-                        initial={{ y: 10 }}
-                        animate={{ y: -10 }}
-                        transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            repeatType: "reverse",
-                            ease: "easeInOut"
-                        }}
-                    >
-                        <div className="bg-[#1e293b] rounded-2xl p-10 shadow-2xl max-w-md mx-auto">
-                            <div className="flex items-center gap-3 mb-6">
-                                <span className="text-3xl">🎓</span>
-                                <div>
-                                    <h3 className="text-xl font-semibold">Quality Education</h3>
-                                    <p className="text-sm text-gray-400">Trusted by thousands</p>
-                                </div>
-                            </div>
-
-                            <ul className="space-y-5 mt-6">
-                                {[
-                                    "Experienced Faculty",
-                                    "Small Batch Sizes",
-                                    "Regular Assessments",
-                                    "Doubt Clearing Sessions"
-                                ].map((feature, idx) => (
-                                    <li key={idx} className="flex items-center gap-3 text-base">
-                                        <CheckCircle className="text-green-400 w-5 h-5" />
-                                        {feature}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
 
             <section className="bg-[#0f172a] text-white px-6 py-20 md:px-20 overflow-hidden">
                 <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-10">
@@ -341,7 +191,7 @@ const Home = () => {
 
                     {/* Right Card with Animation */}
                     <motion.div
-                        className="flex-1 lg:ml-8"
+                        className="flex-1 lg:ml-12"
                         initial={{ y: 10 }}
                         animate={{ y: -10 }}
                         transition={{
@@ -351,30 +201,31 @@ const Home = () => {
                             ease: "easeInOut"
                         }}
                     >
-                        <div className="bg-[#1e293b] rounded-2xl p-10 w-[440px] shadow-2xl mx-auto">
-                            <div className="flex items-center gap-4 mb-6">
-                                <span className="text-4xl">🎓</span>
+                        <div className="bg-[#1e293b] rounded-2xl p-12 w-[500px] shadow-2xl mx-auto">
+                            <div className="flex items-center gap-5 mb-6">
+                                <span className="text-5xl">🎓</span>
                                 <div>
-                                    <h3 className="text-xl font-semibold">Quality Education</h3>
-                                    <p className="text-sm text-gray-400">Trusted by thousands</p>
+                                    <h3 className="text-2xl font-semibold">Quality Education</h3>
+                                    <p className="text-base text-gray-400">Trusted by thousands</p>
                                 </div>
                             </div>
 
-                            <ul className="space-y-5 mt-6">
+                            <ul className="space-y-5 mt-8">
                                 {[
                                     "Experienced Faculty",
                                     "Small Batch Sizes",
                                     "Regular Assessments",
                                     "Doubt Clearing Sessions"
                                 ].map((feature, idx) => (
-                                    <li key={idx} className="flex items-center gap-3 text-base">
-                                        <CheckCircle className="text-green-400 w-5 h-5" />
+                                    <li key={idx} className="flex items-center gap-3 text-lg">
+                                        <CheckCircle className="text-green-400 w-6 h-6" />
                                         {feature}
                                     </li>
                                 ))}
                             </ul>
                         </div>
                     </motion.div>
+
                 </div>
             </section>
 
