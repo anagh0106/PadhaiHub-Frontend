@@ -8,6 +8,7 @@ import { motion, useMotionValue, animate } from "framer-motion";
 import { FaGraduationCap } from "react-icons/fa";
 import FAQSection from './FAQSection.jsx';
 import CourseCards from './CourseCards.jsx';
+import { CheckCircle } from "lucide-react";
 
 const Home = () => {
     const [review, setReview] = useState([]);
