@@ -247,7 +247,7 @@ const Home = () => {
                 </div>
             </section>
 
-            <section className="bg-[#0f172a] text-white py-24 px-6 md:px-20">
+            <section className={`${colors.background} ${colors.text} py-24 px-6 md:px-20`}>
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold mb-5">Why Choose PadhaiHub?</h2>
                     <p className="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed">
