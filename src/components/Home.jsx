@@ -8,7 +8,7 @@ import { motion, useMotionValue, animate } from "framer-motion";
 import { FaGraduationCap } from "react-icons/fa";
 import FAQSection from './FAQSection.jsx';
 import CourseCards from './CourseCards.jsx';
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Heading1 } from "lucide-react";
 
 const Home = () => {
     const [review, setReview] = useState([]);
@@ -145,23 +145,21 @@ const Home = () => {
                 </div>
             )}
 
-            {/* New Header */}
-
+            {/* Final Header */}
             <section className="bg-[#0f172a] text-white px-6 py-20 md:px-20 overflow-hidden">
                 <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-10">
 
                     {/* Left Side */}
                     <div className="flex-1 lg:-ml-16">
                         <span className="inline-block bg-[#1e293b] text-sm text-white font-semibold px-4 py-1 rounded-full mb-4">
-                            #1 Tuition Center in the City
+                            {MainText}
                         </span>
                         <h1 className="text-5xl sm:text-6xl font-extrabold leading-tight mb-5">
-                            Excel in Your{" "}
-                            <span className="text-blue-500">Academic Journey</span>
+                            {Heading}
+                            <span className="text-blue-500">{Heading2}</span>
                         </h1>
                         <p className="text-gray-300 text-xl mb-8 max-w-2xl">
-                            Join PadhaiHub and unlock your potential with expert guidance,
-                            personalized learning, and proven teaching methods that guarantee success.
+                            {Description}
                         </p>
                         <div className="flex flex-wrap gap-5">
                             <button className="bg-white text-black px-8 py-4 rounded-lg font-semibold text-lg shadow hover:bg-gray-200 transition">
@@ -175,7 +173,7 @@ const Home = () => {
                         {/* Stats */}
                         <div className="mt-12 flex gap-12 flex-wrap">
                             <div className="text-center">
-                                <h3 className="text-4xl font-bold text-blue-500">1000+</h3>
+                                <h3 className="text-4xl font-bold text-blue-500">{studentCount}+</h3>
                                 <p className="text-base text-gray-400">Students Taught</p>
                             </div>
                             <div className="text-center">
@@ -226,22 +224,6 @@ const Home = () => {
                         </div>
                     </motion.div>
 
-                </div>
-            </section>
-
-            {/* Card */}
-            <section className="py-16 animate-fade-in">
-                <h2 className="text-3xl font-bold text-center mb-12">Explore Our Learning Atmosphere</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-8">
-                    {cards.map((card, idx) => (
-                        <div key={idx} className={`${colors.card} ${colors.border} rounded-2xl overflow-hidden shadow-lg transform hover:scale-105 hover:brightness-110 transition-transform`}>
-                            <img src={card.image} alt={card.title} className="w-full h-64 object-cover" />
-                            <div className="p-6">
-                                <h3 className="text-2xl font-semibold mb-2">{card.title}</h3>
-                                <p className={`${colors.subtext}`}>{card.text}</p>
-                            </div>
-                        </div>
-                    ))}
                 </div>
             </section>
 
