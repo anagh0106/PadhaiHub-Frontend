@@ -4,7 +4,7 @@ import Authform from './AuthForm.jsx';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import ThemeContext from './context/ThemeContext.jsx';
-import { motion, useMotionValue, animate } from "framer-motion";
+import { motion, useMotionValue, animate, color } from "framer-motion";
 import FAQSection from './FAQSection.jsx';
 import CourseCards from './CourseCards.jsx';
 import { CheckCircle, Heading1 } from "lucide-react";
@@ -247,32 +247,31 @@ const Home = () => {
                 </div>
             </section>
 
-            <section className="bg-[#0f172a] text-white py-20 px-6 md:px-16">
-                <div className="text-center mb-14">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose PadhaiHub?</h2>
-                    <p className="text-gray-400 max-w-xl mx-auto">
-                        We provide comprehensive learning solutions designed to help students achieve their academic goals
+            <section className="bg-[#0f172a] text-white py-24 px-6 md:px-20">
+                <div className="text-center mb-16">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-5">Why Choose PadhaiHub?</h2>
+                    <p className="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed">
+                        We provide comprehensive learning solutions designed to help students achieve their academic goals.
                     </p>
                 </div>
 
-                <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+                <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
                     {features.map((item, index) => (
                         <div
                             key={index}
-                            className="bg-[#1e293b] rounded-xl p-6 shadow-xl hover:scale-105 transition-transform duration-300"
+                            className={`${colors.background} rounded-2xl p-8 shadow-2xl hover:scale-105 transition-transform duration-300`}
                         >
-                            <div className="flex items-center justify-center mb-4">{item.icon}</div>
-                            <h3 className="text-lg font-semibold text-center mb-2">{item.title}</h3>
-                            <p className="text-sm text-gray-400 text-center">{item.description}</p>
+                            <div className={`flex items-center justify-center mb-6 text-4xl ${colors.text}`}>
+                                {item.icon}
+                            </div>
+                            <h3 className="text-xl font-semibold text-center mb-3">{item.title}</h3>
+                            <p className={`text-base ${colors.text} text-center leading-relaxed`}>{item.description}</p>
                         </div>
                     ))}
                 </div>
             </section>
-            {/*  */}
 
-            {/* <Canvas camera={{ position: [0, 0, 5] }}>
-                <AtomAnimation />
-            </Canvas> */}
+
             {token && (
                 <section className={`py-16 ${colors.card} ${colors.border} rounded-xl mx-4 my-4 text-center px-4 animate-fade-in`}>
                     <h2 className="text-3xl font-bold">Share Your Experience</h2>
