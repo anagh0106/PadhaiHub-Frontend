@@ -13,7 +13,7 @@ import AtomAnimation from './3d/AtomAnimation.jsx';
 import { BookOpen, Users, Clock, Award, Target, Brain } from "lucide-react";
 import { Canvas } from "@react-three/fiber";
 import AnimatedBackground from './AnimateBackground.jsx';
-import { Card, CardDescription } from './ui/card.jsx';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card.jsx';
 
 const Home = () => {
     const [review, setReview] = useState([]);
