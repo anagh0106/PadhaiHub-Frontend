@@ -162,12 +162,12 @@ const Home = () => {
             )}
 
             {/* Final Header */}
-            <section className="bg-[#0f172a] text-white px-6 py-20 md:px-20 overflow-hidden">
+            <section className={`${colors.background} ${colors.text} px-6 py-20 md:px-20 overflow-hidden`}>
                 <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-10">
 
                     {/* Left Side */}
                     <div className="flex-1 lg:-ml-16">
-                        <span className="inline-block bg-[#1e293b] text-sm text-white font-semibold px-4 py-1 rounded-full mb-4">
+                        <span className={`inline-block ${colors.background} text-sm ${colors.text} font-semibold px-4 py-1 rounded-full mb-4`}>
                             {MainText}
                         </span>
                         <h1 className="text-5xl sm:text-6xl font-extrabold leading-tight mb-5">
@@ -242,6 +242,92 @@ const Home = () => {
 
                 </div>
             </section>
+            {/* New */}
+            <section className={`${colors.background} ${colors.text} px-6 py-20 md:px-20 overflow-hidden`}>
+                <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-10">
+
+                    {/* Left Side */}
+                    <div className="flex-1 lg:-ml-16">
+                        <span className={`inline-block ${colors.background} ${colors.text} font-semibold px-4 py-1 rounded-full mb-4 text-sm`}>
+                            {MainText}
+                        </span>
+
+                        <h1 className={`text-5xl sm:text-6xl font-extrabold leading-tight mb-5`}>
+                            {Heading}
+                            <span className="text-blue-500"> {Heading2}</span>
+                        </h1>
+
+                        <p className={`text-xl mb-8 max-w-2xl ${colors.subtext}`}>
+                            {Description}
+                        </p>
+
+                        {/* Buttons */}
+                        <div className="flex flex-wrap gap-5">
+                            <button className={`px-8 py-4 rounded-lg font-semibold text-lg transition ${theme === "light" ? "bg-black text-white hover:bg-gray-900" : "bg-white text-black hover:bg-gray-200"}`}>
+                                Start Learning Today →
+                            </button>
+                            <button className={`px-8 py-4 rounded-lg font-semibold text-lg border transition ${theme === "light" ? "bg-white text-black border-black hover:bg-black hover:text-white" : "bg-black text-white border-white hover:bg-white hover:text-black"}`}>
+                                View Courses
+                            </button>
+                        </div>
+
+                        {/* Stats */}
+                        <div className="mt-12 flex gap-12 flex-wrap">
+                            <div className="text-center">
+                                <h3 className="text-4xl font-bold text-blue-500">{studentCount}+</h3>
+                                <p className={`text-base ${colors.subtext}`}>Students Taught</p>
+                            </div>
+                            <div className="text-center">
+                                <h3 className="text-4xl font-bold text-blue-500">95%</h3>
+                                <p className={`text-base ${colors.subtext}`}>Success Rate</p>
+                            </div>
+                            <div className="text-center">
+                                <h3 className="text-4xl font-bold text-blue-500">10+</h3>
+                                <p className={`text-base ${colors.subtext}`}>Years Experience</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right Card */}
+                    <motion.div
+                        className="flex-1 lg:ml-12"
+                        initial={{ y: 10 }}
+                        animate={{ y: -10 }}
+                        transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            repeatType: "reverse",
+                            ease: "easeInOut"
+                        }}
+                    >
+                        <div className={`rounded-2xl p-12 w-[500px] ${colors.card} ${colors.shadow} ${colors.glass} mx-auto`}>
+                            <div className="flex items-center gap-5 mb-6">
+                                <span className="text-5xl">🎓</span>
+                                <div>
+                                    <h3 className="text-2xl font-semibold">Quality Education</h3>
+                                    <p className={`text-base ${colors.subtext}`}>Trusted by thousands</p>
+                                </div>
+                            </div>
+
+                            <ul className="space-y-5 mt-8">
+                                {[
+                                    "Experienced Faculty",
+                                    "Small Batch Sizes",
+                                    "Regular Assessments",
+                                    "Doubt Clearing Sessions"
+                                ].map((feature, idx) => (
+                                    <li key={idx} className={`flex items-center gap-3 text-lg`}>
+                                        <CheckCircle className="text-green-400 w-6 h-6" />
+                                        {feature}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </motion.div>
+
+                </div>
+            </section>
+
             <section className="bg-[#0f172a] text-white py-20 px-6 md:px-16">
                 <div className="text-center mb-14">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose PadhaiHub?</h2>
