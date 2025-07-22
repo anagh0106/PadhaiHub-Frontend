@@ -23,7 +23,7 @@ export default function CourseCards() {
   }, []);
 
   return (
-    <section className="bg-black text-white px-6 py-16 sm:px-10 md:px-20 rounded-xl max-w-7xl mx-auto">
+    <section className="bg-black text-white px-6 py-16 sm:px-10 md:px-20 rounded-xl max-w-7xl mx-auto font-poppins">
       <div className="grid md:grid-cols-3 gap-8">
         {courseCard.map((course, index) => (
           <div
