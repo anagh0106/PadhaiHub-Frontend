@@ -9,6 +9,7 @@ import { FaGraduationCap } from "react-icons/fa";
 import FAQSection from './FAQSection.jsx';
 import CourseCards from './CourseCards.jsx';
 import { CheckCircle, Heading1 } from "lucide-react";
+import AtomAnimation from './3d/AtomAnimation.jsx';
 
 const Home = () => {
     const [review, setReview] = useState([]);
@@ -226,7 +227,7 @@ const Home = () => {
 
                 </div>
             </section>
-
+            <AtomAnimation/>
             {token && (
                 <section className={`py-16 ${colors.card} ${colors.border} rounded-xl mx-4 my-4 text-center px-4 animate-fade-in`}>
                     <h2 className="text-3xl font-bold">Share Your Experience</h2>
