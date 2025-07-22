@@ -67,13 +67,15 @@ const About = () => {
     };
 
     const colors = {
-        background: theme === 'light' ? 'bg-white text-black' : 'bg-black text-white',
-        card: theme === 'light' ? 'bg-white/80 text-black' : 'bg-[rgba(20,20,20,0.6)] text-white',
-        border: theme === 'light' ? 'border border-gray-300' : 'border border-[rgba(255,255,255,0.1)]',
-        heading: theme === 'light' ? 'text-blue-600' : 'text-blue-400',
+        background: theme === 'light' ? 'bg-[#EEF4FF]' : 'bg-[#0f172a]',
+        card: theme === 'light' ? 'bg-gray-100' : 'bg-[rgba(15,15,15,0.5)]',
+        border: theme === 'light' ? 'border-gray-300' : 'border-[rgba(255,255,255,0.1)]',
+        text: theme === 'light' ? 'text-black' : 'text-white',
         subtext: theme === 'light' ? 'text-gray-600' : 'text-gray-300',
-        blurBg: theme === 'light' ? 'bg-white/70 backdrop-blur-lg' : 'bg-[rgba(20,20,20,0.85)] backdrop-blur-xl',
-    }
+        shadow: 'shadow-lg',
+        glass: theme === 'light' ? 'backdrop-blur-lg' : 'backdrop-blur-lg',
+        overlay: theme === 'light' ? 'bg-white/50' : 'bg-black/60'
+    };
 
     return (
         <div className={`min-h-screen py-16 px-4 transition-all duration-500 ${colors.background}`}>
