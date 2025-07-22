@@ -25,7 +25,16 @@ const AddCourseForm = () => {
         };
 
         try {
-            const res = await axios.post(`${API}/courseCard/addCourse`, courseData);
+            const res = await axios.post(
+                `${API}/courseCard/addCourse`,
+                courseData,
+                {
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                }
+            );
+
             console.log(res.data);
             // reset();
         } catch (err) {
