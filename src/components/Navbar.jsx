@@ -87,7 +87,7 @@ function Navbar({ onLogout }) {
     };
 
     const colors = {
-        background: theme === 'light' ? 'bg-white' : 'bg-black',
+        background: theme === 'light' ? 'bg-white' : 'bg-[#0f172a]',
         text: theme === 'light' ? 'text-black' : 'text-white',
         hover: theme === 'light' ? 'hover:text-gray-600' : 'hover:text-gray-300',
         menuBg: theme === 'light' ? 'bg-gray-100' : 'bg-gray-800',
