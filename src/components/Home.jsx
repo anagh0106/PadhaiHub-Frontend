@@ -138,115 +138,13 @@ const Home = () => {
 
     return (
         <div className={`${colors.background} ${colors.text} min-h-screen transition-colors duration-500`}>
-            {/* Heading 1 */}
-            <section className="bg-[#0f172a] text-white px-6 py-24 sm:px-10 md:px-20  w-full">
-                {/* Badge */}
-                <div className="inline-flex items-center gap-2 bg-[#6d28d9] text-white px-4 py-1.5 rounded-full text-base sm:text-lg font-medium mb-6">
-                    <FaGraduationCap className="text-white" />
-                    {MainText}
-                </div>
-
-                {/* Headings */}
-                <h1 className="text-5xl sm:text-6xl font-bold leading-tight text-white">
-                    {Heading} <br />
-                    <span className="text-[#8b5cf6]">{Heading2}</span>
-                </h1>
-
-                {/* Description */}
-                <p className="text-gray-300 mt-6 text-xl max-w-3xl">
-                    {Description}
-                </p>
-
-                {/* Buttons */}
-                <div className="mt-10 flex gap-4 flex-wrap">
-                    <button className="bg-[#8b5cf6] text-white px-6 py-3 rounded-lg font-medium shadow hover:bg-[#7c3aed] transition">
-                        View Courses
-                    </button>
-                    <button className="border border-[#8b5cf6] text-[#8b5cf6] px-6 py-3 rounded-lg font-medium hover:bg-[#8b5cf6] hover:text-white transition">
-                        Book Free Demo
-                    </button>
-                </div>
-            </section>
-
 
             {showAuthForm && (
                 <div className={`fixed inset-0 flex items-center justify-center ${colors.overlay} ${colors.glass} z-50 p-4`}>
                     <Authform onClose={() => setShowAuthForm(false)} />
                 </div>
             )}
-            {/* Heading 2 */}
-            <section className="bg-[#0f172a] text-white py-20 px-6 sm:px-10 md:px-20">
-                {/* Badge */}
-                <div className="text-center mb-6">
-                    <span className="inline-block bg-[#8b5cf6] text-white px-6 py-2 rounded-full font-semibold text-sm sm:text-base shadow">
-                        ⭐ Why Choose Us
-                    </span>
-                </div>
 
-                {/* Heading */}
-                <h2 className="text-3xl sm:text-5xl font-bold text-center mb-4">
-                    What Makes Us Different
-                </h2>
-                <p className="text-center text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto mb-12">
-                    Experience the PadhaiHub advantage with our unique teaching methodology and student-centric approach
-                </p>
-
-                {/* Features */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-16">
-                    {/* Feature Box */}
-                    <div className="bg-black bg-opacity-40 rounded-xl p-6 flex items-start gap-4">
-                        <span className="text-3xl">👩‍🏫</span>
-                        <div>
-                            <h4 className="text-lg font-bold mb-1">Expert Teachers</h4>
-                            <p className="text-gray-300 text-sm">Highly qualified educators with 10+ years experience</p>
-                        </div>
-                    </div>
-
-                    <div className="bg-black bg-opacity-40 rounded-xl p-6 flex items-start gap-4">
-                        <span className="text-3xl">📚</span>
-                        <div>
-                            <h4 className="text-lg font-bold mb-1">Comprehensive Curriculum</h4>
-                            <p className="text-gray-300 text-sm">Complete syllabus coverage for Classes 10, 11 & 12</p>
-                        </div>
-                    </div>
-
-                    <div className="bg-black bg-opacity-40 rounded-xl p-6 flex items-start gap-4">
-                        <span className="text-3xl">🎯</span>
-                        <div>
-                            <h4 className="text-lg font-bold mb-1">Personalized Attention</h4>
-                            <p className="text-gray-300 text-sm">Small batch sizes ensuring individual focus</p>
-                        </div>
-                    </div>
-
-                    <div className="bg-black bg-opacity-40 rounded-xl p-6 flex items-start gap-4">
-                        <span className="text-3xl">📊</span>
-                        <div>
-                            <h4 className="text-lg font-bold mb-1">Regular Assessments</h4>
-                            <p className="text-gray-300 text-sm">Weekly tests and performance tracking</p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Stats Section */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 text-center gap-6">
-                    <div>
-                        <h3 className="text-3xl font-bold text-[#8b5cf6]">{studentCount}</h3>
-                        <p className="text-gray-300 text-sm">Students Taught</p>
-                    </div>
-                    <div>
-                        <h3 className="text-3xl font-bold text-[#8b5cf6]">98%</h3>
-                        <p className="text-gray-300 text-sm">Success Rate</p>
-                    </div>
-                    <div>
-                        <h3 className="text-3xl font-bold text-[#8b5cf6]">15+</h3>
-                        <p className="text-gray-300 text-sm">Years Experience</p>
-                    </div>
-                    <div>
-                        <h3 className="text-3xl font-bold text-[#8b5cf6]">{facultyCount}</h3>
-                        <p className="text-gray-300 text-sm">Expert Teachers</p>
-                    </div>
-                </div>
-            </section>
             {/* New Header */}
             <section className="bg-[#0f172a] text-white px-6 py-20 md:px-20">
                 <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-10">
@@ -315,6 +213,87 @@ const Home = () => {
                             </ul>
                         </div>
                     </div>
+                </div>
+            </section>
+            
+            <section className="bg-[#0f172a] text-white px-6 py-20 md:px-20 overflow-hidden">
+                <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between gap-10">
+
+                    {/* Left Side */}
+                    <div className="flex-1 lg:-ml-10">
+                        <span className="inline-block bg-[#1e293b] text-xs text-white font-semibold px-3 py-1 rounded-full mb-4">
+                            #1 Tuition Center in the City
+                        </span>
+                        <h1 className="text-5xl sm:text-6xl font-bold leading-tight mb-4">
+                            Excel in Your{" "}
+                            <span className="text-blue-500">Academic Journey</span>
+                        </h1>
+                        <p className="text-gray-300 text-lg sm:text-xl mb-6 max-w-xl">
+                            Join PadhaiHub and unlock your potential with expert guidance,
+                            personalized learning, and proven teaching methods that guarantee success.
+                        </p>
+                        <div className="flex flex-wrap gap-4">
+                            <button className="bg-white text-black px-6 py-3 rounded-md font-semibold shadow hover:bg-gray-200 transition">
+                                Start Learning Today →
+                            </button>
+                            <button className="bg-black border border-white text-white px-6 py-3 rounded-md font-semibold hover:bg-white hover:text-black transition">
+                                View Courses
+                            </button>
+                        </div>
+
+                        {/* Stats */}
+                        <div className="mt-10 flex gap-10 flex-wrap">
+                            <div className="text-center">
+                                <h3 className="text-3xl font-bold text-blue-500">1000+</h3>
+                                <p className="text-base text-gray-400">Students Taught</p>
+                            </div>
+                            <div className="text-center">
+                                <h3 className="text-3xl font-bold text-blue-500">95%</h3>
+                                <p className="text-base text-gray-400">Success Rate</p>
+                            </div>
+                            <div className="text-center">
+                                <h3 className="text-3xl font-bold text-blue-500">10+</h3>
+                                <p className="text-base text-gray-400">Years Experience</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Right Card with Animation */}
+                    <motion.div
+                        className="flex-1"
+                        initial={{ y: 10 }}
+                        animate={{ y: -10 }}
+                        transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            repeatType: "reverse",
+                            ease: "easeInOut"
+                        }}
+                    >
+                        <div className="bg-[#1e293b] rounded-2xl p-10 shadow-2xl max-w-md mx-auto">
+                            <div className="flex items-center gap-3 mb-6">
+                                <span className="text-3xl">🎓</span>
+                                <div>
+                                    <h3 className="text-xl font-semibold">Quality Education</h3>
+                                    <p className="text-sm text-gray-400">Trusted by thousands</p>
+                                </div>
+                            </div>
+
+                            <ul className="space-y-5 mt-6">
+                                {[
+                                    "Experienced Faculty",
+                                    "Small Batch Sizes",
+                                    "Regular Assessments",
+                                    "Doubt Clearing Sessions"
+                                ].map((feature, idx) => (
+                                    <li key={idx} className="flex items-center gap-3 text-base">
+                                        <CheckCircle className="text-green-400 w-5 h-5" />
+                                        {feature}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </motion.div>
                 </div>
             </section>
 
