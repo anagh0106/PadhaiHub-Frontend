@@ -7,14 +7,14 @@ export default function CourseCards() {
       ? "http://localhost:3000"
       : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com";
 
-  const [courseCard, setcourseCard] = useState([]);
+  const [courseCard, setCourseCard] = useState([]);
 
   const getCourseCardData = async () => {
     try {
       const res = await axios.get(`${API}/courseCard/getCourse`);
-      setcourseCard(res.data);
+      setCourseCard(res.data);
     } catch (error) {
-      console.log("Error is => ", error);
+      console.log("Error is =>", error);
     }
   };
 
@@ -23,56 +23,45 @@ export default function CourseCards() {
   }, []);
 
   return (
-    <section className="bg-[#0f172a] text-white px-6 py-16 sm:px-10 md:px-20 rounded-xl max-w-7xl mx-auto">
-      <div className="flex flex-col items-center mb-12">
-        <span className="bg-gradient-to-r from-green-500 to-emerald-600 text-white text-sm font-semibold px-4 py-1 rounded-full mb-4">
-          🎓 Our Courses
-        </span>
-        <h2 className="text-3xl sm:text-4xl font-bold mb-2 text-center">
-          Choose Your Perfect Course
-        </h2>
-        <p className="text-gray-300 text-center max-w-2xl">
-          Comprehensive curriculum designed for academic excellence and
-          competitive exam preparation
-        </p>
-      </div>
-
-      <div className="grid md:grid-cols-3 gap-6">
+    <section className="bg-black text-white px-6 py-16 sm:px-10 md:px-20 rounded-xl max-w-7xl mx-auto">
+      <div className="grid md:grid-cols-3 gap-8">
         {courseCard.map((course, index) => (
           <div
             key={index}
-            className="bg-[#1e293b] border border-gray-700 p-6 rounded-2xl shadow hover:shadow-lg transform hover:scale-105 transition-transform duration-300 flex flex-col justify-between"
+            className="bg-[#111] border border-[#222] rounded-2xl p-6 shadow-xl flex flex-col justify-between transition hover:scale-105 duration-300"
           >
             <div>
-              <h3 className="text-xl font-bold mb-4">{course.title}</h3>
+              <h3 className="text-2xl font-bold mb-4">{course.title}</h3>
 
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-2 mb-6">
                 {course.subjects.map((subject, i) => (
                   <span
                     key={i}
-                    className="bg-gray-800 text-sm px-3 py-1 rounded-full"
+                    className="bg-[#2c2f3f] text-white text-sm px-3 py-1 rounded-full"
                   >
                     {subject}
                   </span>
                 ))}
               </div>
 
-              <h4 className="text-white font-semibold mb-2">
-                What's Included:
-              </h4>
-              <ul className="text-gray-300 mb-6 space-y-1">
+              <h4 className="text-lg font-semibold mb-3">What's Included:</h4>
+              <ul className="space-y-2 mb-6">
                 {course.features.map((item, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <span className="text-green-400 text-lg">✔️</span>
-                    <span>{item}</span>
+                  <li key={i} className="flex items-center gap-2 text-sm">
+                    <span className="text-green-400 text-lg">✅</span>
+                    <span className={`${item.includes("Preparation") ? "text-gray-400 line-through" : ""}`}>
+                      {item}
+                    </span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div>
-              <p className="text-2xl font-bold mb-4">₹ {course.price}</p>
-              <button className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-xl font-semibold transition">
+            <div className="border-t border-gray-700 pt-4">
+              <p className="text-2xl font-bold mb-4">
+                ₹{course.price}/<span className="text-base font-medium">month</span>
+              </p>
+              <button className="w-full bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600 text-white py-2 rounded-xl font-semibold transition">
                 Enroll Now
               </button>
             </div>
