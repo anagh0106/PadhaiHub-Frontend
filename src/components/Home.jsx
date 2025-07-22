@@ -58,7 +58,7 @@ const Home = () => {
         }
     ];
     const colors = {
-        background: theme === 'light' ? 'bg-white' : 'bg-[#0f172a]',
+        background: theme === 'light' ? 'bg-[#e0fbfc]' : 'bg-[#0f172a]',
         card: theme === 'light' ? 'bg-gray-100' : 'bg-[rgba(15,15,15,0.5)]',
         border: theme === 'light' ? 'border-gray-300' : 'border-[rgba(255,255,255,0.1)]',
         text: theme === 'light' ? 'text-black' : 'text-white',
