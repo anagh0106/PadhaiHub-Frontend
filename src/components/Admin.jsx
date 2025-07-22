@@ -4,6 +4,7 @@ import { FaBars, FaTimes, FaUsers, FaChalkboardTeacher, FaClipboardList, FaCog, 
 import ThemeContext from './context/ThemeContext'
 import axios from 'axios'
 import Leaderboard from './Leaderboard'
+import AddCourseForm from './admin/AddCourseForm'
 
 const Admin = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -148,6 +149,7 @@ const Admin = () => {
                     </div>
                 </div>
             </div>
+            <AddCourseForm />
         </>
     )
 }
