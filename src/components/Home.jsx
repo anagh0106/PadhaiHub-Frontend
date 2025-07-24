@@ -247,29 +247,6 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* <section className={`${colors.background} ${colors.text} py-24 px-6 md:px-20`}>
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-5">Why Choose PadhaiHub?</h2>
-                    <p className="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed">
-                        We provide comprehensive learning solutions designed to help students achieve their academic goals.
-                    </p>
-                </div>
-
-                <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
-                    {features.map((item, index) => (
-                        <div
-                            key={index}
-                            className={`${colors.background} rounded-2xl p-8 shadow-2xl hover:scale-105 transition-transform duration-300`}
-                        >
-                            <div className={`flex items-center justify-center mb-6 text-4xl ${colors.text}`}>
-                                {item.icon}
-                            </div>
-                            <h3 className="text-xl font-semibold text-center mb-3">{item.title}</h3>
-                            <p className={`text-base ${colors.text} text-center leading-relaxed`}>{item.description}</p>
-                        </div>
-                    ))}
-                </div>
-            </section> */}
             <section className={`${colors.background} ${colors.text} py-24 px-6 md:px-20`}>
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold mb-5">Why Choose PadhaiHub?</h2>
@@ -333,13 +310,23 @@ const Home = () => {
 
             <FAQSection />
             <CourseCards />
+            <section className="bg-blue-600 text-white py-20 px-6 text-center">
+                <div className="max-w-3xl mx-auto">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Journey?</h2>
+                    <p className="text-lg md:text-xl text-gray-100 mb-8">
+                        Join thousands of successful students. Enroll now and transform your academic future.
+                    </p>
 
-            <footer className={`${colors.card} ${colors.border} text-center py-6 animate-fade-in`}>
-                <p className="text-lg">Ready to start your journey with us?</p>
-                <Link to="/" className="mt-4 inline-block bg-gradient-to-r from-red-500 to-red-700 text-white py-3 px-8 rounded-lg hover:scale-105 hover:brightness-110 transition-transform">
-                    Join Now
-                </Link>
-            </footer>
+                    <div className="flex flex-col sm:flex-row justify-center gap-4">
+                        <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-md text-sm font-semibold flex items-center justify-center gap-2">
+                            Enroll Now <span className="text-xl">→</span>
+                        </button>
+                        <button className="bg-white text-black px-6 py-3 rounded-md text-sm font-semibold border border-white hover:bg-gray-100">
+                            View All Courses
+                        </button>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };

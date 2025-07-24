@@ -182,7 +182,7 @@ function Navbar({ onLogout }) {
                                 className="bg-white text-black px-6 py-2 rounded-lg hover:bg-gray-300 transition"
                                 onClick={() => setShowAuthForm(true)}
                             >
-                                Get Started
+                                Enroll Now
                             </button> :
                                 // <button
                                 //     onClick={() => setShouldLogout(true)}
@@ -272,7 +272,7 @@ function Navbar({ onLogout }) {
                                                 setShowAuthForm(true);
                                             }}
                                         >
-                                            Get Started
+                                            Enroll Now
                                         </button>
 
                                         {/* 🔁 Theme Toggle Button */}
