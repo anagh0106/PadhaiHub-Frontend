@@ -318,11 +318,13 @@ const Home = () => {
                     </p>
 
                     <div className="flex flex-col sm:flex-row justify-center gap-4">
-                        <button
-                            onClick={() => handleGetStarted()}
-                            className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-md text-sm font-semibold flex items-center justify-center gap-2">
-                            Enroll Now <span className="text-xl">→</span>
-                        </button>
+
+                        {!showAuthForm ?
+                            <button
+                                onClick={() => handleGetStarted()}
+                                className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-md text-sm font-semibold flex items-center justify-center gap-2">
+                                Enroll Now <span className="text-xl">→</span>
+                            </button> : ""}
                         <button className="bg-white text-black px-6 py-3 rounded-md text-sm font-semibold border border-white hover:bg-gray-100">
                             View All Courses
                         </button>
