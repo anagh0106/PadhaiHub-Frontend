@@ -22,7 +22,6 @@ function Navbar({ onLogout }) {
     const mymail = "anagh0106@gmail.com";
 
     useEffect(() => {
-        localStorage.setItem("loginFormStatus", showAuthForm)
         const handleClickOutside = (e) => {
             if (!e.target.closest(".settings-dropdown")) {
                 setSettingsOpen(false);

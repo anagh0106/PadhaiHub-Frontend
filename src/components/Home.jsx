@@ -13,7 +13,7 @@ import AnimatedBackground from './AnimateBackground.jsx';
 
 const Home = () => {
     const [review, setReview] = useState([]);
-    const [showAuthForm, setShowAuthForm] = useState(false);
+    // const [showAuthForm, setShowAuthForm] = useState(false);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [isFormSubmitted, setisFormSubmitted] = useState(false);
     const [MainText, setMainText] = useState("")
@@ -113,9 +113,9 @@ const Home = () => {
 
         }
     }
-    const handleGetStarted = () => {
-        setShowAuthForm(true);
-    };
+    // const handleGetStarted = () => {
+    //     setShowAuthForm(true);
+    // };
     const fetchReviews = async () => {
         try {
             const res = await axios.get(`${API}/getReviews`);
@@ -155,11 +155,11 @@ const Home = () => {
     return (
         <div className={`${colors.background} ${colors.text} min-h-screen transition-colors duration-500`}>
             <AnimatedBackground />
-            {showAuthForm && (
+            {/* {showAuthForm && (
                 <div className={`fixed inset-0 flex items-center justify-center ${colors.overlay} ${colors.glass} z-50 p-4`}>
 
                 </div>
-            )}
+            )} */}
 
             {/* Final Header */}
             <section className={`${colors.background} ${colors.text} px-6 py-20 md:px-20 overflow-hidden`}>
@@ -310,27 +310,6 @@ const Home = () => {
 
             <FAQSection />
             <CourseCards />
-            <section className="bg-blue-600 text-white py-20 px-6 text-center">
-                <div className="max-w-3xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Journey?</h2>
-                    <p className="text-lg md:text-xl text-gray-100 mb-8">
-                        Join thousands of successful students. Enroll now and transform your academic future.
-                    </p>
-
-                    <div className="flex flex-col sm:flex-row justify-center gap-4">
-
-                        {!showAuthForm ?
-                            <button
-                                onClick={() => handleGetStarted()}
-                                className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-md text-sm font-semibold flex items-center justify-center gap-2">
-                                Enroll Now <span className="text-xl">→</span>
-                            </button> : ""}
-                        <button className="bg-white text-black px-6 py-3 rounded-md text-sm font-semibold border border-white hover:bg-gray-100">
-                            View All Courses
-                        </button>
-                    </div>
-                </div>
-            </section>
         </div>
     );
 };
