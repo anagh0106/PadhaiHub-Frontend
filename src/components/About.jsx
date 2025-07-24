@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import axios from 'axios';
 import ThemeContext from './context/ThemeContext';
+import CoreValues from './CoreValues';
 import { useForm } from 'react-hook-form';
 
 const About = () => {
@@ -160,6 +161,7 @@ const About = () => {
                 ))}
             </div>
 
+            <CoreValues />
             {/* Faculty Modal */}
             <AnimatePresence>
                 {selectedFaculty && (
@@ -203,48 +205,6 @@ const About = () => {
                 )}
             </AnimatePresence>
 
-            {/* Mission & Vision */}
-            <motion.div className="max-w-6xl mx-auto text-center py-24" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }}>
-                <h3 className={`text-4xl font-extrabold mb-12 ${colors.heading}`}>Our Mission & Vision</h3>
-                <div className="grid md:grid-cols-2 gap-14">
-                    {["Mission", "Vision"].map((type, index) => (
-                        <motion.div
-                            key={index}
-                            className={`p-12 rounded-2xl shadow-lg ${colors.card} ${colors.border}`}
-                            whileHover={{ scale: 1.03 }}
-                            transition={{ duration: 0.4 }}
-                        >
-                            <h4 className={`text-2xl font-bold mb-5 ${colors.heading}`}>{type}</h4>
-                            <p className={`${colors.subtext} leading-relaxed text-lg`}>
-                                {type === "Mission"
-                                    ? "Deliver personalized, innovative education that empowers students to excel academically and grow confidently as future leaders."
-                                    : "Build a future where learning is accessible, engaging, and tailored to unlock every student’s full potential."}
-                            </p>
-                        </motion.div>
-                    ))}
-                </div>
-            </motion.div>
-
-            {/* Achievements */}
-            <motion.div className="max-w-6xl mx-auto text-center py-24" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1 }}>
-                <h3 className={`text-4xl font-extrabold mb-12 ${colors.heading}`}>By the Numbers</h3>
-                <div className="flex flex-wrap justify-center gap-20">
-                    {[{ count: `${usercount}+`, label: 'Students Enrolled' }, { count: facultyCount, label: 'Faculties' }, { count: '98%', label: 'Success Rate' }]
-                        .map((item, index) => (
-                            <motion.div
-                                key={index}
-                                className={`p-14 rounded-2xl shadow-lg w-72 ${colors.card} ${colors.border}`}
-                                whileHover={{ scale: 1.08 }}
-                                transition={{ duration: 0.4 }}
-                            >
-                                <motion.h4 className={`text-5xl font-bold mb-5 ${colors.heading}`} animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 2, repeat: Infinity }}>
-                                    {item.count}
-                                </motion.h4>
-                                <p className={`text-xl ${colors.subtext}`}>{item.label}</p>
-                            </motion.div>
-                        ))}
-                </div>
-            </motion.div>
         </div>
 
     );
