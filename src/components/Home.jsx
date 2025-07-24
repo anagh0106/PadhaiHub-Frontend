@@ -270,15 +270,10 @@ const Home = () => {
                     ))}
                 </div>
             </section> */}
-            <section
-                className={`${colors.mode === "dark"
-                    ? "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900"
-                    : "bg-gradient-to-br from-blue-50 via-white to-blue-100"
-                    } ${colors.text} py-24 px-6 md:px-20`}
-            >
+            <section className={`${colors.background} ${colors.text} py-24 px-6 md:px-20`}>
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold mb-5">Why Choose PadhaiHub?</h2>
-                    <p className="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed">
+                    <p className={`${colors.subtext} max-w-2xl mx-auto text-lg leading-relaxed`}>
                         We provide comprehensive learning solutions designed to help students achieve their academic goals.
                     </p>
                 </div>
@@ -287,15 +282,16 @@ const Home = () => {
                     {features.map((item, index) => (
                         <div
                             key={index}
-                            className={`rounded-2xl p-10 min-h-[300px] shadow-2xl hover:scale-105 transition-transform duration-300 
-        backdrop-blur-xl ${colors.mode === "dark" ? "bg-white/10" : "bg-black/10"
-                                }`}
+                            className={`${colors.card} ${colors.glass} ${colors.shadow} rounded-2xl p-10 min-h-[320px] border ${colors.border} 
+        hover:scale-105 transition-transform duration-300`}
                         >
                             <div className={`flex items-center justify-center mb-6 text-5xl ${colors.text}`}>
                                 {item.icon}
                             </div>
                             <h3 className="text-xl font-semibold text-center mb-3">{item.title}</h3>
-                            <p className={`text-base ${colors.text} text-center leading-relaxed`}>{item.description}</p>
+                            <p className={`text-base text-center leading-relaxed ${colors.subtext}`}>
+                                {item.description}
+                            </p>
                         </div>
                     ))}
                 </div>
