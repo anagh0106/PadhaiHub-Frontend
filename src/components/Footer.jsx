@@ -2,7 +2,7 @@ import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaHeart, FaClock } from 'react-
 
 const Footer = () => {
     return (
-        <footer className="bg-[#0f172a] text-white px-6 md:px-20 pt-16 pb-6">
+        <footer className="bg-black text-white px-6 md:px-20 pt-16 pb-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-gray-700 pb-10">
 
                 {/* Logo + Description + Contact */}
