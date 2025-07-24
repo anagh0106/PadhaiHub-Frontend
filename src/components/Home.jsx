@@ -157,7 +157,7 @@ const Home = () => {
             <AnimatedBackground />
             {showAuthForm && (
                 <div className={`fixed inset-0 flex items-center justify-center ${colors.overlay} ${colors.glass} z-50 p-4`}>
-                    <Authform onClose={() => setShowAuthForm(false)} />
+
                 </div>
             )}
 
@@ -318,7 +318,9 @@ const Home = () => {
                     </p>
 
                     <div className="flex flex-col sm:flex-row justify-center gap-4">
-                        <button className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-md text-sm font-semibold flex items-center justify-center gap-2">
+                        <button
+                            onClick={handleGetStarted()}
+                            className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-md text-sm font-semibold flex items-center justify-center gap-2">
                             Enroll Now <span className="text-xl">→</span>
                         </button>
                         <button className="bg-white text-black px-6 py-3 rounded-md text-sm font-semibold border border-white hover:bg-gray-100">

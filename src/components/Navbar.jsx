@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Menu, User, X, Sun, Moon, Settings, GraduationCap } from "lucide-react";
-import { motion, AnimatePresence, color } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { toast, ToastContainer } from "react-toastify";
 import AuthForm from "./AuthForm.jsx";
 import { Link, useNavigate } from "react-router-dom";
