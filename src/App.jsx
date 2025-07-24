@@ -25,6 +25,7 @@ import ViewMockTestQuestions from './components/ViewMockTestQuestions';
 import StartMockTestStudent from './components/StudentDashboard/StartMockTestStudent';
 import FacultyLogin from './components/faculties/FacultyLogin';
 import FacultyDashboard from './components/faculties/FacultyDashboard';
+import Footer from './components/Footer';
 
 const App = () => {
 
@@ -71,6 +72,7 @@ const App = () => {
             <Route path='/faculty/login' element={<FacultyLogin />} />
             <Route path='/faculty/dashboard' element={<FacultyDashboard />} />
           </Routes>
+          <Footer />
         </div>
       </ThemeContext.Provider>
     </>
