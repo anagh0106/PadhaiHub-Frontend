@@ -116,6 +116,7 @@ const About = () => {
             </section>
 
 
+
             {/* Faculty Title */}
             <motion.h3
                 className={`text-5xl font-extrabold mt-16 mb-8 text-center tracking-wide ${colors.heading}`}
