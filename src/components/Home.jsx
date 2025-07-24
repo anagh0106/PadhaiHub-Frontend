@@ -319,7 +319,7 @@ const Home = () => {
 
                     <div className="flex flex-col sm:flex-row justify-center gap-4">
                         <button
-                            onClick={handleGetStarted()}
+                            onClick={() => handleGetStarted()}
                             className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-md text-sm font-semibold flex items-center justify-center gap-2">
                             Enroll Now <span className="text-xl">→</span>
                         </button>
