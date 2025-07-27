@@ -210,40 +210,42 @@ const WelcomeCard = () => {
                 )}
             </AnimatePresence>
 
-            <div className="flex items-center justify-between px-6 py-4 bg-white shadow rounded-xl">
-                {/* Left Section - Profile Info */}
-                <div className="flex items-center gap-4">
-                    {/* Avatar */}
-                    <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center">
-                        <img
-                            src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png"
-                            alt="Profile"
-                            // onClick={handleImageClick}
-                            className="w-full h-full object-cover rounded-full border-4 border-cyan-500 shadow-md cursor-pointer group-hover:scale-105 transition duration-300"
-                        />
-                    </div>
-
-                    {/* Text Info */}
-                    <div>
-                        <h2 className="text-xl font-semibold text-gray-800">Welcome back, {userInfo.fullName}!</h2>
-                        <p className="text-sm text-gray-600">Class {userInfo.grade} - {userInfo.group === "A" ? "PCM" : "PCB"} • ID: {userInfo.studentId}</p>
-                    </div>
-                </div>
-
-                {/* Right Section - Buttons */}
-                <div className="flex gap-3">
-                    <button className="flex items-center gap-2 px-4 py-2 border rounded-lg text-sm text-gray-700 hover:bg-gray-100">
-                        <Bell className="w-4 h-4" />
-                        Notifications
-                    </button>
-                    <button className="flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg text-sm hover:bg-gray-800">
-                        <FileText className="w-4 h-4" />
-                        Download Report
-                    </button>
-                </div>
-            </div>
         </div>
     );
 };
 
 export default WelcomeCard;
+
+
+/*
+
+            <div className="flex items-center justify-between px-6 py-4 bg-white shadow rounded-xl">
+                }
+<div className="flex items-center gap-4">
+    <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center">
+        <img
+            src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png"
+            alt="Profile"
+            // onClick={handleImageClick}
+            className="w-full h-full object-cover rounded-full border-4 border-cyan-500 shadow-md cursor-pointer group-hover:scale-105 transition duration-300"
+        />
+    </div>
+
+    <div>
+        <h2 className="text-xl font-semibold text-gray-800">Welcome back, {userInfo.fullName}!</h2>
+        <p className="text-sm text-gray-600">Class {userInfo.grade} - {userInfo.group === "A" ? "PCM" : "PCB"} • ID: {userInfo.studentId}</p>
+    </div>
+</div>
+
+<div className="flex gap-3">
+    <button className="flex items-center gap-2 px-4 py-2 border rounded-lg text-sm text-gray-700 hover:bg-gray-100">
+        <Bell className="w-4 h-4" />
+        Notifications
+    </button>
+    <button className="flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg text-sm hover:bg-gray-800">
+        <FileText className="w-4 h-4" />
+        Download Report
+    </button>
+</div>
+            </div >
+*/
