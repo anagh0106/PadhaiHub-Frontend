@@ -12,6 +12,7 @@ import ThemeContext from './context/ThemeContext';
 import PerformanceAnalytics from './StudentDashboard/PerformanceAnalytics';
 import StudentTestManagement from './StudentDashboard/StudentTestManagement';
 import MockTestScore from './StudentDashboard/MockTestScore';
+import { Bell, FileText } from 'lucide-react';
 
 const StudentDashboard = () => {
     const { theme } = useContext(ThemeContext);
