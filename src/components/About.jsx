@@ -165,7 +165,7 @@ const About = () => {
                     </div>
 
                     {/* Our Mission */}
-                    <div className="lg:w-1/3">
+                    <div className={`lg:w-1/3 ${colors.background}`}>
                         <div className={`${colors.background} shadow-lg rounded-xl p-6 md:p-8`}>
                             <h3 className={`text-2xl font-semibold mb-6 ${colors.text}`}>Our Mission</h3>
                             <ul className={`space-y-4 ${colors.subtext}`}>
