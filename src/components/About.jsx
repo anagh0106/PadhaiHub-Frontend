@@ -135,6 +135,30 @@ const About = () => {
             >
                 Our mentors inspire, guide and elevate student potential — blending expertise with passion for academic excellence.
             </motion.p>
+
+            {/* Faculty Cards */}
+            <div className="flex flex-wrap justify-center gap-14">
+                {facultyData.map((teacher, index) => (
+                    <motion.div
+                        key={index}
+                        className={`rounded-2xl shadow-xl w-80 py-10 px-6 cursor-pointer transition-transform duration-300 hover:scale-105 ${colors.card} ${colors.border}`}
+                        whileHover={{ scale: 1.05 }}
+                        onClick={() => handleCardClick(teacher)}
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                    >
+                        <img
+                            src={teacher.image}
+                            alt={teacher.name}
+                            className="w-36 h-36 mx-auto mb-6 rounded-full object-cover border-[6px] border-blue-500 shadow-lg"
+                        />
+                        <h4 className={`text-2xl font-bold mb-1 text-center ${colors.heading}`}>{teacher.name}</h4>
+                        <p className={`text-lg text-center ${colors.subtext}`}>{teacher.subject}</p>
+                    </motion.div>
+                ))}
+            </div>
             {/* Our Story */}
             <section className={`${colors.background} py-20 px-4 md:px-10`}>
                 <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10">
@@ -190,30 +214,6 @@ const About = () => {
                     </div>
                 </div>
             </section>
-            {/* Faculty Cards */}
-            <div className="flex flex-wrap justify-center gap-14">
-                {facultyData.map((teacher, index) => (
-                    <motion.div
-                        key={index}
-                        className={`rounded-2xl shadow-xl w-80 py-10 px-6 cursor-pointer transition-transform duration-300 hover:scale-105 ${colors.card} ${colors.border}`}
-                        whileHover={{ scale: 1.05 }}
-                        onClick={() => handleCardClick(teacher)}
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                    >
-                        <img
-                            src={teacher.image}
-                            alt={teacher.name}
-                            className="w-36 h-36 mx-auto mb-6 rounded-full object-cover border-[6px] border-blue-500 shadow-lg"
-                        />
-                        <h4 className={`text-2xl font-bold mb-1 text-center ${colors.heading}`}>{teacher.name}</h4>
-                        <p className={`text-lg text-center ${colors.subtext}`}>{teacher.subject}</p>
-                    </motion.div>
-                ))}
-            </div>
-
             <CoreValues />
             {/* Faculty Modal */}
             <AnimatePresence>
