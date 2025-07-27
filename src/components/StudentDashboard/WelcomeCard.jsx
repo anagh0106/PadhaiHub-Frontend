@@ -209,18 +209,23 @@ const WelcomeCard = () => {
                 )}
             </AnimatePresence>
 
-             <div className="flex items-center justify-between px-6 py-4 bg-white shadow rounded-xl">
+            <div className="flex items-center justify-between px-6 py-4 bg-white shadow rounded-xl">
                 {/* Left Section - Profile Info */}
                 <div className="flex items-center gap-4">
                     {/* Avatar */}
                     <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center">
-                        <span className="text-blue-600 text-2xl">👤</span>
+                        <img
+                            src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png"
+                            alt="Profile"
+                            // onClick={handleImageClick}
+                            className="w-full h-full object-cover rounded-full border-4 border-cyan-500 shadow-md cursor-pointer group-hover:scale-105 transition duration-300"
+                        />
                     </div>
 
                     {/* Text Info */}
                     <div>
-                        <h2 className="text-xl font-semibold text-gray-800">Welcome back, Priya Sharma!</h2>
-                        <p className="text-sm text-gray-600">Class 12 - PCM • ID: STU2024001</p>
+                        <h2 className="text-xl font-semibold text-gray-800">Welcome back, {userInfo.fullName}!</h2>
+                        <p className="text-sm text-gray-600">Class {userInfo.grade} - {userInfo.group === "A" ? "PCM" : "PCB"} • ID: {userInfo.studentId}</p>
                     </div>
                 </div>
 
