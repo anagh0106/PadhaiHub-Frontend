@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { FaBullseye, FaHeart, FaChartLine, FaUsers } from "react-icons/fa";
-import ThemeContext from "../context/ThemeContext"; // update path as needed
+import ThemeContext from "./context/ThemeContext"; // update path as needed
 
 export default function CoreValues() {
     const { theme } = useContext(ThemeContext);
