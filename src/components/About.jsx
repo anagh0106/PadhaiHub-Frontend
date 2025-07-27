@@ -4,6 +4,7 @@ import axios from 'axios';
 import ThemeContext from './context/ThemeContext';
 import CoreValues from './CoreValues';
 import { useForm } from 'react-hook-form';
+import { FaCheckCircle } from "react-icons/fa";
 
 const About = () => {
     const { theme } = useContext(ThemeContext);
@@ -116,8 +117,6 @@ const About = () => {
                 </div>
             </section>
 
-
-
             {/* Faculty Title */}
             <motion.h3
                 className={`text-5xl font-extrabold mt-16 mb-8 text-center tracking-wide ${colors.heading}`}
@@ -136,7 +135,61 @@ const About = () => {
             >
                 Our mentors inspire, guide and elevate student potential — blending expertise with passion for academic excellence.
             </motion.p>
+            {/* Our Story */}
+            <section className="bg-gray-50 py-20 px-4 md:px-10">
+                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10">
+                    {/* Our Story */}
+                    <div className="lg:w-2/3">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Our Story</h2>
+                        <p className="text-gray-700 mb-4 leading-relaxed">
+                            PadhaiHub was founded in 2014 by a group of passionate educators who believed
+                            that every student deserves access to quality education. What started as a small
+                            coaching center with just 20 students has now grown into one of the most trusted
+                            educational institutions in the region.
+                        </p>
+                        <p className="text-gray-700 mb-4 leading-relaxed">
+                            Our journey began with a simple mission: to bridge the gap between traditional
+                            teaching methods and modern educational needs. We recognized that each student is
+                            unique and requires personalized attention to reach their full potential.
+                        </p>
+                        <p className="text-gray-700 mb-4 leading-relaxed">
+                            Over the years, we have continuously evolved our teaching methodologies,
+                            incorporated technology into our classrooms, and built a team of exceptional
+                            educators who share our vision of academic excellence.
+                        </p>
+                        <p className="text-gray-700 leading-relaxed">
+                            Today, PadhaiHub stands as a testament to the power of dedicated teaching and
+                            student-centric education, with thousands of success stories and a legacy of
+                            academic achievement.
+                        </p>
+                    </div>
 
+                    {/* Our Mission */}
+                    <div className="lg:w-1/3">
+                        <div className="bg-white shadow-lg rounded-xl p-6 md:p-8">
+                            <h3 className="text-2xl font-semibold mb-6 text-gray-900">Our Mission</h3>
+                            <ul className="space-y-4 text-gray-800">
+                                <li className="flex items-start gap-3">
+                                    <FaCheckCircle className="text-green-500 mt-1" />
+                                    <span>Provide personalized education that caters to each student's learning style</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <FaCheckCircle className="text-green-500 mt-1" />
+                                    <span>Foster critical thinking and problem-solving abilities</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <FaCheckCircle className="text-green-500 mt-1" />
+                                    <span>Create a supportive environment that encourages academic growth</span>
+                                </li>
+                                <li className="flex items-start gap-3">
+                                    <FaCheckCircle className="text-green-500 mt-1" />
+                                    <span>Prepare students not just for exams, but for life</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
             {/* Faculty Cards */}
             <div className="flex flex-wrap justify-center gap-14">
                 {facultyData.map((teacher, index) => (
