@@ -4,6 +4,7 @@ import { IoClose } from "react-icons/io5";
 import ProfileForm from "./ProfileForm";
 import axios from "axios";
 import ThemeContext from "../context/ThemeContext";
+import { Bell, FileText } from "lucide-react";
 
 const WelcomeCard = () => {
     const [currentTime, setCurrentTime] = useState(new Date());
