@@ -166,9 +166,9 @@ const About = () => {
 
                     {/* Our Mission */}
                     <div className="lg:w-1/3">
-                        <div className="bg-white shadow-lg rounded-xl p-6 md:p-8">
-                            <h3 className="text-2xl font-semibold mb-6 text-gray-900">Our Mission</h3>
-                            <ul className="space-y-4 text-gray-800">
+                        <div className={`${colors.background} shadow-lg rounded-xl p-6 md:p-8`}>
+                            <h3 className={`text-2xl font-semibold mb-6 ${colors.text}`}>Our Mission</h3>
+                            <ul className={`space-y-4 ${colors.subtext}`}>
                                 <li className="flex items-start gap-3">
                                     <FaCheckCircle className="text-green-500 mt-1" />
                                     <span>Provide personalized education that caters to each student's learning style</span>
