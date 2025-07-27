@@ -136,28 +136,28 @@ const About = () => {
                 Our mentors inspire, guide and elevate student potential — blending expertise with passion for academic excellence.
             </motion.p>
             {/* Our Story */}
-            <section className="bg-gray-50 py-20 px-4 md:px-10">
+            <section className={`${colors.background} py-20 px-4 md:px-10`}>
                 <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10">
                     {/* Our Story */}
                     <div className="lg:w-2/3">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">Our Story</h2>
-                        <p className="text-gray-700 mb-4 leading-relaxed">
+                        <h2 className={`text-3xl md:text-4xl ${colors.text} font-bold mb-6`}>Our Story</h2>
+                        <p className={`${colors.subtext} mb-4 leading-relaxed`}>
                             PadhaiHub was founded in 2014 by a group of passionate educators who believed
                             that every student deserves access to quality education. What started as a small
                             coaching center with just 20 students has now grown into one of the most trusted
                             educational institutions in the region.
                         </p>
-                        <p className="text-gray-700 mb-4 leading-relaxed">
+                        <p className={`${colors.subtext} mb-4 leading-relaxed`}>
                             Our journey began with a simple mission: to bridge the gap between traditional
                             teaching methods and modern educational needs. We recognized that each student is
                             unique and requires personalized attention to reach their full potential.
                         </p>
-                        <p className="text-gray-700 mb-4 leading-relaxed">
+                        <p className={`${colors.subtext} mb-4 leading-relaxed`}>
                             Over the years, we have continuously evolved our teaching methodologies,
                             incorporated technology into our classrooms, and built a team of exceptional
                             educators who share our vision of academic excellence.
                         </p>
-                        <p className="text-gray-700 leading-relaxed">
+                        <p className={`${colors.subtext} mb-4 leading-relaxed`}>
                             Today, PadhaiHub stands as a testament to the power of dedicated teaching and
                             student-centric education, with thousands of success stories and a legacy of
                             academic achievement.
@@ -165,7 +165,7 @@ const About = () => {
                     </div>
 
                     {/* Our Mission */}
-                    <div className={`lg:w-1/3 ${colors.background}`}>
+                    <div className="lg:w-1/3">
                         <div className={`${colors.background} shadow-lg rounded-xl p-6 md:p-8`}>
                             <h3 className={`text-2xl font-semibold mb-6 ${colors.text}`}>Our Mission</h3>
                             <ul className={`space-y-4 ${colors.subtext}`}>
