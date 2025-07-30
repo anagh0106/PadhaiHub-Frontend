@@ -58,7 +58,13 @@ const HeroSection = () => {
     }
     const ActivatedOrNot = async () => {
         try {
-            const res = await axios.get(`${API}/getSubcriptedUser`)
+            const res = await axios.get(`${API}/getSubcriptedUser`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
+                    }
+                }
+            )
             console.log("Activation Info", res.data);
 
         } catch (error) {
