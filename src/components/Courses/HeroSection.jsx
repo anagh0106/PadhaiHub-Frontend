@@ -22,6 +22,8 @@ const HeroSection = () => {
     }
 
     const submithandler = async (data) => {
+        console.log(data);
+
         if (!token) {
             setErrorMessage("You are not a valid user !");
             return;
