@@ -12,12 +12,12 @@ export const Course = () => {
 
 
     useEffect(() => {
-        const count = localStorage.getItem("SubscribeCount")
+        const count = localStorage.getItem("isActivated")
         if (count) {
             setiscounterExist(true)
         }
     })
-    
+
     return (
         <div className="bg-black text-white font-sans">
             {!iscounterExist
