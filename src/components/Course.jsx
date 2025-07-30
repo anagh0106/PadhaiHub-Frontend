@@ -18,7 +18,7 @@ export const Course = () => {
         }
     })
     useEffect(() => {
-        getSubcriptedStudent()
+        // getSubcriptedStudent()
     })
     return (
         <div className="bg-black text-white font-sans">
