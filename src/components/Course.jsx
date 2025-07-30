@@ -9,10 +9,10 @@ import axios from 'axios'
 export const Course = () => {
 
     const [iscounterExist, setiscounterExist] = useState(false)
-    const getSubcriptedStudent = async () => {
-        const res = await axios.get(`${API}/getSubcriptedUser`)
-        console.log(res.data)
-    }
+    // const getSubcriptedStudent = async () => {
+    //     const res = await axios.get(`${API}/getSubcriptedUser`)
+    //     console.log(res.data)
+    // }
 
     useEffect(() => {
         const count = localStorage.getItem("SubscribeCount")
