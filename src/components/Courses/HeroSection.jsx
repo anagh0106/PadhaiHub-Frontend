@@ -8,7 +8,7 @@ const HeroSection = () => {
 
     const [isbuttonclicked, setisbuttonclicked] = useState(false);
     const [isAuthnticatedUser, setisAuthnticatedUser] = useState(false);
-    const [isActivated, setisActivated] = useState(false)
+    const [isActivated, setisActivated] = useState()
     const [errorMessage, setErrorMessage] = useState("");
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const email = localStorage.getItem("userEmail");
@@ -20,7 +20,6 @@ const HeroSection = () => {
     const selectCourseFunction = () => {
         setisbuttonclicked(true);
     }
-
     const submithandler = async (data) => {
         console.log(data);
 
