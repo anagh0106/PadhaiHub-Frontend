@@ -69,7 +69,7 @@ const HeroSection = () => {
     })
     return (
         <>
-            {localStorage.getItem("isActivated") === false && isbuttonclicked ? (
+            {localStorage.getItem("isActivated") == false && isbuttonclicked ? (
                 // Full screen modal with backdrop blur
                 <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center z-50">
                     <motion.div
