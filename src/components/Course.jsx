@@ -17,9 +17,7 @@ export const Course = () => {
             setiscounterExist(true)
         }
     })
-    useEffect(() => {
-        // getSubcriptedStudent()
-    })
+    
     return (
         <div className="bg-black text-white font-sans">
             {!iscounterExist
