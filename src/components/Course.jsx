@@ -4,10 +4,15 @@ import AboutSection from './Courses/AboutSection'
 import CourseSection from './Courses/CourseSection'
 import { AccessCourse } from './Courses/AccessCourse'
 import PaymentComponent from './PaymentComponent'
+import axios from 'axios'
 
 export const Course = () => {
 
     const [iscounterExist, setiscounterExist] = useState(false)
+    const getSubcriptedStudent = async () => {
+        const res = await axios.get(`${API}/getSubcriptedUser`)
+        console.log(res.data)
+    }
 
     useEffect(() => {
         const count = localStorage.getItem("SubscribeCount")
@@ -15,7 +20,9 @@ export const Course = () => {
             setiscounterExist(true)
         }
     })
-
+    useEffect(() => {
+        getSubcriptedStudent()
+    })
     return (
         <div className="bg-black text-white font-sans">
             {!iscounterExist
@@ -23,7 +30,7 @@ export const Course = () => {
                 : (<AccessCourse />)}
             <AboutSection />
             <CourseSection />
-            <PaymentComponent/>
+            <PaymentComponent />
         </div>
     )
 }

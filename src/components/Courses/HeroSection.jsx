@@ -8,6 +8,7 @@ const HeroSection = () => {
 
     const [isbuttonclicked, setisbuttonclicked] = useState(false);
     const [isAuthnticatedUser, setisAuthnticatedUser] = useState(false);
+    const [isActivated, setisActivated] = useState(false)
     const [errorMessage, setErrorMessage] = useState("");
     const [countSubscribe, setcountSubscribe] = useState(() => {
         const storedCount = localStorage.getItem("SubscribeCount")
@@ -16,7 +17,6 @@ const HeroSection = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const email = localStorage.getItem("userEmail");
     const token = localStorage.getItem("token");
-    // const API = "http://localhost:3000/course" || "http://192.168.31.252:3000/course"
 
     const API = window.location.hostname === "localhost"
         ? "http://localhost:3000/course"
@@ -24,7 +24,7 @@ const HeroSection = () => {
     const selectCourseFunction = () => {
         setisbuttonclicked(true);
     }
-
+    
     const submithandler = async (data) => {
         if (!token) {
             setErrorMessage("You are not a valid user !");
@@ -41,7 +41,6 @@ const HeroSection = () => {
             console.log("Data.email is ", data.email)
             const res = await axios.post(`${API}/postCount`,
                 {
-                    counter: countSubscribe,
                     email: data.email
                 },
                 {
@@ -50,9 +49,7 @@ const HeroSection = () => {
             );
             console.log(res.data);
             setisAuthnticatedUser(true);
-            const updatedCount = countSubscribe + 1;
-            setcountSubscribe(updatedCount);
-            localStorage.setItem("SubscribeCount", updatedCount);
+            setisActivated(true)
             setErrorMessage("");
             setisbuttonclicked(false);
             reset();

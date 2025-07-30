@@ -82,23 +82,6 @@ const About = () => {
     return (
         <div className={`w-full min-h-screen transition-all duration-500 ${colors.background}`}>
             {/* About Header */}
-            {/* <section className={`w-full ${colors.background} text-center pt-28 pb-32`}>
-                <div className="max-w-screen-xl mx-auto">
-                    <div className="inline-block bg-white/60 px-4 py-1 mt-8 rounded-full text-sm font-medium text-gray-700 shadow">
-                        About PadhaiHub
-                    </div>
-
-                    <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 my-6">
-                        Empowering Students Since <span className="text-blue-600">2014</span>
-                    </h2>
-
-                    <p className="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto">
-                        Founded with a vision to transform education, PadhaiHub has been a beacon
-                        of academic excellence, helping thousands of students achieve their dreams
-                        through quality education and personalized guidance.
-                    </p>
-                </div>
-            </section> */}
             <section className={`w-full ${colors.background} text-center pt-28 pb-32`}>
                 <div className="max-w-screen-xl mx-auto px-4">
                     <div className="inline-block bg-white/60 px-4 py-1 mt-8 rounded-full text-sm font-medium text-gray-700 shadow">
