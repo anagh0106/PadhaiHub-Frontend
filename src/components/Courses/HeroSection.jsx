@@ -56,7 +56,16 @@ const HeroSection = () => {
             setErrorMessage("Something went wrong !");
         }
     }
+    const ActivatedOrNot = async () => {
+        try {
+            const res = await axios.get(`${API}/getSubcriptedUser`)
+            console.log("Activation Info", res.data);
 
+        } catch (error) {
+            console.log("Error is =>", error);
+
+        }
+    }
     // Auto clear error after 3 sec
     useEffect(() => {
         if (errorMessage) {
@@ -65,7 +74,7 @@ const HeroSection = () => {
         }
     }, [errorMessage]);
     useEffect(() => {
-        isActivated === true ? localStorage.setItem("isActivated", true) : localStorage.setItem("isActivated", false)
+        ActivatedOrNot()
     })
     return (
         <>
