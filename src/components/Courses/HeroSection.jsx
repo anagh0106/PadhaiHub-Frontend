@@ -10,10 +10,6 @@ const HeroSection = () => {
     const [isAuthnticatedUser, setisAuthnticatedUser] = useState(false);
     const [isActivated, setisActivated] = useState(false)
     const [errorMessage, setErrorMessage] = useState("");
-    const [countSubscribe, setcountSubscribe] = useState(() => {
-        const storedCount = localStorage.getItem("SubscribeCount")
-        return storedCount ? parseInt(storedCount) : 0;
-    })
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const email = localStorage.getItem("userEmail");
     const token = localStorage.getItem("token");
@@ -24,7 +20,7 @@ const HeroSection = () => {
     const selectCourseFunction = () => {
         setisbuttonclicked(true);
     }
-    
+
     const submithandler = async (data) => {
         if (!token) {
             setErrorMessage("You are not a valid user !");
@@ -67,10 +63,12 @@ const HeroSection = () => {
             return () => clearTimeout(timer);
         }
     }, [errorMessage]);
-
+    useEffect(() => {
+        isActivated === true ? localStorage.setItem("isActivated", true) : localStorage.setItem("isActivated", false)
+    })
     return (
         <>
-            {countSubscribe < 1 && isbuttonclicked ? (
+            {isActivated === false && isbuttonclicked ? (
                 // Full screen modal with backdrop blur
                 <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center z-50">
                     <motion.div
