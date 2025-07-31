@@ -66,7 +66,8 @@ const HeroSection = () => {
                 }
             )
             const datas=res.data.student
-            console.log(datas.map(s=>s.isActivated));
+
+            console.log(datas.isActivated);
             console.log("Activation Info", res.data.student);
 
         } catch (error) {
