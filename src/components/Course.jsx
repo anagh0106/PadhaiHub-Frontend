@@ -13,6 +13,7 @@ export const Course = () => {
 
     useEffect(() => {
         const count = localStorage.getItem("isActivated")
+        console.log("Value of Count ", count)
         if (count) {
             setiscounterExist(true)
         }
