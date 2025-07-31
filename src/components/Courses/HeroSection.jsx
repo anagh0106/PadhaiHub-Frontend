@@ -17,6 +17,7 @@ const HeroSection = () => {
     const API = window.location.hostname === "localhost"
         ? "http://localhost:3000/course"
         : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com/course";
+
     const selectCourseFunction = () => {
         setisbuttonclicked(true);
     }
@@ -65,9 +66,11 @@ const HeroSection = () => {
                     }
                 }
             )
-            const datas=res.data.student
-
-            console.log(datas.isActivated);
+            const datas = res.data.student
+            if (datas.isActivated === true) {
+                setisActivated(true)
+                localStorage.setItem("isActivated", "true")
+            }
             console.log("Activation Info", res.data.student);
 
         } catch (error) {
