@@ -65,7 +65,7 @@ const HeroSection = () => {
                     }
                 }
             )
-            console.log("Activation Info", res.data);
+            console.log("Activation Info", res.data.student);
 
         } catch (error) {
             console.log("Error is =>", error);
