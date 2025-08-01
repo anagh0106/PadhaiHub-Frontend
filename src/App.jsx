@@ -26,6 +26,7 @@ import StartMockTestStudent from './components/StudentDashboard/StartMockTestStu
 import FacultyLogin from './components/faculties/FacultyLogin';
 import FacultyDashboard from './components/faculties/FacultyDashboard';
 import Footer from './components/Footer';
+import Teachers from './components/faculties/Teachers';
 
 const App = () => {
 
@@ -71,6 +72,7 @@ const App = () => {
             <Route path='/startTest' element={<StartMockTestStudent />} />
             <Route path='/faculty/login' element={<FacultyLogin />} />
             <Route path='/faculty/dashboard' element={<FacultyDashboard />} />
+            <Route path='/teachers' element={<Teachers />} />
           </Routes>
           <Footer />
         </div>

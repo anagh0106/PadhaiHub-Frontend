@@ -127,6 +127,7 @@ function Navbar({ onLogout }) {
                             </Link>
                         )}
                         {isLoggedIn && studentId && (<Link to="/courses" className={`${colors.hover} transition`}>Courses</Link>)}
+                        {isLoggedIn && studentId && (<Link to="/teachers" className={`${colors.hover} transition`}>Teachers</Link>)}
                     </div>
 
                     <div className="hidden lg:flex items-center gap-4">
