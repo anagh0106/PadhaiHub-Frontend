@@ -129,6 +129,7 @@ const FacultyInformation = () => {
                             />
                             <h4 className={`text-2xl font-bold mb-1 text-center ${colors.heading}`}>{teacher.name}</h4>
                             <p className={`text-lg text-center ${colors.subtext}`}>{teacher.subject}</p>
+                            <button><a href={`mailto:${teacher.contact}`}></a>Contact</button>
                         </motion.div>
                     ))}
                 </div>
