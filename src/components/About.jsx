@@ -20,7 +20,6 @@ const About = () => {
     const API = `${baseURL}/faculty`;
     const User_API = `${baseURL}/user`;
 
-
     const fetchFacultyData = async () => {
         try {
             const res = await axios.get(`${API}/getFaculties`);
@@ -29,7 +28,6 @@ const About = () => {
             console.log("Error is =>", error.message);
         }
     };
-
 
     const handlerUserCount = async () => {
         try {

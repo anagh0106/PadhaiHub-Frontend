@@ -99,6 +99,7 @@
 import { useContext } from "react";
 import ThemeContext from "../context/ThemeContext";
 import { FaUserTie, FaUserFriends, FaCheckCircle, FaCalendarCheck } from "react-icons/fa";
+import FacultyInformation from "./FacultyInformation";
 
 const Teachers = () => {
     const { theme } = useContext(ThemeContext);
@@ -143,6 +144,8 @@ const Teachers = () => {
                     </p>
                 </div>
             </section>
+
+            <FacultyInformation />
 
             {/* Teaching Philosophy Section */}
             <div className={`${colors.background} py-16 px-6 md:px-20 lg:px-36`}>
