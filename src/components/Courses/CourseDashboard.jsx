@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import axios from "axios";
 import ThemeContext from "../../components/context/ThemeContext";
 import FormulaGrid from "./FormulaGrid";
+import CourseCards from "../CourseCards";
 
 export const CourseDashboard = () => {
     const API = window.location.hostname === "localhost"
@@ -53,7 +54,7 @@ export const CourseDashboard = () => {
             </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                {courses.map((course, index) => (
+                {/* {courses.map((course, index) => (
                     <motion.div
                         key={course._id}
                         initial={{ opacity: 0, y: 50 }}
@@ -74,7 +75,8 @@ export const CourseDashboard = () => {
                             🚀 Continue Course
                         </motion.button>
                     </motion.div>
-                ))}
+                ))} */}
+                <CourseCards/>
             </div>
             <br />
             <FormulaGrid />
