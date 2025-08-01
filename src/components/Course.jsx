@@ -5,6 +5,7 @@ import CourseSection from './Courses/CourseSection'
 import { AccessCourse } from './Courses/AccessCourse'
 import PaymentComponent from './PaymentComponent'
 import axios from 'axios'
+import CourseCards from './CourseCards'
 
 export const Course = () => {
 
@@ -13,7 +14,6 @@ export const Course = () => {
 
     useEffect(() => {
         const count = localStorage.getItem("isActivated")
-        console.log("Value of Count ", count)
         if (count) {
             setiscounterExist(true)
         }
@@ -24,9 +24,10 @@ export const Course = () => {
             {!iscounterExist
                 ? (<HeroSection />)
                 : (<AccessCourse />)}
-            <AboutSection />
+            <CourseCards />
+            {/* <AboutSection />
             <CourseSection />
-            <PaymentComponent />
+            <PaymentComponent /> */}
         </div>
     )
 }
