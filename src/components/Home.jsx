@@ -1,13 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import Authform from './AuthForm.jsx';
+import { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import ThemeContext from './context/ThemeContext.jsx';
-import { motion, useMotionValue, animate, color } from "framer-motion";
+import { motion, useMotionValue, animate } from "framer-motion";
 import FAQSection from './FAQSection.jsx';
 import CourseCards from './CourseCards.jsx';
-import { CheckCircle, Heading1 } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import { BookOpen, Users, Clock, Award, Target, Brain } from "lucide-react";
 import AnimatedBackground from './AnimateBackground.jsx';
 
