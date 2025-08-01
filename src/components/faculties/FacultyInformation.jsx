@@ -62,8 +62,26 @@ const FacultyInformation = () => {
                             />
                             <h4 className={`text-2xl font-bold mb-1 text-center ${colors.heading}`}>{teacher.name}</h4>
                             <p className={`text-lg text-center ${colors.subtext}`}>{teacher.subject}</p>
-                            <button><a href={`mailto:${teacher.contact}`}>Contact</a></button>
-                            <button onClick={() => handleCardClick(teacher)}>View Faculty</button>
+                            <div className="flex justify-center gap-4 mt-4">
+                                <a
+                                    href={`mailto:${teacher.contact}`}
+                                    className={`px-4 py-2 rounded-md font-semibold transition duration-200 ${theme === 'light'
+                                        ? 'bg-blue-600 text-white hover:bg-blue-700'
+                                        : 'bg-blue-500 text-white hover:bg-blue-400'
+                                        }`}
+                                >
+                                    Contact
+                                </a>
+                                <button
+                                    onClick={() => handleCardClick(teacher)}
+                                    className={`px-4 py-2 rounded-md font-semibold transition duration-200 ${theme === 'light'
+                                        ? 'bg-gray-300 text-black hover:bg-gray-400'
+                                        : 'bg-gray-700 text-white hover:bg-gray-600'
+                                        }`}
+                                >
+                                    View Faculty
+                                </button>
+                            </div>
                         </motion.div>
                     ))}
                 </div>
