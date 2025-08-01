@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 const StudyTimer = () => {
     const [timeLeft, setTimeLeft] = useState(25 * 60);
     const [isRunning, setIsRunning] = useState(false);
+    const [check, setCheck] = useState(0)
 
     useEffect(() => {
         let timer = null;
@@ -22,14 +23,23 @@ const StudyTimer = () => {
         return `${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
     };
 
-    console.log(isRunning);
+    const startTimer = () => {
+        setIsRunning(true)
+        setCheck(1)
+    }
+    const stopTimer = () => {
+        setIsRunning(false)
+        setCheck(0)
+    }
     return (
         <div style={{ textAlign: "center", marginTop: "50px" }}>
             <h1>{formatTime(timeLeft)}</h1>
             <div style={{ marginTop: "20px" }}>
-                <button onClick={() => setIsRunning(true)}>Start</button>
-                <p>{isRunning}</p>
-                <button onClick={() => setIsRunning(false)}>Stop</button>
+                <button onClick={() => startTimer()}>Start</button>
+                {check == 1 ? <button onClick={() => startTimer()}>Resume</button> :
+                    <button onClick={() => stopTimer()}>Pause</button>
+                }
+                {/* <button onClick={() => stopTimer()}>Stop</button> */}
                 <button onClick={() => {
                     setIsRunning(false);
                     setTimeLeft(25 * 60);
