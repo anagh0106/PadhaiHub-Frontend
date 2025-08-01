@@ -1,5 +1,9 @@
+import { useContext } from "react";
+import ThemeContext from "../context/ThemeContext";
 
 const Teachers = () => {
+    const { theme } = useContext(ThemeContext);
+
     const colors = {
         background: theme === 'light' ? 'bg-[#EEF4FF]' : 'bg-[#0f172a]',
         card: theme === 'light' ? 'bg-gray-100' : 'bg-[rgba(15,15,15,0.5)]',
