@@ -45,27 +45,6 @@ export default function CourseCards() {
         </p>
       </div>
 
-      {/* <div className="flex justify-center gap-4 mb-10">
-        <button
-          onClick={regularCourse}
-          className={`px-6 py-2 rounded-full font-semibold transition-all duration-300
-      ${isRegularButoonClicked
-              ? "bg-gradient-to-r from-green-500 to-teal-500 text-white shadow-lg"
-              : "bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white"}`}
-        >
-          Regular Course
-        </button>
-
-        <button
-          onClick={advanceCourses}
-          className={`px-6 py-2 rounded-full font-semibold transition-all duration-300
-      ${isAdvanceButtonClicked
-              ? "bg-gradient-to-r from-purple-600 to-indigo-500 text-white shadow-lg"
-              : "bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white"}`}
-        >
-          Advance Course
-        </button>
-      </div> */}
       <div className="flex justify-center gap-4 mb-10">
         <button
           onClick={regularCourse}
