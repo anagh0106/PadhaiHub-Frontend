@@ -29,11 +29,11 @@ const StudyTimer = () => {
     }
     const stopTimer = () => {
         setIsRunning(false)
-        setCheck(0)
+        setCheck(2)
     }
     const resumeTimer = () => {
         setIsRunning(true)
-        setCheck(2)
+        setCheck(1)
     }
     return (
         <div style={{ textAlign: "center", marginTop: "50px" }}>
