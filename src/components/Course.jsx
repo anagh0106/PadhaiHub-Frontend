@@ -39,9 +39,9 @@ export const Course = () => {
                     </p>
                 </div>
             </section>
-            {!iscounterExist
+            {/* {!iscounterExist
                 ? (<HeroSection />)
-                : (<AccessCourse />)}
+                : (<AccessCourse />)} */}
         </div>
     )
 }
