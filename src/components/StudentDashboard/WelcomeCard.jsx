@@ -92,100 +92,56 @@ const WelcomeCard = () => {
 
     return (
         <>
-            <div className="w-full bg-[#1F2937] text-white p-4 rounded-md flex justify-between items-center shadow-md">
-                {/* Left - Avatar and Info */}
-                <div className="flex items-center gap-4">
-                    <div className="bg-blue-600 w-12 h-12 rounded-full flex items-center justify-center">
-                        {/* <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="text-white w-6 h-6"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M5.121 17.804A4 4 0 017 17h10a4 4 0 011.879.804M15 11a3 3 0 10-6 0 3 3 0 006 0z"
-                            />
-                        </svg> */}
+            <div className="w-full bg-[#1F2937] text-white px-6 py-4 rounded-2xl flex flex-col md:flex-row justify-between items-center gap-4 shadow-xl">
+                {/* Left Section - Avatar & Info */}
+                <div className="flex items-center gap-4 w-full md:w-auto">
+                    <div className="w-14 h-14 rounded-full overflow-hidden border-4 border-cyan-500 shadow-lg">
                         <img
                             src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png"
                             alt="Profile"
-                            className="w-full h-full object-cover rounded-full border-4 border-cyan-500 shadow-md cursor-pointer group-hover:scale-105 transition duration-300"
+                            className="w-full h-full object-cover"
                         />
                     </div>
                     <div>
-                        <h2 className="text-lg font-semibold">
-                            Welcome back, {userInfo.fullName}!
-                        </h2>
-                        <p className="text-sm text-gray-300">
+                        <h2 className="text-xl font-bold">Welcome back, {userInfo.fullName}!</h2>
+                        <p className="text-sm text-gray-400">
                             Class {userInfo.grade} - {userInfo.grade === "A" ? "PCM" : "PCB"} • ID: {userInfo.studentId}
                         </p>
                     </div>
-                    <button onClick={() => ViewProfileInfo()}>View Profile</button>
+                </div>
+
+                {/* Middle - Buttons */}
+                <div className="flex flex-wrap justify-center gap-3">
+                    <button
+                        onClick={ViewProfileInfo}
+                        className="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-md text-sm font-medium transition duration-200"
+                    >
+                        View Profile
+                    </button>
+
                     <button
                         onClick={() => setShowForm(prev => !prev)}
-                        className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-blue-500 hover:to-cyan-500 px-5 py-2 rounded-md text-white font-semibold shadow-md"
+                        className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-blue-600 hover:to-cyan-600 px-5 py-2 rounded-md text-white font-semibold shadow-md transition duration-300"
                     >
                         {showForm ? "Close Profile" : "Edit Profile"}
                     </button>
                 </div>
 
-                {/* Right - Buttons */}
-                <div className="flex gap-2">
-                    <button className="flex items-center gap-2 px-4 py-2 bg-[#111827] text-white rounded-md hover:bg-[#0f172a] transition">
-                        <Bell className="w-4 h-4" />
-                        Notifications
+                {/* Right - Actions */}
+                <div className="flex gap-3">
+                    <button className="flex items-center gap-2 px-4 py-2 bg-[#111827] hover:bg-[#0f172a] text-white rounded-md transition">
+                        <Bell className="w-5 h-5" />
+                        <span className="text-sm">Notifications</span>
                     </button>
-                    <button className="flex items-center gap-2 px-4 py-2 bg-white text-[#111827] rounded-md hover:bg-gray-200 transition">
-                        <FileText className="w-4 h-4" />
-                        Download Report
+                    <button className="flex items-center gap-2 px-4 py-2 bg-white text-[#111827] hover:bg-gray-200 rounded-md transition">
+                        <FileText className="w-5 h-5" />
+                        <span className="text-sm">Download Report</span>
                     </button>
                 </div>
             </div>
-            <div className="w-full max-w-4xl mx-auto mt-10 space-y-6">
-                <motion.div
-                    className={`rounded-xl px-6 py-8 shadow-[0_0_25px_rgba(0,188,212,0.5)] border-2 border-cyan-500 max-w-md mx-auto ${colors.cardBg}`}
-                    initial={{ opacity: 0, y: -40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                >
-                    <div className="flex flex-col items-center text-center">
-                        <div className="relative w-28 h-28 mb-4 group">
-                            <img
-                                src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png"
-                                alt="Profile"
-                                className="w-full h-full object-cover rounded-full border-4 border-cyan-500 shadow-md cursor-pointer group-hover:scale-105 transition duration-300"
-                            />
-                        </div>
-                        <h2 className="text-2xl font-bold text-cyan-400">{userInfo.fullName || "Student"}</h2>
-                        <p className={`text-sm font-semibold mt-1 px-3 py-1 rounded-md bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-300`}>
-                            ID: {userInfo.studentId}
-                        </p>
-                        <p className={`text-sm mt-2 ${colors.textSecondary}`}>{userInfo.grade && `Grade: ${userInfo.grade}`} {userInfo.group && `| Group: ${userInfo.group}`}</p>
-                        <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-                            <p>Date: {formattedDate}</p>
-                            <p>Time: {formattedTime}</p>
-                        </div>
 
-                        <div className="mt-6 flex flex-col sm:flex-row justify-center gap-3">
-                            <button
-                                onClick={() => ViewProfileInfo()}
-                                className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 px-5 py-2 rounded-md text-white font-semibold shadow-md"
-                            >
-                                View Profile
-                            </button>
-                            <button
-                                onClick={() => setShowForm(prev => !prev)}
-                                className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-blue-500 hover:to-cyan-500 px-5 py-2 rounded-md text-white font-semibold shadow-md"
-                            >
-                                {showForm ? "Close Profile" : "Edit Profile"}
-                            </button>
-                        </div>
-                    </div>
-                </motion.div>
+
+            <div className="w-full max-w-4xl mx-auto mt-10 space-y-6">
 
                 {/* Edit Profile Modal */}
                 <AnimatePresence>
@@ -269,36 +225,3 @@ const WelcomeCard = () => {
 
 export default WelcomeCard;
 
-
-/*
-
-            <div className="flex items-center justify-between px-6 py-4 bg-white shadow rounded-xl">
-                }
-<div className="flex items-center gap-4">
-    <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center">
-        <img
-            src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png"
-            alt="Profile"
-            // onClick={handleImageClick}
-            className="w-full h-full object-cover rounded-full border-4 border-cyan-500 shadow-md cursor-pointer group-hover:scale-105 transition duration-300"
-        />
-    </div>
-
-    <div>
-        <h2 className="text-xl font-semibold text-gray-800">Welcome back, {userInfo.fullName}!</h2>
-        <p className="text-sm text-gray-600">Class {userInfo.grade} - {userInfo.group === "A" ? "PCM" : "PCB"} • ID: {userInfo.studentId}</p>
-    </div>
-</div>
-
-<div className="flex gap-3">
-    <button className="flex items-center gap-2 px-4 py-2 border rounded-lg text-sm text-gray-700 hover:bg-gray-100">
-        <Bell className="w-4 h-4" />
-        Notifications
-    </button>
-    <button className="flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg text-sm hover:bg-gray-800">
-        <FileText className="w-4 h-4" />
-        Download Report
-    </button>
-</div>
-            </div >
-*/
