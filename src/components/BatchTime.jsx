@@ -1,5 +1,6 @@
 import { FaRegCalendarAlt } from 'react-icons/fa';
 import ThemeContext from './context/ThemeContext.jsx';
+import { useContext } from 'react';
 const batches = [
     {
         title: "Morning Batch",
