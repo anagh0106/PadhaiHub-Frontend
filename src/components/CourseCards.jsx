@@ -49,10 +49,149 @@ export default function CourseCards() {
     overlay: theme === 'light' ? 'bg-white/50' : 'bg-black/60'
   };
   return (
-    <section className="w-full bg-gradient-to-br from-[#0f0f0f] to-[#1f1f1f] text-white px-6 py-20 sm:px-10 md:px-20 font-poppins">
+    // <section className="w-full bg-gradient-to-br from-[#0f0f0f] to-[#1f1f1f] text-white px-6 py-20 sm:px-10 md:px-20 font-poppins">
+    //   <div className="text-center mb-16">
+    //     <h2 className="text-4xl font-extrabold mb-3">Explore Our Science Programs</h2>
+    //     <p className="text-gray-400 max-w-3xl mx-auto">
+    //       Structured and specially crafted for 11th & 12th Science – both PCM & PCB groups. Learn, Practice & Excel.
+    //     </p>
+    //   </div>
+
+    //   <div className="flex justify-center gap-4 mb-10">
+    //     <button
+    //       onClick={regularCourse}
+    //       className={`relative px-6 py-2 rounded-full font-semibold transition-all duration-300 overflow-hidden
+    // ${isRegularButoonClicked
+    //           ? "bg-gradient-to-r from-green-500 to-teal-500 text-white shadow-lg scale-105"
+    //           : "bg-[#1f2937] text-gray-300 hover:bg-gray-700 hover:text-white hover:scale-105"}`}
+    //     >
+    //       <span className="relative z-10">🌱 Regular Course</span>
+    //       {isRegularButoonClicked && (
+    //         <span className="absolute inset-0 animate-pulse bg-green-600 opacity-20 rounded-full z-0"></span>
+    //       )}
+    //     </button>
+
+    //     <button
+    //       onClick={advanceCourses}
+    //       className={`relative px-6 py-2 rounded-full font-semibold transition-all duration-300 overflow-hidden
+    // ${isAdvanceButtonClicked
+    //           ? "bg-gradient-to-r from-purple-600 to-indigo-500 text-white shadow-lg scale-105"
+    //           : "bg-[#1f2937] text-gray-300 hover:bg-gray-700 hover:text-white hover:scale-105"}`}
+    //     >
+    //       <span className="relative z-10">🚀 Advance Course</span>
+    //       {isAdvanceButtonClicked && (
+    //         <span className="absolute inset-0 animate-pulse bg-indigo-600 opacity-20 rounded-full z-0"></span>
+    //       )}
+    //     </button>
+    //   </div>
+
+    //   {
+    //     isRegularButoonClicked && <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+    //       {courseCard.map((course, index) => (
+    //         <div
+    //           key={index}
+    //           className="bg-[#111827] border border-[#2a2f45] rounded-2xl p-6 shadow-xl transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-purple-500"
+    //         >
+    //           <div>
+    //             <h3 className="text-2xl font-bold mb-4">{course.title}</h3>
+
+    //             <div className="flex flex-wrap gap-2 mb-6">
+    //               {course.subjects.map((subject, i) => (
+    //                 <span
+    //                   key={i}
+    //                   className="bg-[#2f354d] text-white text-sm px-3 py-1 rounded-full"
+    //                 >
+    //                   {subject}
+    //                 </span>
+    //               ))}
+    //             </div>
+
+    //             <h4 className="text-lg font-semibold mb-3">What's Included:</h4>
+    //             <ul className="space-y-2 mb-6">
+    //               {course.features.map((item, i) => (
+    //                 <li key={i} className="flex items-start gap-2 text-sm">
+    //                   <span className="text-green-400 text-base">✔</span>
+    //                   <span
+    //                     className={`${item.includes("Preparation")
+    //                       ? "text-gray-500 line-through"
+    //                       : "text-gray-200"
+    //                       }`}
+    //                   >
+    //                     {item}
+    //                   </span>
+    //                 </li>
+    //               ))}
+    //             </ul>
+    //           </div>
+
+    //           <div className="border-t border-gray-700 pt-4 mt-auto">
+    //             <p className="text-2xl font-bold mb-4">
+    //               ₹{course.price}/<span className="text-base font-medium">month</span>
+    //             </p>
+    //             <button className="w-full bg-gradient-to-r from-purple-600 to-indigo-500 hover:from-purple-700 hover:to-indigo-600 text-white py-2 rounded-xl font-semibold transition-all duration-200">
+    //               Enroll Now
+    //             </button>
+    //           </div>
+    //         </div>
+    //       ))}
+    //     </div>
+    //   }
+    //   {
+    //     isAdvanceButtonClicked && <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+    //       {advanceCourse.map((course, index) => (
+    //         <div
+    //           key={index}
+    //           className="bg-[#111827] border border-[#2a2f45] rounded-2xl p-6 shadow-xl transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-purple-500"
+    //         >
+    //           <div>
+    //             <h3 className="text-2xl font-bold mb-4">{course.title}</h3>
+
+    //             <div className="flex flex-wrap gap-2 mb-6">
+    //               {course.subjects.map((subject, i) => (
+    //                 <span
+    //                   key={i}
+    //                   className="bg-[#2f354d] text-white text-sm px-3 py-1 rounded-full"
+    //                 >
+    //                   {subject}
+    //                 </span>
+    //               ))}
+    //             </div>
+
+    //             <h4 className="text-lg font-semibold mb-3">What's Included:</h4>
+    //             <ul className="space-y-2 mb-6">
+    //               {course.features.map((item, i) => (
+    //                 <li key={i} className="flex items-start gap-2 text-sm">
+    //                   <span className="text-green-400 text-base">✔</span>
+    //                   <span
+    //                     className={`${item.includes("Preparation")
+    //                       ? "text-gray-500 line-through"
+    //                       : "text-gray-200"
+    //                       }`}
+    //                   >
+    //                     {item}
+    //                   </span>
+    //                 </li>
+    //               ))}
+    //             </ul>
+    //           </div>
+
+    //           <div className="border-t border-gray-700 pt-4 mt-auto">
+    //             <p className="text-2xl font-bold mb-4">
+    //               ₹{course.price}/<span className="text-base font-medium">month</span>
+    //             </p>
+    //             <button className="w-full bg-gradient-to-r from-purple-600 to-indigo-500 hover:from-purple-700 hover:to-indigo-600 text-white py-2 rounded-xl font-semibold transition-all duration-200">
+    //               Enroll Now
+    //             </button>
+    //           </div>
+    //         </div>
+    //       ))}
+    //     </div>
+    //   }
+    // </section>
+    <section className={`${colors.background} ${colors.text} px-6 py-20 sm:px-10 md:px-20 font-poppins transition-all duration-300`}>
       <div className="text-center mb-16">
         <h2 className="text-4xl font-extrabold mb-3">Explore Our Science Programs</h2>
-        <p className="text-gray-400 max-w-3xl mx-auto">
+        <p className={`${colors.subtext} max-w-3xl mx-auto`}>
           Structured and specially crafted for 11th & 12th Science – both PCM & PCB groups. Learn, Practice & Excel.
         </p>
       </div>
@@ -61,9 +200,9 @@ export default function CourseCards() {
         <button
           onClick={regularCourse}
           className={`relative px-6 py-2 rounded-full font-semibold transition-all duration-300 overflow-hidden
-    ${isRegularButoonClicked
+        ${isRegularButoonClicked
               ? "bg-gradient-to-r from-green-500 to-teal-500 text-white shadow-lg scale-105"
-              : "bg-[#1f2937] text-gray-300 hover:bg-gray-700 hover:text-white hover:scale-105"}`}
+              : `${colors.card} ${colors.subtext} hover:bg-gray-700 hover:text-white hover:scale-105`}`}
         >
           <span className="relative z-10">🌱 Regular Course</span>
           {isRegularButoonClicked && (
@@ -74,9 +213,9 @@ export default function CourseCards() {
         <button
           onClick={advanceCourses}
           className={`relative px-6 py-2 rounded-full font-semibold transition-all duration-300 overflow-hidden
-    ${isAdvanceButtonClicked
+        ${isAdvanceButtonClicked
               ? "bg-gradient-to-r from-purple-600 to-indigo-500 text-white shadow-lg scale-105"
-              : "bg-[#1f2937] text-gray-300 hover:bg-gray-700 hover:text-white hover:scale-105"}`}
+              : `${colors.card} ${colors.subtext} hover:bg-gray-700 hover:text-white hover:scale-105`}`}
         >
           <span className="relative z-10">🚀 Advance Course</span>
           {isAdvanceButtonClicked && (
@@ -85,108 +224,56 @@ export default function CourseCards() {
         </button>
       </div>
 
-      {
-        isRegularButoonClicked && <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {courseCard.map((course, index) => (
-            <div
-              key={index}
-              className="bg-[#111827] border border-[#2a2f45] rounded-2xl p-6 shadow-xl transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-purple-500"
-            >
-              <div>
-                <h3 className="text-2xl font-bold mb-4">{course.title}</h3>
+      {/* Course Card Rendering */}
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        {(isRegularButoonClicked ? courseCard : advanceCourse).map((course, index) => (
+          <div
+            key={index}
+            className={`${colors.card} ${colors.border} ${colors.shadow} border rounded-2xl p-6 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-purple-500`}
+          >
+            <div>
+              <h3 className="text-2xl font-bold mb-4">{course.title}</h3>
 
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {course.subjects.map((subject, i) => (
+              <div className="flex flex-wrap gap-2 mb-6">
+                {course.subjects.map((subject, i) => (
+                  <span
+                    key={i}
+                    className="bg-blue-800/20 text-sm px-3 py-1 rounded-full text-blue-400"
+                  >
+                    {subject}
+                  </span>
+                ))}
+              </div>
+
+              <h4 className="text-lg font-semibold mb-3">What's Included:</h4>
+              <ul className="space-y-2 mb-6">
+                {course.features.map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm">
+                    <span className="text-green-400 text-base">✔</span>
                     <span
-                      key={i}
-                      className="bg-[#2f354d] text-white text-sm px-3 py-1 rounded-full"
+                      className={`${item.includes("Preparation")
+                        ? "text-gray-500 line-through"
+                        : `${colors.subtext}`}`}
                     >
-                      {subject}
+                      {item}
                     </span>
-                  ))}
-                </div>
-
-                <h4 className="text-lg font-semibold mb-3">What's Included:</h4>
-                <ul className="space-y-2 mb-6">
-                  {course.features.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm">
-                      <span className="text-green-400 text-base">✔</span>
-                      <span
-                        className={`${item.includes("Preparation")
-                          ? "text-gray-500 line-through"
-                          : "text-gray-200"
-                          }`}
-                      >
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="border-t border-gray-700 pt-4 mt-auto">
-                <p className="text-2xl font-bold mb-4">
-                  ₹{course.price}/<span className="text-base font-medium">month</span>
-                </p>
-                <button className="w-full bg-gradient-to-r from-purple-600 to-indigo-500 hover:from-purple-700 hover:to-indigo-600 text-white py-2 rounded-xl font-semibold transition-all duration-200">
-                  Enroll Now
-                </button>
-              </div>
+                  </li>
+                ))}
+              </ul>
             </div>
-          ))}
-        </div>
-      }
-      {
-        isAdvanceButtonClicked && <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {advanceCourse.map((course, index) => (
-            <div
-              key={index}
-              className="bg-[#111827] border border-[#2a2f45] rounded-2xl p-6 shadow-xl transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-purple-500"
-            >
-              <div>
-                <h3 className="text-2xl font-bold mb-4">{course.title}</h3>
 
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {course.subjects.map((subject, i) => (
-                    <span
-                      key={i}
-                      className="bg-[#2f354d] text-white text-sm px-3 py-1 rounded-full"
-                    >
-                      {subject}
-                    </span>
-                  ))}
-                </div>
-
-                <h4 className="text-lg font-semibold mb-3">What's Included:</h4>
-                <ul className="space-y-2 mb-6">
-                  {course.features.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm">
-                      <span className="text-green-400 text-base">✔</span>
-                      <span
-                        className={`${item.includes("Preparation")
-                          ? "text-gray-500 line-through"
-                          : "text-gray-200"
-                          }`}
-                      >
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="border-t border-gray-700 pt-4 mt-auto">
-                <p className="text-2xl font-bold mb-4">
-                  ₹{course.price}/<span className="text-base font-medium">month</span>
-                </p>
-                <button className="w-full bg-gradient-to-r from-purple-600 to-indigo-500 hover:from-purple-700 hover:to-indigo-600 text-white py-2 rounded-xl font-semibold transition-all duration-200">
-                  Enroll Now
-                </button>
-              </div>
+            <div className={`border-t pt-4 mt-auto ${colors.border}`}>
+              <p className="text-2xl font-bold mb-4">
+                ₹{course.price}/<span className="text-base font-medium">month</span>
+              </p>
+              <button className="w-full bg-gradient-to-r from-purple-600 to-indigo-500 hover:from-purple-700 hover:to-indigo-600 text-white py-2 rounded-xl font-semibold transition-all duration-200">
+                Enroll Now
+              </button>
             </div>
-          ))}
-        </div>
-      }
+          </div>
+        ))}
+      </div>
     </section>
+
   );
 }
