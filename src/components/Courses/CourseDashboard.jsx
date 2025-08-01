@@ -39,7 +39,7 @@ export const CourseDashboard = () => {
 
     return (
         <div className={`min-h-screen ${colors.background} p-6 transition-colors duration-500`}>
-            {/* <motion.div
+            <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
@@ -51,30 +51,8 @@ export const CourseDashboard = () => {
                 <p className={`text-lg sm:text-xl ${colors.subtext}`}>
                     Unlock your potential with our premium courses
                 </p>
-            </motion.div> */}
-            <section className="bg-[#0f172a] text-white py-16 px-4 text-center relative">
-                <div className="max-w-4xl mx-auto">
-                    <div className="inline-block mb-4">
-                        <span className="bg-[#1e293b] text-sm px-4 py-1 rounded-full text-gray-300 shadow-sm">
-                            Our Courses
-                        </span>
-                    </div>
-
-                    <h1 className="text-4xl sm:text-5xl font-extrabold mb-4">
-                        Comprehensive Learning <span className="text-blue-500">Programs</span>
-                    </h1>
-
-                    <p className="text-lg text-gray-300">
-                        Choose from our wide range of courses designed to help you excel in academic
-                        subjects and competitive exams with expert guidance.
-                    </p>
-                </div>
-
-                {/* Optional: Background atom graphic */}
-                <div className="absolute right-10 top-10 opacity-20 pointer-events-none">
-                    <img src="/atom.png" alt="background graphic" className="w-32 h-32" />
-                </div>
-            </section>
+            </motion.div>
+          
 
             {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"> */}
             {/* {courses.map((course, index) => (
