@@ -13,6 +13,7 @@ import PerformanceAnalytics from './StudentDashboard/PerformanceAnalytics';
 import StudentTestManagement from './StudentDashboard/StudentTestManagement';
 import MockTestScore from './StudentDashboard/MockTestScore';
 import { Bell, FileText } from 'lucide-react';
+import StudyTimer from './StudentDashboard/StudyTimer';
 
 const StudentDashboard = () => {
     const { theme } = useContext(ThemeContext);
@@ -73,7 +74,8 @@ const StudentDashboard = () => {
         <div className={`min-h-screen p-4 md:p-6 transition-colors duration-500 ${colors.background}`}>
             <StudentForm />
             <WelcomeCard />
-           
+            <StudyTimer />
+
             <ClassSchedule />
 
             <PerformanceAnalytics />
