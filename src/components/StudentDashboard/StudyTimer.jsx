@@ -22,6 +22,7 @@ const StudyTimer = () => {
         return `${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
     };
 
+    console.log(isRunning);
     return (
         <div style={{ textAlign: "center", marginTop: "50px" }}>
             <h1>{formatTime(timeLeft)}</h1>
