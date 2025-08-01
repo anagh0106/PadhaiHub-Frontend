@@ -14,6 +14,7 @@ import StudentTestManagement from './StudentDashboard/StudentTestManagement';
 import MockTestScore from './StudentDashboard/MockTestScore';
 import { Bell, FileText } from 'lucide-react';
 import StudyTimer from './StudentDashboard/StudyTimer';
+import StudentStats from './StudentDashboard/StudentStats';
 
 const StudentDashboard = () => {
     const { theme } = useContext(ThemeContext);
@@ -75,6 +76,7 @@ const StudentDashboard = () => {
             <StudentForm />
             <WelcomeCard />
             <StudyTimer />
+            <StudentStats/>
 
             <ClassSchedule />
 
