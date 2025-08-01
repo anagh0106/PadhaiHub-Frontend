@@ -92,7 +92,7 @@ const WelcomeCard = () => {
 
     return (
         <>
-            <div className="w-full bg-[#1F2937] text-white rounded-md flex justify-between items-center shadow-md">
+            <div className="w-full bg-[#1F2937] text-white p-4 rounded-md flex justify-between items-center shadow-md">
                 {/* Left - Avatar and Info */}
                 <div className="flex items-center gap-4">
                     <div className="bg-blue-600 w-12 h-12 rounded-full flex items-center justify-center">
@@ -124,6 +124,13 @@ const WelcomeCard = () => {
                             Class {userInfo.grade} - {userInfo.grade === "A" ? "PCM" : "PCB"} • ID: {userInfo.studentId}
                         </p>
                     </div>
+                    <button onClick={() => ViewProfileInfo()}>View Profile</button>
+                    <button
+                        onClick={() => setShowForm(prev => !prev)}
+                        className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-blue-500 hover:to-cyan-500 px-5 py-2 rounded-md text-white font-semibold shadow-md"
+                    >
+                        {showForm ? "Close Profile" : "Edit Profile"}
+                    </button>
                 </div>
 
                 {/* Right - Buttons */}
