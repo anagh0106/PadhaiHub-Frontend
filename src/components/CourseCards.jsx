@@ -45,7 +45,7 @@ export default function CourseCards() {
         </p>
       </div>
 
-      <div className="flex justify-center gap-4 mb-10">
+      {/* <div className="flex justify-center gap-4 mb-10">
         <button
           onClick={regularCourse}
           className={`px-6 py-2 rounded-full font-semibold transition-all duration-300
@@ -64,6 +64,33 @@ export default function CourseCards() {
               : "bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white"}`}
         >
           Advance Course
+        </button>
+      </div> */}
+      <div className="flex justify-center gap-4 mb-10">
+        <button
+          onClick={regularCourse}
+          className={`relative px-6 py-2 rounded-full font-semibold transition-all duration-300 overflow-hidden
+    ${isRegularButoonClicked
+              ? "bg-gradient-to-r from-green-500 to-teal-500 text-white shadow-lg scale-105"
+              : "bg-[#1f2937] text-gray-300 hover:bg-gray-700 hover:text-white hover:scale-105"}`}
+        >
+          <span className="relative z-10">🌱 Regular Course</span>
+          {isRegularButoonClicked && (
+            <span className="absolute inset-0 animate-pulse bg-green-600 opacity-20 rounded-full z-0"></span>
+          )}
+        </button>
+
+        <button
+          onClick={advanceCourses}
+          className={`relative px-6 py-2 rounded-full font-semibold transition-all duration-300 overflow-hidden
+    ${isAdvanceButtonClicked
+              ? "bg-gradient-to-r from-purple-600 to-indigo-500 text-white shadow-lg scale-105"
+              : "bg-[#1f2937] text-gray-300 hover:bg-gray-700 hover:text-white hover:scale-105"}`}
+        >
+          <span className="relative z-10">🚀 Advance Course</span>
+          {isAdvanceButtonClicked && (
+            <span className="absolute inset-0 animate-pulse bg-indigo-600 opacity-20 rounded-full z-0"></span>
+          )}
         </button>
       </div>
 
