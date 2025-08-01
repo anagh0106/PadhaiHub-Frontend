@@ -37,29 +37,31 @@ export const BatchTime = () => {
         overlay: theme === 'light' ? 'bg-white/50' : 'bg-black/60'
     };
     return (
-        <section className={`${colors.background} ${colors.text} py-16 px-4`}>
+        <section className={`${colors.background} ${colors.text} py-20 px-4`}>
             <div className="max-w-6xl mx-auto text-center">
-                <h2 className="text-3xl sm:text-4xl font-bold mb-2">
+                <h2 className="text-3xl sm:text-4xl font-bold mb-4">
                     Flexible Batch Timings
                 </h2>
-                <p className={`${colors.subtext} mb-10`}>
+                <p className={`${colors.subtext} mb-12 text-base sm:text-lg`}>
                     Choose the timing that works best for your schedule
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 gap-y-10">
                     {batches.map((batch, index) => (
                         <div
                             key={index}
-                            className={`${colors.card} ${colors.border} ${colors.shadow} border rounded-xl p-6 hover:shadow-2xl transition duration-300 ${colors.glass}`}
+                            className={`${colors.card} ${colors.border} ${colors.shadow} border rounded-2xl px-6 py-8 min-h-[280px] flex flex-col justify-between hover:shadow-2xl transition duration-300 ${colors.glass}`}
                         >
-                            <div className="flex justify-center mb-4">
-                                <div className="bg-[#1e40af]/10 p-4 rounded-full">
+                            <div className="flex justify-center mb-5">
+                                <div className="bg-[#1e40af]/10 p-5 rounded-full">
                                     <FaRegCalendarAlt className="text-blue-500 text-3xl" />
                                 </div>
                             </div>
-                            <h3 className="text-lg font-semibold mb-1">{batch.title}</h3>
-                            <p className="text-blue-500 font-medium mb-2">{batch.time}</p>
-                            <p className={`text-sm ${colors.subtext}`}>{batch.note}</p>
+                            <div>
+                                <h3 className="text-xl font-semibold mb-2">{batch.title}</h3>
+                                <p className="text-blue-500 font-semibold mb-3 text-md">{batch.time}</p>
+                                <p className={`text-sm ${colors.subtext}`}>{batch.note}</p>
+                            </div>
                         </div>
                     ))}
                 </div>
