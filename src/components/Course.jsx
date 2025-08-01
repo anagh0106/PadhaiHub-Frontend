@@ -65,7 +65,7 @@ export const Course = () => {
                         Get Free Consultation →
                     </button>
                     <button
-                        className={`bg-black hover:bg-gray-800 ${colors.text} px-6 py-3 rounded-md font-semibold transition border ${colors.btnBorder}`}
+                        className={`${colors.background} hover:bg-gray-800 ${colors.text} px-6 py-3 rounded-md font-semibold transition border ${colors.btnBorder}`}
                     >
                         Meet Our Teachers
                     </button>
