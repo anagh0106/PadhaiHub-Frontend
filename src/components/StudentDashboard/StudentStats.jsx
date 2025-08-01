@@ -27,6 +27,7 @@ const stats = [
   },
 ];
 
+
 const StudentStats = () => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full mt-6">
