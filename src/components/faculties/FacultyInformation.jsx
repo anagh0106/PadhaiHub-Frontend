@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import ThemeContext from '../context/ThemeContext';
+import { AnimatePresence } from 'framer-motion';
 
 const FacultyInformation = () => {
     const [facultyData, setfacultyData] = useState([]);
     const [selectedFaculty, setSelectedFaculty] = useState(null);
-        const { theme } = useContext(ThemeContext);
-    
+    const { theme } = useContext(ThemeContext);
+
     const colors = {
         background: theme === 'light' ? 'bg-[#EEF4FF]' : 'bg-[#0f172a]',
         card: theme === 'light' ? 'bg-gray-100' : 'bg-[rgba(15,15,15,0.5)]',
