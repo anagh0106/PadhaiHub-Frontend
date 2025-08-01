@@ -8,63 +8,6 @@ import { FaCheckCircle } from "react-icons/fa";
 
 const About = () => {
     const { theme } = useContext(ThemeContext);
-    const [selectedFaculty, setSelectedFaculty] = useState(null);
-    const [facultyData, setfacultyData] = useState([]);
-    const [facultyCount, setfacultyCount] = useState()
-    const [usercount, setusercount] = useState();
-
-    const baseURL = window.location.hostname === "localhost"
-        ? "http://localhost:3000"
-        : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com";
-
-    const API = `${baseURL}/faculty`;
-    const User_API = `${baseURL}/user`;
-
-    const fetchFacultyData = async () => {
-        try {
-            const res = await axios.get(`${API}/getFaculties`);
-            setfacultyData(res.data.faculties);
-        } catch (error) {
-            console.log("Error is =>", error.message);
-        }
-    };
-
-    const handlerUserCount = async () => {
-        try {
-            const res = await axios.get(`${User_API}/getcount`,);
-            setusercount(res.data.count);
-        } catch (error) {
-            console.log("Error is =>", error);
-        }
-    }
-
-    const handelFacultyCount = async () => {
-        try {
-            const res = await axios.get(`${API}/getFacultyCount`, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
-                }
-            })
-            setfacultyCount(res.data.count)
-
-        } catch (error) {
-            console.log("Error is =>", error);
-
-        }
-    }
-    useEffect(() => {
-        fetchFacultyData();
-        handlerUserCount();
-        handelFacultyCount();
-    }, []);
-
-    const handleCardClick = (teacher) => {
-        setSelectedFaculty(teacher);
-    };
-
-    const handleCloseModal = () => {
-        setSelectedFaculty(null);
-    };
 
     const colors = {
         background: theme === 'light' ? 'bg-[#EEF4FF]' : 'bg-[#0f172a]',
