@@ -31,19 +31,23 @@ const StudyTimer = () => {
         setIsRunning(false)
         setCheck(0)
     }
+    const resumeTimer = () => {
+        setIsRunning(true)
+        setCheck(2)
+    }
     return (
         <div style={{ textAlign: "center", marginTop: "50px" }}>
             <h1>{formatTime(timeLeft)}</h1>
             <div style={{ marginTop: "20px" }}>
-                {check == 0 ?
-                    <button onClick={() => startTimer()}>Start</button> :
-                    check == 1 ? <button onClick={() => stopTimer()}>Pause</button> :
-                        <button onClick={() => startTimer()}>Resume</button>
-                }
-                {/* <button onClick={() => stopTimer()}>Stop</button> */}
+                {check == 0 &&
+                    <button onClick={() => startTimer()}>Start</button>}
+                {check == 1 && <button onClick={() => stopTimer()}>Pause</button>}
+                {check == 2 && <button onClick={() => resumeTimer()}>Resume</button>}
+
                 <button onClick={() => {
                     setIsRunning(false);
                     setTimeLeft(25 * 60);
+                    setCheck(0)
                 }}>Reset</button>
             </div>
         </div>
