@@ -92,9 +92,9 @@ const WelcomeCard = () => {
 
     return (
         <>
-            <div className="w-full bg-[#1F2937] text-white px-6 py-4 rounded-2xl flex flex-col md:flex-row justify-between items-center gap-4 shadow-xl">
-                {/* Left Section - Avatar & Info */}
-                <div className="flex items-center gap-4 w-full md:w-auto">
+            <div className="w-full max-w-5xl mx-auto bg-[#1F2937] text-white px-6 py-6 rounded-2xl shadow-xl">
+                {/* Top - Avatar and Student Info */}
+                <div className="flex items-center gap-4 mb-6">
                     <div className="w-14 h-14 rounded-full overflow-hidden border-4 border-cyan-500 shadow-lg">
                         <img
                             src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png"
@@ -110,35 +110,34 @@ const WelcomeCard = () => {
                     </div>
                 </div>
 
-                {/* Middle - Buttons */}
-                <div className="flex flex-wrap justify-center gap-3">
+                {/* Buttons Aligned Below */}
+                <div className="flex flex-wrap justify-center gap-4">
                     <button
                         onClick={ViewProfileInfo}
-                        className="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-md text-sm font-medium transition duration-200"
+                        className="px-5 py-2 rounded-md text-sm font-medium bg-gray-800 hover:bg-gray-700 transition"
                     >
                         View Profile
                     </button>
 
                     <button
                         onClick={() => setShowForm(prev => !prev)}
-                        className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-blue-600 hover:to-cyan-600 px-5 py-2 rounded-md text-white font-semibold shadow-md transition duration-300"
+                        className="px-5 py-2 rounded-md text-sm font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-blue-600 hover:to-cyan-600 text-white transition shadow-lg"
                     >
                         {showForm ? "Close Profile" : "Edit Profile"}
                     </button>
-                </div>
 
-                {/* Right - Actions */}
-                <div className="flex gap-3">
-                    <button className="flex items-center gap-2 px-4 py-2 bg-[#111827] hover:bg-[#0f172a] text-white rounded-md transition">
-                        <Bell className="w-5 h-5" />
-                        <span className="text-sm">Notifications</span>
+                    <button className="flex items-center gap-2 px-5 py-2 bg-[#111827] hover:bg-[#0f172a] text-white rounded-md text-sm transition">
+                        <Bell className="w-4 h-4" />
+                        Notifications
                     </button>
-                    <button className="flex items-center gap-2 px-4 py-2 bg-white text-[#111827] hover:bg-gray-200 rounded-md transition">
-                        <FileText className="w-5 h-5" />
-                        <span className="text-sm">Download Report</span>
+
+                    <button className="flex items-center gap-2 px-5 py-2 bg-white text-[#111827] hover:bg-gray-200 rounded-md text-sm transition">
+                        <FileText className="w-4 h-4" />
+                        Download Report
                     </button>
                 </div>
             </div>
+
 
 
             <div className="w-full max-w-4xl mx-auto mt-10 space-y-6">
