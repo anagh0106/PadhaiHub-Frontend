@@ -6,6 +6,7 @@ import { AccessCourse } from './Courses/AccessCourse'
 import PaymentComponent from './PaymentComponent'
 import axios from 'axios'
 import CourseCards from './CourseCards'
+import { BatchTime } from './BatchTime'
 
 export const Course = () => {
 
@@ -39,7 +40,8 @@ export const Course = () => {
                     </p>
                 </div>
             </section>
-            <CourseCards/>
+            <CourseCards />
+            <BatchTime />
             {/* {!iscounterExist
                 ? (<HeroSection />)
                 : (<AccessCourse />)} */}
