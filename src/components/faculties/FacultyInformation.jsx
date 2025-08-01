@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import ThemeContext from '../context/ThemeContext';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import axios from 'axios';
 
 const FacultyInformation = () => {
