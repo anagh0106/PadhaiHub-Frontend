@@ -60,12 +60,12 @@ export const Course = () => {
                 </p>
                 <div className="flex justify-center gap-4 flex-wrap">
                     <button
-                        className={`${colors.btnBg} ${colors.btnText} px-6 py-3 rounded-md font-semibold transition`}
+                        className={`${colors.background} ${colors.text} px-6 py-3 rounded-md font-semibold transition`}
                     >
                         Get Free Consultation →
                     </button>
                     <button
-                        className={`bg-black hover:bg-gray-800 ${colors.btnText} px-6 py-3 rounded-md font-semibold transition border ${colors.btnBorder}`}
+                        className={`bg-black hover:bg-gray-800 ${colors.text} px-6 py-3 rounded-md font-semibold transition border ${colors.btnBorder}`}
                     >
                         Meet Our Teachers
                     </button>
