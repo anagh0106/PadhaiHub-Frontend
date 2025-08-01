@@ -39,6 +39,7 @@ export const Course = () => {
                     </p>
                 </div>
             </section>
+            <CourseCards/>
             {/* {!iscounterExist
                 ? (<HeroSection />)
                 : (<AccessCourse />)} */}
