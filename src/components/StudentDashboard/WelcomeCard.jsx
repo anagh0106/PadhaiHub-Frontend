@@ -210,6 +210,43 @@ const WelcomeCard = () => {
                 )}
             </AnimatePresence>
 
+            <div className="bg-[#1F2937] text-white p-4 rounded-md flex justify-between items-center shadow-md">
+                {/* Left - Avatar and Info */}
+                <div className="flex items-center gap-4">
+                    <div className="bg-blue-600 w-12 h-12 rounded-full flex items-center justify-center">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="text-white w-6 h-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M5.121 17.804A4 4 0 017 17h10a4 4 0 011.879.804M15 11a3 3 0 10-6 0 3 3 0 006 0z"
+                            />
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 className="text-lg font-semibold">Welcome back, Priya Sharma!</h2>
+                        <p className="text-sm text-gray-300">Class 12 - PCM • ID: STU2024001</p>
+                    </div>
+                </div>
+
+                {/* Right - Buttons */}
+                <div className="flex gap-2">
+                    <button className="flex items-center gap-2 px-4 py-2 bg-[#111827] text-white rounded-md hover:bg-[#0f172a] transition">
+                        <Bell className="w-4 h-4" />
+                        Notifications
+                    </button>
+                    <button className="flex items-center gap-2 px-4 py-2 bg-white text-[#111827] rounded-md hover:bg-gray-200 transition">
+                        <FileText className="w-4 h-4" />
+                        Download Report
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };
