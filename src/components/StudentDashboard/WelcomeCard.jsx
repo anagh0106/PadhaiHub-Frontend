@@ -92,11 +92,11 @@ const WelcomeCard = () => {
 
     return (
         <>
-            <div className="w-full bg-[#1F2937] text-white p-4 rounded-md flex justify-between items-center shadow-md">
+            <div className="w-full bg-[#1F2937] text-white rounded-md flex justify-between items-center shadow-md">
                 {/* Left - Avatar and Info */}
                 <div className="flex items-center gap-4">
                     <div className="bg-blue-600 w-12 h-12 rounded-full flex items-center justify-center">
-                        <svg
+                        {/* <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="text-white w-6 h-6"
                             fill="none"
@@ -109,7 +109,12 @@ const WelcomeCard = () => {
                                 strokeWidth={2}
                                 d="M5.121 17.804A4 4 0 017 17h10a4 4 0 011.879.804M15 11a3 3 0 10-6 0 3 3 0 006 0z"
                             />
-                        </svg>
+                        </svg> */}
+                        <img
+                            src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png"
+                            alt="Profile"
+                            className="w-full h-full object-cover rounded-full border-4 border-cyan-500 shadow-md cursor-pointer group-hover:scale-105 transition duration-300"
+                        />
                     </div>
                     <div>
                         <h2 className="text-lg font-semibold">
