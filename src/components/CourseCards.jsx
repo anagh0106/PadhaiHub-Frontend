@@ -13,6 +13,7 @@ export default function CourseCards() {
     try {
       const res = await axios.get(`${API}/courseCard/getCourse`);
       setCourseCard(res.data);
+      console.log(res.data);
     } catch (error) {
       console.log("Error is =>", error);
     }
