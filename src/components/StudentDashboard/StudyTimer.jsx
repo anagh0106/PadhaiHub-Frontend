@@ -27,7 +27,7 @@ const StudyTimer = () => {
             <h1>{formatTime(timeLeft)}</h1>
             <div style={{ marginTop: "20px" }}>
                 <button onClick={() => setIsRunning(true)}>Start</button>
-                {isRunning}
+                <p>{isRunning}</p>
                 <button onClick={() => setIsRunning(false)}>Stop</button>
                 <button onClick={() => {
                     setIsRunning(false);
