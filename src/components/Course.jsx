@@ -53,6 +53,24 @@ export const Course = () => {
             </section>
             <CourseCards />
             <BatchTime />
+            <div className="bg-blue-600 text-white text-center py-20 px-4">
+                <h2 className="text-3xl font-bold mb-4">Ready to Start Learning?</h2>
+                <p className="text-lg mb-8">
+                    Join our expert-led courses and accelerate your academic journey
+                </p>
+                <div className="flex justify-center gap-4 flex-wrap">
+                    <button
+                        className={`${colors.btnBg} ${colors.btnText} px-6 py-3 rounded-md font-semibold transition`}
+                    >
+                        Get Free Consultation →
+                    </button>
+                    <button
+                        className={`bg-black hover:bg-gray-800 ${colors.btnText} px-6 py-3 rounded-md font-semibold transition border ${colors.btnBorder}`}
+                    >
+                        Meet Our Teachers
+                    </button>
+                </div>
+            </div>
             {/* {!iscounterExist
                 ? (<HeroSection />)
                 : (<AccessCourse />)} */}
