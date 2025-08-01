@@ -116,7 +116,6 @@ const FacultyInformation = () => {
                             key={index}
                             className={`rounded-2xl shadow-xl py-10 px-6 cursor-pointer transition-transform duration-300 hover:scale-105 ${colors.card} ${colors.border}`}
                             whileHover={{ scale: 1.05 }}
-                            onClick={() => handleCardClick(teacher)}
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -130,6 +129,7 @@ const FacultyInformation = () => {
                             <h4 className={`text-2xl font-bold mb-1 text-center ${colors.heading}`}>{teacher.name}</h4>
                             <p className={`text-lg text-center ${colors.subtext}`}>{teacher.subject}</p>
                             <button><a href={`mailto:${teacher.contact}`}></a>Contact</button>
+                            <button onClick={() => handleCardClick(teacher)}>View Faculty</button>
                         </motion.div>
                     ))}
                 </div>
