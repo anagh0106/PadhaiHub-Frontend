@@ -210,7 +210,7 @@ const WelcomeCard = () => {
                 )}
             </AnimatePresence>
 
-            <div className="bg-[#1F2937] text-white p-4 rounded-md flex justify-between items-center shadow-md">
+            <div className="w-full bg-[#1F2937] text-white p-4 rounded-md flex justify-between items-center shadow-md">
                 {/* Left - Avatar and Info */}
                 <div className="flex items-center gap-4">
                     <div className="bg-blue-600 w-12 h-12 rounded-full flex items-center justify-center">
@@ -230,8 +230,12 @@ const WelcomeCard = () => {
                         </svg>
                     </div>
                     <div>
-                        <h2 className="text-lg font-semibold">Welcome back, Priya Sharma!</h2>
-                        <p className="text-sm text-gray-300">Class 12 - PCM • ID: STU2024001</p>
+                        <h2 className="text-lg font-semibold">
+                            Welcome back, {userInfo.fullName}!
+                        </h2>
+                        <p className="text-sm text-gray-300">
+                            Class {userInfo.grade} - {userInfo.grade === "A" ? "PCM" : "PCB"} • ID: {userInfo.studentId}
+                        </p>
                     </div>
                 </div>
 
@@ -247,6 +251,7 @@ const WelcomeCard = () => {
                     </button>
                 </div>
             </div>
+
         </div>
     );
 };
