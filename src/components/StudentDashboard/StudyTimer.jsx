@@ -36,8 +36,8 @@ const StudyTimer = () => {
             <h1>{formatTime(timeLeft)}</h1>
             <div style={{ marginTop: "20px" }}>
                 <button onClick={() => startTimer()}>Start</button>
-                {check == 1 ? <button onClick={() => startTimer()}>Resume</button> :
-                    <button onClick={() => stopTimer()}>Pause</button>
+                {check == 1 ? <button onClick={() => stopTimer()}>Pause</button> :
+                    <button onClick={() => startTimer()}>Resume</button>
                 }
                 {/* <button onClick={() => stopTimer()}>Stop</button> */}
                 <button onClick={() => {
