@@ -88,21 +88,22 @@ const StudentDashboard = () => {
                     <StudyTimer />
                 </div>
             </div> */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-4">
-  {/* Left Section - Today Classes */}
-  <div className="lg:col-span-2">
-    <div className="h-full flex flex-col bg-white shadow-md rounded-lg p-4">
-      <TodayClasses />
-    </div>
-  </div>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-4">
+                {/* Left side - Today Classes */}
+                <div className="lg:col-span-2 flex flex-col">
+                    <div className="bg-[#0f172a] rounded-lg p-4 flex-1">
+                        <TodayClasses />
+                    </div>
+                </div>
 
-  {/* Right Section - Timer */}
-  <div className="lg:col-span-1">
-    <div className="h-full flex flex-col bg-white shadow-md rounded-lg p-4">
-      <StudyTimer />
-    </div>
-  </div>
-</div>
+                {/* Right side - Timer */}
+                <div className="lg:col-span-1 flex flex-col">
+                    <div className="bg-[#0f172a] rounded-lg p-4 flex-1">
+                        <StudyTimer />
+                    </div>
+                </div>
+            </div>
+
 
 
             <ClassSchedule />
