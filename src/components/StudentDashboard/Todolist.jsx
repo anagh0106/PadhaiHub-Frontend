@@ -404,114 +404,113 @@ const Todolist = () => {
                         </motion.div>
                     </>
                 )}
-
-
             </motion.div>
             <br /><br />
 
 
             <button onClick={() => AddTaskFunction()}>Add Task</button>
-            {addButtonClicked && <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                <div className="bg-[#0F172A] text-white rounded-lg shadow-lg w-full max-w-md p-6">
-                    <form
-                        onSubmit={handleSubmit(submithandler)}
-                        className="w-full max-w-2xl mx-auto bg-[#0F172A] text-white p-6 rounded-xl shadow-2xl backdrop-blur-lg border border-gray-700 space-y-4"
-                    >
-                        {/* Title */}
-                        <div>
-                            <h2 className="text-2xl font-semibold mb-1">Add New Task</h2>
-                            <p className="text-sm text-gray-400">Create a new task with details and organization</p>
-                        </div>
+            {addButtonClicked && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4 sm:px-0">
+                    <div className="bg-[#0F172A] text-white rounded-2xl shadow-2xl w-full max-w-2xl p-8 space-y-6 border border-gray-700">
 
-                        {/* Task Title */}
+                        {/* Header */}
                         <div className="space-y-1">
-                            <label className="block text-sm font-medium text-gray-300">Task Title</label>
-                            <input
-                                type="text"
-                                placeholder="Enter task title..."
-                                {...register("title", { required: true })}
-                                className="w-full px-3 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            />
+                            <h2 className="text-2xl font-semibold">Add New Task</h2>
+                            <p className="text-sm text-gray-400">Create a new task with proper details</p>
                         </div>
 
-                        {/* Description */}
-                        <div className="space-y-1">
-                            <label className="block text-sm font-medium text-gray-300">Description</label>
-                            <textarea
-                                rows={3}
-                                placeholder="Add more details..."
-                                {...register("description", { required: true })}
-                                className="w-full px-3 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            />
-                        </div>
+                        <form onSubmit={handleSubmit(submithandler)} className="space-y-6">
 
-                        {/* Category & Priority */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <div className="space-y-1">
-                                <label className="block text-sm font-medium text-gray-300">Category</label>
-                                <select
-                                    {...register("category", { required: true })}
-                                    className="w-full px-3 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                >
-                                    <option value="General">General</option>
-                                    <option value="Work">Work</option>
-                                    <option value="Study">Study</option>
-                                </select>
-                            </div>
-                            <div className="space-y-1">
-                                <label className="block text-sm font-medium text-gray-300">Priority</label>
-                                <select
-                                    {...register("priority", { required: true })}
-                                    className="w-full px-3 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                >
-                                    <option value="Low">Low</option>
-                                    <option value="Medium">Medium</option>
-                                    <option value="High">High</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        {/* Due Date & Time */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <div className="space-y-1">
-                                <label className="block text-sm font-medium text-gray-300">Due Date</label>
+                            {/* Task Title */}
+                            <div className="space-y-2">
+                                <label className="block text-sm font-medium text-gray-300">Task Title</label>
                                 <input
-                                    type="date"
-                                    {...register("dueDate", { required: true })}
-                                    className="w-full px-3 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    type="text"
+                                    placeholder="Enter task title..."
+                                    {...register("title", { required: true })}
+                                    className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
                             </div>
-                            <div className="space-y-1">
-                                <label className="block text-sm font-medium text-gray-300">Time (minutes)</label>
-                                <input
-                                    type="number"
-                                    placeholder="e.g. 60"
-                                    {...register("duration", { required: true })}
-                                    className="w-full px-3 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+
+                            {/* Description */}
+                            <div className="space-y-2">
+                                <label className="block text-sm font-medium text-gray-300">Description</label>
+                                <textarea
+                                    rows={4}
+                                    placeholder="Add more details..."
+                                    {...register("description", { required: true })}
+                                    className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
                                 />
                             </div>
-                        </div>
 
-                        {/* Buttons */}
-                        <div className="flex justify-end gap-3 pt-4">
-                            <button
-                                type="button"
-                                onClick={() => addButtonClicked(false)}
-                                className="px-4 py-2 border border-gray-600 rounded-md text-white hover:bg-gray-700 transition"
-                            >
-                                Cancel
-                            </button>
-                            <button
-                                type="submit"
-                                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md transition"
-                            >
-                                Add Task
-                            </button>
-                        </div>
-                    </form>
+                            {/* Category & Priority */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div className="space-y-2">
+                                    <label className="block text-sm font-medium text-gray-300">Category</label>
+                                    <select
+                                        {...register("category", { required: true })}
+                                        className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    >
+                                        <option value="General">General</option>
+                                        <option value="Work">Work</option>
+                                        <option value="Study">Study</option>
+                                    </select>
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="block text-sm font-medium text-gray-300">Priority</label>
+                                    <select
+                                        {...register("priority", { required: true })}
+                                        className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    >
+                                        <option value="Low">Low</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="High">High</option>
+                                    </select>
+                                </div>
+                            </div>
 
+                            {/* Due Date & Duration */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div className="space-y-2">
+                                    <label className="block text-sm font-medium text-gray-300">Due Date</label>
+                                    <input
+                                        type="date"
+                                        {...register("dueDate", { required: true })}
+                                        className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="block text-sm font-medium text-gray-300">Time (minutes)</label>
+                                    <input
+                                        type="number"
+                                        placeholder="e.g. 60"
+                                        {...register("duration", { required: true })}
+                                        className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Buttons */}
+                            <div className="flex justify-end gap-4 pt-4">
+                                <button
+                                    type="button"
+                                    onClick={() => addButtonClicked(false)}
+                                    className="px-5 py-2 border border-gray-600 rounded-md hover:bg-gray-700 text-sm"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    type="submit"
+                                    className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm font-semibold"
+                                >
+                                    Add Task
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>}
+            )}
+
         </>
 
     )
