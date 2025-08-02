@@ -285,7 +285,7 @@ const Todolist = () => {
             await fetchTasks();
             setaddButtonClicked(false); // Close the modal after adding
         } catch (error) {
-            console.error("Error adding task:", error);
+            console.error("Error adding task:", error.response?.data || error);
         }
     };
 
