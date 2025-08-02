@@ -47,7 +47,7 @@ const StudyTimer = () => {
   };
   const submitHandler = (data) => {
     const newTime = parseInt(data.time)
-    if (!NaN(newTime) && newTime > 0) {
+    if (!isNaN(newTime) && newTime > 0) {
       const timeIntoSeconds = newTime * 60
       setCustomTime(timeIntoSeconds);
       setTimeLeft(timeIntoSeconds);
