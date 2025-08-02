@@ -46,14 +46,14 @@ const StudyTimer = () => {
     setCheck(0);
   };
   const submitHandler = (data) => {
-    console.log("New Time Is => ", data);
+    console.log("New Time Is => ", data.time);
 
   }
   return (
     <div className="bg-[#0f172a] p-6 rounded-xl shadow-lg text-white flex flex-col h-full justify-between">
       {/* Header */}
-      <form method="get" onSubmit={handleSubmit(submitHandler)}>
-        <input type="text" placeholder="Enter Your Time" />
+      <form onSubmit={handleSubmit(submitHandler)}>
+        <input type="text" placeholder="Enter Your Time" {...register("time")} />
         <br /><br />
         <input type="submit" value={"Change Time"} />
       </form>
