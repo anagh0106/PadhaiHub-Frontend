@@ -562,45 +562,70 @@ const Todolist = () => {
                     </div>
                 </div>
             )}
-
-            <div className="bg-[#1E293B] rounded-lg p-4 mb-4 border border-gray-700 shadow-md">
-                <div className="flex items-start justify-between">
-                    <div className="flex gap-2 items-center">
-                        <input type="checkbox" className="mt-1" checked={tasks.completed} />
-                        <div>
-                            <h3 className={`text-lg font-semibold ${tasks.completed ? "line-through text-gray-400" : "text-white"}`}>
-                                {tasks.text}
-                            </h3>
-                            <div className="flex gap-2 mt-1">
-                                <span className="bg-blue-700 text-xs text-white px-2 py-1 rounded-full">{tasks.category}</span>
-                                <span className={`text-xs px-2 py-1 rounded-full ${tasks.priority === 'high' ? 'bg-orange-200 text-orange-800' : 'bg-yellow-200 text-yellow-800'}`}>
-                                    {tasks.priority}
-                                </span>
+            {tasks.map((task, index) => (
+                <div
+                    key={task.taskId || index}
+                    className="bg-[#1E293B] rounded-lg p-4 mb-4 border border-gray-700 shadow-md"
+                >
+                    <div className="flex items-start justify-between">
+                        <div className="flex gap-2 items-center">
+                            <input
+                                type="checkbox"
+                                className="mt-1"
+                                checked={task.completed}
+                                onChange={() => handleToggleComplete(task.taskId)}
+                            />
+                            <div>
+                                <h3
+                                    className={`text-lg font-semibold ${task.completed ? "line-through text-gray-400" : "text-white"
+                                        }`}
+                                >
+                                    {task.text}
+                                </h3>
+                                <div className="flex gap-2 mt-1">
+                                    <span className="bg-blue-700 text-xs text-white px-2 py-1 rounded-full">
+                                        {task.category}
+                                    </span>
+                                    <span
+                                        className={`text-xs px-2 py-1 rounded-full ${task.priority === "high"
+                                            ? "bg-orange-200 text-orange-800"
+                                            : task.priority === "medium"
+                                                ? "bg-yellow-200 text-yellow-800"
+                                                : "bg-gray-300 text-gray-700"
+                                            }`}
+                                    >
+                                        {task.priority}
+                                    </span>
+                                </div>
                             </div>
                         </div>
+                        {!task.completed && (
+                            <button
+                                className="text-red-400 hover:text-red-600"
+                                onClick={() => handleDelete(task.taskId)}
+                            >
+                                <FaTrash />
+                            </button>
+                        )}
                     </div>
-                    {!tasks.completed && (
-                        <button className="text-red-400 hover:text-red-600">
-                            <FaTrash />
-                        </button>
-                    )}
-                </div>
 
-                <p className={`mt-2 text-sm ${tasks.completed ? "text-gray-500" : "text-gray-200"}`}>
-                    {tasks.description}
-                </p>
+                    <p className={`mt-2 text-sm ${task.completed ? "text-gray-500" : "text-gray-200"}`}>
+                        {task.description}
+                    </p>
 
-                <div className="flex gap-6 mt-3 text-gray-400 text-sm">
-                    <div className="flex items-center gap-1">
-                        <FaCalendarAlt />
-                        <span>{tasks.duedate}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                        <FaClock />
-                        <span>{tasks.time}m</span>
+                    <div className="flex gap-6 mt-3 text-gray-400 text-sm">
+                        <div className="flex items-center gap-1">
+                            <FaCalendarAlt />
+                            <span>{task.duedate}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                            <FaClock />
+                            <span>{task.time}m</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            ))}
+
         </>
     )
 }
