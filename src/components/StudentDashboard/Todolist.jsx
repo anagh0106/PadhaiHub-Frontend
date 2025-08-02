@@ -416,8 +416,9 @@ const Todolist = () => {
 
                     <form
                         onSubmit={handleSubmit(submithandler)}
-                        className="w-full max-w-lg mx-auto bg-[#0F172A] text-white p-8 rounded-xl shadow-2xl backdrop-blur-lg border border-gray-700 space-y-6"
+                        className="w-full max-w-2xl mx-auto bg-[#0F172A] text-white p-8 rounded-xl shadow-2xl backdrop-blur-lg border border-gray-700 space-y-6"
                     >
+
                         {/* Title */}
                         <div>
                             <h2 className="text-2xl font-semibold mb-1">Add New Task</h2>
@@ -497,7 +498,7 @@ const Todolist = () => {
                         <div className="flex justify-end gap-4 pt-2">
                             <button
                                 type="button"
-                                onClick={() => reset()}
+                                onClick={() => addButtonClicked(false)}
                                 className="px-4 py-2 border border-gray-600 rounded-md text-white hover:bg-gray-700 transition"
                             >
                                 Cancel
