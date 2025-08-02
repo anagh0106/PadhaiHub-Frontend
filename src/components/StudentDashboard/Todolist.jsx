@@ -319,7 +319,7 @@ const Todolist = () => {
     useEffect(() => {
         getCategory()
         getPriority()
-    })
+    }, [])
     const styles = {
         container: theme === 'light' ? 'bg-white text-black' : 'bg-black text-white',
         card: theme === 'light' ? 'bg-gray-100 border border-gray-300 text-black shadow-md' : 'bg-white/10 border border-white/20 text-white shadow-[0_4px_16px_rgba(0,0,0,0.4)]',
@@ -477,6 +477,7 @@ const Todolist = () => {
                                         {...register("category", { required: true })}
                                         className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     >
+                                        <option value="">Select Category</option>
                                         {taskCategory.map((category, index) => (
                                             <option value={category} key={index}>{category}</option>
                                         ))}
@@ -488,6 +489,7 @@ const Todolist = () => {
                                         {...register("priority", { required: true })}
                                         className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     >
+                                        <option value="">Select Priority</option>
                                         {TaskPriority.map((category, index) => (
                                             <option value={category} key={index}>{category}</option>
                                         ))}
