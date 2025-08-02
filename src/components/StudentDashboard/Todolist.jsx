@@ -354,6 +354,9 @@ const Todolist = () => {
     const AddTaskFunction = () => {
         setaddButtonClicked(true)
     }
+
+    console.log(tasks.map(t=>t));
+    
     return (
         <>
             <motion.div
