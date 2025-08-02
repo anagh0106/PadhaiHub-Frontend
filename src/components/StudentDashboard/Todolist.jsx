@@ -267,12 +267,12 @@ const Todolist = () => {
             const res = await axios.post(
                 `${API}/AddTask`,
                 {
-                    title: data.title,
+                    text: data.text,
                     description: data.description,
                     category: data.category,
                     priority: data.priority,
-                    dueDate: data.dueDate,
-                    time: data.time,
+                    duedate: new Date(data.dueDate),
+                    time: parseInt(data.time)
                 },
                 {
                     headers: {
@@ -281,6 +281,7 @@ const Todolist = () => {
                     },
                 }
             );
+            console.log(res.data);
 
             // Reset the form and refresh task list
             reset();
@@ -485,7 +486,7 @@ const Todolist = () => {
                                 <input
                                     type="text"
                                     placeholder="Enter task title..."
-                                    {...register("title", { required: true })}
+                                    {...register("text", { required: true })}
                                     className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
                             </div>
