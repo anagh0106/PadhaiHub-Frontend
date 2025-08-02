@@ -209,6 +209,8 @@ import axios from 'axios'
 import ThemeContext from '../context/ThemeContext'
 import { IoCloseOutline } from "react-icons/io5";
 import { FaCalendarAlt, FaTrash, FaClock, FaRegCalendarAlt } from 'react-icons/fa';
+import { FaCalendarAlt, FaClock, FaTrash } from "react-icons/fa";
+
 
 const Todolist = () => {
     const [tasks, settasks] = useState([])
@@ -505,70 +507,6 @@ const Todolist = () => {
                 </div>
             )}
 
-            {tasks.map((task, index) => (
-                <div
-                    key={task.taskId || index}
-                    className="bg-[#1E293B] rounded-lg p-4 mb-4 border border-gray-700 shadow-md"
-                >
-                    <div className="flex items-start justify-between">
-                        <div className="flex gap-2 items-center">
-                            <input
-                                type="checkbox"
-                                className="mt-1"
-                                checked={task.completed}
-                                onChange={() => handleToggleComplete(task.taskId)}
-                            />
-                            <div>
-                                <h3
-                                    className={`text-lg font-semibold ${task.completed ? "line-through text-gray-400" : "text-white"
-                                        }`}
-                                >
-                                    {task.text}
-                                </h3>
-                                <div className="flex gap-2 mt-1">
-                                    <span className="bg-blue-700 text-xs text-white px-2 py-1 rounded-full">
-                                        {task.category}
-                                    </span>
-                                    <span
-                                        className={`text-xs px-2 py-1 rounded-full ${task.priority === "high"
-                                            ? "bg-orange-200 text-orange-800"
-                                            : task.priority === "medium"
-                                                ? "bg-yellow-200 text-yellow-800"
-                                                : "bg-gray-300 text-gray-700"
-                                            }`}
-                                    >
-                                        {task.priority}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        {!task.completed && (
-                            <button
-                                className="text-red-400 hover:text-red-600"
-                                onClick={() => handleDelete(task.taskId)}
-                            >
-                                <FaTrash />
-                            </button>
-                        )}
-                    </div>
-
-                    <p className={`mt-2 text-sm ${task.completed ? "text-gray-500" : "text-gray-200"}`}>
-                        {task.description}
-                    </p>
-
-                    <div className="flex gap-6 mt-3 text-gray-400 text-sm">
-                        <div className="flex items-center gap-1">
-                            <FaCalendarAlt />
-                            <span>{task.duedate}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                            <FaClock />
-                            <span>{task.time}m</span>
-                        </div>
-                    </div>
-                </div>
-            ))}
-
             <div className="max-w-2xl mx-auto bg-[#0F172A] text-white p-6 rounded-xl shadow-2xl space-y-4">
                 {/* Header */}
                 <div className="flex justify-between items-center">
@@ -595,85 +533,88 @@ const Todolist = () => {
                     </select>
                 </div>
 
-                {/* Task 1 */}
-                <div className="bg-[#1E293B] p-4 rounded-xl border border-gray-700 flex gap-3">
-                    <input type="checkbox" className="accent-green-500 mt-1" />
-                    <div className="flex-grow">
-                        <div className="flex justify-between">
-                            <h3 className="font-semibold text-white">Complete Calculus Assignment</h3>
-                            <div className="flex gap-2">
-                                <span className="bg-blue-700 text-white text-xs px-2 py-1 rounded-full">math</span>
-                                <span className="bg-orange-200 text-orange-800 text-xs px-2 py-1 rounded-full">high</span>
+                {tasks.map((task, index) => (
+                    <div
+                        key={task.taskId || index}
+                        className={`bg-[#1E293B] p-4 rounded-xl border border-gray-700 flex gap-3 mb-4 shadow-md ${task.completed ? "opacity-50" : ""
+                            }`}
+                    >
+                        <input
+                            type="checkbox"
+                            checked={task.completed}
+                            onChange={() => handleToggleComplete(task.taskId)}
+                            className="accent-green-500 mt-1"
+                        />
+                        <div className="flex-grow">
+                            <div className="flex justify-between">
+                                <h3
+                                    className={`font-semibold text-base ${task.completed ? "text-gray-400 line-through" : "text-white"
+                                        }`}
+                                >
+                                    {task.text}
+                                </h3>
+                                <div className="flex gap-2">
+                                    <span className="text-xs text-white px-2 py-1 rounded-full bg-blue-700 capitalize">
+                                        {task.category}
+                                    </span>
+                                    <span
+                                        className={`text-xs px-2 py-1 rounded-full font-medium capitalize ${task.priority === "high"
+                                            ? "bg-orange-200 text-orange-800"
+                                            : task.priority === "medium"
+                                                ? "bg-yellow-200 text-yellow-800"
+                                                : "bg-indigo-200 text-indigo-800"
+                                            }`}
+                                    >
+                                        {task.priority}
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-                        <p className="text-gray-300 text-sm mt-1">
-                            Solve problems 1-15 from Chapter 7
-                        </p>
-                        <div className="flex gap-4 text-sm text-gray-400 mt-3">
-                            <span className="flex items-center gap-1">
-                                <FaRegCalendarAlt /> Aug 4
-                            </span>
-                            <span className="flex items-center gap-1">
-                                <FaClock /> 120m
-                            </span>
-                        </div>
-                        <div className="flex gap-2 mt-3 flex-wrap">
-                            <span className="bg-slate-700 text-white text-xs px-2 py-1 rounded-full">homework</span>
-                            <span className="bg-slate-700 text-white text-xs px-2 py-1 rounded-full">calculus</span>
-                        </div>
-                    </div>
-                </div>
 
-                {/* Task 2 */}
-                <div className="bg-[#1E293B] p-4 rounded-xl border border-gray-700 flex gap-3">
-                    <input type="checkbox" className="accent-green-500 mt-1" />
-                    <div className="flex-grow">
-                        <div className="flex justify-between">
-                            <h3 className="font-semibold text-white">Physics Lab Report</h3>
-                            <div className="flex gap-2">
-                                <span className="bg-green-700 text-white text-xs px-2 py-1 rounded-full">science</span>
-                                <span className="bg-yellow-200 text-yellow-800 text-xs px-2 py-1 rounded-full">medium</span>
-                            </div>
-                        </div>
-                        <p className="text-gray-300 text-sm mt-1">
-                            Write lab report on pendulum experiment
-                        </p>
-                        <div className="flex gap-4 text-sm text-gray-400 mt-3">
-                            <span className="flex items-center gap-1">
-                                <FaRegCalendarAlt /> Aug 7
-                            </span>
-                            <span className="flex items-center gap-1">
-                                <FaClock /> 90m
-                            </span>
-                        </div>
-                        <div className="flex gap-2 mt-3 flex-wrap">
-                            <span className="bg-slate-700 text-white text-xs px-2 py-1 rounded-full">lab</span>
-                            <span className="bg-slate-700 text-white text-xs px-2 py-1 rounded-full">report</span>
-                        </div>
-                    </div>
-                </div>
+                            <p
+                                className={`text-sm mt-1 ${task.completed ? "text-gray-400 line-through" : "text-gray-300"
+                                    }`}
+                            >
+                                {task.description}
+                            </p>
 
-                {/* Task 3 (Completed) */}
-                <div className="bg-[#1E293B] p-4 rounded-xl border border-gray-700 opacity-50 flex gap-3">
-                    <input type="checkbox" checked className="accent-green-500 mt-1" />
-                    <div className="flex-grow">
-                        <div className="flex justify-between">
-                            <h3 className="font-semibold text-gray-400 line-through">Read Shakespeare</h3>
-                            <div className="flex gap-2">
-                                <span className="bg-purple-700 text-white text-xs px-2 py-1 rounded-full">english</span>
-                                <span className="bg-indigo-200 text-indigo-800 text-xs px-2 py-1 rounded-full">low</span>
+                            <div className="flex items-center gap-6 mt-3 text-sm text-gray-400">
+                                <span className="flex items-center gap-1">
+                                    <FaCalendarAlt /> {task.duedate}
+                                </span>
+                                <span className="flex items-center gap-1">
+                                    <FaClock /> {task.time}m
+                                </span>
                             </div>
+
+                            {/* Optional: tag pills */}
+                            {task.tags && task.tags.length > 0 && (
+                                <div className="flex gap-2 mt-3 flex-wrap">
+                                    {task.tags.map((tag, i) => (
+                                        <span
+                                            key={i}
+                                            className="bg-slate-700 text-white text-xs px-2 py-1 rounded-full"
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            )}
                         </div>
-                        <p className="text-gray-400 text-sm mt-1 line-through">
-                            Read Act 3 of Hamlet
-                        </p>
+
+                        {!task.completed && (
+                            <button
+                                className="text-red-400 hover:text-red-600"
+                                onClick={() => handleDelete(task.taskId)}
+                            >
+                                <FaTrash />
+                            </button>
+                        )}
                     </div>
-                </div>
+                ))}
+
             </div>
-
         </>
     )
 }
 
 export default Todolist
-
