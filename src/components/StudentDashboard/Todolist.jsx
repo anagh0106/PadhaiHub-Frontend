@@ -413,102 +413,91 @@ const Todolist = () => {
             <button onClick={() => AddTaskFunction()}>Add Task</button>
             {addButtonClicked && <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                 <div className="bg-[#0F172A] text-white rounded-lg shadow-lg w-full max-w-md p-6">
+
                     <form
                         onSubmit={handleSubmit(submithandler)}
-                        className="w-full max-w-xl bg-[#0F172A] text-white p-8 rounded-xl shadow-xl space-y-6"
+                        className="w-full max-w-lg mx-auto bg-[#0F172A] text-white p-8 rounded-xl shadow-2xl backdrop-blur-lg border border-gray-700 space-y-6"
                     >
+                        {/* Title */}
                         <div>
-                            <h2 className="text-xl font-semibold">Add New Task</h2>
+                            <h2 className="text-2xl font-semibold mb-1">Add New Task</h2>
                             <p className="text-sm text-gray-400">Create a new task with details and organization</p>
                         </div>
 
                         {/* Task Title */}
                         <div>
-                            <label className="block text-sm font-medium mb-1">Task Title</label>
+                            <label className="block text-sm font-medium text-gray-300 mb-1">Task Title</label>
                             <input
                                 type="text"
                                 placeholder="Enter task title..."
-                                {...register("title", { required: "Task Title is required" })}
+                                {...register("title", { required: true })}
                                 className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                             />
-                            {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title.message}</p>}
                         </div>
 
                         {/* Description */}
                         <div>
-                            <label className="block text-sm font-medium mb-1">Description</label>
+                            <label className="block text-sm font-medium text-gray-300 mb-1">Description</label>
                             <textarea
-                                placeholder="Add more details..."
                                 rows={3}
-                                {...register("description", { required: "Description is required" })}
+                                placeholder="Add more details..."
+                                {...register("description", { required: true })}
                                 className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            ></textarea>
-                            {errors.description && <p className="text-red-500 text-sm mt-1">{errors.description.message}</p>}
+                            />
                         </div>
 
-                        {/* Category + Priority */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {/* Category & Priority */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-sm font-medium mb-1">Category</label>
+                                <label className="block text-sm font-medium text-gray-300 mb-1">Category</label>
                                 <select
-                                    {...register("category", { required: "Category is required" })}
+                                    {...register("category", { required: true })}
                                     className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 >
-                                    <option value="">Select</option>
                                     <option value="General">General</option>
-                                    <option value="Mathematics">Mathematics</option>
-                                    <option value="Physics">Physics</option>
-                                    <option value="Chemistry">Chemistry</option>
-                                    <option value="Biology">Biology</option>
+                                    <option value="Work">Work</option>
+                                    <option value="Study">Study</option>
                                 </select>
-                                {errors.category && <p className="text-red-500 text-sm mt-1">{errors.category.message}</p>}
                             </div>
-
                             <div>
-                                <label className="block text-sm font-medium mb-1">Priority</label>
+                                <label className="block text-sm font-medium text-gray-300 mb-1">Priority</label>
                                 <select
-                                    {...register("priority", { required: "Priority is required" })}
+                                    {...register("priority", { required: true })}
                                     className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 >
-                                    <option value="">Select</option>
                                     <option value="Low">Low</option>
                                     <option value="Medium">Medium</option>
                                     <option value="High">High</option>
-                                    <option value="Urgent">Urgent</option>
                                 </select>
-                                {errors.priority && <p className="text-red-500 text-sm mt-1">{errors.priority.message}</p>}
                             </div>
                         </div>
 
-                        {/* Due Date + Time */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {/* Due Date & Time */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label className="block text-sm font-medium mb-1">Due Date</label>
+                                <label className="block text-sm font-medium text-gray-300 mb-1">Due Date</label>
                                 <input
                                     type="date"
-                                    {...register("dueDate", { required: "Due Date is required" })}
+                                    {...register("dueDate", { required: true })}
                                     className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
-                                {errors.dueDate && <p className="text-red-500 text-sm mt-1">{errors.dueDate.message}</p>}
                             </div>
-
                             <div>
-                                <label className="block text-sm font-medium mb-1">Time (minutes)</label>
+                                <label className="block text-sm font-medium text-gray-300 mb-1">Time (minutes)</label>
                                 <input
                                     type="number"
                                     placeholder="e.g. 60"
-                                    {...register("duration", { required: "Time is required" })}
+                                    {...register("duration", { required: true })}
                                     className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
-                                {errors.duration && <p className="text-red-500 text-sm mt-1">{errors.duration.message}</p>}
                             </div>
                         </div>
 
                         {/* Buttons */}
-                        <div className="flex justify-end gap-4 pt-4">
+                        <div className="flex justify-end gap-4 pt-2">
                             <button
                                 type="button"
-                                onClick={() => addButtonClicked(false)} // Clear form
+                                onClick={() => reset()}
                                 className="px-4 py-2 border border-gray-600 rounded-md text-white hover:bg-gray-700 transition"
                             >
                                 Cancel
