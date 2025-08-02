@@ -263,31 +263,36 @@ const Todolist = () => {
     const submithandler = async (data) => {
         try {
             const payload = {
-                text: data.text,
+                text: data.text, // ✅ Fix applied here
                 description: data.description,
                 category: data.category,
                 priority: data.priority,
-                duedate: data.duedate,
-                time: parseInt(data.time)
+                duedate: data.dueDate,
+                time: parseInt(data.time),
+            };
+
+            if (!payload.text || payload.text.trim() === "") {
+                alert("Task title is required.");
+                return;
             }
-            const res = await axios.post(
-                `${API}/AddTask`, payload,
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                    },
-                }
-            );
-            console.log(res.data);
-            // Reset the form and refresh task list
+
+            console.log("Payload being sent:", payload);
+
+            const res = await axios.post(`${API}/AddTask`, payload, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
             reset();
             await fetchTasks();
-            setaddButtonClicked(false); // Close the modal after adding
+            setaddButtonClicked(false);
         } catch (error) {
             console.error("Error adding task:", error.response?.data || error);
         }
     };
+
 
 
     const deleteTask = async (taskId) => {
