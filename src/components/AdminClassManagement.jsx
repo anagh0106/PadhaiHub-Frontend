@@ -63,7 +63,6 @@ const AdminClassManagement = () => {
     const getClasses = async () => {
         try {
             const res = await axios.get(`${API}/class/getClass`)
-            console.log(res.data)
             setpreviousClasses(res.data.previousClasses)
             setupcomingClasses(res.data.upComingClassesAdmin)
             setclassLabels(res.data.label)

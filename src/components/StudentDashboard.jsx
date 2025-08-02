@@ -69,7 +69,7 @@ const StudentDashboard = () => {
                 </div>
             </div>
 
-            <ClassSchedule />
+            {/* <ClassSchedule /> */}
 
             <PerformanceAnalytics />
             {/* <MockTest /> */}
