@@ -271,7 +271,7 @@ const Todolist = () => {
                     description: data.description,
                     category: data.category,
                     priority: data.priority,
-                    duedate: new Date(data.dueDate),
+                    duedate: new Date(data.duedate),
                     time: parseInt(data.time)
                 },
                 {
@@ -536,7 +536,7 @@ const Todolist = () => {
                                     <label className="block text-sm font-medium text-gray-300">Due Date</label>
                                     <input
                                         type="date"
-                                        {...register("dueDate", { required: true })}
+                                        {...register("duedate", { required: true })}
                                         className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     />
                                 </div>
