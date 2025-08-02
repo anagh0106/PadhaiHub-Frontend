@@ -94,29 +94,33 @@ const TodayClasses = () => {
 
     return (
         <div className="bg-[#0f172a] p-6 rounded-xl shadow-lg">
-            <h2 className="text-white text-xl font-semibold mb-1 flex items-center gap-2">
-                <i className="fas fa-calendar-alt"></i> Today's Classes
+            <h2 className="text-white text-2xl font-bold mb-2 flex items-center gap-2 tracking-wide">
+                <i className="fas fa-calendar-alt text-blue-400 text-xl"></i> Today’s Classes
             </h2>
-            <p className="text-sm text-gray-400 mb-4">Your schedule for today</p>
+            <p className="text-sm text-gray-400 mb-6 tracking-wide">Your schedule for today</p>
 
             {Class.map((cls, idx) => (
                 <div
                     key={idx}
-                    className="bg-[#1f2937] p-4 rounded-lg mb-4 flex justify-between items-center"
+                    className="bg-[#1f2937] p-5 rounded-lg mb-5 flex justify-between items-start hover:bg-[#273447] transition"
                 >
+                    {/* Left Side */}
                     <div>
-                        <h3 className="text-white font-bold">{cls.subject}</h3>
-                        <p className="text-gray-300 text-sm">{cls.faculty.name}</p>
-                        <p className="text-gray-400 text-xs">{cls.room}</p>
+                        <h3 className="text-white text-lg font-semibold tracking-wide mb-1">{cls.subject}</h3>
+                        <p className="text-gray-300 text-sm tracking-wide mb-0.5">{cls.faculty.name}</p>
+                        <p className="text-gray-400 text-xs tracking-wider">Room: {cls.room}</p>
                     </div>
+
+                    {/* Right Side */}
                     <div className="text-right">
-                        <p className="text-blue-400 font-semibold">{cls.time}</p>
-                        <p className="text-xs text-gray-400">{cls.type}</p>
+                        <p className="text-blue-400 font-semibold text-sm tracking-wide">{cls.time}</p>
+                        <p className="text-xs text-gray-400 tracking-wide mt-1">{cls.type}</p>
                     </div>
                 </div>
             ))}
         </div>
     );
+
 };
 
 export default TodayClasses;
