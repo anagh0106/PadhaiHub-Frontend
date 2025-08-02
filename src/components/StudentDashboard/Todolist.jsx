@@ -263,11 +263,11 @@ const Todolist = () => {
     const submithandler = async (data) => {
         try {
             const payload = {
-                text: data.text, // ✅ Fix applied here
+                text: data.text, 
                 description: data.description,
                 category: data.category,
-                priority: data.priority,
-                duedate: data.dueDate,
+                priority: data.priority, 
+                duedate: new Date(data.duedate), 
                 time: parseInt(data.time),
             };
             console.log("Form data:", data); // 👈 dekh yaha `text` aata hai ya nahi
