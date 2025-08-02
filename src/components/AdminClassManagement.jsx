@@ -182,7 +182,6 @@ const AdminClassManagement = () => {
         selectedClasses === classLabels.upComingClassesAdmin
             ? upcomingClasses
             : previousClasses;
-    console.log(classLabels.map(l => l));
     
     return (
         <div className={`p-10 min-h-screen transition-all duration-300 ${colors.background} ${colors.text}`}>
@@ -223,7 +222,7 @@ const AdminClassManagement = () => {
                 >
                     {columns.map((label, index) => (
                         <option key={index} value={label.title}>
-                            {label.title === "upComingClasses" ? "📘 Upcoming Classes" : "📕 Previous Classes"}
+                            {label.title === "UpcomingClasses" ? "📘 Upcoming Classes" : "📕 Previous Classes"}
                         </option>
                     ))}
                 </motion.select>
