@@ -180,7 +180,7 @@ const AdminClassManagement = () => {
     }, [columns])
     const classesToRender =
         selectedClasses === classLabels.upComingClassesAdmin
-            ? upComingClassesAdmin
+            ? upcomingClasses
             : previousClasses;
     return (
         <div className={`p-10 min-h-screen transition-all duration-300 ${colors.background} ${colors.text}`}>
