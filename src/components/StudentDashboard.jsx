@@ -12,7 +12,6 @@ import ThemeContext from './context/ThemeContext';
 import PerformanceAnalytics from './StudentDashboard/PerformanceAnalytics';
 import StudentTestManagement from './StudentDashboard/StudentTestManagement';
 import MockTestScore from './StudentDashboard/MockTestScore';
-import { Bell, FileText } from 'lucide-react';
 import StudyTimer from './StudentDashboard/StudyTimer';
 import StudentStats from './StudentDashboard/StudentStats';
 import TodayClasses from './StudentDashboard/TodayClass';
