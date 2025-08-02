@@ -413,11 +413,6 @@ const Todolist = () => {
             <button onClick={() => AddTaskFunction()}>Add Task</button>
             {addButtonClicked && <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                 <div className="bg-[#0F172A] text-white rounded-lg shadow-lg w-full max-w-md p-6">
-                    <h2 className="text-xl font-semibold mb-1">Add New Task</h2>
-                    <p className="text-sm text-gray-400 mb-4">
-                        Create a new task with details and organization
-                    </p>
-
                     <form
                         onSubmit={handleSubmit(submithandler)}
                         className="w-full max-w-xl bg-[#0F172A] text-white p-8 rounded-xl shadow-xl space-y-6"
@@ -513,7 +508,7 @@ const Todolist = () => {
                         <div className="flex justify-end gap-4 pt-4">
                             <button
                                 type="button"
-                                onClick={() => reset()} // Clear form
+                                onClick={() => addButtonClicked(false)} // Clear form
                                 className="px-4 py-2 border border-gray-600 rounded-md text-white hover:bg-gray-700 transition"
                             >
                                 Cancel
