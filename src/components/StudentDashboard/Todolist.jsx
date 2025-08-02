@@ -270,6 +270,9 @@ const Todolist = () => {
                 duedate: data.dueDate,
                 time: parseInt(data.time),
             };
+            console.log("Form data:", data); // 👈 dekh yaha `text` aata hai ya nahi
+            console.log("Payload:", payload); // 👈 final payload backend me ja raha hai
+
 
             if (!payload.text || payload.text.trim() === "") {
                 alert("Task title is required.");
