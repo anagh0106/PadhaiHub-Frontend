@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { ClockIcon, PauseIcon, PlayIcon, ArrowPathIcon } from '@heroicons/react/24/solid'
 
 const StudyTimer = () => {
   const [timeLeft, setTimeLeft] = useState(25 * 60);
@@ -43,18 +44,21 @@ const StudyTimer = () => {
   };
 
   return (
-    <div className="bg-[#0f172a] p-6 rounded-xl shadow-lg text-white flex flex-col items-center">
-      <h2 className="text-xl font-semibold mb-2 flex items-center gap-2">
-        <i className="fas fa-clock"></i> Pomodoro Timer
+    <div className="bg-[#0f172a] p-6 rounded-xl shadow-lg text-white flex flex-col h-full justify-between">
+      {/* Header */}
+      <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+        <ClockIcon className="h-6 w-6 text-blue-400" />
+        Pomodoro Timer
       </h2>
 
-      <p className="text-5xl font-bold text-blue-400 mb-1">
-        {formatTime(timeLeft)}
-      </p>
-      <p className="text-sm text-gray-400 mb-4">25 min study session</p>
+      {/* Time Display */}
+      <div>
+        <p className="text-6xl font-bold text-blue-400 mb-1">{formatTime(timeLeft)}</p>
+        <p className="text-sm text-gray-400 mb-6">25 min study session</p>
+      </div>
 
       {/* Progress Bar */}
-      <div className="w-full bg-gray-700 h-2 rounded-full mb-4">
+      <div className="w-full bg-gray-700 h-2 rounded-full mb-6">
         <div
           className="bg-blue-500 h-2 rounded-full transition-all duration-500"
           style={{ width: `${(timeLeft / (25 * 60)) * 100}%` }}
@@ -66,36 +70,40 @@ const StudyTimer = () => {
         {check === 0 && (
           <button
             onClick={startTimer}
-            className="bg-white text-[#0f172a] px-4 py-2 rounded-md font-medium hover:bg-gray-200"
+            className="bg-white text-[#0f172a] px-4 py-2 rounded-md font-medium hover:bg-gray-200 flex items-center gap-2"
           >
+            <PlayIcon className="h-5 w-5" />
             Start
           </button>
         )}
         {check === 1 && (
           <button
             onClick={stopTimer}
-            className="bg-white text-[#0f172a] px-4 py-2 rounded-md font-medium hover:bg-gray-200"
+            className="bg-white text-[#0f172a] px-4 py-2 rounded-md font-medium hover:bg-gray-200 flex items-center gap-2"
           >
+            <PauseIcon className="h-5 w-5" />
             Pause
           </button>
         )}
         {check === 2 && (
           <button
             onClick={resumeTimer}
-            className="bg-white text-[#0f172a] px-4 py-2 rounded-md font-medium hover:bg-gray-200"
+            className="bg-white text-[#0f172a] px-4 py-2 rounded-md font-medium hover:bg-gray-200 flex items-center gap-2"
           >
+            <PlayIcon className="h-5 w-5" />
             Resume
           </button>
         )}
         <button
           onClick={resetTimer}
-          className="bg-gray-800 text-white px-4 py-2 rounded-md font-medium hover:bg-gray-700"
+          className="bg-gray-800 text-white px-4 py-2 rounded-md font-medium hover:bg-gray-700 flex items-center gap-2"
         >
+          <ArrowPathIcon className="h-5 w-5" />
           Reset
         </button>
       </div>
 
-      <p className="mt-4 text-sm text-gray-400">Stay focused and productive!</p>
+      <p className="mt-6 text-sm text-gray-400 text-center">Stay focused and productive!</p>
     </div>
   );
 };
