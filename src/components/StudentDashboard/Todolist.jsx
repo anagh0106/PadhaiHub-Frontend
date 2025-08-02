@@ -202,15 +202,14 @@
 // export default Todolist
 
 
-import React, { useEffect, useState, useContext } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import axios from 'axios'
 import ThemeContext from '../context/ThemeContext'
 import { IoCloseOutline } from "react-icons/io5";
-import { FaCalendarAlt, FaTrash, FaClock, FaRegCalendarAlt } from 'react-icons/fa';
+import { FaCalendarAlt, FaTrash, FaClock } from 'react-icons/fa';
 import { FaCalendarAlt, FaClock, FaTrash } from "react-icons/fa";
-
 
 const Todolist = () => {
     const [tasks, settasks] = useState([])
@@ -349,7 +348,6 @@ const Todolist = () => {
         setaddButtonClicked(true)
     }
 
-
     return (
         <>
             <motion.div
@@ -401,9 +399,6 @@ const Todolist = () => {
                     </>
                 )}
             </motion.div>
-            <br /><br />
-
-
             {addButtonClicked && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4 sm:px-0">
                     <div className="bg-[#0F172A] text-white rounded-2xl shadow-2xl w-full max-w-2xl p-8 space-y-6 border border-gray-700">
