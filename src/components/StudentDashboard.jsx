@@ -68,15 +68,13 @@ const StudentDashboard = () => {
                     </div>
                 </div>
             </div>
-
+            <Todolist />
             {/* <ClassSchedule /> */}
-
             <PerformanceAnalytics />
             {/* <MockTest /> */}
             <StudentTestManagement />
             <MockTestScore />
             <br /><br />
-            <Todolist />
         </div>
     );
 };
