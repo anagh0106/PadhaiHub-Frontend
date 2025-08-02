@@ -65,7 +65,7 @@ const AdminClassManagement = () => {
             const res = await axios.get(`${API}/class/getClass`)
             console.log(res.data)
             setpreviousClasses(res.data.previousClasses)
-            setupcomingClasses(res.data.upComingClasses)
+            setupcomingClasses(res.data.upComingClassesAdmin)
             setclassLabels(res.data.label)
         } catch (error) {
             console.log("Error is =>", error);
@@ -170,7 +170,7 @@ const AdminClassManagement = () => {
 
     }
     const columns = [
-        { title: classLabels.upComingClasses },
+        { title: classLabels.upComingClassesAdmin },
         { title: classLabels.previousClasses },
     ]
     useEffect(() => {
@@ -179,8 +179,8 @@ const AdminClassManagement = () => {
         }
     }, [columns])
     const classesToRender =
-        selectedClasses === classLabels.upComingClasses
-            ? upcomingClasses
+        selectedClasses === classLabels.upComingClassesAdmin
+            ? upComingClassesAdmin
             : previousClasses;
     return (
         <div className={`p-10 min-h-screen transition-all duration-300 ${colors.background} ${colors.text}`}>
