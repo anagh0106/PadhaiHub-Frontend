@@ -413,12 +413,10 @@ const Todolist = () => {
             <button onClick={() => AddTaskFunction()}>Add Task</button>
             {addButtonClicked && <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                 <div className="bg-[#0F172A] text-white rounded-lg shadow-lg w-full max-w-md p-6">
-
                     <form
                         onSubmit={handleSubmit(submithandler)}
-                        className="w-full max-w-2xl mx-auto bg-[#0F172A] text-white p-8 rounded-xl shadow-2xl backdrop-blur-lg border border-gray-700 space-y-6"
+                        className="w-full max-w-2xl mx-auto bg-[#0F172A] text-white p-6 rounded-xl shadow-2xl backdrop-blur-lg border border-gray-700 space-y-4"
                     >
-
                         {/* Title */}
                         <div>
                             <h2 className="text-2xl font-semibold mb-1">Add New Task</h2>
@@ -426,45 +424,45 @@ const Todolist = () => {
                         </div>
 
                         {/* Task Title */}
-                        <div>
-                            <label className="block text-sm font-medium text-gray-300 mb-1">Task Title</label>
+                        <div className="space-y-1">
+                            <label className="block text-sm font-medium text-gray-300">Task Title</label>
                             <input
                                 type="text"
                                 placeholder="Enter task title..."
                                 {...register("title", { required: true })}
-                                className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full px-3 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                             />
                         </div>
 
                         {/* Description */}
-                        <div>
-                            <label className="block text-sm font-medium text-gray-300 mb-1">Description</label>
+                        <div className="space-y-1">
+                            <label className="block text-sm font-medium text-gray-300">Description</label>
                             <textarea
                                 rows={3}
                                 placeholder="Add more details..."
                                 {...register("description", { required: true })}
-                                className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full px-3 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                             />
                         </div>
 
                         {/* Category & Priority */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label className="block text-sm font-medium text-gray-300 mb-1">Category</label>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div className="space-y-1">
+                                <label className="block text-sm font-medium text-gray-300">Category</label>
                                 <select
                                     {...register("category", { required: true })}
-                                    className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full px-3 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 >
                                     <option value="General">General</option>
                                     <option value="Work">Work</option>
                                     <option value="Study">Study</option>
                                 </select>
                             </div>
-                            <div>
-                                <label className="block text-sm font-medium text-gray-300 mb-1">Priority</label>
+                            <div className="space-y-1">
+                                <label className="block text-sm font-medium text-gray-300">Priority</label>
                                 <select
                                     {...register("priority", { required: true })}
-                                    className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full px-3 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 >
                                     <option value="Low">Low</option>
                                     <option value="Medium">Medium</option>
@@ -474,28 +472,28 @@ const Todolist = () => {
                         </div>
 
                         {/* Due Date & Time */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label className="block text-sm font-medium text-gray-300 mb-1">Due Date</label>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div className="space-y-1">
+                                <label className="block text-sm font-medium text-gray-300">Due Date</label>
                                 <input
                                     type="date"
                                     {...register("dueDate", { required: true })}
-                                    className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full px-3 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
                             </div>
-                            <div>
-                                <label className="block text-sm font-medium text-gray-300 mb-1">Time (minutes)</label>
+                            <div className="space-y-1">
+                                <label className="block text-sm font-medium text-gray-300">Time (minutes)</label>
                                 <input
                                     type="number"
                                     placeholder="e.g. 60"
                                     {...register("duration", { required: true })}
-                                    className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full px-3 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
                             </div>
                         </div>
 
                         {/* Buttons */}
-                        <div className="flex justify-end gap-4 pt-2">
+                        <div className="flex justify-end gap-3 pt-4">
                             <button
                                 type="button"
                                 onClick={() => addButtonClicked(false)}
@@ -511,8 +509,6 @@ const Todolist = () => {
                             </button>
                         </div>
                     </form>
-
-
 
                 </div>
             </div>}
