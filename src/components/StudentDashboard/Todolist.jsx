@@ -236,30 +236,20 @@ const Todolist = () => {
                 headers: { Authorization: `Bearer ${token}` }
             });
             if (res.data) {
-                const taskList = res.data.tasks;
-                const transformedTasks = taskList.map((t, index) => ({
-                    taskId: t.taskId,
-                    text: t.text,
-                    completed: false,
-                    order: index
-                }));
-                settasks(transformedTasks);
+                const taskList = res.data.data;
+                // const transformedTasks = taskList.map((t, index) => ({
+                //     taskId: t.taskId,
+                //     text: t.text,
+                //     completed: false,
+                //     order: index
+                // }));
+                // settasks(transformedTasks);
+                settasks(taskList)
             }
         } catch (error) { console.error("Error fetching tasks:", error); }
     };
-
     const taskId = parseInt(localStorage.getItem("taskId"))
     useEffect(() => { fetchTasks() }, []);
-
-    // const submithandler = async (data) => {
-    //     try {
-    //         const res = await axios.post(`${API}/AddTask`, { text: data.text }, {
-    //             headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }
-    //         });
-    //         reset();
-    //         await fetchTasks();
-    //     } catch (error) { console.error("Error:", error); }
-    // };
 
     const submithandler = async (data) => {
 
@@ -304,7 +294,6 @@ const Todolist = () => {
             settasks(newTask);
         } catch (error) { console.log("Error is =>", error); }
     };
-
     const editTaskHandler = async (data) => {
         try {
             const res = await axios.put(`${API}/EditTask`, { taskId: taskId, text: data.text }, {
@@ -332,7 +321,6 @@ const Todolist = () => {
         const sortedTask = [...updated].sort((a, b) => a.completed - b.completed || a.order - b.order)
         settasks(sortedTask)
     }
-
     const getCategory = async () => {
         try {
             const res = await axios.get(`${API}/getCategory`)
@@ -342,7 +330,6 @@ const Todolist = () => {
             console.log("Error is => ", error)
         }
     }
-
     const getPriority = async () => {
         try {
             const res = await axios.get(`${API}/getPriority`)
@@ -615,7 +602,6 @@ const Todolist = () => {
                 </div>
             </div>
         </>
-
     )
 }
 
