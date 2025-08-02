@@ -403,6 +403,7 @@ const Todolist = () => {
             </motion.div>
             <br /><br />
 
+
             {addButtonClicked && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4 sm:px-0">
                     <div className="bg-[#0F172A] text-white rounded-2xl shadow-2xl w-full max-w-2xl p-8 space-y-6 border border-gray-700">
