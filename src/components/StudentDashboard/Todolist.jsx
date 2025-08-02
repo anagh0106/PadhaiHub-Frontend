@@ -261,19 +261,17 @@ const Todolist = () => {
     // };
 
     const submithandler = async (data) => {
-        console.log(data);
-
         try {
+            const payload = {
+                text: data.text,
+                description: data.description,
+                category: data.category,
+                priority: data.priority,
+                duedate: data.duedate,
+                time: parseInt(data.time)
+            }
             const res = await axios.post(
-                `${API}/AddTask`,
-                {
-                    text: data.text,
-                    description: data.description,
-                    category: data.category,
-                    priority: data.priority,
-                    duedate: new Date(data.duedate),
-                    time: parseInt(data.time)
-                },
+                `${API}/AddTask`, payload,
                 {
                     headers: {
                         'Content-Type': 'application/json',
@@ -282,7 +280,6 @@ const Todolist = () => {
                 }
             );
             console.log(res.data);
-
             // Reset the form and refresh task list
             reset();
             await fetchTasks();
