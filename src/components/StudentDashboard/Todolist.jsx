@@ -250,15 +250,45 @@ const Todolist = () => {
     const taskId = parseInt(localStorage.getItem("taskId"))
     useEffect(() => { fetchTasks() }, []);
 
+    // const submithandler = async (data) => {
+    //     try {
+    //         const res = await axios.post(`${API}/AddTask`, { text: data.text }, {
+    //             headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }
+    //         });
+    //         reset();
+    //         await fetchTasks();
+    //     } catch (error) { console.error("Error:", error); }
+    // };
+
     const submithandler = async (data) => {
         try {
-            const res = await axios.post(`${API}/AddTask`, { text: data.text }, {
-                headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }
-            });
+            const res = await axios.post(
+                `${API}/AddTask`,
+                {
+                    title: data.title,
+                    description: data.description,
+                    category: data.category,
+                    priority: data.priority,
+                    dueDate: data.dueDate,
+                    time: data.time,
+                },
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+
+            // Reset the form and refresh task list
             reset();
             await fetchTasks();
-        } catch (error) { console.error("Error:", error); }
+            setaddButtonClicked(false); // Close the modal after adding
+        } catch (error) {
+            console.error("Error adding task:", error);
+        }
     };
+
 
     const deleteTask = async (taskId) => {
         try {
@@ -512,7 +542,7 @@ const Todolist = () => {
                                     <input
                                         type="number"
                                         placeholder="e.g. 60"
-                                        {...register("duration", { required: true })}
+                                        {...register("time", { required: true })}
                                         className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     />
                                 </div>
