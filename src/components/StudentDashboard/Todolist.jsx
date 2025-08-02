@@ -323,7 +323,7 @@ const Todolist = () => {
                         📝 Todo List
                     </h2>
 
-                    <form onSubmit={handleSubmit(submithandler)} className="flex gap-4 mb-8">
+                    {/* <form onSubmit={handleSubmit(submithandler)} className="flex gap-4 mb-8">
                         <input
                             type="text"
                             placeholder="Enter Task To Perform"
@@ -338,7 +338,7 @@ const Todolist = () => {
                         >
                             ➕ Add Task
                         </button>
-                    </form>
+                    </form> */}
 
                     <div className="space-y-4">
                         <AnimatePresence>
@@ -408,6 +408,8 @@ const Todolist = () => {
 
             </motion.div>
             <br /><br />
+
+
             <button onClick={() => AddTaskFunction()}>Add Task</button>
             {addButtonClicked && <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                 <div className="bg-[#0F172A] text-white rounded-lg shadow-lg w-full max-w-md p-6">
@@ -416,82 +418,95 @@ const Todolist = () => {
                         Create a new task with details and organization
                     </p>
 
-                    <form className="space-y-4">
+                    <form onSubmit={handleSubmit(submithandler)} className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                        {/* Title */}
                         <div>
-                            <label className="block text-sm font-medium mb-1">Task Title</label>
                             <input
                                 type="text"
-                                placeholder="Enter task title..."
-                                className="w-full px-3 py-2 rounded-md border border-gray-600 bg-[#1E293B] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                placeholder="Task Title"
+                                {...register("title", { required: "Title is required" })}
+                                className={`w-full px-5 py-3 rounded-xl backdrop-blur-md transition-all duration-300 focus:outline-none focus:ring-2 ${styles.input}`}
+                                autoComplete="off"
                             />
+                            {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title.message}</p>}
                         </div>
 
+                        {/* Description */}
                         <div>
-                            <label className="block text-sm font-medium mb-1">Description</label>
                             <textarea
-                                placeholder="Add more details..."
-                                rows={3}
-                                className="w-full px-3 py-2 rounded-md border border-gray-600 bg-[#1E293B] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            ></textarea>
+                                placeholder="Task Description"
+                                {...register("description", { required: "Description is required" })}
+                                className={`w-full px-5 py-3 rounded-xl backdrop-blur-md transition-all duration-300 focus:outline-none focus:ring-2 ${styles.input}`}
+                                rows={2}
+                            />
+                            {errors.description && <p className="text-red-500 text-sm mt-1">{errors.description.message}</p>}
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4">
-                            <div>
-                                <label className="block text-sm font-medium mb-1">Category</label>
-                                <select className="w-full px-3 py-2 rounded-md border border-gray-600 bg-[#1E293B] text-white">
-                                    <option>General</option>
-                                    <option>Study</option>
-                                    <option>Work</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-medium mb-1">Priority</label>
-                                <select className="w-full px-3 py-2 rounded-md border border-gray-600 bg-[#1E293B] text-white">
-                                    <option>High</option>
-                                    <option selected>Medium</option>
-                                    <option>Low</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div className="grid grid-cols-2 gap-4">
-                            <div>
-                                <label className="block text-sm font-medium mb-1">Due Date</label>
-                                <input
-                                    type="date"
-                                    className="w-full px-3 py-2 rounded-md border border-gray-600 bg-[#1E293B] text-white"
-                                />
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-medium mb-1">
-                                    Time (minutes)
-                                </label>
-                                <input
-                                    type="number"
-                                    defaultValue="60"
-                                    className="w-full px-3 py-2 rounded-md border border-gray-600 bg-[#1E293B] text-white"
-                                />
-                            </div>
-                        </div>
-
-                        <div className="flex justify-end gap-2 pt-4">
-                            <button
-                                type="button"
-                                onClick={() => setaddButtonClicked(false)}
-                                className="px-4 py-2 rounded-md border border-gray-500 text-gray-300 hover:bg-gray-700"
+                        {/* Category */}
+                        <div>
+                            <select
+                                {...register("category", { required: "Category is required" })}
+                                className={`w-full px-5 py-3 rounded-xl backdrop-blur-md transition-all duration-300 focus:outline-none focus:ring-2 ${styles.input}`}
                             >
-                                Cancel
-                            </button>
+                                <option value="">Select Category</option>
+                                <option value="General">General</option>
+                                <option value="Mathematics">Mathematics</option>
+                                <option value="Physics">Physics</option>
+                                <option value="Chemistry">Chemistry</option>
+                                <option value="Biology">Biology</option>
+                            </select>
+                            {errors.category && <p className="text-red-500 text-sm mt-1">{errors.category.message}</p>}
+                        </div>
+
+                        {/* Priority */}
+                        <div>
+                            <select
+                                {...register("priority", { required: "Priority is required" })}
+                                className={`w-full px-5 py-3 rounded-xl backdrop-blur-md transition-all duration-300 focus:outline-none focus:ring-2 ${styles.input}`}
+                            >
+                                <option value="">Select Priority</option>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                                <option value="Urgent">Urgent</option>
+                            </select>
+                            {errors.priority && <p className="text-red-500 text-sm mt-1">{errors.priority.message}</p>}
+                        </div>
+
+                        {/* Due Date */}
+                        <div>
+                            <input
+                                type="date"
+                                {...register("dueDate", { required: "Due date is required" })}
+                                className={`w-full px-5 py-3 rounded-xl backdrop-blur-md transition-all duration-300 focus:outline-none focus:ring-2 ${styles.input}`}
+                            />
+                            {errors.dueDate && <p className="text-red-500 text-sm mt-1">{errors.dueDate.message}</p>}
+                        </div>
+
+                        {/* Duration */}
+                        <div>
+                            <input
+                                type="text"
+                                placeholder="Duration (e.g., 30m, 2h)"
+                                {...register("duration", { required: "Duration is required" })}
+                                className={`w-full px-5 py-3 rounded-xl backdrop-blur-md transition-all duration-300 focus:outline-none focus:ring-2 ${styles.input}`}
+                                autoComplete="off"
+                            />
+                            {errors.duration && <p className="text-red-500 text-sm mt-1">{errors.duration.message}</p>}
+                        </div>
+
+                        {/* Submit Button (full width) */}
+                        <div className="col-span-1 md:col-span-2 flex justify-end">
                             <button
                                 type="submit"
-                                className="px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-700 text-white"
+                                className="px-8 py-3 rounded-xl bg-[#0ea5e9] hover:bg-[#0284c7] text-white font-semibold shadow-md transition-all duration-300"
                             >
-                                Add Task
+                                ➕ Add Task
                             </button>
                         </div>
                     </form>
+
+
                 </div>
             </div>}
         </>
