@@ -3,8 +3,8 @@ import { ClockIcon, PauseIcon, PlayIcon, ArrowPathIcon } from '@heroicons/react/
 import { useForm } from "react-hook-form";
 
 const StudyTimer = () => {
-  const [times, setTimes] = useState()
-  const [timeLeft, setTimeLeft] = useState(25 * 60);
+  const [customTime, setCustomTime] = useState(25 * 60); // default 25 min
+  const [timeLeft, setTimeLeft] = useState(customTime);
   const [isRunning, setIsRunning] = useState(false);
   const [check, setCheck] = useState(0);
   const { register, handleSubmit } = useForm()
@@ -46,7 +46,12 @@ const StudyTimer = () => {
     setCheck(0);
   };
   const submitHandler = (data) => {
-    console.log("New Time Is => ", data.time);
+    const newTime = parseInt(data.time)
+    if (!NaN(newTime) && newTime > 0) {
+      const timeIntoSeconds = newTime * 60
+      setCustomTime(timeIntoSeconds);
+      setTimeLeft(timeIntoSeconds);
+    }
 
   }
   return (
