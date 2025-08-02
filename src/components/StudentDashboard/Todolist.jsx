@@ -215,6 +215,7 @@ const Todolist = () => {
     const [editButtonClicked, seteditButtonClicked] = useState(false)
     const [editTaskmsg, seteditTaskmsg] = useState("")
     const [isTaskUpdated, setisTaskUpdated] = useState(false)
+    const [addButtonClicked, setaddButtonClicked] = useState(false)
     const { register, handleSubmit, formState: { errors }, reset } = useForm()
     const { theme } = useContext(ThemeContext);
 
@@ -300,7 +301,9 @@ const Todolist = () => {
         modal: theme === 'light' ? 'bg-white border border-gray-300 text-black shadow-md' : 'bg-white/10 border border-white/20 text-white shadow-[0_4px_16px_rgba(0,0,0,0.4)]',
         modalInput: theme === 'light' ? 'w-full px-6 py-4 rounded-xl bg-gray-100 border border-gray-300 text-black placeholder-gray-600 focus:ring-2 focus:ring-pink-400 backdrop-blur-md' : 'w-full px-6 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:ring-2 focus:ring-pink-400 backdrop-blur-md'
     }
-
+    const AddTaskFunction = () => {
+        setaddButtonClicked(true)
+    }
     return (
         <>
             <motion.div
@@ -405,7 +408,8 @@ const Todolist = () => {
 
             </motion.div>
             <br /><br />
-            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <button onClick={() => AddTaskFunction()}>Add Task</button>
+            {addButtonClicked && <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                 <div className="bg-[#0F172A] text-white rounded-lg shadow-lg w-full max-w-md p-6">
                     <h2 className="text-xl font-semibold mb-1">Add New Task</h2>
                     <p className="text-sm text-gray-400 mb-4">
@@ -488,7 +492,7 @@ const Todolist = () => {
                         </div>
                     </form>
                 </div>
-            </div>
+            </div>}
         </>
 
     )
