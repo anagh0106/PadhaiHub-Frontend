@@ -60,7 +60,7 @@ const WelcomeCard = () => {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
                     },
                 });
-                console.log(res.data);
+                // console.log(res.data);
                 setUserInfo(res.data);
             } catch (error) {
                 console.log("Error is =>", error);

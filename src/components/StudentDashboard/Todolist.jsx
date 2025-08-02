@@ -208,6 +208,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import axios from 'axios'
 import ThemeContext from '../context/ThemeContext'
 import { IoCloseOutline } from "react-icons/io5";
+import { FaCalendarAlt, FaTrash, FaClock } from 'react-icons/fa';
 
 
 const Todolist = () => {
@@ -261,14 +262,14 @@ const Todolist = () => {
     // };
 
     const submithandler = async (data) => {
-        
+
         try {
             const payload = {
-                text: data.text, 
+                text: data.text,
                 description: data.description,
                 category: data.category,
-                priority: data.priority, 
-                duedate: data.duedate, 
+                priority: data.priority,
+                duedate: data.duedate,
                 time: parseInt(data.time),
             };
             console.log("Form data:", data); // 👈 dekh yaha `text` aata hai ya nahi
@@ -296,9 +297,6 @@ const Todolist = () => {
             console.error("Error adding task:", error.response?.data || error);
         }
     };
-
-
-
     const deleteTask = async (taskId) => {
         try {
             await axios.delete(`${API}/DeleteTask/${taskId}`, { headers: { Authorization: `Bearer ${token}` } });
@@ -578,6 +576,44 @@ const Todolist = () => {
                 </div>
             )}
 
+            <div className="bg-[#1E293B] rounded-lg p-4 mb-4 border border-gray-700 shadow-md">
+                <div className="flex items-start justify-between">
+                    <div className="flex gap-2 items-center">
+                        <input type="checkbox" className="mt-1" checked={task.completed} />
+                        <div>
+                            <h3 className={`text-lg font-semibold ${task.completed ? "line-through text-gray-400" : "text-white"}`}>
+                                {tasks.text}
+                            </h3>
+                            <div className="flex gap-2 mt-1">
+                                <span className="bg-blue-700 text-xs text-white px-2 py-1 rounded-full">{task.category}</span>
+                                <span className={`text-xs px-2 py-1 rounded-full ${task.priority === 'high' ? 'bg-orange-200 text-orange-800' : 'bg-yellow-200 text-yellow-800'}`}>
+                                    {tasks.priority}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    {!tasks.completed && (
+                        <button className="text-red-400 hover:text-red-600">
+                            <FaTrash />
+                        </button>
+                    )}
+                </div>
+
+                <p className={`mt-2 text-sm ${tasks.completed ? "text-gray-500" : "text-gray-200"}`}>
+                    {tasks.description}
+                </p>
+
+                <div className="flex gap-6 mt-3 text-gray-400 text-sm">
+                    <div className="flex items-center gap-1">
+                        <FaCalendarAlt />
+                        <span>{tasks.duedate}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                        <FaClock />
+                        <span>{tasks.time}m</span>
+                    </div>
+                </div>
+            </div>
         </>
 
     )
