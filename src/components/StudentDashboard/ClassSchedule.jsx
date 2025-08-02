@@ -26,7 +26,6 @@ const ClassSchedule = () => {
             const allClasses = res.data.upComingClasses
             console.log(allClasses.map(s => s.subject));
 
-
             // Filter based on group
             let filteredByGroup = [];
             if (group === "A") {

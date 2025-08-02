@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaPlus } from 'react-icons/fa';
 import ThemeContext from './context/ThemeContext';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const AdminClassManagement = () => {
     const { theme } = useContext(ThemeContext);
@@ -182,6 +182,7 @@ const AdminClassManagement = () => {
         selectedClasses === classLabels.upComingClassesAdmin
             ? upcomingClasses
             : previousClasses;
+    classLabels.map(l => l)
     return (
         <div className={`p-10 min-h-screen transition-all duration-300 ${colors.background} ${colors.text}`}>
             {/* Header */}
