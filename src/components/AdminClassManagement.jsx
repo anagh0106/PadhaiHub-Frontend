@@ -59,7 +59,7 @@ const AdminClassManagement = () => {
     const FilteredFacultyPerSubject = facultyName
         .filter((fac) => fac.subject === selectedSubject)
     console.log(FilteredFacultyPerSubject);
-    
+
     const getClasses = async () => {
         try {
             const res = await axios.get(`${API}/class/getClass`)

@@ -1,8 +1,4 @@
 import { useState, useEffect, useContext } from 'react';
-import { motion } from 'framer-motion';
-import { Card, CardContent } from './ui/card';
-import { Button } from './ui/button';
-import Joinclassbutton from './Joinclassbutton';
 import StudentForm from './StudentFrom';
 import axios from 'axios';
 import WelcomeCard from './StudentDashboard/WelcomeCard';
@@ -43,23 +39,6 @@ const StudentDashboard = () => {
         checkInfo();
     }, []);
 
-    const dashboardItems = [
-        { title: 'My Courses', description: 'View all your enrolled subjects and progress.' },
-        { title: 'Assignments', description: 'Submit and check upcoming assignment deadlines.' },
-        { title: 'Live Classes', description: 'Join ongoing or scheduled classes easily.' },
-        { title: 'Notes & Resources', description: 'Download PDFs, videos, and other resources.' },
-        { title: 'Test Results', description: 'Track your performance and test scores.' },
-        { title: 'Fee Status', description: 'Check payment history and pending fees.' },
-    ];
-
-    const upcomingEvents = [
-        { date: 'May 25', event: 'Live Class - Physics' },
-        { date: 'May 28', event: 'Assignment Due - Math' },
-        { date: 'June 2', event: 'Unit Test - Chemistry' },
-    ];
-
-    const quickActions = ['Join Class', 'Upload Assignment', 'Download Notes'];
-
     const colors = {
         background: theme === 'light' ? 'bg-white text-black' : 'bg-black text-white',
         card: theme === 'light' ? 'bg-white/80 text-black' : 'bg-[#111111] text-white',
@@ -76,35 +55,19 @@ const StudentDashboard = () => {
             <StudentForm />
             <WelcomeCard />
             <StudentStats />
-            {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-4">
-                <TodayClasses />
-                <StudyTimer />
-            </div> */}
-            {/* <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-4">
-                <div className="lg:col-span-2">
-                    <TodayClasses />
-                </div>
-                <div className="lg:col-span-1">
-                    <StudyTimer />
-                </div>
-            </div> */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-4">
-                {/* Left side - Today Classes */}
                 <div className="lg:col-span-2 flex flex-col">
                     <div className="bg-[#0f172a] rounded-lg p-4 flex-1">
                         <TodayClasses />
                     </div>
                 </div>
 
-                {/* Right side - Timer */}
                 <div className="lg:col-span-1 flex flex-col">
                     <div className="bg-[#0f172a] rounded-lg p-4 flex-1">
                         <StudyTimer />
                     </div>
                 </div>
             </div>
-
-
 
             <ClassSchedule />
 
@@ -114,87 +77,6 @@ const StudentDashboard = () => {
             <MockTestScore />
             <br /><br />
             <Todolist />
-
-            <div className="flex justify-between items-center mb-6">
-                <motion.h1
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className={`text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent drop-shadow-lg`}
-                >
-                    👨‍🎓 Student Dashboard
-                </motion.h1>
-            </div>
-
-            <div className="flex flex-wrap gap-3 mb-6">
-                <Joinclassbutton />
-                {quickActions
-                    .filter(action => action !== "Join Class")
-                    .map((action, i) => (
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: i * 0.1 }}
-                            key={i}
-                        >
-                            <Button
-                                onClick={() => console.log(`Clicked: ${action}`)}
-                                className={`rounded-xl px-4 py-2 font-medium ${colors.button}`}
-                            >
-                                {action}
-                            </Button>
-                        </motion.div>
-                    ))}
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                {dashboardItems.map((item, index) => (
-                    <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 40 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                    >
-                        <Card className={`rounded-2xl hover:shadow-xl transition duration-300 hover:scale-[1.02] ${colors.card} ${colors.border}`}>
-                            <CardContent className="p-6">
-                                <h2 className={`text-lg font-bold mb-2 ${colors.heading}`}>{item.title}</h2>
-                                <p className={`text-sm ${colors.subtext}`}>{item.description}</p>
-
-                                {item.title === 'My Courses' && (
-                                    <div className="mt-4">
-                                        <div className="text-xs mb-1 text-slate-400">Overall Progress</div>
-                                        <div className="w-full h-2 bg-slate-700 rounded-full">
-                                            <motion.div
-                                                className="h-2 bg-indigo-500 rounded-full"
-                                                initial={{ width: 0 }}
-                                                animate={{ width: '70%' }}
-                                                transition={{ duration: 1 }}
-                                            />
-                                        </div>
-                                    </div>
-                                )}
-                            </CardContent>
-                        </Card>
-                    </motion.div>
-                ))}
-            </div>
-
-            <div className="mt-10">
-                <h2 className={`text-xl md:text-2xl font-bold mb-4 ${colors.heading}`}>📅 Upcoming Events</h2>
-                <ul className="space-y-3">
-                    {upcomingEvents.map((e, i) => (
-                        <motion.li
-                            key={i}
-                            className={`p-4 rounded-xl border text-sm shadow-md ${colors.event}`}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: i * 0.15 }}
-                        >
-                            <span className={`font-semibold ${colors.heading}`}>{e.date}</span> – {e.event}
-                        </motion.li>
-                    ))}
-                </ul>
-            </div>
         </div>
     );
 };
