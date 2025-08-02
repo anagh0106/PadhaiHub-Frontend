@@ -182,7 +182,8 @@ const AdminClassManagement = () => {
         selectedClasses === classLabels.upComingClassesAdmin
             ? upcomingClasses
             : previousClasses;
-    classLabels.map(l => l)
+    console.log(classLabels.map(l => l));
+    
     return (
         <div className={`p-10 min-h-screen transition-all duration-300 ${colors.background} ${colors.text}`}>
             {/* Header */}
