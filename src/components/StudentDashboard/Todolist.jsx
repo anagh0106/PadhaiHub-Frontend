@@ -208,8 +208,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import axios from 'axios'
 import ThemeContext from '../context/ThemeContext'
 import { IoCloseOutline } from "react-icons/io5";
-import { FaCalendarAlt, FaTrash, FaClock } from 'react-icons/fa';
-
+import { FaCalendarAlt, FaTrash, FaClock, FaRegCalendarAlt } from 'react-icons/fa';
 
 const Todolist = () => {
     const [tasks, settasks] = useState([])
@@ -237,15 +236,6 @@ const Todolist = () => {
             });
             if (res.data) {
                 const taskList = res.data?.data;
-                console.log(taskList);
-                
-                // const transformedTasks = taskList.map((t, index) => ({
-                //     taskId: t.taskId,
-                //     text: t.text,
-                //     completed: false,
-                //     order: index
-                // }));
-                // settasks(transformedTasks);
                 settasks(taskList)
             }
         } catch (error) { console.error("Error fetching tasks:", error); }
@@ -357,7 +347,7 @@ const Todolist = () => {
         setaddButtonClicked(true)
     }
 
-    
+
     return (
         <>
             <motion.div
@@ -366,56 +356,6 @@ const Todolist = () => {
                 transition={{ duration: 1 }}
                 className={`min-h-dvh flex justify-center items-center p-4 sm:p-6 ${styles.container}`}
             >
-
-                <motion.div
-                    initial={{ scale: 0.9 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: "spring", stiffness: 80 }}
-                    className={`w-full max-w-2xl rounded-3xl p-6 sm:p-10 backdrop-blur-3xl ${styles.card}`}
-                >
-                    <h2 className="text-center text-4xl font-extrabold drop-shadow-lg mb-10 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-blue-400">
-                        📝 Todo List
-                    </h2>
-
-                    {/* <form onSubmit={handleSubmit(submithandler)} className="flex gap-4 mb-8">
-                        <input
-                            type="text"
-                            placeholder="Enter Task To Perform"
-                            {...register("text")}
-                            className={`w-full px-5 py-3 rounded-xl backdrop-blur-md transition-all duration-300 focus:outline-none focus:ring-2 ${styles.input}`}
-                            required
-                            autoComplete='off'
-                        />
-                        <button
-                            type="submit"
-                            className="px-6 py-3 rounded-xl bg-[#0ea5e9] hover:bg-[#0284c7] text-white font-semibold shadow-md transition-all duration-300"
-                        >
-                            ➕ Add Task
-                        </button>
-                    </form> */}
-
-                    <div className="space-y-4">
-                        <AnimatePresence>
-                            {tasks.map((item, index) => (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, x: -100 }}
-                                    transition={{ duration: 0.4 }}
-                                    className={`backdrop-blur-md p-5 rounded-xl flex justify-between items-center hover:ring-2 hover:ring-pink-400/50 transition-all duration-300 ${styles.card}`}
-                                >
-                                    <span className={item.completed ? "line-through text-gray-400" : "text-inherit"}>{item.text}</span>
-                                    <div className="flex gap-2">
-                                        <button onClick={() => markAsCompleted(index)} className="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-full">✅</button>
-                                        <button onClick={() => editTask(item.taskId)} className="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 rounded-full">✏️</button>
-                                        <button onClick={() => deleteTask(item.taskId)} className="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-full">🗑️</button>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </AnimatePresence>
-                    </div>
-                </motion.div>
 
                 {editButtonClicked && (
                     <>
@@ -566,6 +506,7 @@ const Todolist = () => {
                     </div>
                 </div>
             )}
+
             {tasks.map((task, index) => (
                 <div
                     key={task.taskId || index}
@@ -629,6 +570,47 @@ const Todolist = () => {
                     </div>
                 </div>
             ))}
+
+
+            <div className="bg-[#1E293B] p-4 rounded-xl shadow-md border border-gray-700 mb-4">
+                <div className="flex items-start gap-3">
+                    <input type="checkbox" className="mt-1 accent-green-500" />
+                    <div className="flex-grow">
+                        <div className="flex items-center justify-between">
+                            <h3 className="text-lg font-semibold text-white">
+                                Complete Calculus Assignment
+                            </h3>
+                            <div className="flex gap-2">
+                                <span className="text-xs text-white px-2 py-1 rounded-full bg-blue-700">
+                                    math
+                                </span>
+                                <span className="text-xs px-2 py-1 rounded-full font-medium bg-orange-200 text-orange-800">
+                                    high
+                                </span>
+                            </div>
+                        </div>
+                        <p className="mt-1 text-gray-300">
+                            Solve problems 1-15 from Chapter 7
+                        </p>
+                        <div className="flex items-center gap-4 mt-3 text-gray-400 text-sm">
+                            <span className="flex items-center gap-1">
+                                <FaRegCalendarAlt /> Aug 4
+                            </span>
+                            <span className="flex items-center gap-1">
+                                <FaClock /> 120m
+                            </span>
+                        </div>
+                        <div className="flex gap-2 mt-3 flex-wrap">
+                            <span className="bg-slate-700 text-white text-xs px-2 py-1 rounded-full">
+                                homework
+                            </span>
+                            <span className="bg-slate-700 text-white text-xs px-2 py-1 rounded-full">
+                                calculus
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </>
     )
