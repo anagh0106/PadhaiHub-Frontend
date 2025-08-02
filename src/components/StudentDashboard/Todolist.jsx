@@ -418,93 +418,115 @@ const Todolist = () => {
                         Create a new task with details and organization
                     </p>
 
-                    <form onSubmit={handleSubmit(submithandler)} className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                        {/* Title */}
+                    <form
+                        onSubmit={handleSubmit(submithandler)}
+                        className="w-full max-w-xl bg-[#0F172A] text-white p-8 rounded-xl shadow-xl space-y-6"
+                    >
                         <div>
+                            <h2 className="text-xl font-semibold">Add New Task</h2>
+                            <p className="text-sm text-gray-400">Create a new task with details and organization</p>
+                        </div>
+
+                        {/* Task Title */}
+                        <div>
+                            <label className="block text-sm font-medium mb-1">Task Title</label>
                             <input
                                 type="text"
-                                placeholder="Task Title"
-                                {...register("title", { required: "Title is required" })}
-                                className={`w-full px-5 py-3 rounded-xl backdrop-blur-md transition-all duration-300 focus:outline-none focus:ring-2 ${styles.input}`}
-                                autoComplete="off"
+                                placeholder="Enter task title..."
+                                {...register("title", { required: "Task Title is required" })}
+                                className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                             />
                             {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title.message}</p>}
                         </div>
 
                         {/* Description */}
                         <div>
+                            <label className="block text-sm font-medium mb-1">Description</label>
                             <textarea
-                                placeholder="Task Description"
+                                placeholder="Add more details..."
+                                rows={3}
                                 {...register("description", { required: "Description is required" })}
-                                className={`w-full px-5 py-3 rounded-xl backdrop-blur-md transition-all duration-300 focus:outline-none focus:ring-2 ${styles.input}`}
-                                rows={2}
-                            />
+                                className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            ></textarea>
                             {errors.description && <p className="text-red-500 text-sm mt-1">{errors.description.message}</p>}
                         </div>
 
-                        {/* Category */}
-                        <div>
-                            <select
-                                {...register("category", { required: "Category is required" })}
-                                className={`w-full px-5 py-3 rounded-xl backdrop-blur-md transition-all duration-300 focus:outline-none focus:ring-2 ${styles.input}`}
+                        {/* Category + Priority */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label className="block text-sm font-medium mb-1">Category</label>
+                                <select
+                                    {...register("category", { required: "Category is required" })}
+                                    className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                >
+                                    <option value="">Select</option>
+                                    <option value="General">General</option>
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Physics">Physics</option>
+                                    <option value="Chemistry">Chemistry</option>
+                                    <option value="Biology">Biology</option>
+                                </select>
+                                {errors.category && <p className="text-red-500 text-sm mt-1">{errors.category.message}</p>}
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-medium mb-1">Priority</label>
+                                <select
+                                    {...register("priority", { required: "Priority is required" })}
+                                    className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                >
+                                    <option value="">Select</option>
+                                    <option value="Low">Low</option>
+                                    <option value="Medium">Medium</option>
+                                    <option value="High">High</option>
+                                    <option value="Urgent">Urgent</option>
+                                </select>
+                                {errors.priority && <p className="text-red-500 text-sm mt-1">{errors.priority.message}</p>}
+                            </div>
+                        </div>
+
+                        {/* Due Date + Time */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label className="block text-sm font-medium mb-1">Due Date</label>
+                                <input
+                                    type="date"
+                                    {...register("dueDate", { required: "Due Date is required" })}
+                                    className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                                {errors.dueDate && <p className="text-red-500 text-sm mt-1">{errors.dueDate.message}</p>}
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-medium mb-1">Time (minutes)</label>
+                                <input
+                                    type="number"
+                                    placeholder="e.g. 60"
+                                    {...register("duration", { required: "Time is required" })}
+                                    className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                                {errors.duration && <p className="text-red-500 text-sm mt-1">{errors.duration.message}</p>}
+                            </div>
+                        </div>
+
+                        {/* Buttons */}
+                        <div className="flex justify-end gap-4 pt-4">
+                            <button
+                                type="button"
+                                onClick={() => reset()} // Clear form
+                                className="px-4 py-2 border border-gray-600 rounded-md text-white hover:bg-gray-700 transition"
                             >
-                                <option value="">Select Category</option>
-                                <option value="General">General</option>
-                                <option value="Mathematics">Mathematics</option>
-                                <option value="Physics">Physics</option>
-                                <option value="Chemistry">Chemistry</option>
-                                <option value="Biology">Biology</option>
-                            </select>
-                            {errors.category && <p className="text-red-500 text-sm mt-1">{errors.category.message}</p>}
-                        </div>
-
-                        {/* Priority */}
-                        <div>
-                            <select
-                                {...register("priority", { required: "Priority is required" })}
-                                className={`w-full px-5 py-3 rounded-xl backdrop-blur-md transition-all duration-300 focus:outline-none focus:ring-2 ${styles.input}`}
-                            >
-                                <option value="">Select Priority</option>
-                                <option value="Low">Low</option>
-                                <option value="Medium">Medium</option>
-                                <option value="High">High</option>
-                                <option value="Urgent">Urgent</option>
-                            </select>
-                            {errors.priority && <p className="text-red-500 text-sm mt-1">{errors.priority.message}</p>}
-                        </div>
-
-                        {/* Due Date */}
-                        <div>
-                            <input
-                                type="date"
-                                {...register("dueDate", { required: "Due date is required" })}
-                                className={`w-full px-5 py-3 rounded-xl backdrop-blur-md transition-all duration-300 focus:outline-none focus:ring-2 ${styles.input}`}
-                            />
-                            {errors.dueDate && <p className="text-red-500 text-sm mt-1">{errors.dueDate.message}</p>}
-                        </div>
-
-                        {/* Duration */}
-                        <div>
-                            <input
-                                type="text"
-                                placeholder="Duration (e.g., 30m, 2h)"
-                                {...register("duration", { required: "Duration is required" })}
-                                className={`w-full px-5 py-3 rounded-xl backdrop-blur-md transition-all duration-300 focus:outline-none focus:ring-2 ${styles.input}`}
-                                autoComplete="off"
-                            />
-                            {errors.duration && <p className="text-red-500 text-sm mt-1">{errors.duration.message}</p>}
-                        </div>
-
-                        {/* Submit Button (full width) */}
-                        <div className="col-span-1 md:col-span-2 flex justify-end">
+                                Cancel
+                            </button>
                             <button
                                 type="submit"
-                                className="px-8 py-3 rounded-xl bg-[#0ea5e9] hover:bg-[#0284c7] text-white font-semibold shadow-md transition-all duration-300"
+                                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md transition"
                             >
-                                ➕ Add Task
+                                Add Task
                             </button>
                         </div>
                     </form>
+
 
 
                 </div>
