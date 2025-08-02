@@ -267,7 +267,7 @@ const Todolist = () => {
                 description: data.description,
                 category: data.category,
                 priority: data.priority, 
-                duedate: new Date(data.duedate).toISOString("T")[0], 
+                duedate: new Date(data.duedate), 
                 time: parseInt(data.time),
             };
             console.log("Form data:", data); // 👈 dekh yaha `text` aata hai ya nahi
