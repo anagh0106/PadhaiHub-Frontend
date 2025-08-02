@@ -579,14 +579,14 @@ const Todolist = () => {
             <div className="bg-[#1E293B] rounded-lg p-4 mb-4 border border-gray-700 shadow-md">
                 <div className="flex items-start justify-between">
                     <div className="flex gap-2 items-center">
-                        <input type="checkbox" className="mt-1" checked={task.completed} />
+                        <input type="checkbox" className="mt-1" checked={tasks.completed} />
                         <div>
-                            <h3 className={`text-lg font-semibold ${task.completed ? "line-through text-gray-400" : "text-white"}`}>
+                            <h3 className={`text-lg font-semibold ${tasks.completed ? "line-through text-gray-400" : "text-white"}`}>
                                 {tasks.text}
                             </h3>
                             <div className="flex gap-2 mt-1">
-                                <span className="bg-blue-700 text-xs text-white px-2 py-1 rounded-full">{task.category}</span>
-                                <span className={`text-xs px-2 py-1 rounded-full ${task.priority === 'high' ? 'bg-orange-200 text-orange-800' : 'bg-yellow-200 text-yellow-800'}`}>
+                                <span className="bg-blue-700 text-xs text-white px-2 py-1 rounded-full">{tasks.category}</span>
+                                <span className={`text-xs px-2 py-1 rounded-full ${tasks.priority === 'high' ? 'bg-orange-200 text-orange-800' : 'bg-yellow-200 text-yellow-800'}`}>
                                     {tasks.priority}
                                 </span>
                             </div>
