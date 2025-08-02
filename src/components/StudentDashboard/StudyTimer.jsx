@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { ClockIcon, PauseIcon, PlayIcon, ArrowPathIcon } from '@heroicons/react/24/solid'
+import { useForm } from "react-hook-form";
 
 const StudyTimer = () => {
+  const [times, setTimes] = useState()
   const [timeLeft, setTimeLeft] = useState(25 * 60);
   const [isRunning, setIsRunning] = useState(false);
   const [check, setCheck] = useState(0);
+  const { register, handleSubmit } = useForm()
 
   useEffect(() => {
     let timer = null;
@@ -42,10 +45,18 @@ const StudyTimer = () => {
     setTimeLeft(25 * 60);
     setCheck(0);
   };
+  const submitHandler = (data) => {
+    console.log("New Time Is => ", data);
 
+  }
   return (
     <div className="bg-[#0f172a] p-6 rounded-xl shadow-lg text-white flex flex-col h-full justify-between">
       {/* Header */}
+      <form method="get" onSubmit={handleSubmit(submitHandler)}>
+        <input type="text" placeholder="Enter Your Time" />
+        <br /><br />
+        <input type="submit" value={"Change Time"} />
+      </form>
       <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
         <ClockIcon className="h-6 w-6 text-blue-400" />
         Pomodoro Timer
