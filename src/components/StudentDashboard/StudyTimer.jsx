@@ -135,7 +135,7 @@ const StudyTimer = () => {
   const [timeLeft, setTimeLeft] = useState(customTime);
   const [isRunning, setIsRunning] = useState(false);
   const [check, setCheck] = useState(0); // 0 = not started, 1 = running, 2 = paused
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   useEffect(() => {
     let timer = null;
@@ -183,11 +183,12 @@ const StudyTimer = () => {
       setIsRunning(false);
       setCheck(0);
     }
+    reset()
   };
 
   return (
     <div className="bg-[#0f172a] p-6 rounded-xl shadow-lg text-white flex flex-col h-full justify-between">
-      
+
       {/* Header */}
       <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
         <ClockIcon className="h-7 w-7 text-blue-400" />
