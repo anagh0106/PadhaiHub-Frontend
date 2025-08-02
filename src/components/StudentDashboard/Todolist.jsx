@@ -236,7 +236,9 @@ const Todolist = () => {
                 headers: { Authorization: `Bearer ${token}` }
             });
             if (res.data) {
-                const taskList = res.data.data;
+                const taskList = res.data?.data;
+                console.log(taskList);
+                
                 // const transformedTasks = taskList.map((t, index) => ({
                 //     taskId: t.taskId,
                 //     text: t.text,
@@ -355,7 +357,6 @@ const Todolist = () => {
         setaddButtonClicked(true)
     }
 
-    console.log(tasks.map(t=>t));
     
     return (
         <>
