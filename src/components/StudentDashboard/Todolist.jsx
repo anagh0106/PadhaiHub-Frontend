@@ -571,28 +571,45 @@ const Todolist = () => {
                 </div>
             ))}
 
+            <div className="max-w-2xl mx-auto bg-[#0F172A] text-white p-6 rounded-xl shadow-2xl space-y-4">
+                {/* Header */}
+                <div className="flex justify-between items-center">
+                    <div>
+                        <h2 className="text-2xl font-semibold flex items-center gap-2">
+                            ✅ Smart To-Do List
+                        </h2>
+                        <p className="text-sm text-gray-400">2 pending • 1 completed</p>
+                    </div>
+                    <button className="bg-white text-black font-semibold px-4 py-2 rounded-lg hover:bg-gray-200">
+                        + Add Task
+                    </button>
+                </div>
 
-            <div className="bg-[#1E293B] p-4 rounded-xl shadow-md border border-gray-700 mb-4">
-                <div className="flex items-start gap-3">
-                    <input type="checkbox" className="mt-1 accent-green-500" />
+                {/* Filters */}
+                <div className="flex gap-4 mt-2">
+                    <select className="bg-[#1E293B] border border-gray-600 text-white px-3 py-2 rounded-lg">
+                        <option>All Tasks</option>
+                    </select>
+                    <select className="bg-[#1E293B] border border-gray-600 text-white px-3 py-2 rounded-lg">
+                        <option>Due Date</option>
+                    </select>
+                </div>
+
+                {/* Task 1 */}
+                <div className="bg-[#1E293B] p-4 rounded-xl border border-gray-700 flex gap-3">
+                    <input type="checkbox" className="accent-green-500 mt-1" />
                     <div className="flex-grow">
-                        <div className="flex items-center justify-between">
-                            <h3 className="text-lg font-semibold text-white">
-                                Complete Calculus Assignment
-                            </h3>
+                        <div className="flex justify-between">
+                            <h3 className="font-semibold text-white">Complete Calculus Assignment</h3>
                             <div className="flex gap-2">
-                                <span className="text-xs text-white px-2 py-1 rounded-full bg-blue-700">
-                                    math
-                                </span>
-                                <span className="text-xs px-2 py-1 rounded-full font-medium bg-orange-200 text-orange-800">
-                                    high
-                                </span>
+                                <span className="bg-blue-700 text-white text-xs px-2 py-1 rounded-full">math</span>
+                                <span className="bg-orange-200 text-orange-800 text-xs px-2 py-1 rounded-full">high</span>
                             </div>
                         </div>
-                        <p className="mt-1 text-gray-300">
+                        <p className="text-gray-300 text-sm mt-1">
                             Solve problems 1-15 from Chapter 7
                         </p>
-                        <div className="flex items-center gap-4 mt-3 text-gray-400 text-sm">
+                        <div className="flex gap-4 text-sm text-gray-400 mt-3">
                             <span className="flex items-center gap-1">
                                 <FaRegCalendarAlt /> Aug 4
                             </span>
@@ -601,13 +618,55 @@ const Todolist = () => {
                             </span>
                         </div>
                         <div className="flex gap-2 mt-3 flex-wrap">
-                            <span className="bg-slate-700 text-white text-xs px-2 py-1 rounded-full">
-                                homework
+                            <span className="bg-slate-700 text-white text-xs px-2 py-1 rounded-full">homework</span>
+                            <span className="bg-slate-700 text-white text-xs px-2 py-1 rounded-full">calculus</span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Task 2 */}
+                <div className="bg-[#1E293B] p-4 rounded-xl border border-gray-700 flex gap-3">
+                    <input type="checkbox" className="accent-green-500 mt-1" />
+                    <div className="flex-grow">
+                        <div className="flex justify-between">
+                            <h3 className="font-semibold text-white">Physics Lab Report</h3>
+                            <div className="flex gap-2">
+                                <span className="bg-green-700 text-white text-xs px-2 py-1 rounded-full">science</span>
+                                <span className="bg-yellow-200 text-yellow-800 text-xs px-2 py-1 rounded-full">medium</span>
+                            </div>
+                        </div>
+                        <p className="text-gray-300 text-sm mt-1">
+                            Write lab report on pendulum experiment
+                        </p>
+                        <div className="flex gap-4 text-sm text-gray-400 mt-3">
+                            <span className="flex items-center gap-1">
+                                <FaRegCalendarAlt /> Aug 7
                             </span>
-                            <span className="bg-slate-700 text-white text-xs px-2 py-1 rounded-full">
-                                calculus
+                            <span className="flex items-center gap-1">
+                                <FaClock /> 90m
                             </span>
                         </div>
+                        <div className="flex gap-2 mt-3 flex-wrap">
+                            <span className="bg-slate-700 text-white text-xs px-2 py-1 rounded-full">lab</span>
+                            <span className="bg-slate-700 text-white text-xs px-2 py-1 rounded-full">report</span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Task 3 (Completed) */}
+                <div className="bg-[#1E293B] p-4 rounded-xl border border-gray-700 opacity-50 flex gap-3">
+                    <input type="checkbox" checked className="accent-green-500 mt-1" />
+                    <div className="flex-grow">
+                        <div className="flex justify-between">
+                            <h3 className="font-semibold text-gray-400 line-through">Read Shakespeare</h3>
+                            <div className="flex gap-2">
+                                <span className="bg-purple-700 text-white text-xs px-2 py-1 rounded-full">english</span>
+                                <span className="bg-indigo-200 text-indigo-800 text-xs px-2 py-1 rounded-full">low</span>
+                            </div>
+                        </div>
+                        <p className="text-gray-400 text-sm mt-1 line-through">
+                            Read Act 3 of Hamlet
+                        </p>
                     </div>
                 </div>
             </div>
