@@ -216,6 +216,8 @@ const Todolist = () => {
     const [editTaskmsg, seteditTaskmsg] = useState("")
     const [isTaskUpdated, setisTaskUpdated] = useState(false)
     const [addButtonClicked, setaddButtonClicked] = useState(false)
+    const [taskCategory, setTaskCategory] = useState([])
+    const [TaskPriority, setTaskPriority] = useState([])
     const { register, handleSubmit, formState: { errors }, reset } = useForm()
     const { theme } = useContext(ThemeContext);
 
@@ -294,6 +296,30 @@ const Todolist = () => {
         settasks(sortedTask)
     }
 
+    const getCategory = async () => {
+        try {
+            const res = await axios.get(`${API}/getCategory`)
+            console.log(res.data);
+            setTaskCategory(res.data)
+        } catch (error) {
+            console.log("Error is => ", error)
+        }
+    }
+
+    const getPriority = async () => {
+        try {
+            const res = await axios.get(`${API}/getPriority`)
+            console.log(res.data);
+            setTaskPriority(res.data)
+        } catch (error) {
+            console.log("Error is => ", error)
+        }
+    }
+
+    useEffect(() => {
+        getCategory()
+        getPriority()
+    })
     const styles = {
         container: theme === 'light' ? 'bg-white text-black' : 'bg-black text-white',
         card: theme === 'light' ? 'bg-gray-100 border border-gray-300 text-black shadow-md' : 'bg-white/10 border border-white/20 text-white shadow-[0_4px_16px_rgba(0,0,0,0.4)]',
@@ -451,9 +477,9 @@ const Todolist = () => {
                                         {...register("category", { required: true })}
                                         className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     >
-                                        <option value="General">General</option>
-                                        <option value="Work">Work</option>
-                                        <option value="Study">Study</option>
+                                        {taskCategory.map((category, index) => (
+                                            <option value={category} key={index}>{category}</option>
+                                        ))}
                                     </select>
                                 </div>
                                 <div className="space-y-2">
@@ -462,9 +488,9 @@ const Todolist = () => {
                                         {...register("priority", { required: true })}
                                         className="w-full px-4 py-2 bg-[#1E293B] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     >
-                                        <option value="Low">Low</option>
-                                        <option value="Medium">Medium</option>
-                                        <option value="High">High</option>
+                                        {TaskPriority.map((category, index) => (
+                                            <option value={category} key={index}>{category}</option>
+                                        ))}
                                     </select>
                                 </div>
                             </div>
