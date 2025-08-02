@@ -401,8 +401,6 @@ const Todolist = () => {
             </motion.div>
             <br /><br />
 
-
-            <button onClick={() => AddTaskFunction()}>Add Task</button>
             {addButtonClicked && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4 sm:px-0">
                     <div className="bg-[#0F172A] text-white rounded-2xl shadow-2xl w-full max-w-2xl p-8 space-y-6 border border-gray-700">
@@ -580,7 +578,9 @@ const Todolist = () => {
                         </h2>
                         <p className="text-sm text-gray-400">2 pending • 1 completed</p>
                     </div>
-                    <button className="bg-white text-black font-semibold px-4 py-2 rounded-lg hover:bg-gray-200">
+                    <button
+                        onClick={() => AddTaskFunction()}
+                        className="bg-white text-black font-semibold px-4 py-2 rounded-lg hover:bg-gray-200">
                         + Add Task
                     </button>
                 </div>
