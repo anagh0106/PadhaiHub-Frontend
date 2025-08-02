@@ -479,6 +479,7 @@ const Todolist = () => {
                         <div className="flex justify-end gap-2 pt-4">
                             <button
                                 type="button"
+                                onClick={() => setaddButtonClicked(false)}
                                 className="px-4 py-2 rounded-md border border-gray-500 text-gray-300 hover:bg-gray-700"
                             >
                                 Cancel
