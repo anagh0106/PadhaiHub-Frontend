@@ -310,10 +310,10 @@ const Todolist = () => {
     // }
     const markAsCompleted = async (taskId) => {
         try {
+            alert(taskId)
             const res = await axios.post(`${API}/markAsCompleted`, {
                 params: taskId
             })
-            alert(res)
         } catch (error) {
             console.log("Error is => ", error);
 
