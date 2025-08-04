@@ -5,7 +5,8 @@ const CalendarCard = () => {
   const today = new Date();
 
   return (
-    <div className="bg-gradient-to-br from-[#0F172A] to-[#1E293B] text-white px-6 py-8 rounded-3xl shadow-2xl w-full max-w-lg mx-auto border border-slate-700">
+    <div className="h-full bg-gradient-to-br from-[#0F172A] to-[#1E293B] text-white px-6 py-8 rounded-3xl shadow-2xl border border-slate-700 flex flex-col">
+    {/* // <div className="bg-gradient-to-br from-[#0F172A] to-[#1E293B] text-white px-6 py-8 rounded-3xl shadow-2xl w-full max-w-lg mx-auto border border-slate-700"> */}
       <h2 className="text-3xl font-semibold text-center mb-6 text-cyan-400 tracking-wide">
         📅 Science Study Calendar
       </h2>

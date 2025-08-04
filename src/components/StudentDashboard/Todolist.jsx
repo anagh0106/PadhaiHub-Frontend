@@ -504,7 +504,8 @@ const Todolist = () => {
                 </div>
             )}
 
-            <div className="max-w-2xl mx-auto bg-[#0F172A] text-white p-6 rounded-xl shadow-2xl space-y-4">
+            <div className="h-full bg-[#1E293B] rounded-lg p-6 shadow-lg flex flex-col">
+            {/* <div className="max-w-3xl mx-auto bg-[#0F172A] text-white p-6 rounded-xl shadow-2xl space-y-4"> */}
                 {/* Header */}
                 <div className="flex justify-between items-center">
                     <div>
@@ -609,6 +610,7 @@ const Todolist = () => {
                     </div>
                 ))}
 
+            
             </div>
         </>
     )
