@@ -279,7 +279,7 @@ const Todolist = () => {
             console.error("Error adding task:", error.response?.data || error);
         }
     };
-    const deleteTask = async (taskId) => {
+    const handleDelete = async (taskId) => {
         try {
             await axios.delete(`${API}/DeleteTask/${taskId}`, { headers: { Authorization: `Bearer ${token}` } });
             const newTask = tasks.filter((task) => task.taskId !== taskId);
