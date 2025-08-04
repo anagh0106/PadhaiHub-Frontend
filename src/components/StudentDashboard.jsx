@@ -11,6 +11,7 @@ import MockTestScore from './StudentDashboard/MockTestScore';
 import StudyTimer from './StudentDashboard/StudyTimer';
 import StudentStats from './StudentDashboard/StudentStats';
 import TodayClasses from './StudentDashboard/TodayClass';
+import CalendarCard from './StudentDashboard/CalendarCard';
 
 const StudentDashboard = () => {
     const { theme } = useContext(ThemeContext);
@@ -69,6 +70,7 @@ const StudentDashboard = () => {
                 </div>
             </div>
             <Todolist />
+            <CalendarCard />
             {/* <ClassSchedule /> */}
             <PerformanceAnalytics />
             {/* <MockTest /> */}
