@@ -308,7 +308,16 @@ const Todolist = () => {
     //     seteditTaskmsg("")
     //     localStorage.setItem("taskId", taskId)
     // }
-    const markAsCompleted = (taskId) => {
+    const markAsCompleted = async (taskId) => {
+        alert(res)
+        try {
+            const res = await axios.post(`${API}/markAsCompleted`, {
+                params: taskId
+            })
+        } catch (error) {
+            console.log("Error is => ", error);
+
+        }
         const updated = tasks.map((task) =>
             task.taskId === taskId ? { ...task, completed: !task.completed } : task
         );
@@ -505,7 +514,7 @@ const Todolist = () => {
             )}
 
             <div className="h-full bg-[#1E293B] rounded-lg p-6 shadow-lg flex flex-col">
-            {/* <div className="max-w-3xl mx-auto bg-[#0F172A] text-white p-6 rounded-xl shadow-2xl space-y-4"> */}
+                {/* <div className="max-w-3xl mx-auto bg-[#0F172A] text-white p-6 rounded-xl shadow-2xl space-y-4"> */}
                 {/* Header */}
                 <div className="flex justify-between items-center">
                     <div>
@@ -610,7 +619,7 @@ const Todolist = () => {
                     </div>
                 ))}
 
-            
+
             </div>
         </>
     )
