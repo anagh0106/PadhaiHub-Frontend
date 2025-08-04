@@ -574,7 +574,7 @@ const Todolist = () => {
 
                             <div className="flex items-center gap-6 mt-3 text-sm text-gray-400">
                                 <span className="flex items-center gap-1">
-                                    <FaCalendarAlt /> {task.duedate}
+                                    <FaCalendarAlt /> {new Date(task.duedate).toISOString().split("T")[0]}
                                 </span>
                                 <span className="flex items-center gap-1">
                                     <FaClock /> {task.time}m
