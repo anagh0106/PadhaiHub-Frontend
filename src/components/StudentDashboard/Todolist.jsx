@@ -309,7 +309,6 @@ const Todolist = () => {
     //     localStorage.setItem("taskId", taskId)
     // }
     const markAsCompleted = (taskId) => {
-        alert(`${taskId} Clicked`)
         const updated = tasks.map((task) =>
             task.taskId === taskId ? { ...task, completed: !task.completed } : task
         );
