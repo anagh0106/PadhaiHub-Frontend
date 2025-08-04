@@ -537,7 +537,7 @@ const Todolist = () => {
                         <input
                             type="checkbox"
                             checked={task.completed}
-                            onChange={() => handleToggleComplete(task.taskId)}
+                            onChange={() => markAsCompleted(task.taskId)}
                             className="accent-green-500 mt-1"
                         />
                         <div className="flex-grow">
