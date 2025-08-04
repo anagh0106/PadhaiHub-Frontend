@@ -302,18 +302,14 @@ const Todolist = () => {
             seteditTaskmsg("Error while updating the task")
         }
     }
-    const editTask = (taskId) => {
-        seteditButtonClicked(true)
-        reset();
-        seteditTaskmsg("")
-        localStorage.setItem("taskId", taskId)
-    }
-    // const markAsCompleted = (index) => {
-    //     const updated = tasks.map((task, idx) => idx === index ? { ...task, completed: !task.completed } : task)
-    //     const sortedTask = [...updated].sort((a, b) => a.completed - b.completed || a.order - b.order)
-    //     settasks(sortedTask)
+    // const editTask = (taskId) => {
+    //     seteditButtonClicked(true)
+    //     reset();
+    //     seteditTaskmsg("")
+    //     localStorage.setItem("taskId", taskId)
     // }
     const markAsCompleted = (taskId) => {
+        alert(`${taskId} Clicked`)
         const updated = tasks.map((task) =>
             task.taskId === taskId ? { ...task, completed: !task.completed } : task
         );
