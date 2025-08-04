@@ -309,11 +309,11 @@ const Todolist = () => {
     //     localStorage.setItem("taskId", taskId)
     // }
     const markAsCompleted = async (taskId) => {
-        alert(res)
         try {
             const res = await axios.post(`${API}/markAsCompleted`, {
                 params: taskId
             })
+            alert(res)
         } catch (error) {
             console.log("Error is => ", error);
 
