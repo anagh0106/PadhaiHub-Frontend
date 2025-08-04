@@ -69,12 +69,8 @@ const StudentDashboard = () => {
                     </div>
                 </div>
             </div>
-            <div className="min-h-screen bg-[#0F172A] p-6 text-white">
-                <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-6">
-                    <Todolist />
-                    <CalendarCard />
-                </div>
-            </div>
+            <Todolist />
+            <CalendarCard />
             {/* <ClassSchedule /> */}
             <PerformanceAnalytics />
             {/* <MockTest /> */}
