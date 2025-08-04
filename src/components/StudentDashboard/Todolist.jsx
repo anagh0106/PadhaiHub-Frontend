@@ -352,7 +352,7 @@ const Todolist = () => {
 
     return (
         <>
-            <motion.div
+            {/* <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1 }}
@@ -369,7 +369,6 @@ const Todolist = () => {
                             className="fixed inset-0 flex justify-center items-center z-50 p-4"
                         >
                             <div className={`w-full max-w-sm sm:max-w-md p-6 sm:p-10 rounded-3xl relative transition-all duration-300 ${styles.modal}`}>
-                                {/* <button onClick={() => seteditButtonClicked(false)} className="absolute top-4 right-4 text-white text-2xl">&times;</button> */}
                                 <button
                                     onClick={() => seteditButtonClicked(false)}
                                     className={`absolute top-4 right-4 text-3xl ${theme === "light" ? "text-black" : "text-white"
@@ -400,7 +399,7 @@ const Todolist = () => {
                         </motion.div>
                     </>
                 )}
-            </motion.div>
+            </motion.div> */}
             {addButtonClicked && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4 sm:px-0">
                     <div className="bg-[#0F172A] text-white rounded-2xl shadow-2xl w-full max-w-2xl p-8 space-y-6 border border-gray-700">
