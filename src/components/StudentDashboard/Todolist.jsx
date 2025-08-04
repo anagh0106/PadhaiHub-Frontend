@@ -308,11 +308,19 @@ const Todolist = () => {
         seteditTaskmsg("")
         localStorage.setItem("taskId", taskId)
     }
-    const markAsCompleted = (index) => {
-        const updated = tasks.map((task, idx) => idx === index ? { ...task, completed: !task.completed } : task)
-        const sortedTask = [...updated].sort((a, b) => a.completed - b.completed || a.order - b.order)
-        settasks(sortedTask)
-    }
+    // const markAsCompleted = (index) => {
+    //     const updated = tasks.map((task, idx) => idx === index ? { ...task, completed: !task.completed } : task)
+    //     const sortedTask = [...updated].sort((a, b) => a.completed - b.completed || a.order - b.order)
+    //     settasks(sortedTask)
+    // }
+    const markAsCompleted = (taskId) => {
+        const updated = tasks.map((task) =>
+            task.taskId === taskId ? { ...task, completed: !task.completed } : task
+        );
+        const sortedTask = [...updated].sort((a, b) => a.completed - b.completed);
+        settasks(sortedTask);
+    };
+
     const getCategory = async () => {
         try {
             const res = await axios.get(`${API}/getCategory`)
