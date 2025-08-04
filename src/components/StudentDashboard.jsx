@@ -69,17 +69,19 @@ const StudentDashboard = () => {
                     </div>
                 </div>
             </div>
-            <div className="w-full max-w-7xl mx-auto px-4 py-8">
-                <div className="flex flex-col lg:flex-row gap-6">
-                    {/* Left: Todolist */}
-                    <div className="flex-1">
+            <div className="w-full max-w-7xl mx-auto px-4 py-10">
+                <div className="flex flex-col lg:flex-row items-start gap-8">
+
+                    {/* Todolist Section */}
+                    <div className="w-full lg:flex-1">
                         <Todolist />
                     </div>
 
-                    {/* Right: CalendarCard */}
-                    <div className="w-full lg:w-[400px]">
+                    {/* Calendar Section */}
+                    <div className="w-full lg:w-[420px]">
                         <CalendarCard />
                     </div>
+
                 </div>
             </div>
 
