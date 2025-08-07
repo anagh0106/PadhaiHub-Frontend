@@ -8,6 +8,11 @@ import { useNavigate } from 'react-router-dom';
 
 const AdminClassManagement = () => {
     const { theme } = useContext(ThemeContext);
+    // At top
+    const [availableFaculties, setAvailableFaculties] = useState([]);
+    const [facultyConflictMessage, setFacultyConflictMessage] = useState("");
+    const [facultyResetTrigger, setFacultyResetTrigger] = useState(false); // for resetting select
+
     const [showModal, setShowModal] = useState(false);
     const [subjectHandler, setsubjectHandler] = useState([]);
     const [facultyName, setfacultyName] = useState([]);
@@ -105,46 +110,75 @@ const AdminClassManagement = () => {
     };
 
     const onSubmit = async (data) => {
+        // try {
+        //     //  Frontend Past Date Check
+        //     const classDateTime = new Date(`${data.date}T${data.time}`);
+        //     if (classDateTime < new Date()) {
+        //         alert("❌ You cannot select a past time.");
+        //         return;
+        //     }
+
+        //     // 1. Check faculty clash before class creation
+        //     const clashRes = await axios.get(`${API}/class/usedFaculty`, {
+        //         params: {
+        //             date: data.date,
+        //             time: data.time,
+        //             faculty: data.faculty
+        //         }
+        //     });
+
+        //     if (clashRes.data.assigned) {
+        //         alert("⚠️ Selected faculty is already assigned in this time slot.");
+        //         return;
+        //     }
+
+        //     // 2. Proceed to create class if no clash
+        //     const res = await axios.post(`${API}/class/createClass`, data, {
+        //         headers: {
+        //             Authorization: `Bearer ${localStorage.getItem("token")}`
+        //         }
+        //     });
+        //     console.log(res.data);
+        //     setShowModal(false);
+        //     setisClasscreated(true);
+        //     setTimeout(() => {
+        //         alert("Mr. Admin You have created class successfully!")
+        //     }, 1000)
+        //     getClasses()
+        //     reset();
+
+        // } catch (error) {
+        //     console.log("Error is =>", error);
+        // }
+        // Inside onSubmit handler
         try {
-            //  Frontend Past Date Check
-            const classDateTime = new Date(`${data.date}T${data.time}`);
-            if (classDateTime < new Date()) {
-                alert("❌ You cannot select a past time.");
-                return;
-            }
-
-            // 1. Check faculty clash before class creation
-            const clashRes = await axios.get(`${API}/class/usedFaculty`, {
-                params: {
-                    date: data.date,
-                    time: data.time,
-                    faculty: data.faculty
-                }
+            const res = await axios.post(`${API}/createClass`, {
+                subject,
+                standard,
+                faculty,
+                time,
+                room,
+                date,
             });
 
-            if (clashRes.data.assigned) {
-                alert("⚠️ Selected faculty is already assigned in this time slot.");
-                return;
+            if (res.status === 201) {
+                toast.success("Class created successfully!");
+                reset(); // optional
+                setAvailableFaculties([]);
+                setFacultyConflictMessage("");
             }
-
-            // 2. Proceed to create class if no clash
-            const res = await axios.post(`${API}/class/createClass`, data, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`
-                }
-            });
-            console.log(res.data);
-            setShowModal(false);
-            setisClasscreated(true);
-            setTimeout(() => {
-                alert("Mr. Admin You have created class successfully!")
-            }, 1000)
-            getClasses()
-            reset();
-
         } catch (error) {
-            console.log("Error is =>", error);
+            const { response } = error;
+            if (response?.status === 409 && response.data.availableFaculties) {
+                setAvailableFaculties(response.data.availableFaculties);
+                setFacultyConflictMessage(response.data.message);
+                setFacultyResetTrigger(true); // reset selected faculty
+                toast.error("Faculty time conflict. Choose from available faculties.");
+            } else {
+                toast.error(response?.data?.message || "Error creating class");
+            }
         }
+
     };
 
     const handleDeleteClass = async (id) => {
@@ -181,7 +215,7 @@ const AdminClassManagement = () => {
         selectedClasses === classLabels.upComingClassesAdmin
             ? upcomingClasses
             : previousClasses;
-    
+
     return (
         <div className={`p-10 min-h-screen transition-all duration-300 ${colors.background} ${colors.text}`}>
             {/* Header */}
@@ -431,7 +465,7 @@ const AdminClassManagement = () => {
                             )}
                             {/* Faculty */}
 
-                            <div className="flex flex-col gap-1">
+                            {/* <div className="flex flex-col gap-1">
                                 <label className={`text-sm font-medium ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>Faculty</label>
                                 <select
                                     {...register("faculty", { required: "Faculty is required" })}
@@ -448,6 +482,28 @@ const AdminClassManagement = () => {
                                     ))}
                                 </select>
                                 {errors.faculty && <p className="text-red-500 text-xs">{errors.faculty.message}</p>}
+                            </div> */}
+
+                            {/* Show clash warning if faculty is already assigned at this time */}
+                            {facultyConflictMessage && (
+                                <p className="text-red-500 text-sm mb-2">{facultyConflictMessage}</p>
+                            )}
+
+                            <div className="mb-4">
+                                <label className="block text-sm font-medium mb-1">Select Faculty</label>
+                                <select
+                                    {...register("faculty", { required: true })}
+                                    className="w-full border p-2 rounded"
+                                    key={facultyResetTrigger} // ensures dropdown re-renders when list changes
+                                >
+                                    <option value="">-- Select Faculty --</option>
+                                    {(availableFaculties.length > 0 ? availableFaculties : allFaculties).map((fac) => (
+                                        <option key={fac._id} value={fac._id}>
+                                            {fac.name} ({fac.subject.join(", ")})
+                                        </option>
+                                    ))}
+                                </select>
+                                {errors.faculty && <p className="text-red-500 text-xs">Faculty is required</p>}
                             </div>
 
                         </div>

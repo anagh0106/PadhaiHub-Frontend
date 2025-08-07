@@ -310,19 +310,22 @@ const Todolist = () => {
     // }
     const markAsCompleted = async (taskId) => {
         try {
-            alert(taskId)
-            const res = await axios.post(`${API}/markAsCompleted`, {
-                params: taskId
-            })
-        } catch (error) {
-            console.log("Error is => ", error);
+            const { data } = await axios.post(`${API}/markAsCompleted`, {
+                taskId,
+            });
 
+            if (data.success) {
+                const updated = tasks.map((task) =>
+                    task.taskId === taskId
+                        ? { ...task, completed: !task.completed }
+                        : task
+                );
+                const sortedTask = updated.sort((a, b) => a.completed - b.completed);
+                settasks(sortedTask);
+            }
+        } catch (error) {
+            console.error("Error marking task completed:", error);
         }
-        const updated = tasks.map((task) =>
-            task.taskId === taskId ? { ...task, completed: !task.completed } : task
-        );
-        const sortedTask = [...updated].sort((a, b) => a.completed - b.completed);
-        settasks(sortedTask);
     };
 
     const getCategory = async () => {
