@@ -309,6 +309,7 @@ const Todolist = () => {
     //     localStorage.setItem("taskId", taskId)
     // }
     const markAsCompleted = async (taskId) => {
+        alert("TaskId ", taskId)
         try {
             const { data } = await axios.post(`${API}/markAsCompleted`, {
                 taskId,
@@ -364,54 +365,6 @@ const Todolist = () => {
 
     return (
         <>
-            {/* <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
-                className={`min-h-dvh flex justify-center items-center p-4 sm:p-6 ${styles.container}`}
-            >
-
-                {editButtonClicked && (
-                    <>
-                        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40"></div>
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ type: "spring", stiffness: 100 }}
-                            className="fixed inset-0 flex justify-center items-center z-50 p-4"
-                        >
-                            <div className={`w-full max-w-sm sm:max-w-md p-6 sm:p-10 rounded-3xl relative transition-all duration-300 ${styles.modal}`}>
-                                <button
-                                    onClick={() => seteditButtonClicked(false)}
-                                    className={`absolute top-4 right-4 text-3xl ${theme === "light" ? "text-black" : "text-white"
-                                        } hover:scale-110 transition-transform duration-200`}
-                                >
-                                    <IoCloseOutline />
-                                </button>
-
-                                <h2 className="text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-indigo-400 mb-10">Edit Task</h2>
-                                <form onSubmit={handleSubmit(editTaskHandler)} className="space-y-6">
-                                    <input
-                                        {...register("text", { required: "Task name is required" })}
-                                        placeholder="Update your task..."
-                                        autoComplete="off"
-                                        className={`${styles.modalInput}`}
-                                    />
-                                    {errors.text && <p className="text-red-400 text-sm">{errors.text.message}</p>}
-                                    {isTaskUpdated && <p className="text-green-400 text-sm">{editTaskmsg}</p>}
-                                    <motion.button
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        className="w-full py-3 rounded-xl bg-gradient-to-r from-pink-500 to-yellow-400 text-black font-bold text-lg shadow-lg"
-                                    >
-                                        Submit
-                                    </motion.button>
-                                </form>
-                            </div>
-                        </motion.div>
-                    </>
-                )}
-            </motion.div> */}
             {addButtonClicked && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4 sm:px-0">
                     <div className="bg-[#0F172A] text-white rounded-2xl shadow-2xl w-full max-w-2xl p-8 space-y-6 border border-gray-700">
@@ -516,6 +469,7 @@ const Todolist = () => {
                 </div>
             )}
 
+            {/* Todo List Form */}
             <div className="h-full bg-[#1E293B] rounded-lg p-6 shadow-lg flex flex-col">
                 {/* <div className="max-w-3xl mx-auto bg-[#0F172A] text-white p-6 rounded-xl shadow-2xl space-y-4"> */}
                 {/* Header */}
