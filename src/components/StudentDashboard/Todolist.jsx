@@ -373,7 +373,7 @@ const Todolist = () => {
         setaddButtonClicked(true)
     }
     console.log(isPendingSelected);
-    
+
     return (
         <>
             {addButtonClicked && (
@@ -500,11 +500,13 @@ const Todolist = () => {
 
                 {/* Filters */}
                 <div className="flex gap-4 mt-2">
-                    <select className="bg-[#1E293B] border border-gray-600 text-white px-3 py-2 rounded-lg">
+                    <select
+                        onChange={(e) => alert(e.target.value)}
+                        className="bg-[#1E293B] border border-gray-600 text-white px-3 py-2 rounded-lg">
                         <option>All Tasks</option>
                         {
                             handlerTaskLabels.map((labels, index) => (
-                                <option value={labels} key={index} onChange={(e) => alert(e.target.value)}>{labels}</option>
+                                <option value={labels} key={index} >{labels}</option>
                             ))
                         }
                     </select>
