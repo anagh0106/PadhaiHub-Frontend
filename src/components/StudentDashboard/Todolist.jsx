@@ -311,7 +311,7 @@ const Todolist = () => {
 
             if (data.success) {
                 const updated = tasks.map((task) =>
-                    task.taskId === taskId
+                    task.taskId === data.updatedTask.taskId
                         ? { ...task, completed: !task.completed }
                         : task
                 );
