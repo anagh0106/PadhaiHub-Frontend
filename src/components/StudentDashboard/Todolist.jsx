@@ -504,7 +504,7 @@ const Todolist = () => {
                         <option>All Tasks</option>
                         {
                             handlerTaskLabels.map((labels, index) => (
-                                <option value={labels} key={index} onChange={(e) => setisPendingSelected(e.target.value)}>{labels}</option>
+                                <option value={labels} key={index} onChange={(e) => alert(e.target.value)}>{labels}</option>
                             ))
                         }
                     </select>
