@@ -12,7 +12,6 @@ const AdminClassManagement = () => {
     const [availableFaculties, setAvailableFaculties] = useState([]);
     const [facultyConflictMessage, setFacultyConflictMessage] = useState("");
     const [facultyResetTrigger, setFacultyResetTrigger] = useState(false); // for resetting select
-
     const [showModal, setShowModal] = useState(false);
     const [subjectHandler, setsubjectHandler] = useState([]);
     const [facultyName, setfacultyName] = useState([]);
@@ -110,74 +109,47 @@ const AdminClassManagement = () => {
     };
 
     const onSubmit = async (data) => {
-        // try {
-        //     //  Frontend Past Date Check
-        //     const classDateTime = new Date(`${data.date}T${data.time}`);
-        //     if (classDateTime < new Date()) {
-        //         alert("❌ You cannot select a past time.");
-        //         return;
-        //     }
-
-        //     // 1. Check faculty clash before class creation
-        //     const clashRes = await axios.get(`${API}/class/usedFaculty`, {
-        //         params: {
-        //             date: data.date,
-        //             time: data.time,
-        //             faculty: data.faculty
-        //         }
-        //     });
-
-        //     if (clashRes.data.assigned) {
-        //         alert("⚠️ Selected faculty is already assigned in this time slot.");
-        //         return;
-        //     }
-
-        //     // 2. Proceed to create class if no clash
-        //     const res = await axios.post(`${API}/class/createClass`, data, {
-        //         headers: {
-        //             Authorization: `Bearer ${localStorage.getItem("token")}`
-        //         }
-        //     });
-        //     console.log(res.data);
-        //     setShowModal(false);
-        //     setisClasscreated(true);
-        //     setTimeout(() => {
-        //         alert("Mr. Admin You have created class successfully!")
-        //     }, 1000)
-        //     getClasses()
-        //     reset();
-
-        // } catch (error) {
-        //     console.log("Error is =>", error);
-        // }
-        // Inside onSubmit handler
         try {
-            const res = await axios.post(`${API}/createClass`, {
-                subject,
-                standard,
-                faculty,
-                time,
-                room,
-                date,
+            //  Frontend Past Date Check
+            const classDateTime = new Date(`${data.date}T${data.time}`);
+            if (classDateTime < new Date()) {
+                alert("❌ You cannot select a past time.");
+                return;
+            }
+
+            // 1. Check faculty clash before class creation
+            const clashRes = await axios.get(`${API}/class/usedFaculty`, {
+                params: {
+                    date: data.date,
+                    time: data.time,
+                    faculty: data.faculty
+                }
             });
 
-            if (res.status === 201) {
-                toast.success("Class created successfully!");
-                reset(); // optional
-                setAvailableFaculties([]);
-                setFacultyConflictMessage("");
+            if (clashRes.data.assigned) {
+                alert("⚠️ Selected faculty is already assigned in this time slot.");
+                return;
             }
+
+            // 2. Proceed to create class if no clash
+            const res = await axios.post(`${API}/class/createClass`, data, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            });
+            console.log(res.data);
+            setShowModal(false);
+            setisClasscreated(true);
+            setTimeout(() => {
+                alert("Mr. Admin You have created class successfully!")
+            }, 1000)
+            getClasses()
+            reset();
+
         } catch (error) {
-            const { response } = error;
-            if (response?.status === 409 && response.data.availableFaculties) {
-                setAvailableFaculties(response.data.availableFaculties);
-                setFacultyConflictMessage(response.data.message);
-                setFacultyResetTrigger(true); // reset selected faculty
-                toast.error("Faculty time conflict. Choose from available faculties.");
-            } else {
-                toast.error(response?.data?.message || "Error creating class");
-            }
+            console.log("Error is =>", error);
         }
+      
 
     };
 
