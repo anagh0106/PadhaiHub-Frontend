@@ -303,7 +303,6 @@ const Todolist = () => {
         }
     }
     const markAsCompleted = async (taskId) => {
-        alert(`TaskId: ${taskId}`);
 
         try {
             const { data } = await axios.post(`${API}/markAsCompleted`, {
@@ -501,7 +500,10 @@ const Todolist = () => {
                         <input
                             type="checkbox"
                             checked={task.completed}
-                            onChange={() => markAsCompleted(task.taskId)}
+                            onChange={() => {
+                                alert(`Clicked task: ${task.taskId}`);
+                                markAsCompleted(task.taskId)
+                            }}
                             className="accent-green-500 mt-1"
                         />
                         <div className="flex-grow">
