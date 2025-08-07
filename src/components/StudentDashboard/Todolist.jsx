@@ -217,7 +217,7 @@ const Todolist = () => {
     const [isTaskUpdated, setisTaskUpdated] = useState(false)
     const [handlePendingTask, sethandlePendingTask] = useState([])
     const [handlerTaskLabels, sethandlerTaskLabels] = useState([])
-    const [isPendingSelected, setisPendingSelected] = useState(false)
+    const [isPendingSelected, setisPendingSelected] = useState("")
     const [addButtonClicked, setaddButtonClicked] = useState(false)
     const [taskCategory, setTaskCategory] = useState([])
     const [TaskPriority, setTaskPriority] = useState([])
@@ -373,7 +373,7 @@ const Todolist = () => {
         setaddButtonClicked(true)
     }
     console.log(isPendingSelected);
-
+    
     return (
         <>
             {addButtonClicked && (
