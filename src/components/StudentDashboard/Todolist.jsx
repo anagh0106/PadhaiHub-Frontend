@@ -350,7 +350,7 @@ const Todolist = () => {
                 }
             })
             sethandlePendingTask(res.data.PendingTask)
-            sethandlerTaskLabels(res.data.labels)
+            sethandlerTaskLabels(Object.values(res.data.labels))
 
         } catch (error) {
             console.log("Error is => ", error);
