@@ -148,8 +148,7 @@ const AdminClassManagement = () => {
 
         } catch (error) {
             console.log("Error is =>", error);
-        }
-      
+        }  
 
     };
 
@@ -437,7 +436,7 @@ const AdminClassManagement = () => {
                             )}
                             {/* Faculty */}
 
-                            {/* <div className="flex flex-col gap-1">
+                            <div className="flex flex-col gap-1">
                                 <label className={`text-sm font-medium ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>Faculty</label>
                                 <select
                                     {...register("faculty", { required: "Faculty is required" })}
@@ -454,12 +453,9 @@ const AdminClassManagement = () => {
                                     ))}
                                 </select>
                                 {errors.faculty && <p className="text-red-500 text-xs">{errors.faculty.message}</p>}
-                            </div> */}
+                            </div>
 
-                            {/* Show clash warning if faculty is already assigned at this time */}
-                            {facultyConflictMessage && (
-                                <p className="text-red-500 text-sm mb-2">{facultyConflictMessage}</p>
-                            )}
+                          
 
                             <div className="mb-4">
                                 <label className="block text-sm font-medium mb-1">Select Faculty</label>
