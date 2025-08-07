@@ -8,10 +8,6 @@ import { useNavigate } from 'react-router-dom';
 
 const AdminClassManagement = () => {
     const { theme } = useContext(ThemeContext);
-    // At top
-    const [availableFaculties, setAvailableFaculties] = useState([]);
-    const [facultyConflictMessage, setFacultyConflictMessage] = useState("");
-    const [facultyResetTrigger, setFacultyResetTrigger] = useState(false); // for resetting select
     const [showModal, setShowModal] = useState(false);
     const [subjectHandler, setsubjectHandler] = useState([]);
     const [facultyName, setfacultyName] = useState([]);
@@ -148,8 +144,7 @@ const AdminClassManagement = () => {
 
         } catch (error) {
             console.log("Error is =>", error);
-        }  
-
+        }
     };
 
     const handleDeleteClass = async (id) => {
@@ -186,7 +181,7 @@ const AdminClassManagement = () => {
         selectedClasses === classLabels.upComingClassesAdmin
             ? upcomingClasses
             : previousClasses;
-
+    
     return (
         <div className={`p-10 min-h-screen transition-all duration-300 ${colors.background} ${colors.text}`}>
             {/* Header */}
@@ -453,25 +448,6 @@ const AdminClassManagement = () => {
                                     ))}
                                 </select>
                                 {errors.faculty && <p className="text-red-500 text-xs">{errors.faculty.message}</p>}
-                            </div>
-
-                          
-
-                            <div className="mb-4">
-                                <label className="block text-sm font-medium mb-1">Select Faculty</label>
-                                <select
-                                    {...register("faculty", { required: true })}
-                                    className="w-full border p-2 rounded"
-                                    key={facultyResetTrigger} // ensures dropdown re-renders when list changes
-                                >
-                                    <option value="">-- Select Faculty --</option>
-                                    {(availableFaculties.length > 0 ? availableFaculties : allFaculties).map((fac) => (
-                                        <option key={fac._id} value={fac._id}>
-                                            {fac.name} ({fac.subject.join(", ")})
-                                        </option>
-                                    ))}
-                                </select>
-                                {errors.faculty && <p className="text-red-500 text-xs">Faculty is required</p>}
                             </div>
 
                         </div>
