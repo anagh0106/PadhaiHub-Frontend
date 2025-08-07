@@ -215,6 +215,8 @@ const Todolist = () => {
     const [editButtonClicked, seteditButtonClicked] = useState(false)
     const [editTaskmsg, seteditTaskmsg] = useState("")
     const [isTaskUpdated, setisTaskUpdated] = useState(false)
+    const [handlePendingTask, sethandlePendingTask] = useState([])
+    const [handlerTaskLabels, sethandlerTaskLabels] = useState([])
     const [addButtonClicked, setaddButtonClicked] = useState(false)
     const [taskCategory, setTaskCategory] = useState([])
     const [TaskPriority, setTaskPriority] = useState([])
@@ -322,7 +324,6 @@ const Todolist = () => {
             console.error("Error marking task completed:", error);
         }
     };
-
     const getCategory = async () => {
         try {
             const res = await axios.get(`${API}/getCategory`)
@@ -341,10 +342,25 @@ const Todolist = () => {
             console.log("Error is => ", error)
         }
     }
+    const PendingTask = async () => {
+        try {
+            const res = await axios.get(`${API}/getPendingTask`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+            sethandlePendingTask(res.data.PendingTask)
+            sethandlerTaskLabels(res.data.labels)
 
+        } catch (error) {
+            console.log("Error is => ", error);
+
+        }
+    }
     useEffect(() => {
         getCategory()
         getPriority()
+        PendingTask()
     }, [])
     const styles = {
         container: theme === 'light' ? 'bg-white text-black' : 'bg-black text-white',
@@ -485,6 +501,11 @@ const Todolist = () => {
                 <div className="flex gap-4 mt-2">
                     <select className="bg-[#1E293B] border border-gray-600 text-white px-3 py-2 rounded-lg">
                         <option>All Tasks</option>
+                        {
+                            handlerTaskLabels.map((labels, index) => (
+                                <option value={labels} key={index}>{labels}</option>
+                            ))
+                        }
                     </select>
                     <select className="bg-[#1E293B] border border-gray-600 text-white px-3 py-2 rounded-lg">
                         <option>Due Date</option>
