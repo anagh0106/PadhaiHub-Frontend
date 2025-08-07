@@ -217,6 +217,7 @@ const Todolist = () => {
     const [isTaskUpdated, setisTaskUpdated] = useState(false)
     const [handlePendingTask, sethandlePendingTask] = useState([])
     const [handlerTaskLabels, sethandlerTaskLabels] = useState([])
+    const [isPendingSelected, setisPendingSelected] = useState(false)
     const [addButtonClicked, setaddButtonClicked] = useState(false)
     const [taskCategory, setTaskCategory] = useState([])
     const [TaskPriority, setTaskPriority] = useState([])
@@ -354,7 +355,6 @@ const Todolist = () => {
 
         } catch (error) {
             console.log("Error is => ", error);
-
         }
     }
     useEffect(() => {
@@ -372,6 +372,7 @@ const Todolist = () => {
     const AddTaskFunction = () => {
         setaddButtonClicked(true)
     }
+    console.log(isPendingSelected);
 
     return (
         <>
@@ -503,7 +504,7 @@ const Todolist = () => {
                         <option>All Tasks</option>
                         {
                             handlerTaskLabels.map((labels, index) => (
-                                <option value={labels} key={index}>{labels}</option>
+                                <option value={labels} key={index} onChange={(e) => setisPendingSelected(e.target.value)}>{labels}</option>
                             ))
                         }
                     </select>
