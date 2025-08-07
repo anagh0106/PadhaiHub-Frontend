@@ -302,14 +302,9 @@ const Todolist = () => {
             seteditTaskmsg("Error while updating the task")
         }
     }
-    // const editTask = (taskId) => {
-    //     seteditButtonClicked(true)
-    //     reset();
-    //     seteditTaskmsg("")
-    //     localStorage.setItem("taskId", taskId)
-    // }
     const markAsCompleted = async (taskId) => {
-        alert("TaskId ", taskId)
+        alert(`TaskId: ${taskId}`);
+
         try {
             const { data } = await axios.post(`${API}/markAsCompleted`, {
                 taskId,
