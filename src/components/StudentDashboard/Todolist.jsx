@@ -499,7 +499,7 @@ const Todolist = () => {
                         <option>Due Date</option>
                     </select>
                 </div>
-                {
+                {!isPendingSelected &&
                     tasks.map((task, index) => (
                         <div
                             key={task.taskId || index}
@@ -579,7 +579,92 @@ const Todolist = () => {
                                 </button>
                             )}
                         </div>
-                    ))}
+                    ))
+                }
+                {
+                    isPendingSelected &&
+                    handlePendingTask.map((task, index) => (
+                        <div
+                            key={task.taskId || index}
+                            className={`bg-[#1E293B] p-4 rounded-xl border border-gray-700 flex gap-3 mb-4 shadow-md ${task.completed ? "opacity-50" : ""
+                                }`}
+                        >
+                            <input
+                                type="checkbox"
+                                checked={task.completed}
+                                onChange={() => {
+                                    markAsCompleted(task.taskId)
+                                }}
+                                className="accent-green-500 mt-1"
+                            />
+                            <div className="flex-grow">
+                                <div className="flex justify-between">
+                                    <h3
+                                        className={`font-semibold text-base ${task.completed ? "text-gray-400 line-through" : "text-white"
+                                            }`}
+                                    >
+                                        {task.text}
+                                    </h3>
+                                    <div className="flex gap-2">
+                                        <span className="text-xs text-white px-2 py-1 rounded-full bg-blue-700 capitalize">
+                                            {task.category}
+                                        </span>
+                                        <span
+                                            className={`text-xs px-2 py-1 rounded-full font-medium capitalize ${task.priority === "high"
+                                                ? "bg-orange-200 text-orange-800"
+                                                : task.priority === "medium"
+                                                    ? "bg-yellow-200 text-yellow-800"
+                                                    : "bg-indigo-200 text-indigo-800"
+                                                }`}
+                                        >
+                                            {task.priority}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <p
+                                    className={`text-sm mt-1 ${task.completed ? "text-gray-400 line-through" : "text-gray-300"
+                                        }`}
+                                >
+                                    {task.description}
+                                </p>
+
+                                <div className="flex items-center gap-6 mt-3 text-sm text-gray-400">
+                                    <span className="flex items-center gap-1">
+                                        <FaCalendarAlt /> {new Date(task.duedate).toISOString().split("T")[0]}
+                                    </span>
+                                    <span className="flex items-center gap-1">
+                                        <FaClock /> {task.time}m
+                                    </span>
+                                </div>
+
+                                {/* Optional: tag pills */}
+                                {task.tags && task.tags.length > 0 && (
+                                    <div className="flex gap-2 mt-3 flex-wrap">
+                                        {task.tags.map((tag, i) => (
+                                            <span
+                                                key={i}
+                                                className="bg-slate-700 text-white text-xs px-2 py-1 rounded-full"
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+
+                            {!task.completed && (
+                                <button
+                                    className="text-red-400 hover:text-red-600"
+                                    onClick={() => handleDelete(task.taskId)}
+                                >
+                                    <FaTrash />
+                                </button>
+                            )}
+                        </div>
+                    ))
+
+                }
             </div>
         </>
     )
