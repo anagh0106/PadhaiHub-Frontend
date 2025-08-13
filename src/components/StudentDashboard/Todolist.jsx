@@ -583,7 +583,7 @@ const Todolist = () => {
 
                 {
                     isPendingSelected &&
-                    tasks.map((task, index) => (
+                    handlePendingTask.map((task, index) => (
                         <div
                             key={task.taskId || index}
                             className={`bg-[#1E293B] p-4 rounded-xl border border-gray-700 flex gap-3 mb-4 shadow-md ${task.completed ? "opacity-50" : ""
