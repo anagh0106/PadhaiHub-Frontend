@@ -213,6 +213,7 @@ import { FaCalendarAlt, FaTrash, FaClock } from 'react-icons/fa';
 const Todolist = () => {
     const [tasks, settasks] = useState([])
     const [handlePendingTask, sethandlePendingTask] = useState([])
+    const [handleCompletedTask, sethandleCompletedTask] = useState([])
     const [handlerTaskLabels, sethandlerTaskLabels] = useState([])
     const [isPendingSelected, setisPendingSelected] = useState("")
     const [addButtonClicked, setaddButtonClicked] = useState(false)
@@ -337,6 +338,7 @@ const Todolist = () => {
                 }
             })
             sethandlePendingTask(res.data.PendingTask)
+            sethandleCompletedTask(res.data.CompletedTask)
             sethandlerTaskLabels(Object.values(res.data.labels))
 
         } catch (error) {
