@@ -216,6 +216,8 @@ const Todolist = () => {
     const [handleCompletedTask, sethandleCompletedTask] = useState([])
     const [handlerTaskLabels, sethandlerTaskLabels] = useState([])
     const [isPendingSelected, setisPendingSelected] = useState("")
+    const [pendingTaskCount, setpendingTaskCount] = useState(0)
+    const [completedTaskCount, setcompletedTaskCount] = useState(0)
     const [addButtonClicked, setaddButtonClicked] = useState(false)
     const [taskCategory, setTaskCategory] = useState([])
     const [TaskPriority, setTaskPriority] = useState([])
@@ -330,7 +332,7 @@ const Todolist = () => {
             console.log("Error is => ", error)
         }
     }
-    const PendingTask = async () => {
+    const TaskStatus = async () => {
         try {
             const res = await axios.get(`${API}/getTaskStatus`, {
                 headers: {
@@ -339,6 +341,8 @@ const Todolist = () => {
             })
             sethandlePendingTask(res.data.PendingTask)
             sethandleCompletedTask(res.data.CompletedTask)
+            setpendingTaskCount(res.data.PendingTaskCount)
+            setcompletedTaskCount(res.data.CompletedTaskCount)
             sethandlerTaskLabels(Object.values(res.data.labels))
 
         } catch (error) {
@@ -348,7 +352,7 @@ const Todolist = () => {
     useEffect(() => {
         getCategory()
         getPriority()
-        PendingTask()
+        TaskStatus()
     }, [])
     const styles = {
         container: theme === 'light' ? 'bg-white text-black' : 'bg-black text-white',
@@ -476,7 +480,7 @@ const Todolist = () => {
                         <h2 className="text-2xl font-semibold flex items-center gap-2">
                             ✅ Smart To-Do List
                         </h2>
-                        <p className="text-sm text-gray-400">2 pending • 1 completed</p>
+                        <p className="text-sm text-gray-400">{pendingTaskCount} pending • {completedTaskCount} completed</p>
                     </div>
                     <button
                         onClick={() => AddTaskFunction()}
