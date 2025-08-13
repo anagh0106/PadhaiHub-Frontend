@@ -310,17 +310,22 @@ const Todolist = () => {
         try {
             const { data } = await axios.post(`${API}/markAsCompleted`, {
                 taskId,
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
             });
 
             if (data.success) {
                 const updated = tasks.map((task) =>
                     task.taskId === data.updatedTask.taskId
-                        ? { ...task, completed: !task.completed }
+                        ? { ...task, completed: data.updatedTask.completed } // ✅ from backend
                         : task
                 );
                 const sortedTask = updated.sort((a, b) => a.completed - b.completed);
                 settasks(sortedTask);
             }
+
         } catch (error) {
             console.error("Error marking task completed:", error);
         }
@@ -373,8 +378,7 @@ const Todolist = () => {
         setaddButtonClicked(true)
     }
 
-    console.log(isPendingSelected);
-    
+
     return (
         <>
             {addButtonClicked && (
@@ -483,7 +487,6 @@ const Todolist = () => {
 
             {/* Todo List Form */}
             <div className="h-full bg-[#1E293B] rounded-lg p-6 shadow-lg flex flex-col">
-                {/* <div className="max-w-3xl mx-auto bg-[#0F172A] text-white p-6 rounded-xl shadow-2xl space-y-4"> */}
                 {/* Header */}
                 <div className="flex justify-between items-center">
                     <div>
