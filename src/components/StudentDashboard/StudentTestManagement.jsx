@@ -17,6 +17,7 @@ const StudentTestManagement = () => {
 
   const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
+    const host = window.location.hostname;
 
   const API = host === "localhost"
     ? "http://localhost:3000"
