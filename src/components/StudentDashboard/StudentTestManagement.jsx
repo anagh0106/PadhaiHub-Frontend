@@ -17,15 +17,19 @@ const StudentTestManagement = () => {
 
   const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
-  const API =
-    window.location.hostname === "localhost"
-      ? "http://localhost:3000"
-      : "http://192.168.31.252:3000";
+  // const API =
+  //   window.location.hostname === "localhost"
+  //     ? "http://localhost:3000"
+  //     : "http://192.168.31.252:3000";
+
+  const API = host === "localhost"
+    ? "http://localhost:3000"
+    : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com";
 
   const grade = localStorage.getItem("grade")
   const group = localStorage.getItem("group")
-  console.log(grade,group);
-  
+  console.log(grade, group);
+
   const fetchTests = async () => {
     try {
       if (!grade || !group) {
