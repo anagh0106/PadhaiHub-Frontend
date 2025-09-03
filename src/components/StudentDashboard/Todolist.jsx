@@ -204,10 +204,8 @@
 
 import { useEffect, useState, useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import { motion } from 'framer-motion'
 import axios from 'axios'
 import ThemeContext from '../context/ThemeContext'
-import { IoCloseOutline } from "react-icons/io5";
 import { FaCalendarAlt, FaTrash, FaClock } from 'react-icons/fa';
 
 const Todolist = () => {

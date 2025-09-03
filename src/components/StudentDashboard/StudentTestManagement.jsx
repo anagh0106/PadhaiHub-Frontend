@@ -24,6 +24,8 @@ const StudentTestManagement = () => {
 
   const grade = localStorage.getItem("grade")
   const group = localStorage.getItem("group")
+  console.log(grade,group);
+  
   const fetchTests = async () => {
     try {
       if (!grade || !group) {
