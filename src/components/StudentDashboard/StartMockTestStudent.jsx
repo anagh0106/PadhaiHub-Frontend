@@ -19,7 +19,7 @@ const StartMockTestStudent = () => {
     const API =
         window.location.hostname === "localhost"
             ? "http://localhost:3000"
-            : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com/course";
+            : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com";
 
 
     const getTestData = async () => {

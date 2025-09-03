@@ -17,10 +17,6 @@ const StudentTestManagement = () => {
 
   const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
-  // const API =
-  //   window.location.hostname === "localhost"
-  //     ? "http://localhost:3000"
-  //     : "http://192.168.31.252:3000";
 
   const API = host === "localhost"
     ? "http://localhost:3000"
