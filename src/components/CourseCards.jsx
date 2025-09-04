@@ -7,7 +7,7 @@ export default function CourseCards() {
     window.location.hostname === "localhost"
       ? "http://localhost:3000"
       : process.env.REACT_APP_API || "https://padhaihub-backend.onrender.com";
-
+  const [open, setOpen] = useState(false);
   const [courseCard, setCourseCard] = useState([]);
   const [advanceCourse, setadvanceCourse] = useState([])
   const [isRegularButoonClicked, setisRegularButoonClicked] = useState(true)
@@ -133,15 +133,36 @@ export default function CourseCards() {
               </p>
               <button
                 className={`w-full py-2 rounded-xl font-semibold transition-all duration-200 
-    ${theme === 'light'
-                    ? 'bg-gradient-to-r from-purple-600 to-indigo-500 hover:from-purple-700 hover:to-indigo-600 text-white'
-                    : 'bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-black'}
-  `}
-                onClick={() => window.open("https://res.cloudinary.com/dnp5v5trt/image/upload/v1756976059/WhatsApp_Image_2025-09-04_at_2.20.37_PM_afmuij.jpg", "_blank")}
+        ${theme === "light"
+                    ? "bg-gradient-to-r from-purple-600 to-indigo-500 hover:from-purple-700 hover:to-indigo-600 text-white"
+                    : "bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-black"
+                  }`}
+                onClick={() => setOpen(true)}
               >
                 Enroll Now
               </button>
 
+              {/* Modal */}
+              {open && (
+                <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+                  <div className="relative bg-white p-4 rounded-2xl shadow-lg max-w-lg w-full">
+                    {/* Close button */}
+                    <button
+                      onClick={() => setOpen(false)}
+                      className="absolute top-2 right-2 text-gray-700 hover:text-red-500 text-lg"
+                    >
+                      ✖
+                    </button>
+
+                    {/* Image */}
+                    <img
+                      src="https://res.cloudinary.com/dnp5v5trt/image/upload/v1756976059/WhatsApp_Image_2025-09-04_at_2.20.37_PM_afmuij.jpg"
+                      alt="Preview"
+                      className="rounded-xl w-full"
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         ))}
