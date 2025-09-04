@@ -339,81 +339,82 @@ export default function CourseCards() {
       </div>
 
       {/* Modal */}
-      {open && selectedQR (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-          <div className="relative bg-white p-6 rounded-2xl shadow-lg max-w-3xl w-full">
-            {/* Close button */}
-            <button
-              onClick={() => setOpen(null)}
-              className="absolute top-2 right-2 text-gray-700 hover:text-red-500 text-lg"
-            >
-              ✖
-            </button>
+{open && (
+  <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+    <div className="relative bg-white p-6 rounded-2xl shadow-lg max-w-3xl w-full">
+      {/* Close button */}
+      <button
+        onClick={() => setOpen(null)}
+        className="absolute top-2 right-2 text-gray-700 hover:text-red-500 text-lg"
+      >
+        ✖
+      </button>
 
-            {/* Grid Layout */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-              {/* Left: QR Code */}
-              <div className="flex justify-center">
-                <img
-                  src={openCourse.qr}
-                  alt="QR Code"
-                  className="rounded-xl w-64 h-64 object-contain border shadow-md"
-                />
-              </div>
-
-              {/* Right: Form */}
-              <div>
-                <h2 className="text-2xl font-bold mb-4 text-gray-800">Enroll Now</h2>
-                <form className="space-y-4">
-                  {/* Email Field */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-1">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none"
-                    />
-                  </div>
-
-                  {/* Student ID Field */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-1">
-                      Student ID
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Enter your Student ID"
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none"
-                    />
-                  </div>
-
-                  {/* Name Field */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-1">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Enter your name"
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none"
-                    />
-                  </div>
-
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    className="w-full py-2 rounded-xl font-semibold transition-all duration-200 bg-gradient-to-r from-purple-600 to-indigo-500 hover:from-purple-700 hover:to-indigo-600 text-white"
-                  >
-                    Submit
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
+      {/* Grid Layout */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        {/* Left: QR Code */}
+        <div className="flex justify-center">
+          <img
+            src={open}   // yaha seedha open use karo
+            alt="QR Code"
+            className="rounded-xl w-64 h-64 object-contain border shadow-md"
+          />
         </div>
-      )}
+
+        {/* Right: Form */}
+        <div>
+          <h2 className="text-2xl font-bold mb-4 text-gray-800">Enroll Now</h2>
+          <form className="space-y-4">
+            {/* Email Field */}
+            <div>
+              <label className="block text-sm font-medium text-gray-600 mb-1">
+                Email
+              </label>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none"
+              />
+            </div>
+
+            {/* Student ID Field */}
+            <div>
+              <label className="block text-sm font-medium text-gray-600 mb-1">
+                Student ID
+              </label>
+              <input
+                type="text"
+                placeholder="Enter your Student ID"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none"
+              />
+            </div>
+
+            {/* Name Field */}
+            <div>
+              <label className="block text-sm font-medium text-gray-600 mb-1">
+                Name
+              </label>
+              <input
+                type="text"
+                placeholder="Enter your name"
+                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none"
+              />
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="w-full py-2 rounded-xl font-semibold transition-all duration-200 bg-gradient-to-r from-purple-600 to-indigo-500 hover:from-purple-700 hover:to-indigo-600 text-white"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
 
     </section>
   );
