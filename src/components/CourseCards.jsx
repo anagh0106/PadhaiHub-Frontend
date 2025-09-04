@@ -175,8 +175,10 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import ThemeContext from "./context/ThemeContext";
+import { useForm } from "react-hook-form";
 
 export default function CourseCards() {
+
   const API =
     window.location.hostname === "localhost"
       ? "http://localhost:3000"
@@ -188,7 +190,20 @@ export default function CourseCards() {
   const [advanceCourse, setadvanceCourse] = useState([]);
   const [isRegularButoonClicked, setisRegularButoonClicked] = useState(true);
   const [isAdvanceButtonClicked, setisAdvanceButtonClicked] = useState(false);
-
+  const uemail = localStorage.getItem("userEmail")
+  const stuId = localStorage.getItem("studentId")
+  const uname = localStorage.getItem("userName")
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      email: uemail,
+      studentId: stuId,
+      name: uname,
+    },
+  });
   const getCourseCardData = async () => {
     try {
       const res = await axios.get(`${API}/courseCard/getCourse`);
@@ -204,6 +219,10 @@ export default function CourseCards() {
     setisAdvanceButtonClicked(false);
   };
 
+
+  const onSubmit = (data) => {
+    console.log(data);
+  }
   const advanceCourses = () => {
     setisAdvanceButtonClicked(true);
     setisRegularButoonClicked(false);
@@ -364,51 +383,62 @@ export default function CourseCards() {
               {/* Right: Form */}
               <div>
                 <h2 className="text-2xl font-bold mb-4 text-gray-800">Enroll Now</h2>
-                <form className="space-y-4">
-                  {/* Email Field */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-1">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none"
-                    />
-                  </div>
+                   <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      {/* Email Field */}
+      <div>
+        <label className="block text-sm font-medium text-gray-600 mb-1">
+          Email
+        </label>
+        <input
+          type="email"
+          {...register("email", { required: "Email is required" })}
+          className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none"
+        />
+        {errors.email && (
+          <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+        )}
+      </div>
 
-                  {/* Student ID Field */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-1">
-                      Student ID
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Enter your Student ID"
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none"
-                    />
-                  </div>
+      {/* Student ID Field */}
+      <div>
+        <label className="block text-sm font-medium text-gray-600 mb-1">
+          Student ID
+        </label>
+        <input
+          type="text"
+          {...register("studentId", { required: "Student ID is required" })}
+          className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none"
+        />
+        {errors.studentId && (
+          <p className="text-red-500 text-sm mt-1">
+            {errors.studentId.message}
+          </p>
+        )}
+      </div>
 
-                  {/* Name Field */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-600 mb-1">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Enter your name"
-                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none"
-                    />
-                  </div>
+      {/* Name Field */}
+      <div>
+        <label className="block text-sm font-medium text-gray-600 mb-1">
+          Name
+        </label>
+        <input
+          type="text"
+          {...register("name", { required: "Name is required" })}
+          className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none"
+        />
+        {errors.name && (
+          <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+        )}
+      </div>
 
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    className="w-full py-2 rounded-xl font-semibold transition-all duration-200 bg-gradient-to-r from-purple-600 to-indigo-500 hover:from-purple-700 hover:to-indigo-600 text-white"
-                  >
-                    Submit
-                  </button>
-                </form>
+      {/* Submit Button */}
+      <button
+        type="submit"
+        className="w-full py-2 rounded-xl font-semibold transition-all duration-200 bg-gradient-to-r from-purple-600 to-indigo-500 hover:from-purple-700 hover:to-indigo-600 text-white"
+      >
+        Submit
+      </button>
+    </form>
               </div>
             </div>
           </div>
