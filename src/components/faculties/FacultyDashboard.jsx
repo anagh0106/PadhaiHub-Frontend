@@ -147,7 +147,7 @@ const FacultyDashboard = () => {
                                                 </p>
                                             </div>
                                             <button className="mt-4 bg-blue-600 text-white py-2 rounded-md font-medium hover:bg-blue-700 transition"
-                                            onClick={"https://youtu.be/1t9Dq4wyhBw"}>
+                                                onClick={(() => window.location.href = "https://youtu.be/1t9Dq4wyhBw")}>
                                                 Start Class
                                             </button>
                                         </div>
