@@ -330,7 +330,7 @@ export default function CourseCards() {
             : "bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-black"
         }`}
                   onClick={() => {
-                    setSelectedQR(course.qrImage); // ✅ course specific QR
+                    setSelectedQR("https://res.cloudinary.com/dnp5v5trt/image/upload/v1756976059/WhatsApp_Image_2025-09-04_at_2.20.37_PM_afmuij.jpg"); // ✅ course specific QR
                     setOpen(true);
                   }}
                 >
