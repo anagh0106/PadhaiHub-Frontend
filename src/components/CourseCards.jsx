@@ -248,11 +248,10 @@ export default function CourseCards() {
         <button
           onClick={regularCourse}
           className={`relative px-6 py-2 rounded-full font-semibold transition-all duration-300 overflow-hidden
-        ${
-          isRegularButoonClicked
-            ? "bg-gradient-to-r from-green-500 to-teal-500 text-white shadow-lg scale-105"
-            : `${colors.card} ${colors.subtext} hover:bg-gray-700 hover:text-white hover:scale-105`
-        }`}
+        ${isRegularButoonClicked
+              ? "bg-gradient-to-r from-green-500 to-teal-500 text-white shadow-lg scale-105"
+              : `${colors.card} ${colors.subtext} hover:bg-gray-700 hover:text-white hover:scale-105`
+            }`}
         >
           <span className="relative z-10">🌱 Regular Course</span>
           {isRegularButoonClicked && (
@@ -263,11 +262,10 @@ export default function CourseCards() {
         <button
           onClick={advanceCourses}
           className={`relative px-6 py-2 rounded-full font-semibold transition-all duration-300 overflow-hidden
-        ${
-          isAdvanceButtonClicked
-            ? "bg-gradient-to-r from-purple-600 to-indigo-500 text-white shadow-lg scale-105"
-            : `${colors.card} ${colors.subtext} hover:bg-gray-700 hover:text-white hover:scale-105`
-        }`}
+        ${isAdvanceButtonClicked
+              ? "bg-gradient-to-r from-purple-600 to-indigo-500 text-white shadow-lg scale-105"
+              : `${colors.card} ${colors.subtext} hover:bg-gray-700 hover:text-white hover:scale-105`
+            }`}
         >
           <span className="relative z-10">🚀 Advance Course</span>
           {isAdvanceButtonClicked && (
@@ -304,11 +302,10 @@ export default function CourseCards() {
                     <li key={i} className="flex items-start gap-2 text-sm">
                       <span className="text-green-400 text-base">✔</span>
                       <span
-                        className={`${
-                          item.includes("Preparation")
-                            ? "text-gray-500 line-through"
-                            : `${colors.subtext}`
-                        }`}
+                        className={`${item.includes("Preparation")
+                          ? "text-gray-500 line-through"
+                          : `${colors.subtext}`
+                          }`}
                       >
                         {item}
                       </span>
@@ -324,11 +321,10 @@ export default function CourseCards() {
                 </p>
                 <button
                   className={`w-full py-2 rounded-xl font-semibold transition-all duration-200 
-        ${
-          theme === "light"
-            ? "bg-gradient-to-r from-purple-600 to-indigo-500 hover:from-purple-700 hover:to-indigo-600 text-white"
-            : "bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-black"
-        }`}
+        ${theme === "light"
+                      ? "bg-gradient-to-r from-purple-600 to-indigo-500 hover:from-purple-700 hover:to-indigo-600 text-white"
+                      : "bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-black"
+                    }`}
                   onClick={() => {
                     setSelectedQR("https://res.cloudinary.com/dnp5v5trt/image/upload/v1756976059/WhatsApp_Image_2025-09-04_at_2.20.37_PM_afmuij.jpg"); // ✅ course specific QR
                     setOpen(true);
@@ -342,27 +338,83 @@ export default function CourseCards() {
         )}
       </div>
 
-      {/* ✅ Modal Outside Map */}
-      {open && selectedQR && (
+      {/* Modal */}
+      {open && selectedQR (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-          <div className="relative bg-white p-4 rounded-2xl shadow-lg max-w-lg w-full">
+          <div className="relative bg-white p-6 rounded-2xl shadow-lg max-w-3xl w-full">
             {/* Close button */}
             <button
-              onClick={() => setOpen(false)}
+              onClick={() => setOpenCourse(null)}
               className="absolute top-2 right-2 text-gray-700 hover:text-red-500 text-lg"
             >
               ✖
             </button>
 
-            {/* Dynamic QR Image */}
-            <img
-              src={selectedQR}
-              alt="Course QR"
-              className="rounded-xl w-full"
-            />
+            {/* Grid Layout */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+              {/* Left: QR Code */}
+              <div className="flex justify-center">
+                <img
+                  src={openCourse.qr}
+                  alt="QR Code"
+                  className="rounded-xl w-64 h-64 object-contain border shadow-md"
+                />
+              </div>
+
+              {/* Right: Form */}
+              <div>
+                <h2 className="text-2xl font-bold mb-4 text-gray-800">Enroll Now</h2>
+                <form className="space-y-4">
+                  {/* Email Field */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-600 mb-1">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="Enter your email"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none"
+                    />
+                  </div>
+
+                  {/* Student ID Field */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-600 mb-1">
+                      Student ID
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Enter your Student ID"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none"
+                    />
+                  </div>
+
+                  {/* Name Field */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-600 mb-1">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Enter your name"
+                      className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none"
+                    />
+                  </div>
+
+                  {/* Submit Button */}
+                  <button
+                    type="submit"
+                    className="w-full py-2 rounded-xl font-semibold transition-all duration-200 bg-gradient-to-r from-purple-600 to-indigo-500 hover:from-purple-700 hover:to-indigo-600 text-white"
+                  >
+                    Submit
+                  </button>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       )}
+
     </section>
   );
 }
