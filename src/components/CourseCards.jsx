@@ -344,7 +344,7 @@ export default function CourseCards() {
           <div className="relative bg-white p-6 rounded-2xl shadow-lg max-w-3xl w-full">
             {/* Close button */}
             <button
-              onClick={() => setOpenCourse(null)}
+              onClick={() => setOpen(null)}
               className="absolute top-2 right-2 text-gray-700 hover:text-red-500 text-lg"
             >
               ✖
