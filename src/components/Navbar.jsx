@@ -56,8 +56,9 @@ function Navbar({ onLogout }) {
 
             setTimeout(() => {
                 {
-                    localStorage.getItem("Facrole") ?
-                        navigate("/") : navigate("/faculty/login")
+                    localStorage.getItem("Facrole") === "Faculty" ?
+                        navigate("/faculty/login")
+                        : navigate("/")
                 }
             }, 1500);
         }
